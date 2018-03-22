@@ -4,4 +4,5 @@ public class User {
     int gender; //1=male, 2=female
     String country;
     int test;
+    int douhbletest;
 }
