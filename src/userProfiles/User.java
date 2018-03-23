@@ -1,3 +1,5 @@
+package userProfiles;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,14 @@ public class User {
     int test;
     int douhbletest;
 
-    //Method saves a List of User into a file with the path filename.
+    public User(String id, int age, int gender, String country) {
+        this.id = id;
+        this.age = age;
+        this.gender = gender;
+        this.country = country;
+    }
+
+    //Method saves a List of userProfiles.User into a file with the path filename.
     public static void usersToFile(String filename, List<User> e) {
 
         File file = new File(filename);
@@ -21,7 +30,7 @@ public class User {
         }
     }
 
-    //Method reads the List of User from a file.
+    //Method reads the List of userProfiles.User from a file.
     //Hvis vi laver en arrayList can den bare typecastes, når metoden anvendes.
     public static List<User> deserializeFromDisk(String filename) {
         List<User> ret = new ArrayList<>();
