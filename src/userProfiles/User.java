@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    String id;
-    int age;
-    int gender; //1=male, 2=female
-    String country;
+    private String id;
+    private int age;
+    private int gender; //1=male, 2=female
+    private String country;
     int test;
     int douhbletest;
 
@@ -17,6 +17,22 @@ public class User {
         this.age = age;
         this.gender = gender;
         this.country = country;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public String getCountry() {
+        return country;
     }
 
     //Method saves a List of userProfiles.User into a file with the path filename.
