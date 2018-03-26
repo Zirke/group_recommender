@@ -14,7 +14,10 @@ public class Main extends Application {
         launch(args);
     }
 
-    
+    @Override
+    public void start(Stage primaryStage) {
+        Main_menu = primaryStage;
+    }
 
 
 }
