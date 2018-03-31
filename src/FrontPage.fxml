@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0"
-            prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="FrontPageController">
+            prefWidth="1920.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontPageController">
     <children>
         <HBox alignment="CENTER_RIGHT" fillHeight="false" prefHeight="50.0" prefWidth="960.0" spacing="10.0"
-              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              style="-fx-background-color: #303030;" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
             <children>
-                <Hyperlink fx:id="CreateProfileHyperlink" onAction="#pressCreateProfile" text="Create Profile"/>
-                <Hyperlink fx:id="SignInHyperlink" onAction="#pressSignIn" text="Sign In"/>
-                <SplitMenuButton fx:id="ProfileButton" mnemonicParsing="false" text="Profile">
+                <Hyperlink fx:id="CreateProfileHyperlink" onAction="#pressCreateProfile" text="Create Profile"
+                           textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                    <font>
+                        <Font size="24.0"/>
+                    </font>
+                </Hyperlink>
+                <Hyperlink fx:id="SignInHyperlink" onAction="#pressSignIn" text="Sign In" textFill="WHITE"
+                           textOverrun="WORD_ELLIPSIS">
+                    <font>
+                        <Font size="24.0"/>
+                    </font>
+                </Hyperlink>
+                <MenuButton fx:id="ProfileMenuButton" mnemonicParsing="false" onAction="#chooseViewProfile"
+                            onDragOver="#chooseViewProfile" text="Profile">
                     <items>
                         <MenuItem mnemonicParsing="false" text="View Profile"/>
                         <MenuItem mnemonicParsing="false" text="Edit Profile"/>
                         <MenuItem mnemonicParsing="false" text="Your Groups"/>
                     </items>
-                </SplitMenuButton>
+                </MenuButton>
             </children>
             <opaqueInsets>
                 <Insets/>
@@ -28,8 +39,8 @@
                 <Insets right="20.0"/>
             </padding>
         </HBox>
-        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="960.0" spacing="10.0" AnchorPane.leftAnchor="0.0"
-              AnchorPane.topAnchor="0.0">
+        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="960.0" spacing="10.0"
+              style="-fx-background-color: #303030;" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
             <children>
                 <TextField alignment="TOP_LEFT" prefHeight="20.0" prefWidth="400.0" promptText="Search Destination"/>
             </children>
@@ -37,10 +48,10 @@
                 <Insets left="20.0"/>
             </padding>
         </HBox>
-        <HBox layoutY="65.0" prefHeight="100.0" prefWidth="1920.0" AnchorPane.leftAnchor="0.0"
-              AnchorPane.rightAnchor="0.0">
+        <HBox layoutY="65.0" prefHeight="70.0" prefWidth="1920.0" style="-fx-background-color: #303030;"
+              AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="70.0">
             <children>
-                <Label alignment="TOP_LEFT" text="A400b">
+                <Label alignment="TOP_LEFT" text="A400b" textFill="#545454">
                     <font>
                         <Font name="System Bold" size="48.0"/>
                     </font>
@@ -50,5 +61,48 @@
                 <Insets left="20.0"/>
             </padding>
         </HBox>
+        <Button fx:id="NextSceneButton" layoutX="628.0" layoutY="436.0" mnemonicParsing="false"
+                onAction="#chooseViewProfile" text="Goto profile scene test"/>
+        <VBox layoutX="199.0" layoutY="301.0" prefHeight="1030.0" prefWidth="200.0"
+              style="-fx-background-color: #303030;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
+              AnchorPane.topAnchor="150.0">
+            <children>
+                <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" text="Cities">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" text="Beaches">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" text="Adventure">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" text="Skiing">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" text="?">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" text="?">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="200.0" text="?">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+            </children>
+        </VBox>
     </children>
 </AnchorPane>

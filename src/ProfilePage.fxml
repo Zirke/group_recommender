@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProfilePageController">
+    <children>
+        <HBox alignment="CENTER_RIGHT" fillHeight="false" layoutX="960.0" layoutY="6.0" prefHeight="50.0"
+              prefWidth="960.0" spacing="10.0" style="-fx-background-color: #303030;" AnchorPane.rightAnchor="0.0"
+              AnchorPane.topAnchor="0.0">
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+            <padding>
+                <Insets right="20.0"/>
+            </padding>
+            <children>
+                <MenuButton fx:id="ProfileMenuButton" mnemonicParsing="false" onAction="#chooseViewProfile"
+                            onDragOver="#chooseViewProfile" text="Profile">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="View Profile"/>
+                        <MenuItem mnemonicParsing="false" text="Edit Profile"/>
+                        <MenuItem mnemonicParsing="false" text="Your Groups"/>
+                    </items>
+                </MenuButton>
+            </children>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="960.0" spacing="10.0"
+              style="-fx-background-color: #303030;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <TextField alignment="TOP_LEFT" prefHeight="20.0" prefWidth="400.0" promptText="Search Destination"/>
+            </children>
+            <padding>
+                <Insets left="20.0"/>
+            </padding>
+        </HBox>
+    </children>
+</AnchorPane>

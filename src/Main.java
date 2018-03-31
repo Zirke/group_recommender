@@ -22,7 +22,5 @@ public class Main extends Application {
         primaryStage.setMaximized(true); //sets size of stage to windowed fullscreen
         primaryStage.setTitle("Test");
         primaryStage.show();
-
     }
-
 }
