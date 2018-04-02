@@ -6,26 +6,24 @@
 <?import javafx.scene.text.Font?>
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontPageController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontPageUI_AllDestinationsController">
     <children>
         <HBox alignment="CENTER_RIGHT" fillHeight="false" prefHeight="50.0" prefWidth="950.0" spacing="10.0"
               style="-fx-background-color: #505050;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"
               AnchorPane.topAnchor="10.0">
             <children>
-                <Hyperlink fx:id="CreateProfileHyperlink" onAction="#pressCreateProfile" text="Create Profile"
-                           textFill="WHITE" textOverrun="WORD_ELLIPSIS">
-                    <font>
-                        <Font size="24.0"/>
-                    </font>
-                </Hyperlink>
-                <Hyperlink fx:id="SignInHyperlink" onAction="#pressSignIn" text="Sign In" textFill="WHITE"
+                <Hyperlink fx:id="CreateProfileHyperlink" text="Create Profile" textFill="WHITE"
                            textOverrun="WORD_ELLIPSIS">
                     <font>
                         <Font size="24.0"/>
                     </font>
                 </Hyperlink>
-                <MenuButton fx:id="ProfileMenuButton" mnemonicParsing="false" onAction="#chooseViewProfile"
-                            text="Profile">
+                <Hyperlink fx:id="SignInHyperlink" text="Sign In" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                    <font>
+                        <Font size="24.0"/>
+                    </font>
+                </Hyperlink>
+                <MenuButton fx:id="ProfileMenuButton" mnemonicParsing="false" text="Profile">
                     <items>
                         <MenuItem mnemonicParsing="false" text="View Profile"/>
                         <MenuItem mnemonicParsing="false" text="Edit Profile"/>
@@ -66,7 +64,7 @@
               style="-fx-background-color: #303030;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
               AnchorPane.topAnchor="150.0">
             <children>
-                <Button maxWidth="250.0" mnemonicParsing="false" onAction="#pressAllDestinations" prefHeight="100.0"
+                <Button maxWidth="250.0" mnemonicParsing="false" prefHeight="100.0"
                         style="-fx-background-color: #505050;" text="All Destinations" textFill="WHITE"/>
                 <Button maxWidth="250.0" mnemonicParsing="false" style="-fx-background-color: #303030;" text="Button"
                         textFill="WHITE">
@@ -88,6 +86,7 @@
                 </Button>
             </children>
         </VBox>
-        <Button layoutX="275.0" layoutY="188.0" mnemonicParsing="false" onAction="#chooseViewProfile" text="goto test"/>
+        <Button layoutX="275.0" layoutY="188.0" mnemonicParsing="false" onAction="#pressFrontPageButton"
+                text="goto front page"/>
     </children>
 </AnchorPane>

@@ -9,7 +9,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ProfilePageController {
+public class FrontPageUI_AllDestinationsController {
+
     @FXML
     private Button FrontPageButton;
 
@@ -25,5 +26,4 @@ public class ProfilePageController {
         stage.setTitle("Test");
         stage.show();
     }
-
 }

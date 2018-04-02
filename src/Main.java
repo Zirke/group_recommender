@@ -19,7 +19,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("FrontPage.fxml"));
 
         primaryStage.setScene(new Scene(root));
-        primaryStage.setMaximized(true); //sets size of stage to windowed fullscreen
+        primaryStage.setFullScreen(true); //sets size of stage to windowed fullscreen
         primaryStage.setTitle("Test");
         primaryStage.show();
     }

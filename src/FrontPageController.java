@@ -1,5 +1,3 @@
-package FXML_UserInterface.FrontPage;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,11 +7,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.MenuButton;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
 public class FrontPageController {
+
+    @FXML
+    private AnchorPane anchorPane;
 
     @FXML
     private Hyperlink CreateProfileHyperlink;
@@ -42,7 +45,20 @@ public class FrontPageController {
 
     //Methods for changing scenes
     public void chooseViewProfile(ActionEvent event) throws IOException {
-        Parent Profile_root = FXMLLoader.load(getClass().getResource("FXML_UserInterface/FrontPage/FXML_UserInterface.FrontPage/FXML_UserInterface.ProfilePage.fxml"));
+        Parent Profile_root = FXMLLoader.load(getClass().getResource("test01.fxml"));
+        Scene profileViewScene = new Scene(Profile_root);
+
+        //This line gets the stage information by casting window to a stage.
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        stage.setScene(profileViewScene);
+        stage.setFullScreen(true);
+        stage.setTitle("test");
+        stage.show();
+    }
+    /*
+    public void chooseTest(ActionEvent event) throws IOException {
+        Parent Profile_root = FXMLLoader.load(getClass().getResource("test01.fxml"));
         Scene profileViewScene = new Scene(Profile_root);
 
         //This line gets the stage information by casting window to a stage.
@@ -50,9 +66,10 @@ public class FrontPageController {
 
         stage.setScene(profileViewScene);
         stage.setMaximized(true);
-        stage.setTitle("test2");
+        stage.setTitle("test");
         stage.show();
     }
+    */
 
     //Methods for event handeling
 
@@ -74,12 +91,23 @@ public class FrontPageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    
+
+
     }
 
     //Left menu button handeling
-    public void pressAllDestinations(ActionEvent event) {
-        LoadUI("FrontPageUI_AllDestinations");
+    public void pressAllDestinations(ActionEvent event) throws IOException {
+        Parent AllDestinations_root = FXMLLoader.load(getClass().getResource("FrontPageUI_AllDestinations.fxml"));
+        Scene AllDestinationScene = new Scene(AllDestinations_root);
+
+        //This line gets the stage information by casting window to a stage.
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        stage.setScene(AllDestinationScene);
+        stage.setMaxWidth(1920);
+        stage.setMaxHeight(1080);
+        stage.setTitle("Test");
+        stage.show();
     }
 
     public void pressButton1(ActionEvent event) {
