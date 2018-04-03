@@ -21,7 +21,7 @@ public class ProfilePageController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         stage.setScene(AllDestinationScene);
-        stage.setFullScreen(true);
+        stage.setMaximized(true);
         stage.setTitle("Test");
         stage.show();
     }
