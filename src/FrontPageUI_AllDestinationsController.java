@@ -22,7 +22,7 @@ public class FrontPageUI_AllDestinationsController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         stage.setScene(AllDestinationScene);
-        stage.setMaximized(true);
+        //stage.setMaximized(true);
         stage.setTitle("Test");
         stage.show();
     }

@@ -18,8 +18,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FrontPage.fxml"));
 
-        primaryStage.setScene(new Scene(root));
-        primaryStage.setMaximized(true); //sets size of stage to windowed fullscreen
+        Scene scene = new Scene(root);
+
+        primaryStage.setScene(scene);
+       // primaryStage.setMaximized(true); //sets size of stage to windowed fullscreen
         primaryStage.setTitle("Test");
         primaryStage.show();
     }
