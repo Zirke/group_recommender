@@ -52,7 +52,7 @@ public class FrontPageController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         stage.setScene(profileViewScene);
-        stage.setFullScreen(true);
+        stage.setMaximized(true);
         stage.setTitle("test");
         stage.show();
     }
@@ -104,8 +104,7 @@ public class FrontPageController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         stage.setScene(AllDestinationScene);
-        stage.setMaxWidth(1920);
-        stage.setMaxHeight(1080);
+        stage.setMaximized(true);
         stage.setTitle("Test");
         stage.show();
     }

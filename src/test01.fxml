@@ -5,8 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontPageUI_AllDestinationsController">
+            prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: grey;"
+            xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="FrontPageUI_AllDestinationsController">
     <children>
         <HBox alignment="CENTER_RIGHT" fillHeight="false" prefHeight="50.0" prefWidth="950.0" spacing="10.0"
               style="-fx-background-color: #505050;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"
