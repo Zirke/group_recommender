@@ -1,6 +1,7 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -8,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.MenuButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -46,7 +48,8 @@ public class FrontPageController {
     //Methods for changing scenes
     public void chooseViewProfile(ActionEvent event) throws IOException {
         Parent Profile_root = FXMLLoader.load(getClass().getResource("test01.fxml"));
-        Scene profileViewScene = new Scene(Profile_root);
+        Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
+        Scene profileViewScene = new Scene(Profile_root, visualBounds.getWidth(), visualBounds.getHeight());
 
         //This line gets the stage information by casting window to a stage.
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -91,7 +94,6 @@ public class FrontPageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
     }
 
