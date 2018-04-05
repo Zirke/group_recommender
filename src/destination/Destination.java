@@ -68,9 +68,9 @@ public class Destination {
         String line;
 
         //kan kun gøre det med abosulte path og ikke den relative
-        fr = new FileReader("/Users/Abiram/IdeaProjects/group_recommender/src/destination/cities.txt");
+        fr = new FileReader("/Users/Abiram/IdeaProjects/group_recommender01/src/destination/cities.txt");
         BufferedReader bf = new BufferedReader(fr);
-        int totalLine = linesInFile("/Users/Abiram/IdeaProjects/group_recommender/src/destination/cities.txt");
+        int totalLine = linesInFile("/Users/Abiram/IdeaProjects/group_recommender01/src/destination/cities.txt");
 
 
 

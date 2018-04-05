@@ -60,7 +60,7 @@ public class Venue {
     public static ArrayList<Venue> listOfVenues() throws IOException{
         ArrayList<Venue> listOfVenues = new ArrayList<>();
         Venue temp = new Venue();
-        final String filePath = "/Users/Abiram/IdeaProjects/group_recommender/src/data/dataset_TIST2015_POIs.txt";
+        final String filePath = "/Users/Abiram/IdeaProjects/group_recommender01/src/destination/dataset_TIST2015_POIs.txt";
         FileReader fr = new FileReader(filePath);
         BufferedReader bf = new BufferedReader(fr);
         String line;
@@ -88,7 +88,7 @@ public class Venue {
             e.printStackTrace();
         }
         int totalDestination = 415;
-        int totalVenue = linesInFile("/Users/Abiram/IdeaProjects/group_recommender/src/data/dataset_TIST2015_POIs.txt");
+        int totalVenue = linesInFile("/Users/Abiram/IdeaProjects/group_recommender01/src/destination/dataset_TIST2015_POIs.txt");
         int destIndex = 0;
         double distVenueDest;
         double indexDist;
@@ -99,7 +99,7 @@ public class Venue {
                         abs(listOfDestination().get(j).getLongitude()-listOfVenues().get(i).getLongitude());
                 indexDist = abs(listOfDestination().get(destIndex).getLattitude()-listOfVenues().get(i).getLatitude()) +
                         abs(listOfDestination().get(destIndex).getLongitude()-listOfVenues().get(i).getLongitude());
-                //System.out.println("h");
+                System.out.println("h");
                 if(distVenueDest < indexDist){
                     destIndex = j;
                 }
