@@ -2,6 +2,7 @@ package destination;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class Destination {
@@ -128,5 +129,23 @@ public class Destination {
         System.out.println("Destination name: " + this.getDestinationName() +
                 "   Lattitude :" + this.getLattitude() +"   Longitude :" + this.getLongitude() +
                 "   Country :" + this.getCountryName() + "   City type :" +this.getCityType());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Destination)) return false;
+        Destination that = (Destination) o;
+        return Double.compare(that.getLattitude(), getLattitude()) == 0 &&
+                Double.compare(that.getLongitude(), getLongitude()) == 0 &&
+                Objects.equals(getDestinationName(), that.getDestinationName()) &&
+                Objects.equals(getCountryName(), that.getCountryName()) &&
+                Objects.equals(getCityType(), that.getCityType());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getDestinationName(), getLattitude(), getLongitude(), getCountryName(), getCityType());
     }
 }
