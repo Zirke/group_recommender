@@ -62,7 +62,7 @@ public class Destination {
     }
 
 
-    public static ArrayList<Destination> listOfDestination() throws IOException,FileNotFoundException {
+    public static ArrayList<Destination> listOfDestination() throws IOException,FileNotFoundException{
         ArrayList<Destination> fileDestination = new ArrayList<Destination>();
 
         FileReader fr = null;

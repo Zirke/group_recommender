@@ -1,5 +1,7 @@
 package userProfiles;
 
+import destination.Destination;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +13,21 @@ public class User {
     String country;
     int test;
     int douhbletest;
+    private ArrayList<Destination> usersDestination; //User's destination in an ordered list (the order of listOfDestinations)
 
     public User(String id, int age, int gender, String country) {
         this.id = id;
         this.age = age;
         this.gender = gender;
         this.country = country;
+    }
+
+    public ArrayList<Destination> getUsersDestination() {
+        return usersDestination;
+    }
+
+    public void setUsersDestination(ArrayList<Destination> usersDestination) {
+        this.usersDestination = usersDestination;
     }
 
     //Method saves a List of userProfiles.User into a file with the path filename.

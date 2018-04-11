@@ -12,18 +12,19 @@ import static javafx.application.Application.launch;
   Main Application. This class handles navigation and user interface.
 */
 
-public class Main extends Application{
+public class Main /*extends Application*/ {
 
     public static void main(String[] args) {
+
         /*try {
             destinationVenues();
         } catch (IOException e) {
             e.printStackTrace();
         }*/
-        launch(args);
+        //launch(args);
     }
 
-    @Override
+    /*@Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("userInterface/FrontPage.fxml"));
         Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
@@ -34,5 +35,5 @@ public class Main extends Application{
        primaryStage.setMaximized(true); //sets size of stage to windowed fullscreen
         primaryStage.setTitle("Test");
         primaryStage.show();
-    }
+    }*/
 }
