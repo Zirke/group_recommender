@@ -1,10 +1,13 @@
 import destination.Destination;
 import userProfiles.User;
+import static destination.Destination.listOfDestination;
 
 import java.io.IOException;
 import java.util.*;
 
-import static destination.Destination.listOfDestination;
+/* In this class, recommendation for a single user will be made, and possible for a group.
+* The class is constructed with (an arraylist of every destinations), an arraylist of every User in the training set,
+* and a User, which the recommendation will made to*/
 
 public class Recommender {
     private ArrayList<Destination> destinations;
@@ -34,6 +37,7 @@ public class Recommender {
         this.users = users;
     }
 
+    //the method creates a matrix for the arrayList "users". if a user has been to a destination then the Integer is 1 otherwise 0.
     public void destinationMatrixCreator(){
         Iterator iter = users.iterator();
         while(iter.hasNext()){
