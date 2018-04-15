@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProfilePageController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.ProfilePageController">
     <children>
         <AnchorPane layoutX="468.0" layoutY="208.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="10.0"
                     AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">

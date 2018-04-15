@@ -1,3 +1,5 @@
+package UserInterface;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +19,7 @@ public class FrontPageUI_AllDestinationsController {
     private Button FrontPageButton;
 
     public void pressFrontPageButton(ActionEvent event) throws IOException {
-        Parent AllDestinations_root = FXMLLoader.load(getClass().getResource("FrontPage.fxml"));
+        Parent AllDestinations_root = FXMLLoader.load(getClass().getResource("UserInterface/FrontPage.fxml"));
         Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
         Scene AllDestinationScene = new Scene(AllDestinations_root, visualBounds.getWidth(), visualBounds.getHeight());
 

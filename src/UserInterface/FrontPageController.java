@@ -1,3 +1,5 @@
+package UserInterface;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,9 +13,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-
 
 public class FrontPageController {
 
@@ -45,72 +45,35 @@ public class FrontPageController {
     @FXML
     private Button button6;
 
-    //Methods for changing scenes
-    public void chooseViewProfile(ActionEvent event) throws IOException {
-        Parent Profile_root = FXMLLoader.load(getClass().getResource("test01.fxml"));
+    //Method used to change stages
+    public void LoadUI(String UI, ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(UI + ".fxml"));
         Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
-        Scene profileViewScene = new Scene(Profile_root, visualBounds.getWidth(), visualBounds.getHeight());
+        Scene scene = new Scene(root, visualBounds.getWidth(), visualBounds.getHeight());
 
         //This line gets the stage information by casting window to a stage.
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-        stage.setScene(profileViewScene);
-        //stage.setMaximized(true);
-        stage.setTitle("test");
-        stage.show();
-    }
-    /*
-    public void chooseTest(ActionEvent event) throws IOException {
-        Parent Profile_root = FXMLLoader.load(getClass().getResource("test01.fxml"));
-        Scene profileViewScene = new Scene(Profile_root);
-
-        //This line gets the stage information by casting window to a stage.
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        stage.setScene(profileViewScene);
+        stage.setScene(scene);
         stage.setMaximized(true);
-        stage.setTitle("test");
+        stage.setTitle("Test"); //Give better title
         stage.show();
     }
-    */
 
-    //Methods for event handeling
+    public void pressViewProfile(ActionEvent event) throws IOException {
+        LoadUI("test01", event);
+    }
 
     //Top Bar event handeling
-    public void pressCreateProfile(ActionEvent event) {
-        //System.out.println("This hyperlink works!");
-    }
-
-    public void pressSignIn(ActionEvent event) {
-        //System.out.println("This hyperlink works too!");
-    }
-
-    //Scene changing method used for left menu buttons
-    public void LoadUI(String UI) {
-        Parent root;
-
-        try {
-            root = FXMLLoader.load(getClass().getResource(UI + ".fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+    public void pressCreateProfile(ActionEvent event) throws IOException {
+        LoadUI("ProfileCreationPage", event);
     }
 
     //Left menu button handeling
     public void pressAllDestinations(ActionEvent event) throws IOException {
-        Parent AllDestinations_root = FXMLLoader.load(getClass().getResource("FrontPageUI_AllDestinations.fxml"));
-        Scene AllDestinationScene = new Scene(AllDestinations_root);
-
-        //This line gets the stage information by casting window to a stage.
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        stage.setScene(AllDestinationScene);
-        stage.setMaximized(true);
-        stage.setTitle("Test");
-        stage.show();
+        LoadUI("FrontPageUI_AllDestinations", event);
     }
-
+    /*
     public void pressButton1(ActionEvent event) {
         LoadUI("FrontPageUI_UI1");
     }
@@ -134,6 +97,6 @@ public class FrontPageController {
     public void pressButton6(ActionEvent event) {
         LoadUI("FrontPageUI_UI6");
     }
-
+    */
 
 }

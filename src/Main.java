@@ -18,13 +18,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FrontPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("UserInterface/FrontPage.fxml"));
         Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
 
         Scene scene = new Scene(root, visualBounds.getWidth(), visualBounds.getHeight());
 
         primaryStage.setScene(scene);
-       // primaryStage.setMaximized(true); //sets size of stage to windowed fullscreen
         primaryStage.setTitle("Test");
         primaryStage.show();
     }

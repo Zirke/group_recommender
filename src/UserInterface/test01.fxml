@@ -1,45 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<AnchorPane fx:id="anchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-            minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0"
-            style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontPageController">
+
+<AnchorPane fx:id="anchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.FrontPageUI_AllDestinationsController">
     <children>
-        <HBox alignment="CENTER_RIGHT" fillHeight="false" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: #505050;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+        <HBox alignment="CENTER_RIGHT" fillHeight="false" maxHeight="65.0" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: #505050;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
             <children>
-                <Hyperlink fx:id="CreateProfileHyperlink" onAction="#pressCreateProfile" text="Create Profile" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                <Hyperlink fx:id="CreateProfileHyperlink" text="Create Profile" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Hyperlink>
-                <Hyperlink fx:id="SignInHyperlink" onAction="#pressSignIn" text="Sign In" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                <Hyperlink fx:id="SignInHyperlink" text="Sign In" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </Hyperlink>
-                <MenuButton fx:id="ProfileMenuButton" mnemonicParsing="false" onAction="#chooseViewProfile" text="Profile">
+                <MenuButton fx:id="ProfileMenuButton" mnemonicParsing="false" text="Profile">
                     <items>
                         <MenuItem mnemonicParsing="false" text="View Profile" />
                         <MenuItem mnemonicParsing="false" text="Edit Profile" />
                         <MenuItem mnemonicParsing="false" text="Your Groups" />
                     </items>
-                    <graphic>
-                        <Button mnemonicParsing="false">
-                            <graphic>
-                                <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../ImageView/Icons/profile_icon.png"/>
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </Button>
-                    </graphic>
                 </MenuButton>
             </children>
             <opaqueInsets>
@@ -52,6 +46,15 @@
         <HBox alignment="CENTER_LEFT" prefHeight="50.0" spacing="10.0" style="-fx-background-color: #505050;" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
             <children>
                 <TextField alignment="TOP_LEFT" prefHeight="20.0" prefWidth="400.0" promptText="Search Destination" />
+                <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../ImageView/Icons/home_page.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
             </children>
             <padding>
                 <Insets left="20.0" />
@@ -71,7 +74,7 @@
         </HBox>
         <VBox layoutX="199.0" layoutY="301.0" prefHeight="1030.0" prefWidth="250.0" style="-fx-background-color: #303030;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="150.0">
             <children>
-                <Button maxWidth="250.0" mnemonicParsing="false" onAction="#pressAllDestinations" prefHeight="100.0" style="-fx-background-color: #505050;" text="All Destinations" textFill="WHITE" />
+                <Button maxWidth="250.0" mnemonicParsing="false" prefHeight="100.0" style="-fx-background-color: #505050;" text="All Destinations" textFill="WHITE" />
                 <Button maxWidth="250.0" mnemonicParsing="false" style="-fx-background-color: #303030;" text="Button" textFill="WHITE">
                     <VBox.margin>
                         <Insets top="10.0" />
@@ -89,6 +92,7 @@
                 </Button>
             </children>
         </VBox>
-        <Button layoutX="275.0" layoutY="188.0" mnemonicParsing="false" onAction="#chooseViewProfile" text="goto test" />
+        <Button layoutX="275.0" layoutY="188.0" mnemonicParsing="false" onAction="#pressFrontPageButton" text="goto front page" />
+        <Label layoutX="679.0" layoutY="450.0" text="This is the test screen" />
     </children>
 </AnchorPane>

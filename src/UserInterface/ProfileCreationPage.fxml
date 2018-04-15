@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER_RIGHT" fillHeight="false" maxHeight="65.0" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: #505050;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <MenuButton fx:id="ProfileMenuButton" mnemonicParsing="false" text="Profile">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="View Profile" />
+                  <MenuItem mnemonicParsing="false" text="Edit Profile" />
+                  <MenuItem mnemonicParsing="false" text="Your Groups" />
+               </items>
+            </MenuButton>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets right="20.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="50.0" spacing="10.0" style="-fx-background-color: #505050;" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <TextField alignment="TOP_LEFT" prefHeight="20.0" prefWidth="400.0" promptText="Search Destination" />
+            <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../ImageView/Icons/home_page.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </HBox>
+      <HBox layoutY="65.0" prefHeight="70.0" prefWidth="1920.0" spacing="50.0" style="-fx-background-color: #303030;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="70.0">
+         <children>
+            <Label alignment="TOP_LEFT" text="A400b" textFill="#545454">
+               <font>
+                  <Font name="System Bold" size="48.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </HBox>
+      <Pane />
+   </children>
+</AnchorPane>

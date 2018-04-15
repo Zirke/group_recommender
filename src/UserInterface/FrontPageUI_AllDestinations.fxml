@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontPageUI_AllDestinationsController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.FrontPageUI_AllDestinationsController">
     <children>
         <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="950.0" spacing="10.0"
               style="-fx-background-color: #505050;" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
