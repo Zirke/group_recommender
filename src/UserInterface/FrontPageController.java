@@ -61,11 +61,11 @@ public class FrontPageController {
     }
 
     public void pressViewProfile(ActionEvent event) throws IOException {
-        LoadUI("test01", event);
+
     }
 
     //Top Bar event handeling
-    public void pressCreateProfile(ActionEvent event) throws IOException {
+    public void pressCreateNewProfile(ActionEvent event) throws IOException {
         LoadUI("ProfileCreationPage", event);
     }
 
@@ -73,11 +73,12 @@ public class FrontPageController {
     public void pressAllDestinations(ActionEvent event) throws IOException {
         LoadUI("FrontPageUI_AllDestinations", event);
     }
-    /*
-    public void pressButton1(ActionEvent event) {
-        LoadUI("FrontPageUI_UI1");
+
+    public void pressButton1(ActionEvent event) throws IOException {
+        LoadUI("FrontPageUI_UI1", event);
     }
 
+    /*
     public void pressButton2(ActionEvent event) {
         LoadUI("FrontPageUI_UI2");
     }

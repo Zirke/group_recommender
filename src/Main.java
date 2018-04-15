@@ -24,7 +24,7 @@ public class Main extends Application {
         Scene scene = new Scene(root, visualBounds.getWidth(), visualBounds.getHeight());
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Test");
+        primaryStage.setTitle("Test"); //Remember to change title
         primaryStage.show();
     }
 }
