@@ -5,6 +5,8 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -22,6 +24,26 @@
          <padding>
             <Insets right="20.0" />
          </padding>
+         <children>
+            <MenuButton fx:id="ProfileMenuButton" mnemonicParsing="false" onAction="#pressViewProfile" text="Profile">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="View Profile" />
+                  <MenuItem mnemonicParsing="false" text="Edit Profile" />
+                  <MenuItem mnemonicParsing="false" text="Your Groups" />
+               </items>
+               <graphic>
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ImageView/Icons/profile_icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </graphic>
+            </MenuButton>
+         </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="50.0" spacing="10.0" style="-fx-background-color: #80120F;" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
@@ -105,6 +127,7 @@
                   <Image url="@../ImageView/Pictures/travel_time.jpg" />
                </image>
             </ImageView>
+            <AnchorPane />
          </children>
       </HBox>
    </children>

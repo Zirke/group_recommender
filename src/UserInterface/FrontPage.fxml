@@ -82,7 +82,7 @@
           </Label>
         <VBox layoutX="199.0" layoutY="301.0" prefHeight="1030.0" prefWidth="250.0" style="-fx-background-color: #303030;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="350.0">
             <children>
-                <Button maxWidth="250.0" mnemonicParsing="false" onAction="#pressAllDestinations" prefHeight="100.0" style="-fx-background-color: #202020;" text="All Destinations" textFill="WHITE">
+                <Button fx:id="AllDestinationsButton" maxWidth="250.0" mnemonicParsing="false" onAction="#pressAllDestinations" prefHeight="100.0" style="-fx-background-color: #202020;" text="All Destinations" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font></Button>

@@ -71,11 +71,11 @@ public class FrontPageController {
 
     //Left menu button handeling
     public void pressAllDestinations(ActionEvent event) throws IOException {
-        LoadUI("FrontPageUI_AllDestinations", event);
+        LoadUI("AllDestinationsPage", event);
     }
 
     public void pressButton1(ActionEvent event) throws IOException {
-        LoadUI("FrontPageUI_UI1", event);
+
     }
 
     /*
