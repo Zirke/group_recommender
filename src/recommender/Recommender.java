@@ -76,10 +76,11 @@ public class Recommender {
             } catch(CloneNotSupportedException e){
                 e.printStackTrace();
             }
-
         }
         return matrix;
     }
+
+
 
     public void similarityMatrix(){
 

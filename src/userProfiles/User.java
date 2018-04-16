@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class User {
+public class User implements Cloneable{
     String id;
     int age;
     int gender; //1=male, 2=female
@@ -60,6 +60,9 @@ public class User {
             e.printStackTrace();
         }
         return ret;
+    }
+
+    public User() {
     }
 
     @Override

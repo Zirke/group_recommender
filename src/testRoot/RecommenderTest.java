@@ -30,12 +30,9 @@ public class RecommenderTest {
     public void destinationMatrixCreator01(){
         BeforeEach();
         matrix = destinationMatrixCreator(testUser);
-       /*if(!matrix.isEmpty()){
-           System.out.println("heeee");
-       }*/
-        System.out.println(matrix.get(new User("50756")).get("Cuiaba").intValue());
-        //matrix.get(0).get(0);
-
+        Destination temp = new Destination("Callao");
+        User tempUser = new User("50756");
+        matrix.get(tempUser).get(temp).intValue();
     }
 
 
