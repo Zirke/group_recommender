@@ -1,11 +1,14 @@
 package destination;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
 
-public class Destination {
+public class Destination implements Cloneable{
     private String destinationName;
     private double lattitude;
     private double longitude;
@@ -61,6 +64,18 @@ public class Destination {
         this.venues = venues;
     }
 
+    public Object clone()throws CloneNotSupportedException{
+        return super.clone();
+    }
+
+    //contructor with destination name as argument.
+    public Destination(String destinationName) {
+        this.destinationName = destinationName;
+    }
+
+    //contructor without initialization.
+    public Destination() {
+    }
 
     public static ArrayList<Destination> listOfDestination() throws IOException,FileNotFoundException{
         ArrayList<Destination> fileDestination = new ArrayList<Destination>();
@@ -136,16 +151,12 @@ public class Destination {
         if (this == o) return true;
         if (!(o instanceof Destination)) return false;
         Destination that = (Destination) o;
-        return Double.compare(that.getLattitude(), getLattitude()) == 0 &&
-                Double.compare(that.getLongitude(), getLongitude()) == 0 &&
-                Objects.equals(getDestinationName(), that.getDestinationName()) &&
-                Objects.equals(getCountryName(), that.getCountryName()) &&
-                Objects.equals(getCityType(), that.getCityType());
+        return Objects.equals(getDestinationName(), that.getDestinationName());
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(getDestinationName(), getLattitude(), getLongitude(), getCountryName(), getCityType());
+        return Objects.hash(getDestinationName());
     }
 }

@@ -5,6 +5,7 @@ import destination.Destination;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class User {
     String id;
@@ -15,11 +16,13 @@ public class User {
     int douhbletest;
     private ArrayList<Destination> usersDestination; //User's destination in an ordered list (the order of listOfDestinations)
 
-    public User(String id, int age, int gender, String country) {
+    public User(String id) {
         this.id = id;
-        this.age = age;
-        this.gender = gender;
-        this.country = country;
+    }
+
+    public User(String id, ArrayList<Destination> usersDestination) {
+        this.id = id;
+        this.usersDestination = usersDestination;
     }
 
     public ArrayList<Destination> getUsersDestination() {
@@ -57,5 +60,19 @@ public class User {
             e.printStackTrace();
         }
         return ret;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id);
     }
 }

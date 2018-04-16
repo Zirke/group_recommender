@@ -1,9 +1,15 @@
+package recommender;
+
 import destination.Destination;
 import userProfiles.User;
-import static destination.Destination.listOfDestination;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import static destination.Destination.listOfDestination;
 
 /* In this class, recommendation for a single user will be made, and possible for a group.
 * The class is constructed with (an arraylist of every destinations), an arraylist of every User in the training set,
@@ -38,30 +44,41 @@ public class Recommender {
     }
 
     //the method creates a matrix for the arrayList "users". if a user has been to a destination then the Integer is 1 otherwise 0.
-    public void destinationMatrixCreator(){
+    public static HashMap<User, HashMap<Destination, Integer>> destinationMatrixCreator(ArrayList<User> users){
+        HashMap<User, HashMap<Destination, Integer>> matrix = new HashMap<>();
         Iterator iter = users.iterator();
         while(iter.hasNext()){
             User temp = (User) iter.next();
             HashMap<Destination,Integer> tempUserDestMap = new HashMap<>();
+            Destination tempDest = new Destination();
 
             int tempIndex = 0;
             try {
                 ArrayList<Destination> destinationList = listOfDestination();
                 for(int i = 0; i < destinationList.size();i++){
                     if(destinationList.get(i).equals(temp.getUsersDestination().get(tempIndex))){
-                        tempUserDestMap.put(destinationList.get(i),1);
-                        tempIndex++;
-                    }else{
-                        tempUserDestMap.put(destinationList.get(i),0);
-                    }
+                        //System.out.println(i);
+                        tempDest = (Destination) destinationList.get(i).clone();
+                        tempUserDestMap.put(tempDest,1);
+                        if(tempIndex < (temp.getUsersDestination().size()-1)){
+                            tempIndex++;
+                        }
 
+                    }else{
+                        tempDest = (Destination) destinationList.get(i).clone();
+                        tempUserDestMap.put(tempDest,0);
+                    }
+                    matrix.put(temp, tempUserDestMap);
                 }
-                matrix.put(temp,tempUserDestMap);
+
             } catch (IOException e) {
                     e.printStackTrace();
+            } catch(CloneNotSupportedException e){
+                e.printStackTrace();
             }
 
         }
+        return matrix;
     }
 
     public void similarityMatrix(){
