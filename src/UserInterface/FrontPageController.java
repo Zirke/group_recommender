@@ -13,6 +13,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public class FrontPageController {
@@ -74,15 +75,10 @@ public class FrontPageController {
         LoadUI("AllDestinationsPage", event);
     }
 
-    public void pressButton1(ActionEvent event) throws IOException {
-
+    public void pressShowUsers(ActionEvent event) throws IOException {
+        LoadUI("ShowUsersTest", event);
     }
-
     /*
-    public void pressButton2(ActionEvent event) {
-        LoadUI("FrontPageUI_UI2");
-    }
-
     public void pressButton3(ActionEvent event) {
         LoadUI("FrontPageUI_UI3");
     }

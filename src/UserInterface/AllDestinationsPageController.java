@@ -14,4 +14,6 @@ public class AllDestinationsPageController extends FrontPageController {
     public void pressHomeButton(ActionEvent event) throws IOException {
         LoadUI("FrontPage", event);
     }
+
+
 }
