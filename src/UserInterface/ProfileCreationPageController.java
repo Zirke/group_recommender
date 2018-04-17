@@ -25,6 +25,7 @@ public class ProfileCreationPageController extends FrontPageController {
     private ChoiceBox genderBox;
     //Creating and initializing values for Gender choice box
     private ObservableList<String> genderChoice = FXCollections.observableArrayList("Male", "Female");
+
     @FXML
     private void initialize() {
         genderBox.setItems(genderChoice);
@@ -53,7 +54,7 @@ public class ProfileCreationPageController extends FrontPageController {
         userCreationAlert.show();
     }
 
-    public void getUserInput() {
+    public void getUserInput(ActionEvent event) {
         //Checking for input
         if (firstNameField.getText().isEmpty()) {
             showUserCreationAlert(Alert.AlertType.ERROR, "Input Error!", "You must enter your First Name");
@@ -83,25 +84,15 @@ public class ProfileCreationPageController extends FrontPageController {
                 out.print(usernameField.getText() + "\t");
                 out.print(passwordField.getText() + "\n");
 
+                //Confirmation alert box
+                showUserCreationAlert(Alert.AlertType.CONFIRMATION, "Welcome!", "You have successfully created a profile!");
+                //If successful change stage to Profile Page
+                LoadUI("ProfilePage", event);
             } catch (IOException ioe) {
                 ioe.printStackTrace();
             }
         }
     }
-    /*
-    public void switchToProfilePage() {
-        try {CreateAccountButton.setOnMouseClicked(new ActionEvent) {
-
-            @Override
-            public void handle(ActionEvent event) {
-                LoadUI("ProfilePage", event);
-
-
-            }
-        });
-    }
-    */
-
 }
 
 
