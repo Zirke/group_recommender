@@ -5,19 +5,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    String id;
+    String username;
+    String password;
     int age;
     int gender; //1=male, 2=female
     String country;
-    int test;
-    int douhbletest;
 
-    public User(String id, int age, int gender, String country) {
-        this.id = id;
+    public User(String username, String password, int age, int gender, String country) {
+        this.username = username;
+        this.password = password;
         this.age = age;
         this.gender = gender;
         this.country = country;
     }
+
 
     //Method saves a List of userProfiles.User into a file with the path filename.
     public static void usersToFile(String filename, List<User> e) {
