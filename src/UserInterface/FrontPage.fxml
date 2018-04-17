@@ -1,64 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.FrontPageController">
+<AnchorPane fx:id="anchorPane" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.FrontPageController">
     <children>
-      <AnchorPane layoutX="0.0" layoutY="0.0" prefHeight="0.0" prefWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <ImageView fitHeight="514.0" fitWidth="1052.0" layoutX="307.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="275.0" AnchorPane.topAnchor="400.0">
-               <image>
-                  <Image url="@../ImageView/Pictures/world_map2.jpg" />
-               </image>
-            </ImageView>
-            <VBox alignment="CENTER" layoutX="1340.0" layoutY="424.0" opacity="0.60" prefHeight="350.0" prefWidth="500.0" spacing="50.0" style="-fx-background-color: #303030;" AnchorPane.bottomAnchor="125.0" AnchorPane.rightAnchor="100.0">
-               <children>
-                  <Label contentDisplay="CENTER" text="Sign In" textFill="WHITE" textOverrun="CLIP">
-                     <font>
-                        <Font size="36.0" />
-                     </font>
-                  </Label>
-                  <TextField prefHeight="25.0" prefWidth="200.0" promptText="Username">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                  <PasswordField prefHeight="25.0" prefWidth="400.0" promptText="Password">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </PasswordField>
-                  <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="400.0" style="-fx-background-color: Blue;" text="Login" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font></Button>
-                  <Hyperlink onAction="#pressCreateNewProfile" text="Create New Profile" textFill="WHITE">
-                     <font>
-                        <Font name="Arial Bold" size="18.0" />
-                     </font>
-                  </Hyperlink>
-               </children>
-               <padding>
-                  <Insets bottom="50.0" left="50.0" right="50.0" top="20.0" />
-               </padding>
-            </VBox>
-            <Label layoutX="280.0" layoutY="922.0" text="Let us help you find your next Travel Destination! " textFill="#1980ff" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="240.0">
-               <font>
-                  <Font name="System Bold" size="42.0" />
-               </font>
-            </Label>
-            <Label layoutX="280.0" layoutY="984.0" text="It's completely FREE!" textFill="#1980ff" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="240.0">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
-         </children></AnchorPane>
+      <ImageView fitHeight="514.0" fitWidth="1052.0" layoutX="275.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="275.0" AnchorPane.topAnchor="400.0">
+         <image>
+            <Image url="@../ImageView/Pictures/world_map2.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="240.0" layoutY="945.0" text="Let us help you find your next Travel Destination! " textFill="#1980ff" AnchorPane.bottomAnchor="103.0" AnchorPane.leftAnchor="240.0">
+         <font>
+            <Font name="System Bold" size="42.0" />
+         </font>
+      </Label>
+      <Label layoutX="240.0" layoutY="1007.0" text="It's completely FREE!" textFill="#1980ff" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="240.0">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
       <ImageView fitHeight="350.0" fitWidth="1920.0" layoutX="260.0" layoutY="25.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../ImageView/Pictures/front_label.jpg" />
@@ -74,12 +46,68 @@
                   <Font name="System Bold" size="48.0" />
               </font>
           </Label>
-        <VBox layoutX="199.0" layoutY="301.0" style="-fx-background-color: #303030;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="350.0">
+      <MenuButton fx:id="ProfileMenuButton" layoutX="1787.0" layoutY="24.0" mnemonicParsing="false" onAction="#pressViewProfile" text="Profile">
+         <items>
+            <MenuItem mnemonicParsing="false" text="View Profile" />
+            <MenuItem mnemonicParsing="false" text="Edit Profile" />
+            <MenuItem mnemonicParsing="false" text="Your Groups" />
+         </items>
+         <graphic>
+            <Button mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ImageView/Icons/profile_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </graphic>
+      </MenuButton>
+          <TextField alignment="TOP_LEFT" layoutX="1361.0" layoutY="25.0" prefHeight="20.0" prefWidth="400.0" promptText="Search Destination">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <VBox alignment="CENTER" layoutX="1327.0" layoutY="440.0" opacity="0.60" spacing="50.0" style="-fx-background-color: #303030;" AnchorPane.bottomAnchor="200.0" AnchorPane.rightAnchor="93.0">
+         <children>
+            <Label contentDisplay="CENTER" text="Sign In" textFill="WHITE" textOverrun="CLIP">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <TextField prefHeight="25.0" prefWidth="200.0" promptText="Username">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <PasswordField prefHeight="25.0" prefWidth="400.0" promptText="Password">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </PasswordField>
+            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="400.0" style="-fx-background-color: Blue;" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Hyperlink onAction="#pressCreateNewProfile" text="Create New Profile" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Hyperlink>
+         </children>
+         <padding>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="20.0" />
+         </padding>
+      </VBox>
+        <VBox style="-fx-background-color: #303030;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="350.0">
             <children>
                 <Button fx:id="AllDestinationsButton" maxWidth="250.0" mnemonicParsing="false" onAction="#pressAllDestinations" prefHeight="100.0" style="-fx-background-color: #202020;" text="All Destinations" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="20.0" />
-               </font></Button>
+               </font>
+            </Button>
                 <Button fx:id="button1" maxWidth="250.0" mnemonicParsing="false" onAction="#pressShowUsers" style="-fx-background-color: #303030;" text="Show Users" textFill="WHITE">
                     <VBox.margin>
                         <Insets top="10.0" />
@@ -106,28 +134,5 @@
                 </Button>
             </children>
         </VBox>
-      <MenuButton fx:id="ProfileMenuButton" layoutX="1787.0" layoutY="24.0" mnemonicParsing="false" onAction="#pressViewProfile" text="Profile">
-         <items>
-            <MenuItem mnemonicParsing="false" text="View Profile" />
-            <MenuItem mnemonicParsing="false" text="Edit Profile" />
-            <MenuItem mnemonicParsing="false" text="Your Groups" />
-         </items>
-         <graphic>
-            <Button mnemonicParsing="false">
-               <graphic>
-                  <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../ImageView/Icons/profile_icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </graphic>
-      </MenuButton>
-          <TextField alignment="TOP_LEFT" layoutX="1361.0" layoutY="25.0" prefHeight="20.0" prefWidth="400.0" promptText="Search Destination">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
     </children>
 </AnchorPane>

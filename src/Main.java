@@ -17,14 +17,19 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("UserInterface/FrontPage.fxml"));
-        Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
+    public void start(Stage primaryStage) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("UserInterface/FrontPage.fxml"));
+            Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
 
-        Scene scene = new Scene(root, visualBounds.getWidth(), visualBounds.getHeight());
+            Scene scene = new Scene(root, visualBounds.getWidth(), visualBounds.getHeight());
 
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Test"); //Remember to change title
-        primaryStage.show();
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Test"); //Remember to change title
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
