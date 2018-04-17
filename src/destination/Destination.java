@@ -14,13 +14,13 @@ public class Destination implements Cloneable{
     private double longitude;
     private String countryName;
     private String cityType;
-    private ArrayList<Venue> venues = new ArrayList<Venue>();
+    private ArrayList<Venue> venues = new ArrayList<>();
 
-    public String getDestinationName() {
+    private String getDestinationName() {
         return destinationName;
     }
 
-    public void setDestinationName(String destinationName) {
+    private void setDestinationName(String destinationName) {
         this.destinationName = destinationName;
     }
 
@@ -28,7 +28,7 @@ public class Destination implements Cloneable{
         return lattitude;
     }
 
-    public void setLattitude(double lattitude) {
+    private void setLattitude(double lattitude) {
         this.lattitude = lattitude;
     }
 
@@ -36,23 +36,23 @@ public class Destination implements Cloneable{
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    private void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
-    public String getCountryName() {
+    private String getCountryName() {
         return countryName;
     }
 
-    public void setCountryName(String countryName) {
+    private void setCountryName(String countryName) {
         this.countryName = countryName;
     }
 
-    public String getCityType() {
+    private String getCityType() {
         return cityType;
     }
 
-    public void setCityType(String cityType) {
+    private void setCityType(String cityType) {
         this.cityType = cityType;
     }
 
@@ -74,13 +74,13 @@ public class Destination implements Cloneable{
     }
 
     //contructor without initialization.
-    public Destination() {
+    private Destination() {
     }
 
-    public static ArrayList<Destination> listOfDestination() throws IOException,FileNotFoundException{
-        ArrayList<Destination> fileDestination = new ArrayList<Destination>();
+    public static ArrayList<Destination> listOfDestination() throws IOException {
+        ArrayList<Destination> fileDestination = new ArrayList<>();
 
-        FileReader fr = null;
+        FileReader fr;
         String line;
 
         //kan kun gøre det med abosulte path og ikke den relative
@@ -129,14 +129,14 @@ public class Destination implements Cloneable{
         return fileDestination;
     }
 
-    public static int linesInFile(String filePath) throws FileNotFoundException, IOException{
+    public static int linesInFile(String filePath) throws IOException{
         BufferedReader reader = new BufferedReader(new FileReader(filePath));
         int lines = 0;
         while (reader.readLine() != null) lines++;
         reader.close();
         return lines;
     }
-    public static boolean isNumeric(String s) {
+    private static boolean isNumeric(String s) {
         return s != null && s.matches("[-+]?\\d*\\.?\\d+");
     }
 

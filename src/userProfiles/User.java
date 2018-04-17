@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class User implements Cloneable{
-    String id;
+    private String id;
     int age;
     int gender; //1=male, 2=female
     String country;

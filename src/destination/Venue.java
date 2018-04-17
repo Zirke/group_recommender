@@ -10,7 +10,7 @@ import static destination.Destination.*;
 import static java.lang.Math.abs;
 
 //Used to read data from file
-public class Venue {
+class Venue {
     private String ID;
     private double Latitude;
     private double longitude;
@@ -21,23 +21,23 @@ public class Venue {
         return ID;
     }
 
-    public void setID(String ID) {
+    private void setID(String ID) {
         this.ID = ID;
     }
 
-    public double getLatitude() {
+    private double getLatitude() {
         return Latitude;
     }
 
-    public void setLatitude(double latitude) {
+    private void setLatitude(double latitude) {
         Latitude = latitude;
     }
 
-    public double getLongitude() {
+    private double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    private void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
@@ -45,7 +45,7 @@ public class Venue {
         return CategoryName;
     }
 
-    public void setCategoryName(String categoryName) {
+    private void setCategoryName(String categoryName) {
         CategoryName = categoryName;
     }
 
@@ -53,11 +53,11 @@ public class Venue {
         return CountryCode;
     }
 
-    public void setCountryCode(String countryCode) {
+    private void setCountryCode(String countryCode) {
         CountryCode = countryCode;
     }
 
-    public static ArrayList<Venue> listOfVenues() throws IOException{
+    private static ArrayList<Venue> listOfVenues() throws IOException{
         ArrayList<Venue> listOfVenues = new ArrayList<>();
         Venue temp = new Venue();
         final String filePath = "/Users/Abiram/IdeaProjects/group_recommender01/src/destination/dataset_TIST2015_POIs.txt";

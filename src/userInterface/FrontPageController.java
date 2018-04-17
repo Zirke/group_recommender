@@ -88,7 +88,7 @@ public class FrontPageController {
     }
 
     //Scene changing method used for left menu buttons
-    public void LoadUI(String UI) {
+    private void LoadUI(String UI) {
         Parent root;
 
         try {
