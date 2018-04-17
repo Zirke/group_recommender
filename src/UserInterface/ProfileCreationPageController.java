@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -26,15 +23,16 @@ public class ProfileCreationPageController extends FrontPageController {
     private TextField lastNameField;
     @FXML
     private ChoiceBox genderBox;
-    //Values for Gender choice box
+    //Creating and initializing values for Gender choice box
     private ObservableList<String> genderChoice = FXCollections.observableArrayList("Male", "Female");
-
     @FXML
     private void initialize() {
         genderBox.setItems(genderChoice);
-        genderBox.setValue("anything");
+        genderBox.setValue("anything"); //the string here have to meaning
     }
 
+    @FXML
+    private TextField ageField;
     @FXML
     private TextField usernameField;
     @FXML
@@ -46,21 +44,42 @@ public class ProfileCreationPageController extends FrontPageController {
         LoadUI("FrontPage", event);
     }
 
-    public void getUserInput() {
+    //Method for creating Alert boxes for User Creation
+    private void showUserCreationAlert(Alert.AlertType alertType, String title, String message) {
+        Alert userCreationAlert = new Alert(alertType);
+        userCreationAlert.setTitle(title);
+        userCreationAlert.setHeaderText(null);
+        userCreationAlert.setContentText(message);
+        userCreationAlert.show();
+    }
 
+    public void getUserInput() {
+        //Checking for input
         if (firstNameField.getText().isEmpty()) {
-            System.out.println("First Name cannot be empty");
+            showUserCreationAlert(Alert.AlertType.ERROR, "Input Error!", "You must enter your First Name");
         } else if (lastNameField.getText().isEmpty()) {
-            System.out.println("Last Name cannot be empty");
+            showUserCreationAlert(Alert.AlertType.ERROR, "Input Error!", "You must enter your Last Name");
+        } else if (genderBox.getSelectionModel().isEmpty()) {
+            showUserCreationAlert(Alert.AlertType.ERROR, "Input Error!", "You must choose your Gender");
+        } else if (ageField.getText().isEmpty()) {
+            showUserCreationAlert(Alert.AlertType.ERROR, "Input Error!", "You must enter your Age");
         } else if (usernameField.getText().isEmpty()) {
-            System.out.println("Username cannot be empty");
+            showUserCreationAlert(Alert.AlertType.ERROR, "Input Error!", "You must enter a Username");
         } else if (passwordField.getText().isEmpty()) {
-            System.out.println("Password cannot be empty");
+            showUserCreationAlert(Alert.AlertType.ERROR, "Input Error!", "You must enter a Password");
         } else {
+            //Writing input from input fields to textfile "userData.txt"
             try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("src/userData.txt", true)))) {
                 out.print(firstNameField.getText() + "\t");
                 out.print(lastNameField.getText() + "\t");
                 out.print(genderBox.getValue() + "\t");
+                out.print(ageField.getText() + "\t");
+                //Ensure that input from age-field is only numbers and not characters
+                ageField.textProperty().addListener((observable, oldValue, newValue) -> {
+                    if (!newValue.matches("\\d*")) {
+                        ageField.setText(newValue.replaceAll("[^\\d]", ""));
+                    }
+                });
                 out.print(usernameField.getText() + "\t");
                 out.print(passwordField.getText() + "\n");
 
@@ -69,6 +88,20 @@ public class ProfileCreationPageController extends FrontPageController {
             }
         }
     }
+    /*
+    public void switchToProfilePage() {
+        try {CreateAccountButton.setOnMouseClicked(new ActionEvent) {
+
+            @Override
+            public void handle(ActionEvent event) {
+                LoadUI("ProfilePage", event);
+
+
+            }
+        });
+    }
+    */
+
 }
 
 

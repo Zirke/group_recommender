@@ -87,7 +87,6 @@
                      </font>
                   </TextField>
                    <ChoiceBox fx:id="genderBox" layoutX="170.0" layoutY="229.0" prefWidth="200.0"/>
-                  <DatePicker layoutX="170.0" layoutY="279.0" prefWidth="200.0" />
                    <TextField fx:id="usernameField" layoutX="170.0" layoutY="329.0" prefHeight="25.0" prefWidth="350.0"
                               promptText="Username">
                      <font>
@@ -117,6 +116,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
+                   <TextField fx:id="ageField" layoutX="170.0" layoutY="278.0" maxWidth="200.0"/>
                </children>
             </AnchorPane>
             <ImageView fitHeight="534.0" fitWidth="801.0" pickOnBounds="true">
