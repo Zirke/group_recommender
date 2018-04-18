@@ -22,6 +22,7 @@ public class Main extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("UserInterface/FrontPage.fxml"));
             Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
 
+
             Scene scene = new Scene(root, visualBounds.getWidth(), visualBounds.getHeight());
 
             primaryStage.setScene(scene);
