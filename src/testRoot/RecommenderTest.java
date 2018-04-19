@@ -6,6 +6,7 @@ import userProfiles.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -71,5 +72,19 @@ class RecommenderTest {
         matrix = destinationMatrixCreator(testUser);
         cosineSimilarity(matrix.get(new User("50756")),matrix.get(new User("12345")));
         assertEquals(0.28869,cosineSimilarity(matrix.get(new User("50756")),matrix.get(new User("12345"))),0.01);
+    }
+
+    @Test
+    void similarityMatrix01(){
+        BeforeEachMatrixCreator();
+        matrix = destinationMatrixCreator(testUser);
+
+        usersDestination = new ArrayList<>();
+        usersDestination.add(new Destination("Callao"));
+        usersDestination.add(new Destination("Manaus"));
+        usersDestination.add(new Destination("Asuncion"));
+        User temp = new User("46",usersDestination);
+        Map<User, Double> similarity = similarityMatrix(temp,matrix);
+        assertEquals(similarity.get(new User("12345")).doubleValue(),1.0);
     }
 }

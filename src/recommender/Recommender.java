@@ -18,7 +18,8 @@ public class Recommender {
     private User recommendationUser;
 
     HashMap<User, HashMap<Destination, Integer>> matrix = new HashMap<>();  // matrix for whether the user has been to a given destiantion.
-    Map<Destination, Map<Destination,Double>> sim;  //for the similarity between two destinations
+    Map<User, Map<Destination,Double>> sim;
+    //Map<Destination, Map<Destination,Double>> sim;  for the similarity between two destinations
 
     public Recommender(User currentUser) {
         this.recommendationUser = currentUser;
@@ -77,7 +78,7 @@ public class Recommender {
     }
 
 
-    public HashMap<Destination,Integer> currentUserDestination(User currentUser){
+    public static HashMap<Destination,Integer> currentUserDestination(User currentUser){
         HashMap<Destination,Integer> tempUserDestMap = new HashMap<>();
         Destination tempDest;
 
@@ -138,8 +139,14 @@ public class Recommender {
         return result;
     }
 
-    public void similarityMatrix(){
+    public static Map<User, Double> similarityMatrix(User recommendationUser, HashMap<User, HashMap<Destination, Integer>> destinationData){
+        Map<User, Double> similarity = new HashMap<>();
+        HashSet<User> keySet = new HashSet<>(destinationData.keySet());
+        for(User i : keySet){
+            similarity.put(i,cosineSimilarity(destinationData.get(i),currentUserDestination(recommendationUser)));
+        }
 
+        return similarity;
     }
 
     public void recommendationForCurrent(){
