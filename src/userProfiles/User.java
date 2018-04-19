@@ -14,7 +14,7 @@ public class User implements Cloneable{
     String country;
     int test;
     int douhbletest;
-    private ArrayList<Destination> usersDestination; //User's destination in an ordered list (the order of listOfDestinations)
+    private ArrayList<Destination> usersDestination = new ArrayList<>(); //User's destination in an ordered list (the order of listOfDestinations)
 
     public User(String id) {
         this.id = id;

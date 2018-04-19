@@ -20,6 +20,7 @@ class RecommenderTest {
         usersDestination.add(new Destination("Cuiaba"));
         usersDestination.add(new Destination("Coquimbo"));
         usersDestination.add(new Destination("Rio Branco"));
+        usersDestination.add(new Destination("Callao"));
         testUser.add(new User("50756",usersDestination));
         usersDestination = new ArrayList<>();
         usersDestination.add(new Destination("Callao"));
@@ -53,18 +54,22 @@ class RecommenderTest {
         matrix.get(tempUser).get(temp);
         assertEquals(matrix.get(tempUser).get(temp).intValue(),1);
         temp = new Destination("Callao");
-        assertEquals(matrix.get(tempUser).get(temp).intValue(),0);
+        assertEquals(matrix.get(tempUser).get(temp).intValue(),1);
         tempUser = new User("12345");
         temp = new Destination("Coquimbo");
         assertEquals(matrix.get(tempUser).get(temp).intValue(),0);
         temp = new Destination("Manaus");
         assertEquals(matrix.get(tempUser).get(temp).intValue(),1);
+
     }
 
 
-
+    //måske deltaet skal ændres.
     @Test
     void cosineSimilarity01(){
-
+        BeforeEachMatrixCreator();
+        matrix = destinationMatrixCreator(testUser);
+        cosineSimilarity(matrix.get(new User("50756")),matrix.get(new User("12345")));
+        assertEquals(0.28869,cosineSimilarity(matrix.get(new User("50756")),matrix.get(new User("12345"))),0.01);
     }
 }

@@ -117,27 +117,29 @@ public class Recommender {
             e.printStackTrace();
         }
 
-        
+
 
     }
-
-    public double cosineSimilarity(HashMap<Destination,Integer> user01, HashMap<Destination,Integer> user02){
-        double totalSum = 0;
-        double squareUser01sum = 0;
-        double squareUser02sum = 0;
+    //calculates the cosine similairyt between two users A and B.
+    public static double cosineSimilarity(HashMap<Destination,Integer> A, HashMap<Destination,Integer> B){
+        double dotProduct = 0, magnitudeA = 0, magnitudeB = 0;
         double result = 0;
-        Set entrySet = user01.entrySet();
-        Iterator iter = entrySet.iterator();
+        HashSet<Destination> keySet = new HashSet<>(A.keySet());
 
-        while(iter.hasNext()){
-            Map.Entry me = (Map.Entry) iter.next();
-            totalSum += user01.get(me).intValue() * user02.get(me).intValue();
-            squareUser01sum += user01.get(me).intValue() * user01.get(me).intValue();
-            squareUser02sum += user02.get(me).intValue() * user02.get(me).intValue();
+
+        //Dot product, Magnitude for A and Magnitude for B.
+        for (Destination i : keySet) {
+            dotProduct += A.get(i) * B.get(i);
+            magnitudeA += Math.pow(A.get(i), 2);
+            magnitudeB += Math.pow(B.get(i), 2);
         }
 
-        result = totalSum/(Math.sqrt(squareUser01sum) * Math.sqrt(squareUser02sum));
+        result = dotProduct / Math.sqrt(magnitudeA * magnitudeB);
         return result;
+    }
+
+    public void similarityMatrix(){
+
     }
 
     public void recommendationForCurrent(){
