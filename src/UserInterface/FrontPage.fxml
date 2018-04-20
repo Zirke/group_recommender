@@ -69,7 +69,7 @@
             <Font size="16.0" />
          </font>
       </TextField>
-      <VBox alignment="CENTER" layoutX="1327.0" layoutY="440.0" opacity="0.60" spacing="50.0" style="-fx-background-color: #303030;" AnchorPane.bottomAnchor="200.0" AnchorPane.rightAnchor="93.0">
+      <VBox alignment="CENTER" layoutX="1327.0" layoutY="440.0" opacity="0.60" spacing="50.0" style="-fx-background-color: #303030;" AnchorPane.topAnchor="440.0">
          <children>
             <Label contentDisplay="CENTER" text="Sign In" textFill="WHITE" textOverrun="CLIP">
                <font>

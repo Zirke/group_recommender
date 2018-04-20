@@ -7,20 +7,47 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class User implements Cloneable{
-    private String id;
-    int age;
-    int gender; //1=male, 2=female
-    String country;
+public class User implements Cloneable {
+    private String firstName;
+    private String lastName;
+    private String age;
+    private String gender;
+    private String usernameID;
+    private String password;
 
     private ArrayList<Destination> usersDestination; //User's destination in an ordered list (the order of listOfDestinations)
 
-    public User(String id) {
-        this.id = id;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public void setUsernameID(String usernameID) {
+        this.usernameID = usernameID;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUsersDestination(ArrayList<Destination> usersDestination) {
+        this.usersDestination = usersDestination;
+    }
+
+    /*
     public User(String id, ArrayList<Destination> usersDestination) {
-        this.id = id;
+        this.usernameID = id;
         this.usersDestination = usersDestination;
     }
 
@@ -31,6 +58,7 @@ public class User implements Cloneable{
     public void setUsersDestination(ArrayList<Destination> usersDestination) {
         this.usersDestination = usersDestination;
     }
+    */
 
     //Method saves a List of userProfiles.User into a file with the path filename.
     public static void usersToFile(String filename, List<User> e) {
@@ -69,12 +97,44 @@ public class User implements Cloneable{
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id);
+        return Objects.equals(usernameID, user.usernameID);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id);
+        return Objects.hash(usernameID);
+    }
+
+    public static ArrayList<User> listOfCreatedUsers() throws IOException {
+        ArrayList<User> fileDestination = new ArrayList<>();
+
+        FileReader fr;
+        String line;
+
+        fr = new FileReader("src/userData.txt");
+        BufferedReader bf = new BufferedReader(fr);
+        int totalLine = Destination.linesInFile("src/userData.txt");
+
+        for (int i = 0; i < totalLine; i++) {
+            line = bf.readLine();
+            String[] strings = line.split("\\t", 6);
+            User temp = new User();
+
+            temp.setFirstName(strings[0]);
+            temp.setLastName(strings[1]);
+            temp.setAge(strings[2]);
+            temp.setGender(strings[3]);
+            temp.setUsernameID(strings[4]);
+            temp.setPassword(strings[5]);
+        }
+        try {
+            bf.close();
+            fr.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return fileDestination;
     }
 }
+
