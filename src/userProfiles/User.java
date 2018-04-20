@@ -33,6 +33,22 @@ public class User implements Cloneable{
         this.usersDestination = usersDestination;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
     //Method saves a List of userProfiles.User into a file with the path filename.
     public static void usersToFile(String filename, List<User> e) {
 
