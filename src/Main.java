@@ -6,6 +6,10 @@ import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
+import static userProfiles.User.listOfCreatedUsers;
+
 /*
   Main Application. This class handles navigation and user interface.
 */
@@ -14,6 +18,13 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+
+
+        try {
+            listOfCreatedUsers();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -31,7 +42,6 @@ public class Main extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("hej");
 
     }
 }

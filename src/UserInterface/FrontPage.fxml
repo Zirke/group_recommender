@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <AnchorPane fx:id="anchorPane" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.FrontPageController">
     <children>
       <ImageView fitHeight="514.0" fitWidth="1052.0" layoutX="275.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="275.0" AnchorPane.topAnchor="400.0">
@@ -76,17 +67,18 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <TextField prefHeight="25.0" prefWidth="200.0" promptText="Username">
+             <TextField fx:id="UsernameField" prefHeight="25.0" prefWidth="200.0" promptText="Username">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <PasswordField prefHeight="25.0" prefWidth="400.0" promptText="Password">
+             <PasswordField fx:id="PasswordField" prefHeight="25.0" prefWidth="400.0" promptText="Password">
                <font>
                   <Font size="16.0" />
                </font>
             </PasswordField>
-            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="400.0" style="-fx-background-color: Blue;" text="Login" textFill="WHITE">
+             <Button fx:id="LogInButton" mnemonicParsing="false" onAction="#userLogin" prefHeight="44.0"
+                     prefWidth="400.0" style="-fx-background-color: Blue;" text="Login" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -134,5 +126,11 @@
                 </Button>
             </children>
         </VBox>
+        <Hyperlink layoutX="679.0" layoutY="1006.0" onAction="#pressCreateNewProfile" text="Click here to Sign Up!"
+                   textFill="#ff7b28" AnchorPane.bottomAnchor="48.0">
+            <font>
+                <Font name="Arial Bold" size="36.0"/>
+            </font>
+        </Hyperlink>
     </children>
 </AnchorPane>

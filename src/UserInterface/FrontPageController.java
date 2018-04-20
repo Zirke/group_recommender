@@ -1,5 +1,6 @@
 package UserInterface;
 
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,14 +8,18 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.MenuButton;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import userProfiles.User;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
+
+import static userProfiles.User.listOfCreatedUsers;
 
 public class FrontPageController {
 
@@ -46,6 +51,22 @@ public class FrontPageController {
     @FXML
     private Button button6;
 
+    //Sign In Hbox
+    @FXML
+    private TextField UsernameField;
+    @FXML
+    private PasswordField PasswordField;
+    @FXML
+    private Button LogInButton;
+
+    private void showUserCreationAlert(Alert.AlertType alertType, String title, String message) {
+        Alert userCreationAlert = new Alert(alertType);
+        userCreationAlert.setTitle(title);
+        userCreationAlert.setHeaderText(null);
+        userCreationAlert.setContentText(message);
+        userCreationAlert.show();
+    }
+
     //Method used to change stages
     public void LoadUI(String UI, ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(UI + ".fxml"));
@@ -59,6 +80,53 @@ public class FrontPageController {
         stage.setMaximized(true);
         stage.setTitle("Test"); //Give better title
         stage.show();
+    }
+
+    //Laver Arraylist af users om til hashset i stedet med username som keyword.
+    public HashMap<String, String> createHashSet(ArrayList<User> ListOfUsers) {
+        HashMap<String, String> HashSetUsers = new HashMap<>();
+        for (User I : ListOfUsers) {
+            HashSetUsers.put(I.getUsernameID(), I.getPassword());
+        }
+        return HashSetUsers;
+    }
+
+    @FXML
+    public void userLogin(HashMap<String, String> HashSetUsers, ActionEvent event) {
+        Set<String> Usernames = HashSetUsers.keySet();
+        for (String i : Usernames) {
+            if (i.equals(UsernameField.getText()) && HashSetUsers.get(i).equals(PasswordField.getText())) {
+                try {
+                    LoadUI("ProfilePage", event);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                showUserCreationAlert(Alert.AlertType.ERROR, "Input Error!", "Username or Password is incorrect!");
+            }
+        }
+
+        LogInButton.setOnAction(e -> {
+            System.out.println("hello world");
+            HashMap<String, String> userlogins = new HashMap<>();
+            try {
+                userlogins = createHashSet(listOfCreatedUsers());
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+            userLogin(userlogins, e);
+        });
+
+        /*
+        for (User user : ListOfUsers) {
+            if (UsernameField.getText().equals(user.getFirstName())) {
+
+            }
+        }
+        for (int i = 0; i <= totalLine; i++) {
+            if (UsernameField.getText().equals())
+        }
+        */
     }
 
     public void pressViewProfile(ActionEvent event) throws IOException {

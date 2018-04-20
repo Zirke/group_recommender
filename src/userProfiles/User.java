@@ -45,6 +45,29 @@ public class User implements Cloneable {
         this.usersDestination = usersDestination;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getUsernameID() {
+        return usernameID;
+    }
+
+    public String getPassword() {
+        return password;
+    }
     /*
     public User(String id, ArrayList<Destination> usersDestination) {
         this.usernameID = id;
@@ -107,7 +130,7 @@ public class User implements Cloneable {
     }
 
     public static ArrayList<User> listOfCreatedUsers() throws IOException {
-        ArrayList<User> fileDestination = new ArrayList<>();
+        ArrayList<User> ListOfUsers = new ArrayList<>();
 
         FileReader fr;
         String line;
@@ -127,6 +150,10 @@ public class User implements Cloneable {
             temp.setGender(strings[3]);
             temp.setUsernameID(strings[4]);
             temp.setPassword(strings[5]);
+
+            System.out.println("First Name: " + temp.getFirstName() +
+                    "   Last Name:" + temp.getLastName() + "   Gender:" + temp.getGender() +
+                    "   Age:" + temp.getAge() + "   Username:" + temp.getUsernameID());
         }
         try {
             bf.close();
@@ -134,7 +161,8 @@ public class User implements Cloneable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return fileDestination;
+        return ListOfUsers;
     }
+
 }
 
