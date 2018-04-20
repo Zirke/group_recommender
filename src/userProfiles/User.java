@@ -1,39 +1,89 @@
 package userProfiles;
 
+import destination.Destination;
+
+import javax.swing.*;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class User {
+public class User implements Cloneable{
     private String id;
-    private int age;
-    private int gender; //1=male, 2=female
-    private String country;
-    int test;
-    int douhbletest;
+    int age;
+    int gender; //1=male, 2=female
+    String country;
+    private ArrayList<Destination> usersDestination = new ArrayList<>(); //User's destination in an ordered list (the order of listOfDestinations)
 
-    public User(String id, int age, int gender, String country) {
+    public User(String id) {
         this.id = id;
-        this.age = age;
-        this.gender = gender;
-        this.country = country;
+    }
+
+    public User(String id, ArrayList<Destination> usersDestination) {
+        this.id = id;
+        this.usersDestination = usersDestination;
+    }
+
+    public ArrayList<Destination> getUsersDestination() {
+        return usersDestination;
+    }
+
+    public void setUsersDestination(ArrayList<Destination> usersDestination) {
+        this.usersDestination = usersDestination;
     }
 
     public String getId() {
         return id;
     }
 
-    public int getAge() {
-        return age;
+    //Reading dataset and add destinations to each user
+    public static ArrayList<User> listDataset() throws IOException {
+        Path dataset = Paths.get("src\\userProfiles\\userid_city.txt");
+        BufferedReader reader = Files.newBufferedReader(dataset);
+        ArrayList<User> userRecords = new ArrayList<>();
+        String currentLine = reader.readLine();
+        reader.mark(0);
+        ArrayList<User> templist = new ArrayList<>();
+        int j = 0;
+
+        while (currentLine != null) {
+            String[] userDetail = currentLine.split("\t");
+            String id = userDetail[0];
+            String cityname = userDetail[1];
+            templist.add(new User(id));
+            currentLine = reader.readLine();
+        }
+
+        for(int i = 0; i < templist.size()-1; ++i){
+            if (!templist.get(i).getId().equals(templist.get(i+1).getId())){
+                userRecords.add(new User(templist.get(i).getId()));
+            }
+        }
+        templist.clear();
+        BufferedReader reader2 = Files.newBufferedReader(dataset);
+        currentLine = reader2.readLine();
+
+        while (currentLine != null){
+            String[] userDetail = currentLine.split("\t");
+            String id = userDetail[0];
+            String cityname = userDetail[1];
+            if (id.equals(userRecords.get(j).getId())){
+                userRecords.get(j).getUsersDestination().add(new Destination(cityname));
+            }
+            else if(!id.equals(userRecords.get(j).getId()) && j != userRecords.size()-1){
+                ++j;
+            }
+            currentLine = reader2.readLine();
+        }
+
+
+        return userRecords;
     }
 
-    public int getGender() {
-        return gender;
-    }
 
-    public String getCountry() {
-        return country;
-    }
 
     //Method saves a List of userProfiles.User into a file with the path filename.
     public static void usersToFile(String filename, List<User> e) {
@@ -62,5 +112,22 @@ public class User {
             e.printStackTrace();
         }
         return ret;
+    }
+
+    public User() {
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id);
     }
 }
