@@ -16,7 +16,7 @@ public class Destination implements Cloneable{
     private String cityType;
     private ArrayList<Venue> venues = new ArrayList<>();
 
-    public String getDestinationName() {
+    private String getDestinationName() {
         return destinationName;
     }
 
