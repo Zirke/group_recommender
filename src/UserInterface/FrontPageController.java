@@ -19,8 +19,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-import static userProfiles.User.listOfCreatedUsers;
-
 public class FrontPageController {
 
     @FXML
@@ -59,7 +57,7 @@ public class FrontPageController {
     @FXML
     private Button LogInButton;
 
-    private void showUserCreationAlert(Alert.AlertType alertType, String title, String message) {
+    private void LogInAlert(Alert.AlertType alertType, String title, String message) {
         Alert userCreationAlert = new Alert(alertType);
         userCreationAlert.setTitle(title);
         userCreationAlert.setHeaderText(null);
@@ -102,10 +100,10 @@ public class FrontPageController {
                     e.printStackTrace();
                 }
             } else {
-                showUserCreationAlert(Alert.AlertType.ERROR, "Input Error!", "Username or Password is incorrect!");
+                LogInAlert(Alert.AlertType.ERROR, "Input Error!", "Username or Password is incorrect!");
             }
         }
-
+        /*
         LogInButton.setOnAction(e -> {
             System.out.println("hello world");
             HashMap<String, String> userlogins = new HashMap<>();
@@ -116,6 +114,7 @@ public class FrontPageController {
             }
             userLogin(userlogins, e);
         });
+        */
 
         /*
         for (User user : ListOfUsers) {
