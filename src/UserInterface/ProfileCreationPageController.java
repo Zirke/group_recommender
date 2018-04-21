@@ -11,7 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class ProfileCreationPageController extends FrontPageController {
+public class ProfileCreationPageController extends GeneralController {
 
     @FXML
     private Button goBackButton;
@@ -45,29 +45,20 @@ public class ProfileCreationPageController extends FrontPageController {
         LoadUI("FrontPage", event);
     }
 
-    //Method for creating Alert boxes for User Creation
-    private void showUserCreationAlert(Alert.AlertType alertType, String title, String message) {
-        Alert userCreationAlert = new Alert(alertType);
-        userCreationAlert.setTitle(title);
-        userCreationAlert.setHeaderText(null);
-        userCreationAlert.setContentText(message);
-        userCreationAlert.show();
-    }
-
     public void getUserInput(ActionEvent event) {
         //Checking for input
         if (firstNameField.getText().isEmpty()) {
-            showUserCreationAlert(Alert.AlertType.ERROR, "Input Error!", "You must enter your First Name");
+            showAlertBox(Alert.AlertType.ERROR, "Input Error!", "You must enter your First Name");
         } else if (lastNameField.getText().isEmpty()) {
-            showUserCreationAlert(Alert.AlertType.ERROR, "Input Error!", "You must enter your Last Name");
+            showAlertBox(Alert.AlertType.ERROR, "Input Error!", "You must enter your Last Name");
         } else if (genderBox.getSelectionModel().isEmpty()) {
-            showUserCreationAlert(Alert.AlertType.ERROR, "Input Error!", "You must choose your Gender");
+            showAlertBox(Alert.AlertType.ERROR, "Input Error!", "You must choose your Gender");
         } else if (ageField.getText().isEmpty()) {
-            showUserCreationAlert(Alert.AlertType.ERROR, "Input Error!", "You must enter your Age");
+            showAlertBox(Alert.AlertType.ERROR, "Input Error!", "You must enter your Age");
         } else if (usernameField.getText().isEmpty()) {
-            showUserCreationAlert(Alert.AlertType.ERROR, "Input Error!", "You must enter a Username");
+            showAlertBox(Alert.AlertType.ERROR, "Input Error!", "You must enter a Username");
         } else if (passwordField.getText().isEmpty()) {
-            showUserCreationAlert(Alert.AlertType.ERROR, "Input Error!", "You must enter a Password");
+            showAlertBox(Alert.AlertType.ERROR, "Input Error!", "You must enter a Password");
         } else {
             //Writing input from input fields to textfile "userData.txt"
             try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("src/userData.txt", true)))) {
@@ -85,7 +76,7 @@ public class ProfileCreationPageController extends FrontPageController {
                 out.print(passwordField.getText() + "\n");
 
                 //Confirmation alert box
-                showUserCreationAlert(Alert.AlertType.CONFIRMATION, "Welcome!", "You have successfully created a profile!");
+                showAlertBox(Alert.AlertType.CONFIRMATION, "Welcome!", "You have successfully created a profile!");
                 //If successful change stage to Profile Page
                 LoadUI("ProfilePage", event);
             } catch (IOException ioe) {

@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static userProfiles.User.listOfCreatedUsers;
 
 /*
   Main Application. This class handles navigation and user interface.
@@ -17,14 +16,15 @@ import static userProfiles.User.listOfCreatedUsers;
 public class Main extends Application {
 
     public static void main(String[] args) {
-        launch(args);
-
-
+        /*
         try {
-            listOfCreatedUsers();
+            System.out.println(listOfCreatedUsers());
         } catch (IOException e) {
             e.printStackTrace();
         }
+        */ //prints out all the created users in userData.txt
+        launch(args);
+
     }
 
     @Override

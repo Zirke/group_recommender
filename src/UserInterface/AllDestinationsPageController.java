@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 
 import java.io.IOException;
 
-public class AllDestinationsPageController extends FrontPageController {
+public class AllDestinationsPageController extends GeneralController {
 
     @FXML
     private Button HomeButton;

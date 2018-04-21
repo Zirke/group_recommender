@@ -15,7 +15,7 @@
             <Insets right="20.0" />
          </padding>
          <children>
-            <MenuButton fx:id="ProfileMenuButton" mnemonicParsing="false" onAction="#pressViewProfile" text="Profile">
+            <MenuButton fx:id="ProfileMenuButton" mnemonicParsing="false" text="Profile">
                <items>
                   <MenuItem mnemonicParsing="false" text="View Profile" />
                   <MenuItem mnemonicParsing="false" text="Edit Profile" />

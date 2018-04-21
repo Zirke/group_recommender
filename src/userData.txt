@@ -1,1 +1,4 @@
 Simon	Kærgaard	Male	21	Simon123	password123
+Hans	Kristiansen	Male	41	flotfyr14	julemanden
+Christoffer	Hansen	Male	21	Cryptbreaker	idontknow
+Hillary	Clinton	Female	88	usernamewastaken	pokemongo

@@ -83,6 +83,7 @@ public class User implements Cloneable {
     }
     */
 
+
     //Method saves a List of userProfiles.User into a file with the path filename.
     public static void usersToFile(String filename, List<User> e) {
 
@@ -129,40 +130,7 @@ public class User implements Cloneable {
         return Objects.hash(usernameID);
     }
 
-    public static ArrayList<User> listOfCreatedUsers() throws IOException {
-        ArrayList<User> ListOfUsers = new ArrayList<>();
 
-        FileReader fr;
-        String line;
-
-        fr = new FileReader("src/userData.txt");
-        BufferedReader bf = new BufferedReader(fr);
-        int totalLine = Destination.linesInFile("src/userData.txt");
-
-        for (int i = 0; i < totalLine; i++) {
-            line = bf.readLine();
-            String[] strings = line.split("\\t", 6);
-            User temp = new User();
-
-            temp.setFirstName(strings[0]);
-            temp.setLastName(strings[1]);
-            temp.setAge(strings[2]);
-            temp.setGender(strings[3]);
-            temp.setUsernameID(strings[4]);
-            temp.setPassword(strings[5]);
-
-            System.out.println("First Name: " + temp.getFirstName() +
-                    "   Last Name:" + temp.getLastName() + "   Gender:" + temp.getGender() +
-                    "   Age:" + temp.getAge() + "   Username:" + temp.getUsernameID());
-        }
-        try {
-            bf.close();
-            fr.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return ListOfUsers;
-    }
 
 }
 

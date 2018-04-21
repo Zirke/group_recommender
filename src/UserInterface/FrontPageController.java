@@ -1,25 +1,23 @@
 package UserInterface;
 
 
+import destination.Destination;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
 import userProfiles.User;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-public class FrontPageController {
+
+
+public class FrontPageController extends GeneralController {
 
     @FXML
     private AnchorPane anchorPane;
@@ -57,33 +55,48 @@ public class FrontPageController {
     @FXML
     private Button LogInButton;
 
-    private void LogInAlert(Alert.AlertType alertType, String title, String message) {
-        Alert userCreationAlert = new Alert(alertType);
-        userCreationAlert.setTitle(title);
-        userCreationAlert.setHeaderText(null);
-        userCreationAlert.setContentText(message);
-        userCreationAlert.show();
-    }
+    public static ArrayList<User> listOfCreatedUsers() throws IOException {
+        ArrayList<User> listOfUsers = new ArrayList<>();
 
-    //Method used to change stages
-    public void LoadUI(String UI, ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(UI + ".fxml"));
-        Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
-        Scene scene = new Scene(root, visualBounds.getWidth(), visualBounds.getHeight());
+        FileReader fr;
+        String line;
 
-        //This line gets the stage information by casting window to a stage.
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        fr = new FileReader("src/userData.txt");
+        BufferedReader bf = new BufferedReader(fr);
+        int totalLine = Destination.linesInFile("src/userData.txt");
 
-        stage.setScene(scene);
-        stage.setMaximized(true);
-        stage.setTitle("Test"); //Give better title
-        stage.show();
+        for (int i = 0; i < totalLine; i++) {
+            line = bf.readLine();
+            String[] strings = line.split("\\t", 6);
+            User temp = new User();
+
+            temp.setFirstName(strings[0]);
+            temp.setLastName(strings[1]);
+            temp.setGender(strings[2]);
+            temp.setAge(strings[3]);
+            temp.setUsernameID(strings[4]);
+            temp.setPassword(strings[5]);
+
+            System.out.println("First Name: " + temp.getFirstName() +
+                    "   Last Name:" + temp.getLastName() +
+                    "   Gender:" + temp.getGender() +
+                    "   Age:" + temp.getAge() +
+                    "   Username:" + temp.getUsernameID() +
+                    "   Password:" + temp.getPassword());
+        }
+        try {
+            bf.close();
+            fr.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return listOfUsers;
     }
 
     //Laver Arraylist af users om til hashset i stedet med username som keyword.
-    public HashMap<String, String> createHashSet(ArrayList<User> ListOfUsers) {
+    public HashMap<String, String> createHashSet(ArrayList<User> listOfUsers) {
         HashMap<String, String> HashSetUsers = new HashMap<>();
-        for (User I : ListOfUsers) {
+        for (User I : listOfUsers) {
             HashSetUsers.put(I.getUsernameID(), I.getPassword());
         }
         return HashSetUsers;
@@ -100,36 +113,9 @@ public class FrontPageController {
                     e.printStackTrace();
                 }
             } else {
-                LogInAlert(Alert.AlertType.ERROR, "Input Error!", "Username or Password is incorrect!");
+                showAlertBox(Alert.AlertType.ERROR, "Input Error!", "Username or Password is incorrect!");
             }
         }
-        /*
-        LogInButton.setOnAction(e -> {
-            System.out.println("hello world");
-            HashMap<String, String> userlogins = new HashMap<>();
-            try {
-                userlogins = createHashSet(listOfCreatedUsers());
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-            userLogin(userlogins, e);
-        });
-        */
-
-        /*
-        for (User user : ListOfUsers) {
-            if (UsernameField.getText().equals(user.getFirstName())) {
-
-            }
-        }
-        for (int i = 0; i <= totalLine; i++) {
-            if (UsernameField.getText().equals())
-        }
-        */
-    }
-
-    public void pressViewProfile(ActionEvent event) throws IOException {
-
     }
 
     //Top Bar event handeling
@@ -145,22 +131,18 @@ public class FrontPageController {
     public void pressShowUsers(ActionEvent event) throws IOException {
         LoadUI("ShowUsersTest", event);
     }
-    /*
-    public void pressButton3(ActionEvent event) {
-        LoadUI("FrontPageUI_UI3");
-    }
-
-    public void pressButton4(ActionEvent event) {
-        LoadUI("FrontPageUI_UI4");
-    }
-
-    public void pressButton5(ActionEvent event) {
-        LoadUI("FrontPageUI_UI5");
-    }
-
-    public void pressButton6(ActionEvent event) {
-        LoadUI("FrontPageUI_UI6");
-    }
-    */
-
 }
+
+
+
+
+        /*
+        for (User user : ListOfUsers) {
+            if (UsernameField.getText().equals(user.getFirstName())) {
+
+            }
+        }
+        for (int i = 0; i <= totalLine; i++) {
+            if (UsernameField.getText().equals())
+        }
+*/
