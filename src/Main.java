@@ -27,7 +27,7 @@ public class Main extends Application {
         }
         */
         ArrayList test1 = listOfCreatedUsers();
-        HashMap<String, String> test = userHashMap(test1);
+        HashMap<String, String> test = userHashMap();
         System.out.println(test.size());
 
 

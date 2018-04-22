@@ -95,7 +95,7 @@ public class FrontPageController extends GeneralController {
     }
 
     // Uses the ArrayList of users to make a HashMap with 'Username' as keyword and 'Password' as value
-    public static HashMap<String, String> userHashMap(ArrayList<User> listOfCreatedUsers) throws IOException {
+    public static HashMap<String, String> userHashMap() throws IOException {
         ArrayList<User> inputList = listOfCreatedUsers();
         System.out.println(listOfCreatedUsers());
         HashMap<String, String> HashSetUsers = new HashMap<>();
@@ -106,7 +106,13 @@ public class FrontPageController extends GeneralController {
         return HashSetUsers;
     }
 
-    public void userLogin(HashMap<String, String> HashSetUsers, ActionEvent event) {
+    public void userLogin( ActionEvent event) {
+        HashMap<String, String> HashSetUsers = null;
+        try {
+            HashSetUsers = userHashMap();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.out.println(HashSetUsers.size());
         Set<String> Usernames = HashSetUsers.keySet();
         for (String i : Usernames) {
