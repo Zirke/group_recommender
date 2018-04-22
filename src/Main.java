@@ -7,22 +7,32 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-
+import static UserInterface.FrontPageController.listOfCreatedUsers;
+import static UserInterface.FrontPageController.userHashMap;
 /*
   Main Application. This class handles navigation and user interface.
 */
 
 public class Main extends Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         /*
         try {
             System.out.println(listOfCreatedUsers());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        */ //prints out all the created users in userData.txt
+        */
+        ArrayList test1 = listOfCreatedUsers();
+        HashMap<String, String> test = userHashMap(test1);
+        System.out.println(test.size());
+
+
+        //prints out all the created users in userData.txt
+
         launch(args);
 
     }
@@ -37,7 +47,7 @@ public class Main extends Application {
             Scene scene = new Scene(root, visualBounds.getWidth(), visualBounds.getHeight());
 
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Test"); //Remember to change title
+            primaryStage.setTitle("Test"); //TODO: Remember to change title
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();

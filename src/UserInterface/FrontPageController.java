@@ -58,15 +58,15 @@ public class FrontPageController extends GeneralController {
     public static ArrayList<User> listOfCreatedUsers() throws IOException {
         ArrayList<User> listOfUsers = new ArrayList<>();
 
-        FileReader fr;
+        FileReader fr = new FileReader("src/userData.txt");
+        ;
+        BufferedReader bfr = new BufferedReader(fr);
         String line;
 
-        fr = new FileReader("src/userData.txt");
-        BufferedReader bf = new BufferedReader(fr);
         int totalLine = Destination.linesInFile("src/userData.txt");
 
         for (int i = 0; i < totalLine; i++) {
-            line = bf.readLine();
+            line = bfr.readLine();
             String[] strings = line.split("\\t", 6);
             User temp = new User();
 
@@ -76,16 +76,17 @@ public class FrontPageController extends GeneralController {
             temp.setAge(strings[3]);
             temp.setUsernameID(strings[4]);
             temp.setPassword(strings[5]);
-
+            /*
             System.out.println("First Name: " + temp.getFirstName() +
                     "   Last Name:" + temp.getLastName() +
                     "   Gender:" + temp.getGender() +
                     "   Age:" + temp.getAge() +
                     "   Username:" + temp.getUsernameID() +
                     "   Password:" + temp.getPassword());
+            */
         }
         try {
-            bf.close();
+            bfr.close();
             fr.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -93,17 +94,20 @@ public class FrontPageController extends GeneralController {
         return listOfUsers;
     }
 
-    //Laver Arraylist af users om til hashset i stedet med username som keyword.
-    public HashMap<String, String> createHashSet(ArrayList<User> listOfUsers) {
+    // Uses the ArrayList of users to make a HashMap with 'Username' as keyword and 'Password' as value
+    public static HashMap<String, String> userHashMap(ArrayList<User> listOfCreatedUsers) throws IOException {
+        ArrayList<User> inputList = listOfCreatedUsers();
+        System.out.println(listOfCreatedUsers());
         HashMap<String, String> HashSetUsers = new HashMap<>();
-        for (User I : listOfUsers) {
-            HashSetUsers.put(I.getUsernameID(), I.getPassword());
+        for (User userFromList : inputList) {
+            HashSetUsers.put(userFromList.getUsernameID(), userFromList.getPassword());
         }
+        //System.out.println(HashSetUsers.size());
         return HashSetUsers;
     }
 
-    @FXML
     public void userLogin(HashMap<String, String> HashSetUsers, ActionEvent event) {
+        System.out.println(HashSetUsers.size());
         Set<String> Usernames = HashSetUsers.keySet();
         for (String i : Usernames) {
             if (i.equals(UsernameField.getText()) && HashSetUsers.get(i).equals(PasswordField.getText())) {
@@ -131,6 +135,8 @@ public class FrontPageController extends GeneralController {
     public void pressShowUsers(ActionEvent event) throws IOException {
         LoadUI("ShowUsersTest", event);
     }
+
+
 }
 
 
