@@ -28,5 +28,6 @@
             <Font name="Arial Bold" size="20.0" />
          </font>
       </Label>
+      <Button fx:id="FrontPageButton" layoutX="123.0" layoutY="33.0" mnemonicParsing="false" onAction="#pressFrontPageButton" text="Front Page" />
    </children>
 </AnchorPane>

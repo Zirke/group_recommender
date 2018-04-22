@@ -16,14 +16,12 @@ public class GeneralController {
     //Method used to change stages
     public void LoadUI(String UI, ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(UI + ".fxml"));
-        Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
-        Scene scene = new Scene(root, visualBounds.getWidth(), visualBounds.getHeight());
+        //Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
+        Scene scene = new Scene(root, 1600, 900);
 
         //This line gets the stage information by casting window to a stage.
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
         stage.setScene(scene);
-        stage.setMaximized(true);
         //stage.setTitle("Test"); //Give better title
         stage.show();
     }

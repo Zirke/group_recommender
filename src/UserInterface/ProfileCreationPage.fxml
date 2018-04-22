@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane fx:id="anchorPane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.ProfileCreationPageController">
+
+<AnchorPane fx:id="anchorPane" minHeight="900.0" minWidth="1600.0" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.ProfileCreationPageController">
    <children>
       <HBox alignment="CENTER_RIGHT" fillHeight="false" maxHeight="65.0" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: #80120F;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <opaqueInsets>
@@ -38,8 +41,7 @@
       <HBox alignment="CENTER_LEFT" prefHeight="50.0" spacing="10.0" style="-fx-background-color: #80120F;" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
             <TextField alignment="TOP_LEFT" prefHeight="20.0" prefWidth="400.0" promptText="Search Destination" />
-             <Button fx:id="HomeButton" mnemonicParsing="false" onAction="#pressGoBackButton" prefHeight="20.0"
-                     prefWidth="20.0">
+             <Button fx:id="HomeButton" mnemonicParsing="false" onAction="#pressGoBackButton" prefHeight="20.0" prefWidth="20.0">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -53,79 +55,73 @@
             <Insets left="20.0" />
          </padding>
       </HBox>
-      <HBox layoutY="65.0" prefHeight="70.0" prefWidth="1920.0" spacing="50.0" style="-fx-background-color: #30120F;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="70.0">
+      <HBox alignment="CENTER_LEFT" layoutY="65.0" prefHeight="70.0" prefWidth="1920.0" spacing="10.0" style="-fx-background-color: #30120F;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="70.0">
          <children>
-            <Label alignment="TOP_LEFT" text="A400b" textFill="WHITE">
+            <Label alignment="TOP_LEFT" text="Already have a Profile?" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="48.0" />
+                  <Font name="System Bold" size="23.0" />
                </font>
             </Label>
+            <Hyperlink text="Sign In" textFill="WHITE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Hyperlink>
          </children>
          <padding>
             <Insets left="20.0" />
          </padding>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
+      <AnchorPane layoutX="219.0" layoutY="256.0" prefHeight="494.0" prefWidth="500.0" style="-fx-background-color: #30120F;" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="256.0">
          <children>
-            <AnchorPane prefHeight="534.0" prefWidth="689.0" style="-fx-background-color: #20120F;">
-               <children>
-                  <Label layoutX="231.0" layoutY="39.0" text="Sign Up Here!" textFill="WHITE">
-                     <font>
-                        <Font name="Arial" size="36.0" />
-                     </font>
-                  </Label>
-                   <TextField fx:id="firstNameField" layoutX="170.0" layoutY="105.0" prefHeight="25.0" prefWidth="350.0"
-                              promptText="First Name">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                   <TextField fx:id="lastNameField" layoutX="170.0" layoutY="167.0" prefHeight="25.0" prefWidth="350.0"
-                              promptText="Last Name">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                   <ChoiceBox fx:id="genderBox" layoutX="170.0" layoutY="229.0" prefWidth="200.0"/>
-                   <TextField fx:id="usernameField" layoutX="170.0" layoutY="329.0" prefHeight="25.0" prefWidth="350.0"
-                              promptText="Username">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </TextField>
-                   <PasswordField fx:id="passwordField" layoutX="170.0" layoutY="391.0" prefHeight="25.0"
-                                  prefWidth="350.0" promptText="Password">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </PasswordField>
-                   <Button fx:id="CreateAccountButton" layoutX="170.0" layoutY="453.0" mnemonicParsing="false"
-                           onAction="#getUserInput" prefHeight="44.0" prefWidth="350.0"
-                           style="-fx-background-color: #505050;" text="Create Account" textFill="WHITE">
-                     <font>
-                        <Font name="Arial Bold" size="20.0" />
-                     </font>
-                  </Button>
-                  <Label layoutX="386.0" layoutY="234.0" text="Gender" textFill="WHITE">
-                     <font>
-                         <Font name="Arial" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="386.0" layoutY="283.0" text="Age" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                   <TextField fx:id="ageField" layoutX="170.0" layoutY="278.0" maxWidth="200.0"/>
-               </children>
-            </AnchorPane>
-            <ImageView fitHeight="534.0" fitWidth="801.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../ImageView/Pictures/travel_time.jpg" />
-               </image>
-            </ImageView>
-            <AnchorPane />
+             <TextField fx:id="ageField" layoutX="100.0" layoutY="250.0" minWidth="150.0" prefWidth="150.0" />
+             <TextField fx:id="firstNameField" layoutX="100.0" layoutY="100.0" prefHeight="25.0" prefWidth="300.0" promptText="First Name">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="265.0" layoutY="253.0" text="Age" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="137.0" layoutY="30.0" text="Sign Up Here!" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="36.0" />
+               </font>
+            </Label>
+             <PasswordField fx:id="passwordField" layoutX="100.0" layoutY="350.0" prefHeight="25.0" prefWidth="300.0" promptText="Password">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </PasswordField>
+             <Button fx:id="CreateAccountButton" layoutX="100.0" layoutY="399.0" mnemonicParsing="false" onAction="#getUserInput" prefHeight="44.0" prefWidth="300.0" style="-fx-background-color: #505050;" text="Create Account" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Button>
+             <ChoiceBox fx:id="genderBox" layoutX="100.0" layoutY="200.0" minWidth="150.0" prefWidth="150.0" />
+             <TextField fx:id="usernameField" layoutX="100.0" layoutY="300.0" prefHeight="25.0" prefWidth="300.0" promptText="Username">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="265.0" layoutY="205.0" text="Gender" textFill="WHITE">
+               <font>
+                   <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
+             <TextField fx:id="lastNameField" layoutX="100.0" layoutY="150.0" prefHeight="25.0" prefWidth="300.0" promptText="Last Name">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
          </children>
-      </HBox>
+      </AnchorPane>
+      <ImageView fitHeight="494.0" fitWidth="700.0" layoutX="700.0" layoutY="256.0" pickOnBounds="true" AnchorPane.bottomAnchor="150.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="256.0">
+         <image>
+            <Image url="@../ImageView/Pictures/travel_time.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

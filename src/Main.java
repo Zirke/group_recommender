@@ -36,10 +36,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("UserInterface/FrontPage.fxml"));
-            Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
-
-
-            Scene scene = new Scene(root, visualBounds.getWidth(), visualBounds.getHeight());
+            //Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
+            Scene scene = new Scene(root,1600, 900);
 
             primaryStage.setScene(scene);
             primaryStage.setTitle("Test"); //TODO: Remember to change title
