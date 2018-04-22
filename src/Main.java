@@ -7,11 +7,6 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import static UserInterface.FrontPageController.listOfCreatedUsers;
-import static UserInterface.FrontPageController.userHashMap;
 /*
   Main Application. This class handles navigation and user interface.
 */
@@ -25,11 +20,11 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        */
+
         ArrayList test1 = listOfCreatedUsers();
         HashMap<String, String> test = userHashMap();
         System.out.println(test.size());
-
+        */
 
         //prints out all the created users in userData.txt
 

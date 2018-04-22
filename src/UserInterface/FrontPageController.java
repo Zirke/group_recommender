@@ -1,6 +1,5 @@
 package UserInterface;
 
-
 import destination.Destination;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,8 +13,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
-
-
 
 public class FrontPageController extends GeneralController {
 
@@ -76,14 +73,16 @@ public class FrontPageController extends GeneralController {
             temp.setAge(strings[3]);
             temp.setUsernameID(strings[4]);
             temp.setPassword(strings[5]);
-
+            /*
             System.out.println("First Name: " + temp.getFirstName() +
                     "   Last Name:" + temp.getLastName() +
                     "   Gender:" + temp.getGender() +
                     "   Age:" + temp.getAge() +
                     "   Username:" + temp.getUsernameID() +
                     "   Password:" + temp.getPassword());
+            */
             listOfUsers.add(temp);
+
         }
         try {
             bfr.close();
@@ -97,33 +96,27 @@ public class FrontPageController extends GeneralController {
     // Uses the ArrayList of users to make a HashMap with 'Username' as keyword and 'Password' as value
     public static HashMap<String, String> userHashMap() throws IOException {
         ArrayList<User> inputList = listOfCreatedUsers();
-        System.out.println(listOfCreatedUsers());
         HashMap<String, String> HashSetUsers = new HashMap<>();
         for (User userFromList : inputList) {
             HashSetUsers.put(userFromList.getUsernameID(), userFromList.getPassword());
         }
-        //System.out.println(HashSetUsers.size());
         return HashSetUsers;
     }
 
-    public void userLogin( ActionEvent event) {
+    @FXML
+    public void userLogin(ActionEvent event) throws IOException {
         HashMap<String, String> HashSetUsers = null;
         try {
             HashSetUsers = userHashMap();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(HashSetUsers.size());
         Set<String> Usernames = HashSetUsers.keySet();
         for (String i : Usernames) {
             if (i.equals(UsernameField.getText()) && HashSetUsers.get(i).equals(PasswordField.getText())) {
-                try {
-                    LoadUI("ProfilePage", event);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                LoadUI("ProfilePage", event);
             } else {
-                showAlertBox(Alert.AlertType.ERROR, "Input Error!", "Username or Password is incorrect!");
+                //showAlertBox(Alert.AlertType.ERROR,"Login Error", "Incorrect Username or Password!");
             }
         }
     }
@@ -141,20 +134,4 @@ public class FrontPageController extends GeneralController {
     public void pressShowUsers(ActionEvent event) throws IOException {
         LoadUI("ShowUsersTest", event);
     }
-
-
 }
-
-
-
-
-        /*
-        for (User user : ListOfUsers) {
-            if (UsernameField.getText().equals(user.getFirstName())) {
-
-            }
-        }
-        for (int i = 0; i <= totalLine; i++) {
-            if (UsernameField.getText().equals())
-        }
-*/
