@@ -149,9 +149,45 @@ public class Recommender {
         return similarity;
     }
 
-    public void recommendationForCurrent(){
-        
-    }
+    public static HashSet<User> recommendationForCurrent(Map<User, Double> similarityMatrix, int k,
+                                                  User recommendationUser, HashMap<User, HashMap<Destination, Integer>> destinationData){
+        HashSet<User> userSet = new HashSet<>();
+        int userAmount = 0;
+        Map<User, Double> similarity = similarityMatrix(recommendationUser, destinationData);
+        Set<User> similarityKey = similarity.keySet();
+        User temp = new User();
 
+        for(User i : similarityKey){
+            if(userAmount == 0) {
+                userSet.add(i);
+                userAmount++;
+                temp = i;
+            }else if(0 < userAmount && userAmount < k){
+                userSet.add(i);
+                userAmount++;
+                if(similarity.get(i) < similarity.get(temp)){
+                    temp = i;
+                }
+            }else{
+                if(similarity.get(i) > similarity.get(temp)){
+                    userSet.remove(temp);
+                    temp = i;
+                    userSet.add(temp);
+                }
+            }
+
+        }
+        return userSet;
+    }
+    public static HashSet<Destination> destinationRecommendation(HashSet<User> knnUsers){
+        HashSet<Destination> recommendationDest = new HashSet<>();
+        Set<Destination> tempUserDest;
+        for(User i : knnUsers){
+            tempUserDest = new HashSet<>(i.getUsersDestination());
+            recommendationDest.addAll(tempUserDest);
+        }
+
+        return recommendationDest;
+    }
 
 }

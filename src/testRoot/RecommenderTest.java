@@ -6,6 +6,7 @@ import userProfiles.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 
@@ -28,6 +29,19 @@ class RecommenderTest {
         usersDestination.add(new Destination("Manaus"));
         usersDestination.add(new Destination("Asuncion"));
         testUser.add(new User("12345",usersDestination));
+        usersDestination = new ArrayList<>();
+        usersDestination.add(new Destination("Callao"));
+        usersDestination.add(new Destination("Manaus"));
+        usersDestination.add(new Destination("Asuncion"));
+        testUser.add(new User("52433",usersDestination));
+    }
+    private User recommendationUserTest(){
+        usersDestination = new ArrayList<>();
+        usersDestination.add(new Destination("Callao"));
+        usersDestination.add(new Destination("Manaus"));
+        usersDestination.add(new Destination("Asuncion"));
+        User temp = new User("46",usersDestination);
+        return temp;
     }
 
     @Test
@@ -78,13 +92,40 @@ class RecommenderTest {
     void similarityMatrix01(){
         BeforeEachMatrixCreator();
         matrix = destinationMatrixCreator(testUser);
-
-        usersDestination = new ArrayList<>();
-        usersDestination.add(new Destination("Callao"));
-        usersDestination.add(new Destination("Manaus"));
-        usersDestination.add(new Destination("Asuncion"));
-        User temp = new User("46",usersDestination);
+        User temp = recommendationUserTest();
         Map<User, Double> similarity = similarityMatrix(temp,matrix);
         assertEquals(similarity.get(new User("12345")).doubleValue(),1.0);
     }
+
+    @Test
+    void recommendationForCurrent01(){
+        BeforeEachMatrixCreator();
+        matrix = destinationMatrixCreator(testUser);
+        User temp = recommendationUserTest();
+        Map<User, Double> similarity = similarityMatrix(temp,matrix);
+        HashSet<User> userSet = recommendationForCurrent(similarity, 1, temp, matrix);
+        assertEquals(userSet.size(),1);
+    }
+
+    @Test
+    void recommendationForCurrent02(){
+        BeforeEachMatrixCreator();
+        matrix = destinationMatrixCreator(testUser);
+        User temp = recommendationUserTest();
+        Map<User, Double> similarity = similarityMatrix(temp,matrix);
+        HashSet<User> userSet = recommendationForCurrent(similarity, 2, temp, matrix);
+        assertEquals(userSet.size(),2);
+    }
+
+    @Test
+    void recommendationForCurrent03(){
+        BeforeEachMatrixCreator();
+        matrix = destinationMatrixCreator(testUser);
+        User temp = recommendationUserTest();
+        Map<User, Double> similarity = similarityMatrix(temp,matrix);
+        HashSet<User> userSet = recommendationForCurrent(similarity, 3, temp, matrix);
+        assertEquals(userSet.size(),3);
+    }
+
+
 }
