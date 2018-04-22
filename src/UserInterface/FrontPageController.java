@@ -76,14 +76,14 @@ public class FrontPageController extends GeneralController {
             temp.setAge(strings[3]);
             temp.setUsernameID(strings[4]);
             temp.setPassword(strings[5]);
-            /*
+
             System.out.println("First Name: " + temp.getFirstName() +
                     "   Last Name:" + temp.getLastName() +
                     "   Gender:" + temp.getGender() +
                     "   Age:" + temp.getAge() +
                     "   Username:" + temp.getUsernameID() +
                     "   Password:" + temp.getPassword());
-            */
+            listOfUsers.add(temp);
         }
         try {
             bfr.close();
