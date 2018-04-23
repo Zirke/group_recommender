@@ -20,6 +20,7 @@ public class GeneralController {
         Scene scene = new Scene(root, 1600, 900);
 
         //This line gets the stage information by casting window to a stage.
+        //TODO: review
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         //stage.setTitle("Test"); //Give better title

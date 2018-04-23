@@ -3,8 +3,12 @@ package UserInterface;
 import destination.Destination;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import userProfiles.User;
 
 import java.io.BufferedReader;
@@ -52,15 +56,14 @@ public class FrontPageController extends GeneralController {
     @FXML
     private Button LogInButton;
 
-    public static ArrayList<User> listOfCreatedUsers() throws IOException {
+    private static ArrayList<User> listOfCreatedUsers() throws IOException {
         ArrayList<User> listOfUsers = new ArrayList<>();
 
         FileReader fr = new FileReader("src/userData.txt");
-        ;
         BufferedReader bfr = new BufferedReader(fr);
         String line;
 
-        int totalLine = Destination.linesInFile("src/userData.txt");
+        int totalLine = Destination.linesInFile("src/userData.txt"); //Bruger linesInFile metoden fra Destination class
 
         for (int i = 0; i < totalLine; i++) {
             line = bfr.readLine();
@@ -82,7 +85,6 @@ public class FrontPageController extends GeneralController {
                     "   Password:" + temp.getPassword());
             */
             listOfUsers.add(temp);
-
         }
         try {
             bfr.close();
@@ -93,24 +95,31 @@ public class FrontPageController extends GeneralController {
         return listOfUsers;
     }
 
-    // Uses the ArrayList of users to make a HashMap with 'Username' as keyword and 'Password' as value
-    public static HashMap<String, String> userHashMap() throws IOException {
-        ArrayList<User> inputList = listOfCreatedUsers();
-        HashMap<String, String> HashSetUsers = new HashMap<>();
-        for (User userFromList : inputList) {
-            HashSetUsers.put(userFromList.getUsernameID(), userFromList.getPassword());
+    @FXML
+    public void userLoginCheck (ActionEvent event) throws IOException {
+        for (User user : listOfCreatedUsers()) {
+            if (user.getUsernameID().equals(UsernameField.getText()) && user.getPassword().equals(PasswordField.getText())) {
+                System.out.println(user.getFirstName());
+                //LoadUI("ProfilePage", event);
+            } else {
+                //showAlertBox(Alert.AlertType.ERROR,"Login Error", "Incorrect Username or Password!");
+            }
         }
-        return HashSetUsers;
+    }
+    /*
+    // Uses the ArrayList of users to make a HashMap with 'Username' as keyword and 'Password' as value
+    private static HashMap<String, String> userHashMap() throws IOException {
+        ArrayList<User> inputList = listOfCreatedUsers();
+        HashMap<String, String> mapOfUsers = new HashMap<>();
+        for (User userFromList : inputList) {
+            mapOfUsers.put(userFromList.getUsernameID(), userFromList.getPassword());
+        }
+        return mapOfUsers;
     }
 
     @FXML
     public void userLogin(ActionEvent event) throws IOException {
-        HashMap<String, String> HashSetUsers = null;
-        try {
-            HashSetUsers = userHashMap();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        HashMap<String, String> HashSetUsers = userHashMap();
         Set<String> Usernames = HashSetUsers.keySet();
         for (String i : Usernames) {
             if (i.equals(UsernameField.getText()) && HashSetUsers.get(i).equals(PasswordField.getText())) {
@@ -120,13 +129,12 @@ public class FrontPageController extends GeneralController {
             }
         }
     }
+    */
 
-    //Top Bar event handeling
     public void pressCreateNewProfile(ActionEvent event) throws IOException {
         LoadUI("ProfileCreationPage", event);
     }
 
-    //Left menu button handeling
     public void pressAllDestinations(ActionEvent event) throws IOException {
         LoadUI("AllDestinationsPage", event);
     }

@@ -15,7 +15,7 @@ public class User implements Cloneable {
     private String usernameID;
     private String password;
 
-    private ArrayList<Destination> usersDestination; //User's destination in an ordered list (the order of listOfDestinations)
+    //private ArrayList<Destination> usersDestination; //User's destination in an ordered list (the order of listOfDestinations)
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -41,9 +41,11 @@ public class User implements Cloneable {
         this.password = password;
     }
 
+    /*
     public void setUsersDestination(ArrayList<Destination> usersDestination) {
         this.usersDestination = usersDestination;
     }
+    */
 
     public String getFirstName() {
         return firstName;
@@ -69,21 +71,15 @@ public class User implements Cloneable {
         return password;
     }
     /*
-    public User(String id, ArrayList<Destination> usersDestination) {
-        this.usernameID = id;
-        this.usersDestination = usersDestination;
-    }
-
     public ArrayList<Destination> getUsersDestination() {
         return usersDestination;
     }
 
-    public void setUsersDestination(ArrayList<Destination> usersDestination) {
+    public User(String id, ArrayList<Destination> usersDestination) {
+        this.usernameID = id;
         this.usersDestination = usersDestination;
     }
     */
-
-
     //Method saves a List of userProfiles.User into a file with the path filename.
     public static void usersToFile(String filename, List<User> e) {
 
@@ -113,9 +109,6 @@ public class User implements Cloneable {
         return ret;
     }
 
-    public User() {
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -129,7 +122,6 @@ public class User implements Cloneable {
 
         return Objects.hash(usernameID);
     }
-
 
 
 }
