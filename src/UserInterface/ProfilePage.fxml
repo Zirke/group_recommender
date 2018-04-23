@@ -23,11 +23,11 @@
             <Font name="Arial Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="110.0" layoutY="37.0">
+      <Label fx:id="usernameLabel" layoutX="110.0" layoutY="37.0">
          <font>
             <Font name="Arial Bold" size="20.0" />
          </font>
       </Label>
-      <Button fx:id="FrontPageButton" layoutX="123.0" layoutY="33.0" mnemonicParsing="false" onAction="#pressFrontPageButton" text="Front Page" />
+      <Button fx:id="FrontPageButton" layoutX="210.0" layoutY="33.0" mnemonicParsing="false" onAction="#pressFrontPageButton" text="Front Page" />
    </children>
 </AnchorPane>

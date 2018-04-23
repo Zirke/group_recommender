@@ -4,6 +4,7 @@ import destination.Destination;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -11,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import userProfiles.User;
 
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -95,15 +97,19 @@ public class FrontPageController extends GeneralController {
         return listOfUsers;
     }
 
+
     @FXML
-    public void userLoginCheck (ActionEvent event) throws IOException {
-        for (User user : listOfCreatedUsers()) {
-            if (user.getUsernameID().equals(UsernameField.getText()) && user.getPassword().equals(PasswordField.getText())) {
-                System.out.println(user.getFirstName());
-                //LoadUI("ProfilePage", event);
-            } else {
-                //showAlertBox(Alert.AlertType.ERROR,"Login Error", "Incorrect Username or Password!");
+    public void userLoginCheck (ActionEvent event){
+        try {
+            for (User user : listOfCreatedUsers()) {
+                if (user.getUsernameID().equals(UsernameField.getText()) && user.getPassword().equals(PasswordField.getText())) {
+                    loadLoggedInUserProfile("ProfilePage", event, user);
+                } else {
+                    //showAlertBox(Alert.AlertType.ERROR,"Login Error", "Incorrect Username or Password!");
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
     /*
