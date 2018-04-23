@@ -101,6 +101,7 @@ public class FrontPageController extends GeneralController {
     @FXML
     public void userLoginCheck (ActionEvent event){
         try {
+            //Loop goes through all users in the ArrayList of Users
             for (User user : listOfCreatedUsers()) {
                 if (user.getUsernameID().equals(UsernameField.getText()) && user.getPassword().equals(PasswordField.getText())) {
                     loadLoggedInUserProfile("ProfilePage", event, user);

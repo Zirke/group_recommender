@@ -13,12 +13,16 @@ import userProfiles.User;
 
 public class ProfilePageController extends GeneralController {
     @FXML
-    private Button FrontPageButton;
+    private Button FrontPageButton, showRecommendationsButton, showTravelGroupsButton;
     @FXML
-    private Label usernameLabel;
+    private Label usernameLabel, firstnameLabel, lastnameLabel, genderLabel, ageLabel;
 
     public void initializeLoggedInUserData (User user) {
         usernameLabel.setText(user.getUsernameID());
+        firstnameLabel.setText(user.getFirstName());
+        lastnameLabel.setText(user.getLastName());
+        genderLabel.setText(user.getGender());
+        ageLabel.setText(user.getAge());
     }
 
     @FXML
