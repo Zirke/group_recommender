@@ -20,7 +20,7 @@ public class Main /*extends Application*/ {
 
     public static void main(String[] args) {
 
-        ArrayList<User> test = null;
+       /* ArrayList<User> test = null;
 
         try{
             test = User.listDataset();
@@ -32,7 +32,7 @@ public class Main /*extends Application*/ {
             for (int j = 0; j < test.get(i).getUsersDestination().size(); ++j){
                 System.out.println("ID: "+test.get(i).getId()+"   City: "+test.get(i).getUsersDestination().get(j).getDestinationName());
             }
-        }
+        }*/
 
         /*try {
             destinationVenues();
