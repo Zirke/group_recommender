@@ -2,7 +2,6 @@ package userProfiles;
 
 import destination.Destination;
 
-import javax.swing.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,19 +10,77 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class User implements Cloneable{
-    private String id;
-    int age;
-    int gender; //1=male, 2=female
-    String country;
-    private ArrayList<Destination> usersDestination = new ArrayList<>(); //User's destination in an ordered list (the order of listOfDestinations)
+public class User implements Cloneable {
+    private String firstName;
+    private String lastName;
+    private String age;
+    private String gender;
+    private String usernameID;
+    private String password;
+    private ArrayList<Destination> usersDestination; //User's destination in an ordered list (the order of listOfDestinations)
 
-    public User(String id) {
-        this.id = id;
+    public ArrayList<Destination> getUsersDestination() {
+        return usersDestination;
     }
 
+    public User(String usernameID) {
+        this.usernameID = usernameID;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public void setUsernameID(String usernameID) {
+        this.usernameID = usernameID;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUsersDestination(ArrayList<Destination> usersDestination) {
+        this.usersDestination = usersDestination;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getUsernameID() {
+        return usernameID;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    /*
     public User(String id, ArrayList<Destination> usersDestination) {
-        this.id = id;
+        this.usernameID = id;
         this.usersDestination = usersDestination;
     }
 
@@ -34,9 +91,11 @@ public class User implements Cloneable{
     public void setUsersDestination(ArrayList<Destination> usersDestination) {
         this.usersDestination = usersDestination;
     }
+    */
+
 
     public String getId() {
-        return id;
+        return usernameID;
     }
 
     //Reading dataset and add destinations to each user
@@ -122,12 +181,16 @@ public class User implements Cloneable{
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id);
+        return Objects.equals(usernameID, user.usernameID);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id);
+        return Objects.hash(usernameID);
     }
+
+
+
 }
+

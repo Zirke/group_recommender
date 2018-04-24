@@ -1,14 +1,13 @@
 package destination;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
 
-public class Destination implements Cloneable{
+public class Destination implements Cloneable {
     private String destinationName;
     private double lattitude;
     private double longitude;
@@ -64,7 +63,7 @@ public class Destination implements Cloneable{
         this.venues = venues;
     }
 
-    public Object clone()throws CloneNotSupportedException{
+    public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
 
@@ -89,27 +88,26 @@ public class Destination implements Cloneable{
         int totalLine = linesInFile("/Users/Abiram/IdeaProjects/group_recommender01/src/destination/cities.txt");
 
 
-
-        for(int i = 0; i<totalLine;i++) {
+        for (int i = 0; i < totalLine; i++) {
             line = bf.readLine();
-            String[] strings = line.split("\\t",8);
+            String[] strings = line.split("\\t", 8);
             Destination temp = new Destination();
 
-            if(isNumeric(strings[3]) && isNumeric(strings[4])){
+            if (isNumeric(strings[3]) && isNumeric(strings[4])) {
                 temp.setDestinationName(strings[0] + strings[1] + strings[2] + strings[3]);
                 temp.setLattitude(Double.parseDouble(strings[4]));
                 temp.setLongitude(Double.parseDouble(strings[5]));
                 temp.setCountryName(strings[6]);
                 temp.setCityType(strings[7]);
                 fileDestination.add(temp);
-            }else if(isNumeric(strings[2]) && isNumeric(strings[3])){
+            } else if (isNumeric(strings[2]) && isNumeric(strings[3])) {
                 temp.setDestinationName(strings[0] + strings[1] + strings[2]);
                 temp.setLattitude(Double.parseDouble(strings[3]));
                 temp.setLongitude(Double.parseDouble(strings[4]));
                 temp.setCountryName(strings[5]);
                 temp.setCityType(strings[6]);
                 fileDestination.add(temp);
-            }else{
+            } else {
                 temp.setDestinationName(strings[0]);
                 temp.setLongitude(Double.parseDouble(strings[1]));
                 temp.setLattitude(Double.parseDouble(strings[2]));
@@ -129,21 +127,22 @@ public class Destination implements Cloneable{
         return fileDestination;
     }
 
-    public static int linesInFile(String filePath) throws IOException{
+    public static int linesInFile(String filePath) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(filePath));
         int lines = 0;
         while (reader.readLine() != null) lines++;
         reader.close();
         return lines;
     }
+
     private static boolean isNumeric(String s) {
         return s != null && s.matches("[-+]?\\d*\\.?\\d+");
     }
 
-    public void printDestination(){
+    public void printDestination() {
         System.out.println("Destination name: " + this.getDestinationName() +
-                "   Lattitude :" + this.getLattitude() +"   Longitude :" + this.getLongitude() +
-                "   Country :" + this.getCountryName() + "   City type :" +this.getCityType());
+                "   Lattitude :" + this.getLattitude() + "   Longitude :" + this.getLongitude() +
+                "   Country :" + this.getCountryName() + "   City type :" + this.getCityType());
     }
 
     @Override

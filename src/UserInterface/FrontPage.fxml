@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane fx:id="anchorPane" maxHeight="900.0" maxWidth="1600.0" minHeight="900.0" minWidth="1600.0" prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.FrontPageController">
+    <children>
+      <ImageView fitHeight="503.0" fitWidth="1025.0" layoutX="208.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="208.0" AnchorPane.topAnchor="309.0">
+         <image>
+            <Image url="@../ImageView/Pictures/world_map2.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="240.0" layoutY="945.0" text="Let us help you find your next Travel Destination! " textFill="#1980ff" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="225.0">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="229.0" layoutY="799.0" text="It's completely FREE!" textFill="#1980ff" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="225.0">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="300.0" fitWidth="1600.0" layoutX="-9.0" layoutY="-2.0" pickOnBounds="true" smooth="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../ImageView/Pictures/front_label.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="37.0" layoutY="80.0" opacity="0.55" text="Travel Recommender System" textFill="WHITE" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="150.0">
+         <font>
+            <Font name="System Bold" size="54.0" />
+         </font>
+      </Label>
+          <Label alignment="TOP_LEFT" layoutX="39.0" layoutY="219.0" opacity="0.51" text="A400b" textFill="WHITE" AnchorPane.leftAnchor="40.0">
+              <font>
+                  <Font name="System Bold" size="36.0" />
+              </font>
+          </Label>
+      <MenuButton fx:id="ProfileMenuButton" layoutX="1787.0" layoutY="24.0" mnemonicParsing="false" text="Profile" AnchorPane.rightAnchor="25.0">
+         <items>
+            <MenuItem mnemonicParsing="false" text="View Profile" />
+            <MenuItem mnemonicParsing="false" text="Edit Profile" />
+            <MenuItem mnemonicParsing="false" text="Your Groups" />
+         </items>
+         <graphic>
+            <Button mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ImageView/Icons/profile_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </graphic>
+      </MenuButton>
+          <TextField alignment="TOP_LEFT" layoutX="1361.0" layoutY="25.0" prefHeight="20.0" prefWidth="350.0" promptText="Search Destination" AnchorPane.rightAnchor="150.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+        <VBox alignment="CENTER" layoutX="1157.0" layoutY="344.0" opacity="0.66" prefHeight="440.0" prefWidth="400.0"
+              spacing="50.0" style="-fx-background-color: blue;" AnchorPane.bottomAnchor="117.0"
+              AnchorPane.rightAnchor="43.0" AnchorPane.topAnchor="344.0">
+         <children>
+            <Label contentDisplay="CENTER" text="Sign In" textFill="WHITE" textOverrun="CLIP">
+               <font>
+                  <Font size="37.0" />
+               </font>
+            </Label>
+             <TextField fx:id="UsernameField" promptText="Username">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+             <PasswordField fx:id="PasswordField" prefHeight="25.0" prefWidth="400.0" promptText="Password">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </PasswordField>
+             <Button fx:id="LogInButton" mnemonicParsing="false" onAction="#userLoginCheck" prefHeight="44.0"
+                     prefWidth="400.0" style="-fx-background-color: darkblue;" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Hyperlink onAction="#pressCreateNewProfile" text="Create New Profile" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Hyperlink>
+         </children>
+         <padding>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="20.0" />
+         </padding>
+      </VBox>
+        <VBox layoutX="-3.0" layoutY="300.0" minWidth="200.0" style="-fx-background-color: orange;"
+              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="300.0">
+            <children>
+                <Button maxWidth="250.0" mnemonicParsing="false" onAction="#pressCreateNewProfile" prefHeight="100.0"
+                        style="-fx-background-color: darkorange;" text="Register Here!" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Button>
+                <Button fx:id="AllDestinationsButton" maxWidth="250.0" mnemonicParsing="false"
+                        onAction="#pressAllDestinations" style="-fx-background-color: orange;" text="All Destinations"
+                        textFill="WHITE">
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+                </Button>
+                <Button fx:id="button1" maxWidth="250.0" mnemonicParsing="false" onAction="#pressShowUsers"
+                        style="-fx-background-color: orange;" text="Show Users" textFill="WHITE">
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+                </Button>
+                <Button maxWidth="250.0" mnemonicParsing="false" style="-fx-background-color: orange;" text="Button 3"
+                        textFill="WHITE">
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+                </Button>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

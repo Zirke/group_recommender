@@ -5,8 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
-import static destination.Destination.*;
+import static destination.Destination.linesInFile;
+import static destination.Destination.listOfDestination;
 import static java.lang.Math.abs;
 
 //Used to read data from file

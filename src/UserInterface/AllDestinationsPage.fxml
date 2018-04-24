@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.AllDestinationsPageController">
+   <children>
+      <AnchorPane layoutX="249.0" layoutY="350.0" prefHeight="1030.0" prefWidth="1678.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="350.0">
+         <children>
+            <Label layoutX="14.0" text="Travel Destinations">
+               <font>
+                  <Font name="System Bold" size="67.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <ImageView fitHeight="350.0" fitWidth="1920.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../ImageView/Pictures/sri3.jpg" />
+         </image>
+      </ImageView>
+      <TextField alignment="TOP_LEFT" layoutX="1362.0" layoutY="25.0" prefHeight="20.0" prefWidth="400.0" promptText="Search Destination">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <MenuButton fx:id="ProfileMenuButton" layoutX="1788.0" layoutY="24.0" mnemonicParsing="false" text="Profile">
+         <items>
+            <MenuItem mnemonicParsing="false" text="View Profile" />
+            <MenuItem mnemonicParsing="false" text="Edit Profile" />
+            <MenuItem mnemonicParsing="false" text="Your Groups" />
+         </items>
+         <graphic>
+            <Button mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ImageView/Icons/profile_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </graphic>
+      </MenuButton>
+      <VBox prefHeight="1030.0" prefWidth="250.0" style="-fx-background-color: #303030;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="350.0">
+         <children>
+            <Button fx:id="HomeButton" maxWidth="250.0" mnemonicParsing="false" onAction="#pressHomeButton" prefHeight="100.0" style="-fx-background-color: #202020;" text="Go Back" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button maxWidth="250.0" mnemonicParsing="false" style="-fx-background-color: #303030;" text="Button 1" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button maxWidth="250.0" mnemonicParsing="false" style="-fx-background-color: #303030;" text="Button 2" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button maxWidth="250.0" mnemonicParsing="false" style="-fx-background-color: #303030;" text="Button 3" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
