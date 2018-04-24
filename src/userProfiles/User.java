@@ -3,6 +3,9 @@ package userProfiles;
 import destination.Destination;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -14,8 +17,15 @@ public class User implements Cloneable {
     private String gender;
     private String usernameID;
     private String password;
+    private ArrayList<Destination> usersDestination; //User's destination in an ordered list (the order of listOfDestinations)
 
-    //private ArrayList<Destination> usersDestination; //User's destination in an ordered list (the order of listOfDestinations)
+    public ArrayList<Destination> getUsersDestination() {
+        return usersDestination;
+    }
+
+    public User(String usernameID) {
+        this.usernameID = usernameID;
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -41,11 +51,9 @@ public class User implements Cloneable {
         this.password = password;
     }
 
-    /*
     public void setUsersDestination(ArrayList<Destination> usersDestination) {
         this.usersDestination = usersDestination;
     }
-    */
 
     public String getFirstName() {
         return firstName;
@@ -71,15 +79,71 @@ public class User implements Cloneable {
         return password;
     }
     /*
-    public ArrayList<Destination> getUsersDestination() {
-        return usersDestination;
-    }
-
     public User(String id, ArrayList<Destination> usersDestination) {
         this.usernameID = id;
         this.usersDestination = usersDestination;
     }
+
+    public ArrayList<Destination> getUsersDestination() {
+        return usersDestination;
+    }
+
+    public void setUsersDestination(ArrayList<Destination> usersDestination) {
+        this.usersDestination = usersDestination;
+    }
     */
+
+
+    public String getId() {
+        return usernameID;
+    }
+
+    //Reading dataset and add destinations to each user
+    public static ArrayList<User> listDataset() throws IOException {
+        Path dataset = Paths.get("src\\userProfiles\\userid_city.txt");
+        BufferedReader reader = Files.newBufferedReader(dataset);
+        ArrayList<User> userRecords = new ArrayList<>();
+        String currentLine = reader.readLine();
+        reader.mark(0);
+        ArrayList<User> templist = new ArrayList<>();
+        int j = 0;
+
+        while (currentLine != null) {
+            String[] userDetail = currentLine.split("\t");
+            String id = userDetail[0];
+            String cityname = userDetail[1];
+            templist.add(new User(id));
+            currentLine = reader.readLine();
+        }
+
+        for(int i = 0; i < templist.size()-1; ++i){
+            if (!templist.get(i).getId().equals(templist.get(i+1).getId())){
+                userRecords.add(new User(templist.get(i).getId()));
+            }
+        }
+        templist.clear();
+        BufferedReader reader2 = Files.newBufferedReader(dataset);
+        currentLine = reader2.readLine();
+
+        while (currentLine != null){
+            String[] userDetail = currentLine.split("\t");
+            String id = userDetail[0];
+            String cityname = userDetail[1];
+            if (id.equals(userRecords.get(j).getId())){
+                userRecords.get(j).getUsersDestination().add(new Destination(cityname));
+            }
+            else if(!id.equals(userRecords.get(j).getId()) && j != userRecords.size()-1){
+                ++j;
+            }
+            currentLine = reader2.readLine();
+        }
+
+
+        return userRecords;
+    }
+
+
+
     //Method saves a List of userProfiles.User into a file with the path filename.
     public static void usersToFile(String filename, List<User> e) {
 
@@ -109,6 +173,9 @@ public class User implements Cloneable {
         return ret;
     }
 
+    public User() {
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -122,6 +189,7 @@ public class User implements Cloneable {
 
         return Objects.hash(usernameID);
     }
+
 
 
 }
