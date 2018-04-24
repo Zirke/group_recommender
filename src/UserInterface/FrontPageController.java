@@ -3,22 +3,14 @@ package UserInterface;
 import destination.Destination;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import userProfiles.User;
 
-import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Set;
 
 public class FrontPageController extends GeneralController {
 
@@ -58,7 +50,7 @@ public class FrontPageController extends GeneralController {
     @FXML
     private Button LogInButton;
 
-    private static ArrayList<User> listOfCreatedUsers() throws IOException {
+    public static ArrayList<User> listOfCreatedUsers() throws IOException {
         ArrayList<User> listOfUsers = new ArrayList<>();
 
         FileReader fr = new FileReader("src/userData.txt");

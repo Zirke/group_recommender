@@ -1,19 +1,16 @@
 package UserInterface;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import java.io.IOException;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 import userProfiles.User;
+
+import java.io.IOException;
 
 public class ProfilePageController extends GeneralController {
     @FXML
-    private Button FrontPageButton, showRecommendationsButton, showTravelGroupsButton;
+    private Button FrontPageButton, showRecommendationsButton, managetravelGroupsButton;
     @FXML
     private Label usernameLabel, firstnameLabel, lastnameLabel, genderLabel, ageLabel;
 
@@ -28,6 +25,11 @@ public class ProfilePageController extends GeneralController {
     @FXML
     public void pressFrontPageButton (ActionEvent event) throws IOException {
         LoadUI("FrontPage", event);
+    }
+
+    @FXML
+    public void pressMageTravelGroupsButton(ActionEvent event) {
+        LoadUI("GroupPage", event);
     }
 
 }
