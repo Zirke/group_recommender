@@ -21,7 +21,7 @@ public class GroupPageController {
     public void addUsersToListView(User user) throws IOException {
         ArrayList<User> list = listOfCreatedUsers();
 
-        for (User user : list) {
+       /* for (User user : list) {
             listOfUsers.getItems().add(user);
             ObservableList<String> items = FXCollections.observableArrayList
                     ("Double", "Suite", "Family App");
@@ -33,5 +33,6 @@ public class GroupPageController {
 
     public static Group createNewGroup(User user) {
 
+    }*/
     }
 }

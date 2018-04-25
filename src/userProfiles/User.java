@@ -19,6 +19,11 @@ public class User implements Cloneable {
     private String password;
     private ArrayList<Destination> usersDestination; //User's destination in an ordered list (the order of listOfDestinations)
 
+    public User(String usernameID, ArrayList<Destination> usersDestination) {
+        this.usernameID = usernameID;
+        this.usersDestination = usersDestination;
+    }
+
     public ArrayList<Destination> getUsersDestination() {
         return usersDestination;
     }
