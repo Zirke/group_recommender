@@ -7,7 +7,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.ProfilePageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0"
+            prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="UserInterface.ProfilePageController">
    <children>
       <AnchorPane layoutX="33.0" layoutY="47.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="350.0" style="-fx-background-color: green;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -42,8 +44,8 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                   <Button mnemonicParsing="false" style="-fx-background-color: green;" text="Manage Travel Groups"
-                           textFill="WHITE">
+                   <Button mnemonicParsing="false" onAction="#pressManageTravelGroups"
+                           style="-fx-background-color: green;" text="Manage Travel Groups" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>

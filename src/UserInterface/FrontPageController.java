@@ -89,14 +89,15 @@ public class FrontPageController extends GeneralController {
         return listOfUsers;
     }
 
-
-    @FXML
-    public void userLoginCheck (ActionEvent event){
+    //Checks if the entered username and password corresponds to any users and returns the selected
+    public User userLoginCheck(ActionEvent event) {
+        User loggedInUser = null;
+        //Loop goes through all users in the ArrayList of Users
         try {
-            //Loop goes through all users in the ArrayList of Users
             for (User user : listOfCreatedUsers()) {
                 if (user.getUsernameID().equals(UsernameField.getText()) && user.getPassword().equals(PasswordField.getText())) {
-                    loadLoggedInUserProfile("ProfilePage", event, user);
+                    loggedInUser = user;
+                    loadUserDataToProfilePage("ProfilePage", event, user);
                 } else {
                     //showAlertBox(Alert.AlertType.ERROR,"Login Error", "Incorrect Username or Password!");
                 }
@@ -104,6 +105,7 @@ public class FrontPageController extends GeneralController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return loggedInUser;
     }
     /*
     // Uses the ArrayList of users to make a HashMap with 'Username' as keyword and 'Password' as value
