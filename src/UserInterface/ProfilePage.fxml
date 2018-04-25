@@ -176,5 +176,7 @@
                <Font size="48.0"/>
            </font>
        </Label>
+       <Text layoutX="426.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SEARCH FIELD FOR DESTINATIONS" />
+       <TextField fx:id="searchField" layoutX="426.0" layoutY="484.0" prefHeight="27.0" prefWidth="417.0" />
    </children>
 </AnchorPane>

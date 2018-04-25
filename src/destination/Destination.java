@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -83,9 +84,9 @@ public class Destination implements Cloneable {
         String line;
 
         //kan kun gøre det med abosulte path og ikke den relative
-        fr = new FileReader("/Users/Abiram/IdeaProjects/group_recommender01/src/destination/cities.txt");
+        fr = new FileReader("src/destination/cities.txt");
         BufferedReader bf = new BufferedReader(fr);
-        int totalLine = linesInFile("/Users/Abiram/IdeaProjects/group_recommender01/src/destination/cities.txt");
+        int totalLine = linesInFile("src/destination/cities.txt");
 
 
         for (int i = 0; i < totalLine; i++) {
@@ -125,6 +126,16 @@ public class Destination implements Cloneable {
         }
 
         return fileDestination;
+    }
+
+    public static List<String> listDestNames() throws IOException {
+        ArrayList<Destination> temp = listOfDestination();
+        List<String> destNames = new ArrayList<String>();
+
+        for(Destination destination : temp){
+            destNames.add(destination.getDestinationName());
+        }
+        return destNames;
     }
 
     public static int linesInFile(String filePath) throws IOException {
