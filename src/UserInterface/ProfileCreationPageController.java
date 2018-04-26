@@ -45,7 +45,7 @@ public class ProfileCreationPageController extends GeneralController {
         LoadUI("FrontPage", event);
     }
 
-    public void getUserInput(ActionEvent event) {
+    public void createUserFromInput(ActionEvent event) {
         //Checking for input
         if (firstNameField.getText().isEmpty()) {
             showAlertBox(Alert.AlertType.ERROR, "Input Error!", "You must enter your First Name");
