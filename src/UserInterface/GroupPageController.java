@@ -35,7 +35,6 @@ public class GroupPageController extends GeneralController {
                 e.printStackTrace();
             }
         }
-
     }
 
     public void initialize(User user) {
