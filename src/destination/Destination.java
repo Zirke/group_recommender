@@ -74,7 +74,7 @@ public class Destination implements Cloneable {
     }
 
     //contructor without initialization.
-    private Destination() {
+    public Destination() {
     }
 
     public static ArrayList<Destination> listOfDestination() throws IOException {

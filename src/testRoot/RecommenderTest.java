@@ -11,6 +11,7 @@ import java.util.Map;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static recommender.Recommender.*;
 
 class RecommenderTest {
@@ -89,44 +90,50 @@ class RecommenderTest {
     }
 
     @Test
+    void currentUserDest01(){
+        BeforeEachMatrixCreator();
+        User temp = recommendationUserTest();
+        HashMap<Destination,Integer> userDest = currentUserDestination(temp);
+        assertEquals(userDest.get(new Destination("Callao")).intValue(),1);
+    }
+
+    @Test
     void similarityMatrix01(){
         BeforeEachMatrixCreator();
-        matrix = destinationMatrixCreator(testUser);
         User temp = recommendationUserTest();
-        Map<User, Double> similarity = similarityMatrix(temp,matrix);
+        Map<User, Double> similarity = similarityMatrix(temp,testUser);
         assertEquals(similarity.get(new User("12345")).doubleValue(),1.0);
     }
 
     @Test
     void recommendationForCurrent01(){
         BeforeEachMatrixCreator();
-        matrix = destinationMatrixCreator(testUser);
         User temp = recommendationUserTest();
-        Map<User, Double> similarity = similarityMatrix(temp,matrix);
-        HashSet<User> userSet = recommendationForCurrent(similarity, 1, temp, matrix);
+        HashSet<User> userSet = recommendationForCurrent(1, temp, testUser);
         assertEquals(userSet.size(),1);
     }
 
     @Test
     void recommendationForCurrent02(){
         BeforeEachMatrixCreator();
-        matrix = destinationMatrixCreator(testUser);
         User temp = recommendationUserTest();
-        Map<User, Double> similarity = similarityMatrix(temp,matrix);
-        HashSet<User> userSet = recommendationForCurrent(similarity, 2, temp, matrix);
+        HashSet<User> userSet = recommendationForCurrent(2, temp, testUser);
         assertEquals(userSet.size(),2);
     }
 
     @Test
     void recommendationForCurrent03(){
         BeforeEachMatrixCreator();
-        matrix = destinationMatrixCreator(testUser);
         User temp = recommendationUserTest();
-        Map<User, Double> similarity = similarityMatrix(temp,matrix);
-        HashSet<User> userSet = recommendationForCurrent(similarity, 3, temp, matrix);
+        HashSet<User> userSet = recommendationForCurrent(3, temp, testUser);
         assertEquals(userSet.size(),3);
     }
 
-
+    @Test
+    void destinationRecommendation01(){
+        BeforeEachMatrixCreator();
+        User temp = recommendationUserTest();
+        HashSet<Destination> destSet = destinationRecommendation(1, temp, testUser);
+        assertTrue(destSet.isEmpty());
+    }
 }
-//AddMeDaddy
