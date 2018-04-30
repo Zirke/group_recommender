@@ -83,7 +83,10 @@ public class User implements Cloneable {
     public String getPassword() {
         return password;
     }
-    /*
+
+    public String getId() {
+        return usernameID;
+    }/*
     public User(String id, ArrayList<Destination> usersDestination) {
         this.usernameID = id;
         this.usersDestination = usersDestination;
@@ -97,11 +100,6 @@ public class User implements Cloneable {
         this.usersDestination = usersDestination;
     }
     */
-
-
-    public String getId() {
-        return usernameID;
-    }
 
     //Reading dataset and add destinations to each user
     public static ArrayList<User> listDataset() throws IOException {
@@ -146,8 +144,6 @@ public class User implements Cloneable {
 
         return userRecords;
     }
-
-
 
     //Method saves a List of userProfiles.User into a file with the path filename.
     public static void usersToFile(String filename, List<User> e) {

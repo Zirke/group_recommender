@@ -1,2 +1,4 @@
-AwesomeGroup	Simon123
-Abigruppe	Cryptbreaker
+Awesomegroup,test,Cryptbreaker,
+hejsa123group,Cryptbreaker,flotfyr14,usernamewastaken,
+Magaluf2018,Simon123,Cryptbreaker,flotfyr14,
+Testgroup44,Cryptbreaker,elfagot,flotfyr14,

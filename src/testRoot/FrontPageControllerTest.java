@@ -1,8 +1,17 @@
 package testRoot;
 
+import org.junit.jupiter.api.Test;
+import userProfiles.User;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import static UserInterface.FrontPageController.listOfCreatedUsers;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class FrontPageControllerTest {
-    /*
+
     ArrayList<User> temp = new ArrayList<>();
 
     @Test
@@ -15,7 +24,6 @@ public class FrontPageControllerTest {
 
         assertEquals(temp.get(0).getUsernameID(),"Simon123");
 
-
     }
-    */
+
 }

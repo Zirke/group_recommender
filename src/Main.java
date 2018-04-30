@@ -1,14 +1,14 @@
-import destination.Destination;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
+import userProfiles.Group;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import static UserInterface.GroupPageController.listOfCreatedGroups;
 /*
   Main Application. This class handles navigation and user interface.
 */
@@ -36,7 +36,10 @@ public class Main extends Application {
         for(Destination destination : dest){
             System.out.println(destination.getDestinationName());
         }*/
-
+        ArrayList<Group> test = listOfCreatedGroups();
+        for (Group group : test) {
+            System.out.println(group.getGroupID());
+        }
     }
 
     @Override
