@@ -6,7 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import org.controlsfx.control.textfield.TextFields;
+//import org.controlsfx.control.textfield.TextFields; //VIRKER AF EN ELLER ANDEN GRUND IKKE.
 import userProfiles.Group;
 import userProfiles.User;
 
@@ -44,8 +44,8 @@ public class GroupPageController extends GeneralController implements Initializa
             users.add(listOfUsersToSearchFor.get(i).getUsernameID());
         }
         String[] options = users.toArray(new String[0]);
-
-        TextFields.bindAutoCompletion(searchForUserField, options);
+        //VIRKER AF EN ELLER ANDEN GRUND IKKE.
+        //TextFields.bindAutoCompletion(searchForUserField, options);
     }
 
     public void addSelectedUserToListView() {
@@ -96,22 +96,21 @@ public class GroupPageController extends GeneralController implements Initializa
 
         for (int i = 0; i < totalLine; i++) {
             line = bfr.readLine();
-            String[] groupID = line.split(",");
+            String[] groupInfo = line.split(",");
             Group temp = new Group();
-            temp.setGroupID(groupID[0]);
+            temp.setGroupID(groupInfo[0]);
 
-            for (int j = 1; j < groupID.length; j++) {
+            for (int j = 1; j < groupInfo.length; j++) {
                 for (User user : listOfUsers) {
-                    if (groupID[j].equals(user.getUsernameID())) {
+                    if (groupInfo[j].equals(user.getUsernameID())) {
                         tempUsers.add(user);
                     }
                 }
-                temp.setUsersInGroup(tempUsers);
-                tempUsers = new ArrayList<>();
-                listOfGroups.add(temp);
-            }
 
-            //listOfGroups.add(temp);
+            }
+            temp.setUsersInGroup(tempUsers);
+            tempUsers = new ArrayList<>();
+            listOfGroups.add(temp);
         }
         try {
             bfr.close();

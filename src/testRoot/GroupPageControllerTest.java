@@ -34,6 +34,7 @@ public class GroupPageControllerTest {
         }
 
         //assertEquals(;
-        assertEquals(temp.get(0).getUsersInGroup().get(0).getUsernameID(), "test");
+        assertEquals("test", temp.get(0).getUsersInGroup().get(0).getUsernameID());
+        assertEquals("Cryptbreaker", temp.get(0).getUsersInGroup().get(1).getUsernameID());
     }
 }
