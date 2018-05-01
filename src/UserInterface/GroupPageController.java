@@ -6,7 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-//import org.controlsfx.control.textfield.TextFields; //VIRKER AF EN ELLER ANDEN GRUND IKKE.
+import org.controlsfx.control.textfield.TextFields;
 import userProfiles.Group;
 import userProfiles.User;
 
@@ -18,7 +18,6 @@ import java.util.ResourceBundle;
 
 import static UserInterface.FrontPageController.listOfCreatedUsers;
 
-
 public class GroupPageController extends GeneralController implements Initializable {
 
     @FXML
@@ -28,7 +27,7 @@ public class GroupPageController extends GeneralController implements Initializa
     @FXML
     private ListView addedUsersList;
     @FXML
-    private Button createGroupButton;
+    private Label usernameLabel;
 
     //Makes auto filling search bar for Usersnames
     @Override
@@ -44,8 +43,7 @@ public class GroupPageController extends GeneralController implements Initializa
             users.add(listOfUsersToSearchFor.get(i).getUsernameID());
         }
         String[] options = users.toArray(new String[0]);
-        //VIRKER AF EN ELLER ANDEN GRUND IKKE.
-        //TextFields.bindAutoCompletion(searchForUserField, options);
+        TextFields.bindAutoCompletion(searchForUserField, options);
     }
 
     public void addSelectedUserToListView() {
@@ -76,7 +74,6 @@ public class GroupPageController extends GeneralController implements Initializa
             }
         }
     }
-
     //TODO not finished
     public void removeSelectedUserFromListView() {
         ObservableList selectedUsersToRemove = addedUsersList.getSelectionModel().getSelectedItems();
@@ -88,6 +85,7 @@ public class GroupPageController extends GeneralController implements Initializa
         ArrayList<User> listOfUsers = listOfCreatedUsers();
         ArrayList<Group> listOfGroups = new ArrayList<>();
         ArrayList<User> tempUsers = new ArrayList<>();
+
         FileReader fr = new FileReader("src/groupData.txt");
         BufferedReader bfr = new BufferedReader(fr);
         String line;
@@ -106,7 +104,6 @@ public class GroupPageController extends GeneralController implements Initializa
                         tempUsers.add(user);
                     }
                 }
-
             }
             temp.setUsersInGroup(tempUsers);
             tempUsers = new ArrayList<>();
@@ -119,40 +116,6 @@ public class GroupPageController extends GeneralController implements Initializa
             e.printStackTrace();
         }
         return listOfGroups;
-    }
-    /*
-    public void loadGroupFromTextFile() {
-        User loggedInUser = null;
-        //Loop goes through all users in the ArrayList of Users
-        try {
-            for (User user : listOfCreatedUsers()) {
-                if (user.getUsernameID().equals(UsernameField.getText()) && user.getPassword().equals(PasswordField.getText())) {
-                    loggedInUser = user;
-                    loadUserDataToProfilePage("ProfilePage", event, user);
-                } else {
-                    //showAlertBox(Alert.AlertType.ERROR,"Login Error", "Incorrect Username or Password!");
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    */
-
-    public ArrayList<User> ArrayListOfUsersInGroups() throws IOException {
-        ArrayList<Group> listOfGroups = new ArrayList<>();
-
-        FileReader fr = new FileReader("src/groupData.txt");
-        BufferedReader bfr = new BufferedReader(fr);
-        String line;
-
-        int totalLine = Destination.linesInFile("src/userData.txt"); //Bruger linesInFile metoden fra Destination class
-
-        for (int i = 0; i < totalLine; i++) {
-            line = bfr.readLine();
-            String[] string = line.split(",");
-        }
-        return null;
     }
 }
 

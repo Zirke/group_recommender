@@ -12,7 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-//import org.controlsfx.control.textfield.TextFields; //VIRKER AF EN ELLER ANDEN GRUND IKKE.
 import userProfiles.User;
 
 import java.io.IOException;
@@ -21,9 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+//import org.controlsfx.control.textfield.TextFields; //VIRKER AF EN ELLER ANDEN GRUND IKKE.
+
 public class ProfilePageController extends GeneralController implements Initializable {
     @FXML
-    private Button FrontPageButton, showRecommendationsButton, managetravelGroupsButton;
+    private Button showRecommendationsButton, managetravelGroupsButton;
     @FXML
     private Label usernameLabel, firstnameLabel, lastnameLabel, genderLabel, ageLabel;
     @FXML
@@ -35,11 +36,6 @@ public class ProfilePageController extends GeneralController implements Initiali
         lastnameLabel.setText(user.getLastName());
         genderLabel.setText(user.getGender());
         ageLabel.setText(user.getAge());
-    }
-
-    @FXML
-    public void pressFrontPageButton (ActionEvent event) throws IOException {
-        LoadUI("FrontPage", event);
     }
 
     @FXML

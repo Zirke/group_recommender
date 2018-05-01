@@ -1,4 +1,4 @@
-Awesomegroup,test,Cryptbreaker,
+Awesomegroup,test,Cryptbreaker,failure
 hejsa123group,Cryptbreaker,flotfyr14,usernamewastaken,
 Magaluf2018,Simon123,Cryptbreaker,flotfyr14,
 Testgroup44,Cryptbreaker,elfagot,flotfyr14,

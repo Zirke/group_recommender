@@ -21,9 +21,7 @@ public class FrontPageControllerTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         assertEquals(temp.get(0).getUsernameID(),"Simon123");
-
     }
 
 }

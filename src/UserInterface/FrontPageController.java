@@ -3,8 +3,8 @@ package UserInterface;
 import destination.Destination;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import userProfiles.User;
 
 import java.io.BufferedReader;
@@ -15,40 +15,9 @@ import java.util.ArrayList;
 public class FrontPageController extends GeneralController {
 
     @FXML
-    private AnchorPane anchorPane;
-
-    @FXML
-    private Hyperlink CreateProfileHyperlink;
-    @FXML
-    private Hyperlink SignInHyperlink;
-    @FXML
-    private MenuButton ProfileMenuButton;
-    @FXML
-    private Button NextSceneButton;
-
-    //Left side Vbox buttons (destinations)
-    @FXML
-    private Button AllDestinationsButton;
-    @FXML
-    private Button button1;
-    @FXML
-    private Button button2;
-    @FXML
-    private Button button3;
-    @FXML
-    private Button button4;
-    @FXML
-    private Button button5;
-    @FXML
-    private Button button6;
-
-    //Sign In Hbox
-    @FXML
     private TextField UsernameField;
     @FXML
     private PasswordField PasswordField;
-    @FXML
-    private Button LogInButton;
 
     public static ArrayList<User> listOfCreatedUsers() throws IOException {
         ArrayList<User> listOfUsers = new ArrayList<>();
@@ -70,14 +39,7 @@ public class FrontPageController extends GeneralController {
             temp.setAge(strings[3]);
             temp.setUsernameID(strings[4]);
             temp.setPassword(strings[5]);
-            /*
-            System.out.println("First Name: " + temp.getFirstName() +
-                    "   Last Name:" + temp.getLastName() +
-                    "   Gender:" + temp.getGender() +
-                    "   Age:" + temp.getAge() +
-                    "   Username:" + temp.getUsernameID() +
-                    "   Password:" + temp.getPassword());
-            */
+
             listOfUsers.add(temp);
         }
         try {

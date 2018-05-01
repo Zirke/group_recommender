@@ -38,7 +38,7 @@ public class Main extends Application {
         }*/
         ArrayList<Group> test = listOfCreatedGroups();
         for (Group group : test) {
-            System.out.println(group.getGroupID());
+            System.out.println(group.getUsersInGroup().size());
         }
     }
 
@@ -50,7 +50,7 @@ public class Main extends Application {
             Scene scene = new Scene(root,1600, 900);
 
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Test"); //TODO: Remember to change title
+            primaryStage.setTitle("A400b P2");
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();
