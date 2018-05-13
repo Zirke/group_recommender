@@ -29,7 +29,11 @@ public class GroupPageController extends GeneralController implements Initializa
     @FXML
     private Label usernameLabel;
 
-    //Makes auto filling search bar for Usersnames
+    public void initializeLoggedInUserData(User user) {
+        usernameLabel.setText(user.getUsernameID());
+    }
+
+    //Makes auto filling search bar for usernames
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ArrayList<User> listOfUsersToSearchFor = null;
@@ -39,8 +43,9 @@ public class GroupPageController extends GeneralController implements Initializa
             e.printStackTrace();
         }
         List<String> users = new ArrayList<>();
-        for (int i = 0; i < listOfUsersToSearchFor.size(); i++) {
-            users.add(listOfUsersToSearchFor.get(i).getUsernameID());
+        assert listOfUsersToSearchFor != null;
+        for (User aListOfUsersToSearchFor : listOfUsersToSearchFor) {
+            users.add(aListOfUsersToSearchFor.getUsernameID());
         }
         String[] options = users.toArray(new String[0]);
         TextFields.bindAutoCompletion(searchForUserField, options);

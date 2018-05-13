@@ -60,8 +60,7 @@ public class FrontPageController extends GeneralController {
                 if (user.getUsernameID().equals(UsernameField.getText()) && user.getPassword().equals(PasswordField.getText())) {
                     loggedInUser = user;
                     loadUserDataToProfilePage("ProfilePage", event, user);
-                } else {
-                    //showAlertBox(Alert.AlertType.ERROR,"Login Error", "Incorrect Username or Password!");
+
                 }
             }
         } catch (IOException e) {
@@ -69,6 +68,7 @@ public class FrontPageController extends GeneralController {
         }
         return loggedInUser;
     }
+
     /*
     // Uses the ArrayList of users to make a HashMap with 'Username' as keyword and 'Password' as value
     private static HashMap<String, String> userHashMap() throws IOException {
