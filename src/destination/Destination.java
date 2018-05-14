@@ -1,9 +1,18 @@
 package destination;
 
+import destination.Activities.Beach;
+import destination.Activities.Museum;
+import destination.Activities.Sightseeing;
+
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,6 +24,7 @@ public class Destination implements Cloneable {
     private String countryName;
     private String cityType;
     private ArrayList<Venue> venues = new ArrayList<>();
+    private ArrayList<Activity> activities = new ArrayList<>();
 
     public String getDestinationName() {
         return destinationName;
@@ -62,6 +72,10 @@ public class Destination implements Cloneable {
 
     public void setVenues(ArrayList<Venue> venues) {
         this.venues = venues;
+    }
+
+    public ArrayList<Activity> getActivities() {
+        return activities;
     }
 
     public Object clone() throws CloneNotSupportedException {
@@ -154,6 +168,42 @@ public class Destination implements Cloneable {
         System.out.println("Destination name: " + this.getDestinationName() +
                 "   Lattitude :" + this.getLattitude() + "   Longitude :" + this.getLongitude() +
                 "   Country :" + this.getCountryName() + "   City type :" + this.getCityType());
+    }
+
+    public String destinationNameToFilePath(){
+        return "src/destination/Activities/Destinations/"+getDestinationName()+".txt";
+    }
+
+    public void fillActivities(){
+        File filepath = new File(destinationNameToFilePath());
+        if(filepath.exists()){
+            Path inpath = Paths.get(destinationNameToFilePath());
+
+            try (BufferedReader reader = new BufferedReader(Files.newBufferedReader(inpath))) {
+                String currentLine;
+                while((currentLine = reader.readLine())!=null)
+                {
+                    String[] temp = currentLine.split(":");
+                    String type = temp[0];
+                    String name = temp[1];
+                    String location = temp[2];
+                    switch (type) {
+                        case "Beach":
+                            activities.add(new Beach(name, location));
+                            break;
+                        case "Museum":
+                            activities.add(new Museum(name, location));
+                            break;
+                        case "Sightseeing":
+                            activities.add(new Sightseeing(name, location));
+                            break;
+                            default: throw new InputMismatchException();
+                    }
+                }
+            } catch (IOException e){
+                System.out.println("Unable to read file");
+            }
+        }
     }
 
     @Override
