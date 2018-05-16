@@ -41,8 +41,7 @@ public class GeneralController {
         }
         ProfilePageController controllerProfilePage = loader.getController();
         //Makes call to method in ProfilePageController to show user data from logged in user in objects
-        controllerProfilePage.initializeLoggedInUserData(user);
-
+        //controllerProfilePage.initializeLoggedInUserData(user);
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 
@@ -51,6 +50,7 @@ public class GeneralController {
         stage.show();
     }
 
+    /*
     public void getGroupPageController(String UI, ActionEvent event, User user) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(UI + ".fxml"));
@@ -69,7 +69,7 @@ public class GeneralController {
         stage.setScene(scene);
         stage.show();
     }
-
+    */
     //Method to create Alert boxes
     public void showAlertBox(Alert.AlertType alertType, String title, String message) {
         Alert userCreationAlert = new Alert(alertType);

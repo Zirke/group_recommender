@@ -4,7 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -12,9 +15,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class ProfileCreationPageController extends GeneralController {
-
-    @FXML
-    private Button goBackButton;
 
     //Controls for User Creation
     @FXML
@@ -25,21 +25,17 @@ public class ProfileCreationPageController extends GeneralController {
     private ChoiceBox genderBox;
     //Creating and initializing values for Gender choice box
     private ObservableList<String> genderChoice = FXCollections.observableArrayList("Male", "Female");
-
     @FXML
     private void initialize() {
         genderBox.setItems(genderChoice);
-        genderBox.setValue("anything"); //the string here have to meaning
+        genderBox.setValue(""); //the string here have to meaning
     }
-
     @FXML
     private TextField ageField;
     @FXML
     private TextField usernameField;
     @FXML
     private PasswordField passwordField;
-    @FXML
-    private Button CreateAccountButton;
 
     public void pressGoBackButton(ActionEvent event) throws IOException {
         LoadUI("FrontPage", event);
@@ -76,9 +72,7 @@ public class ProfileCreationPageController extends GeneralController {
                 out.print(passwordField.getText() + "\n");
 
                 //Confirmation alert box
-                showAlertBox(Alert.AlertType.CONFIRMATION, "Welcome!", "You have successfully created a profile!");
-                //If successful change stage to Profile Page
-                LoadUI("ProfilePage", event);
+                showAlertBox(Alert.AlertType.CONFIRMATION, "Welcome!", "You have successfully created a profile!\n" + "Press Sign In to go to your Profile");
             } catch (IOException ioe) {
                 ioe.printStackTrace();
             }

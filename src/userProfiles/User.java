@@ -86,7 +86,9 @@ public class User implements Cloneable {
 
     public String getId() {
         return usernameID;
-    }/*
+    }
+
+    /*
     public User(String id, ArrayList<Destination> usersDestination) {
         this.usernameID = id;
         this.usersDestination = usersDestination;
@@ -100,6 +102,38 @@ public class User implements Cloneable {
         this.usersDestination = usersDestination;
     }
     */
+
+    public static ArrayList<User> listOfCreatedUsers() throws IOException {
+        ArrayList<User> listOfUsers = new ArrayList<>();
+
+        FileReader fr = new FileReader("src/userData.txt");
+        BufferedReader bfr = new BufferedReader(fr);
+        String line;
+
+        int totalLine = Destination.linesInFile("src/userData.txt"); //Bruger linesInFile metoden fra Destination class
+
+        for (int i = 0; i < totalLine; i++) {
+            line = bfr.readLine();
+            String[] strings = line.split("\\t", 6);
+            User temp = new User();
+
+            temp.setFirstName(strings[0]);
+            temp.setLastName(strings[1]);
+            temp.setGender(strings[2]);
+            temp.setAge(strings[3]);
+            temp.setUsernameID(strings[4]);
+            temp.setPassword(strings[5]);
+
+            listOfUsers.add(temp);
+        }
+        try {
+            bfr.close();
+            fr.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return listOfUsers;
+    }
 
     //Reading dataset and add destinations to each user
     public static ArrayList<User> listDataset() throws IOException {

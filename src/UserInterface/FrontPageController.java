@@ -1,72 +1,79 @@
 package UserInterface;
 
-import destination.Destination;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import userProfiles.User;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
-public class FrontPageController extends GeneralController {
+import static userProfiles.User.listOfCreatedUsers;
 
+public class FrontPageController {
+
+    @FXML
+    private AnchorPane rootPane;
     @FXML
     private TextField UsernameField;
     @FXML
     private PasswordField PasswordField;
+    @FXML
+    private Button loginButton;
 
-    public static ArrayList<User> listOfCreatedUsers() throws IOException {
-        ArrayList<User> listOfUsers = new ArrayList<>();
-
-        FileReader fr = new FileReader("src/userData.txt");
-        BufferedReader bfr = new BufferedReader(fr);
-        String line;
-
-        int totalLine = Destination.linesInFile("src/userData.txt"); //Bruger linesInFile metoden fra Destination class
-
-        for (int i = 0; i < totalLine; i++) {
-            line = bfr.readLine();
-            String[] strings = line.split("\\t", 6);
-            User temp = new User();
-
-            temp.setFirstName(strings[0]);
-            temp.setLastName(strings[1]);
-            temp.setGender(strings[2]);
-            temp.setAge(strings[3]);
-            temp.setUsernameID(strings[4]);
-            temp.setPassword(strings[5]);
-
-            listOfUsers.add(temp);
-        }
-        try {
-            bfr.close();
-            fr.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return listOfUsers;
+    public void initialize() {
     }
 
-    //Checks if the entered username and password corresponds to any users and returns the selected
-    public User userLoginCheck(ActionEvent event) {
+    public void initManager(final LoginManager loginManager) {
+        loginButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                User loggedInUser = userLoginCheck();
+                if (loggedInUser != null) {
+                    loginManager.authenticated(loggedInUser);
+                }
+            }
+        });
+    }
+
+    //Checks if the entered username and password corresponds to any created users and returns the selected
+    public User userLoginCheck() {
         User loggedInUser = null;
         //Loop goes through all users in the ArrayList of Users
         try {
             for (User user : listOfCreatedUsers()) {
                 if (user.getUsernameID().equals(UsernameField.getText()) && user.getPassword().equals(PasswordField.getText())) {
                     loggedInUser = user;
-                    loadUserDataToProfilePage("ProfilePage", event, user);
-
+                    //loginManager.showProfilePage(event, loggedInUser);
+                    //loadUserDataToProfilePage("ProfilePage", event, user);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         return loggedInUser;
+    }
+
+    public void pressCreateNewProfile() {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("ProfileCreationPage.fxml"));
+            rootPane.getChildren().setAll(pane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void pressAllDestinations() {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("AllDestinationsPage.fxml"));
+            rootPane.getChildren().setAll(pane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /*
@@ -93,16 +100,4 @@ public class FrontPageController extends GeneralController {
         }
     }
     */
-
-    public void pressCreateNewProfile(ActionEvent event) throws IOException {
-        LoadUI("ProfileCreationPage", event);
-    }
-
-    public void pressAllDestinations(ActionEvent event) throws IOException {
-        LoadUI("AllDestinationsPage", event);
-    }
-
-    public void pressShowUsers(ActionEvent event) throws IOException {
-        LoadUI("ShowUsersTest", event);
-    }
 }

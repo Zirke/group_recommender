@@ -5,7 +5,9 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane fx:id="anchorPane" minHeight="900.0" minWidth="1600.0" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.ProfileCreationPageController">
+<AnchorPane fx:id="anchorPane" minHeight="900.0" minWidth="1600.0" prefHeight="900.0" prefWidth="1600.0"
+            xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="UserInterface.ProfileCreationPageController">
    <children>
       <HBox alignment="CENTER_RIGHT" fillHeight="false" maxHeight="65.0" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: #80120F;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <opaqueInsets>
@@ -59,7 +61,7 @@
                   <Font name="System Bold" size="23.0" />
                </font>
             </Label>
-            <Hyperlink text="Sign In" textFill="WHITE">
+             <Hyperlink onAction="#pressGoBackButton" text="Sign In" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
@@ -92,9 +94,9 @@
                   <Font size="14.0" />
                </font>
             </PasswordField>
-            <Button fx:id="CreateAccountButton" layoutX="100.0" layoutY="399.0" mnemonicParsing="false"
-                    onAction="#createUserFromInput" prefHeight="44.0" prefWidth="300.0"
-                    style="-fx-background-color: #505050;" text="Create Account" textFill="WHITE">
+             <Button fx:id="CreateAccountButton" layoutX="100.0" layoutY="399.0" mnemonicParsing="false"
+                     onAction="#createUserFromInput" prefHeight="44.0" prefWidth="300.0"
+                     style="-fx-background-color: #505050;" text="Create Account" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font>
