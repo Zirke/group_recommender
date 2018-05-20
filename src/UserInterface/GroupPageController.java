@@ -19,6 +19,11 @@ import java.util.ResourceBundle;
 import static userProfiles.User.listOfCreatedUsers;
 
 public class GroupPageController extends GeneralController implements Initializable {
+    private User loggedInUser;
+
+    public GroupPageController(User loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
 
     @FXML
     private TextField writeGroupNameField;

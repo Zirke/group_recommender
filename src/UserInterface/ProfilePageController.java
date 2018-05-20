@@ -30,12 +30,13 @@ public class ProfilePageController extends GeneralController implements Initiali
     }
 
     //TODO make .this
-    public void initializeLoggedInUserData(final LoginManager loginManager, User loggedInUser) {
+    public User initializeLoggedInUserData(final LoginManager loginManager, User loggedInUser) {
         usernameLabel.setText(loggedInUser.getUsernameID());
         firstnameLabel.setText(loggedInUser.getFirstName());
         lastnameLabel.setText(loggedInUser.getLastName());
         genderLabel.setText(loggedInUser.getGender());
         ageLabel.setText(loggedInUser.getAge());
+        return loggedInUser;
     }
 
     @Override

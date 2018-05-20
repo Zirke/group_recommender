@@ -65,8 +65,8 @@
                   <Font size="14.0" />
                </font>
             </PasswordField>
-             <Button fx:id="loginButton" mnemonicParsing="false" onAction="#initialize" prefHeight="44.0"
-                     prefWidth="400.0" style="-fx-background-color: darkblue;" text="Login" textFill="WHITE">
+             <Button fx:id="loginButton" mnemonicParsing="false" prefHeight="44.0" prefWidth="400.0"
+                     style="-fx-background-color: darkblue;" text="Login" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

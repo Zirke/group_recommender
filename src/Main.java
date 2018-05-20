@@ -20,7 +20,7 @@ public class Main extends Application {
         Scene scene = new Scene(new AnchorPane());
 
         LoginManager loginManager = new LoginManager(scene);
-        loginManager.showLoginScreen();
+        loginManager.showFrontPage();
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("A400b P2");

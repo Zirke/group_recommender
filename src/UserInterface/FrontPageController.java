@@ -48,8 +48,6 @@ public class FrontPageController {
             for (User user : listOfCreatedUsers()) {
                 if (user.getUsernameID().equals(UsernameField.getText()) && user.getPassword().equals(PasswordField.getText())) {
                     loggedInUser = user;
-                    //loginManager.showProfilePage(event, loggedInUser);
-                    //loadUserDataToProfilePage("ProfilePage", event, user);
                 }
             }
         } catch (IOException e) {
