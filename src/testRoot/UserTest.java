@@ -10,9 +10,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static userProfiles.User.listOfCreatedUsers;
 
 
-public class FrontPageControllerTest {
+class UserTest {
 
-    ArrayList<User> temp = new ArrayList<>();
+    private ArrayList<User> temp = new ArrayList<>();
 
     @Test
     void listOfCreatedUser01(){

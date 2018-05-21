@@ -1,7 +1,5 @@
 package UserInterface;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -29,13 +27,11 @@ public class FrontPageController {
     }
 
     public void initManager(final LoginManager loginManager) {
-        loginButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                User loggedInUser = userLoginCheck();
-                if (loggedInUser != null) {
-                    loginManager.authenticated(loggedInUser);
-                }
+        loginButton.setOnAction(event -> {
+            User loggedInUser = userLoginCheck();
+            if (loggedInUser != null) {
+                loginManager.setLoggedInUser(loggedInUser);
+                loginManager.authenticated(loggedInUser);
             }
         });
     }

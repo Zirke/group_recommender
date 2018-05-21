@@ -1,16 +1,18 @@
 package UserInterface;
 
 
-import destination.Destination;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import org.controlsfx.control.textfield.TextFields;
-import userProfiles.Group;
 import userProfiles.User;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,10 @@ import java.util.ResourceBundle;
 import static userProfiles.User.listOfCreatedUsers;
 
 public class GroupPageController extends GeneralController implements Initializable {
-    private User loggedInUser;
+    User loggedInUser;
+
+    public GroupPageController() {
+    }
 
     public GroupPageController(User loggedInUser) {
         this.loggedInUser = loggedInUser;
@@ -33,6 +38,8 @@ public class GroupPageController extends GeneralController implements Initializa
     private ListView addedUsersList;
     @FXML
     private Label usernameLabel;
+    @FXML
+    private Button createGroupButton, cancelButton;
 
     public void initializeLoggedInUserData(User user) {
         usernameLabel.setText(user.getUsernameID());
@@ -66,6 +73,7 @@ public class GroupPageController extends GeneralController implements Initializa
     }
 
     public void createNewGroupFromUserInput() {
+        Stage stage;
         if (writeGroupNameField.getText().isEmpty()) {
             showAlertBox(Alert.AlertType.ERROR, "Input Error!", "You must give your Travel Group a nameID");
         } else {
@@ -79,6 +87,8 @@ public class GroupPageController extends GeneralController implements Initializa
 
                 //Confirmation alert box
                 showAlertBox(Alert.AlertType.CONFIRMATION, "Success!", "You have successfully created a new Travel Group!");
+                stage = (Stage) createGroupButton.getScene().getWindow();
+                stage.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -91,41 +101,9 @@ public class GroupPageController extends GeneralController implements Initializa
         //selectedUsersFromListView.removeAll(selectedUsersToRemove);
     }
 
-    public static ArrayList<Group> listOfCreatedGroups() throws IOException {
-        ArrayList<User> listOfUsers = listOfCreatedUsers();
-        ArrayList<Group> listOfGroups = new ArrayList<>();
-        ArrayList<User> tempUsers = new ArrayList<>();
-
-        FileReader fr = new FileReader("src/groupData.txt");
-        BufferedReader bfr = new BufferedReader(fr);
-        String line;
-
-        int totalLine = Destination.linesInFile("src/groupData.txt"); //Bruger linesInFile metoden fra Destination class
-
-        for (int i = 0; i < totalLine; i++) {
-            line = bfr.readLine();
-            String[] groupInfo = line.split(",");
-            Group temp = new Group();
-            temp.setGroupID(groupInfo[0]);
-
-            for (int j = 1; j < groupInfo.length; j++) {
-                for (User user : listOfUsers) {
-                    if (groupInfo[j].equals(user.getUsernameID())) {
-                        tempUsers.add(user);
-                    }
-                }
-            }
-            temp.setUsersInGroup(tempUsers);
-            tempUsers = new ArrayList<>();
-            listOfGroups.add(temp);
-        }
-        try {
-            bfr.close();
-            fr.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return listOfGroups;
+    public void closeGroupCreation() {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
 }
 
