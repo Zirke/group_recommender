@@ -15,14 +15,14 @@ class UserTest {
         ArrayList<User> testList = new ArrayList<>();
         testList = User.listDataset();
 
-        assertEquals("2",testList.get(0).getId());
+        assertEquals("2",testList.get(0).getUsernameID());
         assertEquals(4,testList.get(0).getUsersDestination().size());
         assertEquals("Kawasaki",testList.get(0).getUsersDestination().get(0).getDestinationName());
         assertEquals("Kyoto",testList.get(0).getUsersDestination().get(1).getDestinationName());
         assertEquals("Tokyo",testList.get(0).getUsersDestination().get(2).getDestinationName());
         assertEquals("Yokohama",testList.get(0).getUsersDestination().get(3).getDestinationName());
 
-        assertEquals("3",testList.get(1).getId());
+        assertEquals("3",testList.get(1).getUsernameID());
         assertEquals(5,testList.get(1).getUsersDestination().size());
         assertEquals("Gifu",testList.get(1).getUsersDestination().get(0).getDestinationName());
         assertEquals("Kawasaki",testList.get(1).getUsersDestination().get(1).getDestinationName());
@@ -30,7 +30,7 @@ class UserTest {
         assertEquals("Tokyo",testList.get(1).getUsersDestination().get(3).getDestinationName());
         assertEquals("Yokohama",testList.get(1).getUsersDestination().get(4).getDestinationName());
 
-        assertEquals("6",testList.get(4).getId());
+        assertEquals("6",testList.get(4).getUsernameID());
         assertEquals(10,testList.get(4).getUsersDestination().size());
         assertEquals("Baltimore",testList.get(4).getUsersDestination().get(0).getDestinationName());
         assertEquals("Brooklyn",testList.get(4).getUsersDestination().get(1).getDestinationName());

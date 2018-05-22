@@ -98,11 +98,6 @@ public class User implements Cloneable {
     }
     */
 
-
-    public String getId() {
-        return usernameID;
-    }
-
     //Reading dataset and add destinations to each user
     public static ArrayList<User> listDataset() throws IOException {
         Path dataset = Paths.get("src\\userProfiles\\userid_city.txt");
@@ -122,8 +117,8 @@ public class User implements Cloneable {
         }
 
         for (int i = 0; i < templist.size() - 1; ++i) {
-            if (!templist.get(i).getId().equals(templist.get(i + 1).getId())) {
-                userRecords.add(new User(templist.get(i).getId()));
+            if (!templist.get(i).getUsernameID().equals(templist.get(i + 1).getUsernameID())) {
+                userRecords.add(new User(templist.get(i).getUsernameID()));
             }
         }
         templist.clear();
@@ -134,11 +129,11 @@ public class User implements Cloneable {
             String[] userDetail = currentLine.split("\t");
             String id = userDetail[0];
             String cityname = userDetail[1];
-            if (id.equals(userRecords.get(j).getId())) {
+            if (id.equals(userRecords.get(j).getUsernameID())) {
                 if(!userRecords.get(j).getUsersDestination().contains(new Destination(cityname))) {
                 userRecords.get(j).getUsersDestination().add(new Destination(cityname));
                 }
-            } else if (!id.equals(userRecords.get(j).getId()) && j != userRecords.size() - 1) {
+            } else if (!id.equals(userRecords.get(j).getUsernameID()) && j != userRecords.size() - 1) {
                 ++j;
                 userRecords.get(j).getUsersDestination().add(new Destination(cityname));
             }
