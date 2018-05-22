@@ -1,0 +1,6 @@
+Museum:Hagia Sophia:Sultan Ahmet Mahallesi, Ayasofya Meydanı, 34122 Fatih/İstanbul, Turkey:0830-1430
+Museum:Dolmabahce Palace:Vişnezade Mahallesi, Dolmabahçe Cd., 34357 Beşiktaş/İstanbul, Turkey:0930-1500
+Museum:Chora Church:Dervişali Mahallesi, Kariye Cami Sk. No:8, 34087 Fatih/İstanbul, Turkey:0900-1430
+Sightseeing:Topkapi Palace:Cankurtaran Mh., 34122 Fatih/Istanbul, Turkey:Historical Landmark
+Sightseeing:Grand Bazar: Beyazıt Mh., 34126 Fatih/Istanbul, Turkey:Historical Landmark
+Sightseeing:Sultan Ahmed Mosque:Sultan Ahmet Mahallesi, Atmeydanı Cd. No:7, 34122 Fatih/İstanbul, Turkey:Historical Landmark

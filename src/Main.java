@@ -1,3 +1,4 @@
+import destination.Destination;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -7,6 +8,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 /*
   Main Application. This class handles navigation and user interface.
 */
@@ -29,6 +31,11 @@ public class Main extends Application {
         //prints out all the created users in userData.txt
 
         launch(args);
+
+       /* ArrayList<Destination> dest = Destination.listOfDestination();
+        for(Destination destination : dest){
+            System.out.println(destination.getDestinationName());
+        }*/
 
     }
 

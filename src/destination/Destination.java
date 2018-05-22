@@ -1,9 +1,19 @@
 package destination;
 
+import destination.Activities.Beach;
+import destination.Activities.Museum;
+import destination.Activities.Sightseeing;
+
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -14,6 +24,7 @@ public class Destination implements Cloneable {
     private String countryName;
     private String cityType;
     private ArrayList<Venue> venues = new ArrayList<>();
+    private ArrayList<Activity> activities = new ArrayList<>();
 
     public String getDestinationName() {
         return destinationName;
@@ -63,6 +74,10 @@ public class Destination implements Cloneable {
         this.venues = venues;
     }
 
+    public ArrayList<Activity> getActivities() {
+        return activities;
+    }
+
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
@@ -83,9 +98,9 @@ public class Destination implements Cloneable {
         String line;
 
         //kan kun gøre det med abosulte path og ikke den relative
-        fr = new FileReader("/Users/Abiram/IdeaProjects/group_recommender01/src/destination/cities.txt");
+        fr = new FileReader("src/destination/cities.txt");
         BufferedReader bf = new BufferedReader(fr);
-        int totalLine = linesInFile("/Users/Abiram/IdeaProjects/group_recommender01/src/destination/cities.txt");
+        int totalLine = linesInFile("src/destination/cities.txt");
 
 
         for (int i = 0; i < totalLine; i++) {
@@ -127,6 +142,16 @@ public class Destination implements Cloneable {
         return fileDestination;
     }
 
+    public static List<String> listDestNames() throws IOException {
+        ArrayList<Destination> temp = listOfDestination();
+        List<String> destNames = new ArrayList<String>();
+
+        for(Destination destination : temp){
+            destNames.add(destination.getDestinationName());
+        }
+        return destNames;
+    }
+
     public static int linesInFile(String filePath) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(filePath));
         int lines = 0;
@@ -143,6 +168,43 @@ public class Destination implements Cloneable {
         System.out.println("Destination name: " + this.getDestinationName() +
                 "   Lattitude :" + this.getLattitude() + "   Longitude :" + this.getLongitude() +
                 "   Country :" + this.getCountryName() + "   City type :" + this.getCityType());
+    }
+
+    public String destinationNameToFilePath(){
+        return "src/destination/Activities/Destinations/"+getDestinationName()+".txt";
+    }
+
+    public void fillActivities(){
+        File filepath = new File(destinationNameToFilePath());
+        if(filepath.exists()){
+            Path inpath = Paths.get(destinationNameToFilePath());
+
+            try (BufferedReader reader = new BufferedReader(Files.newBufferedReader(inpath))) {
+                String currentLine;
+                while((currentLine = reader.readLine())!=null)
+                {
+                    String[] temp = currentLine.split(":");
+                    String type = temp[0];
+                    String name = temp[1];
+                    String location = temp[2];
+                    String typeSpecific = temp[3];
+                    switch (type) {
+                        case "Beach":
+                            getActivities().add(new Beach(name, location, Integer.parseInt(typeSpecific)));
+                            break;
+                        case "Museum":
+                            getActivities().add(new Museum(name, location, typeSpecific));
+                            break;
+                        case "Sightseeing":
+                            getActivities().add(new Sightseeing(name, location, typeSpecific));
+                            break;
+                            default: throw new InputMismatchException();
+                    }
+                }
+            } catch (IOException e){
+                System.out.println("Unable to read file");
+            }
+        }
     }
 
     @Override

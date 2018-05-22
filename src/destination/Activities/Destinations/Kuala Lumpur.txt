@@ -1,0 +1,6 @@
+Museum:Islamic Arts Museum:Malaysia	Jalan Lembah, Kuala Lumpur 50480, Malaysia:0900-1500
+Museum:National Museum:Jalan Damansara, Kuala Lumpur 50566, Malaysia:0830-1400
+Museum:Bank Negara Malaysia Museum and Art Gallery:Sasana Kijang, 2 Jalan Dato_ Onn | 2, Jalan Dato' Onn, Kuala Lumpur 50480, Malaysia:1000-1500
+Sightseeing:Petronas Towers:Petronas Twin Tower, Kuala Lumpur City Centre, 50450 Kuala Lumpur, Malaysia:Skyscraper
+Sightseeing:Batu Caves:Gombak, 68100 Batu Caves, Selangor, Malaysia:Historical Landmark
+Sightseeing:Kuala Lumpur Tower:2, Jalan Puncak, Kuala Lumpur, 50250 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia:Skyscraper

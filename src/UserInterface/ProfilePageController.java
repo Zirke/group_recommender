@@ -1,5 +1,6 @@
 package UserInterface;
 
+import destination.Destination;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +16,9 @@ import org.controlsfx.control.textfield.TextFields;
 import userProfiles.User;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ProfilePageController extends GeneralController implements Initializable {
@@ -47,7 +49,14 @@ public class ProfilePageController extends GeneralController implements Initiali
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        String[] options = {"hej", "hello", "fuck"};
+        List<String> dest = new ArrayList<String>();
+        try {
+            dest = Destination.listDestNames();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String[] options = dest.toArray(new String[0]);
 
         TextFields.bindAutoCompletion(searchField, options);
     }
@@ -64,7 +73,7 @@ public class ProfilePageController extends GeneralController implements Initiali
         }
         GroupPageController controller = loader.getController();
         //Makes call to method in ProfilePageController to show user data from logged in user in objects
-        controller.initialize(user);
+        //controller.initialize(user);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
