@@ -6,10 +6,16 @@ public class Beach implements Activity {
 
     String name;
     String location;
+    int avgTemp;
 
-    public Beach(String name, String location) {
+    public Beach(String name, String location, int avgTemp) {
         this.name = name;
         this.location = location;
+        this.avgTemp = avgTemp;
+    }
+
+    public Integer getTypeSpecific() {
+        return avgTemp;
     }
 
     @Override

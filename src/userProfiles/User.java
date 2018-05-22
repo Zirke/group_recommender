@@ -17,7 +17,7 @@ public class User implements Cloneable {
     private String gender;
     private String usernameID;
     private String password;
-    private ArrayList<Destination> usersDestination; //User's destination in an ordered list (the order of listOfDestinations)
+    private ArrayList<Destination> usersDestination = new ArrayList<>(); //User's destination in an ordered list (the order of listOfDestinations)
 
     public User(String usernameID, ArrayList<Destination> usersDestination) {
         this.usernameID = usernameID;
@@ -135,9 +135,12 @@ public class User implements Cloneable {
             String id = userDetail[0];
             String cityname = userDetail[1];
             if (id.equals(userRecords.get(j).getId())) {
+                if(!userRecords.get(j).getUsersDestination().contains(new Destination(cityname))) {
                 userRecords.get(j).getUsersDestination().add(new Destination(cityname));
+                }
             } else if (!id.equals(userRecords.get(j).getId()) && j != userRecords.size() - 1) {
                 ++j;
+                userRecords.get(j).getUsersDestination().add(new Destination(cityname));
             }
             currentLine = reader2.readLine();
         }

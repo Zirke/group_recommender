@@ -1,8 +1,9 @@
 package destination;
 
-public interface Activity {
+public interface Activity<T> {
 
-    String getType();
-    String getName();
-    String getLocation();
+    T getType();
+    T getName();
+    T getLocation();
+    T getTypeSpecific();
 }

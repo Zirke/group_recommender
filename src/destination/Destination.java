@@ -187,15 +187,16 @@ public class Destination implements Cloneable {
                     String type = temp[0];
                     String name = temp[1];
                     String location = temp[2];
+                    String typeSpecific = temp[3];
                     switch (type) {
                         case "Beach":
-                            activities.add(new Beach(name, location));
+                            getActivities().add(new Beach(name, location, Integer.parseInt(typeSpecific)));
                             break;
                         case "Museum":
-                            activities.add(new Museum(name, location));
+                            getActivities().add(new Museum(name, location, typeSpecific));
                             break;
                         case "Sightseeing":
-                            activities.add(new Sightseeing(name, location));
+                            getActivities().add(new Sightseeing(name, location, typeSpecific));
                             break;
                             default: throw new InputMismatchException();
                     }
