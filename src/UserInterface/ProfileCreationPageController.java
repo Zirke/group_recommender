@@ -72,8 +72,7 @@ public class ProfileCreationPageController extends GeneralController {
                 out.print(passwordField.getText() + "\n");
 
                 //Confirmation alert box
-                showAlertBox(Alert.AlertType.CONFIRMATION, "Welcome!", "You have successfully created a profile!\n" + "Sign in to go to your Profile");
-                LoadUI("FrontPage", event);
+                showAlertBox(Alert.AlertType.CONFIRMATION, "Welcome!", "You have successfully created a profile!\n" + "Press Sign In to go to your Profile");
             } catch (IOException ioe) {
                 ioe.printStackTrace();
             }

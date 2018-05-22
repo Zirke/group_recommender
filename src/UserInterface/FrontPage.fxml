@@ -40,6 +40,12 @@
                   <Font name="System Bold" size="36.0" />
               </font>
           </Label>
+        <TextField alignment="TOP_LEFT" layoutX="1361.0" layoutY="25.0" prefHeight="20.0" prefWidth="350.0"
+                   promptText="Search Destination" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
         <VBox alignment="CENTER" layoutX="1157.0" layoutY="344.0" opacity="0.66" prefHeight="440.0" prefWidth="400.0"
               spacing="50.0" style="-fx-background-color: blue;" AnchorPane.bottomAnchor="117.0"
               AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="344.0">
