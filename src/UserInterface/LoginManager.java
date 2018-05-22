@@ -1,6 +1,5 @@
 package UserInterface;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import userProfiles.User;
@@ -9,8 +8,13 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class LoginManager extends GeneralController {
+public class LoginManager {
     private Scene scene;
+    private User loggedInUser;
+
+    void setLoggedInUser(User loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
 
     public LoginManager(Scene scene) {
         this.scene = scene;
@@ -18,10 +22,6 @@ public class LoginManager extends GeneralController {
 
     void authenticated(User loggedInUser) {
         showProfilePage(loggedInUser);
-    }
-
-    public void logout(ActionEvent event) {
-        //showFrontPage(event);
     }
 
     public void showFrontPage() {
@@ -40,10 +40,12 @@ public class LoginManager extends GeneralController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilePage.fxml"));
             scene.setRoot(loader.load());
             ProfilePageController controller = loader.getController();
-            controller.initializeLoggedInUserData(this, loggedInUser);
+            controller.initializeLoggedInUserData(loggedInUser);
+            controller.setLoggedInUser(loggedInUser);
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 }
 

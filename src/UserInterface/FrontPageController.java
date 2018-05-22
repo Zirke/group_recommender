@@ -1,7 +1,5 @@
 package UserInterface;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -28,20 +26,18 @@ public class FrontPageController {
     public void initialize() {
     }
 
-    public void initManager(final LoginManager loginManager) {
-        loginButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                User loggedInUser = userLoginCheck();
-                if (loggedInUser != null) {
-                    loginManager.authenticated(loggedInUser);
-                }
+    void initManager(final LoginManager loginManager) {
+        loginButton.setOnAction(event -> {
+            User loggedInUser = userLoginCheck();
+            if (loggedInUser != null) {
+                loginManager.setLoggedInUser(loggedInUser);
+                loginManager.authenticated(loggedInUser);
             }
         });
     }
 
     //Checks if the entered username and password corresponds to any created users and returns the selected
-    public User userLoginCheck() {
+    private User userLoginCheck() {
         User loggedInUser = null;
         //Loop goes through all users in the ArrayList of Users
         try {

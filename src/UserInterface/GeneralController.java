@@ -50,26 +50,6 @@ public class GeneralController {
         stage.show();
     }
 
-    /*
-    public void getGroupPageController(String UI, ActionEvent event, User user) {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(UI + ".fxml"));
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        GroupPageController controller = loader.getController();
-        controller.initializeLoggedInUserData(user);
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-        Scene scene = new Scene(root, 1600, 900);
-        stage.setScene(scene);
-        stage.show();
-    }
-    */
     //Method to create Alert boxes
     public void showAlertBox(Alert.AlertType alertType, String title, String message) {
         Alert userCreationAlert = new Alert(alertType);

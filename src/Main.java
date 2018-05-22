@@ -25,19 +25,5 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("A400b P2");
         primaryStage.show();
-
-        /*
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("UserInterface/FrontPage.fxml"));
-            //Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
-            Scene scene = new Scene(root,1600, 900);
-
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("A400b P2");
-            primaryStage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        */
     }
 }
