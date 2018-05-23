@@ -1,3 +1,4 @@
+
 package userProfiles;
 
 import destination.Destination;
@@ -11,12 +12,13 @@ import java.util.Objects;
 public class Group {
     private String groupID;
     private ArrayList<User> usersInGroup;
+    //
 
-    public void setGroupID(String groupID) {
-        this.groupID = groupID;
+    public Group() {
     }
 
-    public void setUsersInGroup(ArrayList<User> usersInGroup) {
+    public Group(String groupID, ArrayList<User> usersInGroup) {
+        this.groupID = groupID;
         this.usersInGroup = usersInGroup;
     }
 
@@ -26,6 +28,14 @@ public class Group {
 
     public ArrayList<User> getUsersInGroup() {
         return usersInGroup;
+    }
+
+    public void setGroupID(String groupID) {
+        this.groupID = groupID;
+    }
+
+    public void setUsersInGroup(ArrayList<User> usersInGroup) {
+        this.usersInGroup = usersInGroup;
     }
 
     public static ArrayList<Group> listOfCreatedGroups() throws IOException {
@@ -82,7 +92,6 @@ public class Group {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(groupID, usersInGroup);
     }
 }

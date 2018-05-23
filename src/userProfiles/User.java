@@ -88,6 +88,21 @@ public class User implements Cloneable {
         return usernameID;
     }
 
+    /*
+    public User(String id, ArrayList<Destination> usersDestination) {
+        this.usernameID = id;
+        this.usersDestination = usersDestination;
+    }
+
+    public ArrayList<Destination> getUsersDestination() {
+        return usersDestination;
+    }
+
+    public void setUsersDestination(ArrayList<Destination> usersDestination) {
+        this.usersDestination = usersDestination;
+    }
+    */
+
     public static ArrayList<User> listOfCreatedUsers() throws IOException {
         ArrayList<User> listOfUsers = new ArrayList<>();
 
@@ -194,6 +209,19 @@ public class User implements Cloneable {
     }
 
     public User() {
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age='" + age + '\'' +
+                ", gender='" + gender + '\'' +
+                ", usernameID='" + usernameID + '\'' +
+                ", password='" + password + '\'' +
+                ", usersDestination=" + usersDestination +
+                '}';
     }
 
     @Override

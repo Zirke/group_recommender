@@ -17,6 +17,26 @@
          <padding>
             <Insets right="20.0" />
          </padding>
+         <children>
+            <MenuButton fx:id="ProfileMenuButton" mnemonicParsing="false" text="Profile">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="View Profile" />
+                  <MenuItem mnemonicParsing="false" text="Edit Profile" />
+                  <MenuItem mnemonicParsing="false" text="Your Groups" />
+               </items>
+               <graphic>
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ImageView/Icons/profile_icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </graphic>
+            </MenuButton>
+         </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="50.0" spacing="10.0" style="-fx-background-color: #80120F;" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
          <padding>
@@ -58,12 +78,12 @@
                   <Font size="14.0" />
                </font>
              </TextField>
+             <ChoiceBox fx:id="genderBox" layoutX="100.0" layoutY="200.0" minWidth="150.0" prefWidth="150.0"/>
              <Label layoutX="265.0" layoutY="205.0" text="Gender" textFill="WHITE">
                <font>
                    <Font name="Arial" size="14.0"/>
                </font>
             </Label>
-             <ChoiceBox fx:id="genderBox" layoutX="100.0" layoutY="200.0" minWidth="150.0" prefWidth="150.0"/>
              <TextField fx:id="ageField" layoutX="100.0" layoutY="250.0" minWidth="150.0" prefWidth="150.0"/>
              <Label layoutX="265.0" layoutY="253.0" text="Age" textFill="WHITE">
                <font>
@@ -83,7 +103,7 @@
              </PasswordField>
              <Button fx:id="CreateAccountButton" layoutX="100.0" layoutY="399.0" mnemonicParsing="false"
                      onAction="#createUserFromInput" prefHeight="44.0" prefWidth="300.0"
-                     style="-fx-background-color: darkorange;" text="Create Account" textFill="WHITE">
+                     style="-fx-background-color: #505050;" text="Create Account" textFill="WHITE">
                <font>
                    <Font name="Arial Bold" size="20.0"/>
                </font>

@@ -7,8 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane fx:id="rootPane" maxHeight="900.0" maxWidth="1600.0" minHeight="900.0" minWidth="1600.0" prefHeight="900.0"
-            prefWidth="1600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.FrontPageController">
+            prefWidth="1600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="UserInterface.FrontPageController">
     <children>
       <ImageView fitHeight="503.0" fitWidth="1025.0" layoutX="208.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="208.0" AnchorPane.topAnchor="309.0">
          <image>
@@ -86,24 +87,6 @@
             </Button>
                 <Button fx:id="AllDestinationsButton" maxWidth="250.0" mnemonicParsing="false"
                         onAction="#pressAllDestinations" style="-fx-background-color: orange;" text="All Destinations"
-                        textFill="WHITE">
-                    <VBox.margin>
-                        <Insets top="10.0" />
-                    </VBox.margin>
-               <font>
-                  <Font name="Arial Bold" size="16.0" />
-               </font>
-                </Button>
-                <Button maxWidth="250.0" mnemonicParsing="false" style="-fx-background-color: orange;" text="Button 2"
-                        textFill="WHITE">
-                    <VBox.margin>
-                        <Insets top="10.0" />
-                    </VBox.margin>
-               <font>
-                  <Font name="Arial Bold" size="16.0" />
-               </font>
-                </Button>
-                <Button maxWidth="250.0" mnemonicParsing="false" style="-fx-background-color: orange;" text="Button 3"
                         textFill="WHITE">
                     <VBox.margin>
                         <Insets top="10.0" />

@@ -13,6 +13,7 @@ import java.io.IOException;
 import static userProfiles.User.listOfCreatedUsers;
 
 public class FrontPageController {
+    //
 
     @FXML
     private AnchorPane rootPane;
@@ -26,7 +27,7 @@ public class FrontPageController {
     public void initialize() {
     }
 
-    public void initManager(final LoginManager loginManager) {
+    void initManager(final LoginManager loginManager) {
         loginButton.setOnAction(event -> {
             User loggedInUser = userLoginCheck();
             if (loggedInUser != null) {
@@ -37,7 +38,7 @@ public class FrontPageController {
     }
 
     //Checks if the entered username and password corresponds to any created users and returns the selected
-    public User userLoginCheck() {
+    private User userLoginCheck() {
         User loggedInUser = null;
         //Loop goes through all users in the ArrayList of Users
         try {
