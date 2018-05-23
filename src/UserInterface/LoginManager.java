@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class LoginManager {
+    //
     private Scene scene;
     private User loggedInUser;
 

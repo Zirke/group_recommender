@@ -12,6 +12,7 @@ import java.util.Objects;
 public class Group {
     private String groupID;
     private ArrayList<User> usersInGroup;
+    //
 
     public Group() {
     }

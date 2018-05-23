@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class ProfilePageController extends GeneralController implements Initializable {
+    //
     private User loggedInUser;
 
     public void setLoggedInUser(User loggedInUser) {

@@ -13,6 +13,7 @@ import java.io.IOException;
 import static userProfiles.User.listOfCreatedUsers;
 
 public class FrontPageController {
+    //
 
     @FXML
     private AnchorPane rootPane;
