@@ -41,11 +41,9 @@ public class LoginManager {
             scene.setRoot(loader.load());
             ProfilePageController controller = loader.getController();
             controller.initializeLoggedInUserData(loggedInUser);
-            controller.setLoggedInUser(loggedInUser);
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 }
 

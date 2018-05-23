@@ -212,6 +212,19 @@ public class User implements Cloneable {
     }
 
     @Override
+    public String toString() {
+        return "User{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age='" + age + '\'' +
+                ", gender='" + gender + '\'' +
+                ", usernameID='" + usernameID + '\'' +
+                ", password='" + password + '\'' +
+                ", usersDestination=" + usersDestination +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User)) return false;

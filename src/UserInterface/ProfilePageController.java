@@ -47,7 +47,6 @@ public class ProfilePageController extends GeneralController implements Initiali
     public void initialize() {
     }
 
-    //TODO make .this
     void initializeLoggedInUserData(User loggedInUser) {
         usernameLabel.setText(loggedInUser.getUsernameID());
         firstnameLabel.setText(loggedInUser.getFirstName());
