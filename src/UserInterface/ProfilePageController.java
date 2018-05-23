@@ -1,6 +1,7 @@
 package UserInterface;
 
 import destination.Destination;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -40,6 +41,19 @@ public class ProfilePageController extends GeneralController implements Initiali
     @FXML
     private Label usernameLabel, firstnameLabel, lastnameLabel, genderLabel, ageLabel;
     @FXML
+    private Button recButton1;
+    @FXML
+    private Button recButton2;
+    @FXML
+    private Button recButton3;
+    @FXML
+    private Button recButton4;
+    @FXML
+    private Button recButton5;
+    @FXML
+    private Button recButton6;
+
+    @FXML
     private TextField searchField;
     @FXML
     private Button createNewGroupButton, createGroupButton;
@@ -50,13 +64,47 @@ public class ProfilePageController extends GeneralController implements Initiali
     }
 
     //TODO make .this
-    public User initializeLoggedInUserData(final LoginManager loginManager, User loggedInUser) {
+    void initializeLoggedInUserData(final LoginManager loginManager, User loggedInUser) {
         usernameLabel.setText(loggedInUser.getUsernameID());
         firstnameLabel.setText(loggedInUser.getFirstName());
         lastnameLabel.setText(loggedInUser.getLastName());
         genderLabel.setText(loggedInUser.getGender());
         ageLabel.setText(loggedInUser.getAge());
-        return loggedInUser;
+    }
+
+    //TODO GET THE REAL RECOMMENDATIONS
+    void initializeLoggedInUserRecommendations(User loggedInUser) {
+        recButton1.setText("Copenhagen");
+        recButton2.setText("Berlin");
+        recButton3.setText("Jacksonville");
+        recButton4.setText("Aguascalientes");
+        recButton5.setText("Austin");
+        recButton6.setText("Copenhagen");
+    }
+
+    public void showSelectedRecommendation(ActionEvent event) {
+        Button chosenRecBtn = (Button) event.getSource();
+        String recID = chosenRecBtn.getText();
+        try {
+            ArrayList<Destination> listOfDestinations = Destination.listOfDestination();
+            for (Destination temp : listOfDestinations) {
+                if (temp.getDestinationName().equals(recID)) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("DestinationInformation.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("DestinationInformation.fxml"));
+                    DestinationInformationController controller = loader.getController();
+                    controller.initializeChosenRecommendation(temp);
+                    //System.out.println(foo.toString());
+
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.initModality(Modality.APPLICATION_MODAL);
+                    stage.setTitle("Recommended Destination");
+                    stage.showAndWait();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -74,7 +122,7 @@ public class ProfilePageController extends GeneralController implements Initiali
 
     @FXML
     public void openGroupCreation() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("GroupPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("GroupCreationPage.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.initModality(Modality.APPLICATION_MODAL);

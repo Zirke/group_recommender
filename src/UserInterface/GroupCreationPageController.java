@@ -20,16 +20,7 @@ import java.util.ResourceBundle;
 
 import static userProfiles.User.listOfCreatedUsers;
 
-public class GroupPageController extends GeneralController implements Initializable {
-    User loggedInUser;
-
-    public GroupPageController() {
-    }
-
-    public GroupPageController(User loggedInUser) {
-        this.loggedInUser = loggedInUser;
-    }
-
+public class GroupCreationPageController extends GeneralController implements Initializable {
     @FXML
     private TextField writeGroupNameField;
     @FXML
@@ -40,10 +31,6 @@ public class GroupPageController extends GeneralController implements Initializa
     private Label usernameLabel;
     @FXML
     private Button createGroupButton, cancelButton;
-
-    public void initializeLoggedInUserData(User user) {
-        usernameLabel.setText(user.getUsernameID());
-    }
 
     //Makes auto filling search bar for usernames
     @Override

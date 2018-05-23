@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static userProfiles.Group.listOfCreatedGroups;
 
-class GroupPageControllerTest {
+class GroupCreationPageControllerTest {
 
     private ArrayList<Group> temp = new ArrayList<>();
 
