@@ -17,7 +17,7 @@ public class User implements Cloneable {
     private String gender;
     private String usernameID;
     private String password;
-    private ArrayList<Destination> usersDestination; //User's destination in an ordered list (the order of listOfDestinations)
+    private ArrayList<Destination> usersDestination = new ArrayList<>(); //User's destination in an ordered list (the order of listOfDestinations)
 
     public User(String usernameID, ArrayList<Destination> usersDestination) {
         this.usernameID = usernameID;
@@ -105,7 +105,7 @@ public class User implements Cloneable {
 
     //Reading dataset and add destinations to each user
     public static ArrayList<User> listDataset() throws IOException {
-        Path dataset = Paths.get("src\\userProfiles\\userid_city.txt");
+        Path dataset = Paths.get("src/userProfiles/userid_city.txt");
         BufferedReader reader = Files.newBufferedReader(dataset);
         ArrayList<User> userRecords = new ArrayList<>();
         String currentLine = reader.readLine();
@@ -121,8 +121,8 @@ public class User implements Cloneable {
             currentLine = reader.readLine();
         }
 
-        for(int i = 0; i < templist.size()-1; ++i){
-            if (!templist.get(i).getId().equals(templist.get(i+1).getId())){
+        for (int i = 0; i < templist.size() - 1; ++i) {
+            if (!templist.get(i).getId().equals(templist.get(i + 1).getId())) {
                 userRecords.add(new User(templist.get(i).getId()));
             }
         }
@@ -130,23 +130,22 @@ public class User implements Cloneable {
         BufferedReader reader2 = Files.newBufferedReader(dataset);
         currentLine = reader2.readLine();
 
-        while (currentLine != null){
+        while (currentLine != null) {
             String[] userDetail = currentLine.split("\t");
             String id = userDetail[0];
             String cityname = userDetail[1];
-            if (id.equals(userRecords.get(j).getId())){
+            if (id.equals(userRecords.get(j).getId())) {
+                if(!userRecords.get(j).getUsersDestination().contains(new Destination(cityname))){
                 userRecords.get(j).getUsersDestination().add(new Destination(cityname));
-            }
-            else if(!id.equals(userRecords.get(j).getId()) && j != userRecords.size()-1){
+                }
+            } else if (!id.equals(userRecords.get(j).getId()) && j != userRecords.size() -1) {
                 ++j;
+                userRecords.get(j).getUsersDestination().add(new Destination(cityname));
             }
             currentLine = reader2.readLine();
         }
-
-
         return userRecords;
     }
-
 
 
     //Method saves a List of userProfiles.User into a file with the path filename.
@@ -194,7 +193,6 @@ public class User implements Cloneable {
 
         return Objects.hash(usernameID);
     }
-
 
 
 }

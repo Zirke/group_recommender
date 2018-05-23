@@ -37,7 +37,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
           <root url="file://$USER_HOME$/Downloads/controlsfx-9.0.0" />
@@ -48,6 +48,15 @@
         </SOURCES>
         <jarDirectory url="file://$USER_HOME$/Downloads/controlsfx-9.0.0" recursive="false" />
         <jarDirectory url="file://$USER_HOME$/Downloads/controlsfx-9.0.0" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/controlsfx-9.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
       </library>
     </orderEntry>
   </component>
