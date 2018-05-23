@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Group {
     private String groupID;
     private ArrayList<User> usersInGroup;
+    //
 
     public void setGroupID(String groupID) {
         this.groupID = groupID;
