@@ -29,7 +29,7 @@ public class ProfilePageController extends GeneralController implements Initiali
     @FXML
     private TextField searchField;
 
-    public void initializeLoggedInUserData (User user) {
+    public void initializeLoggedInUserData(User user) {
         usernameLabel.setText(user.getUsernameID());
         firstnameLabel.setText(user.getFirstName());
         lastnameLabel.setText(user.getLastName());
@@ -38,7 +38,7 @@ public class ProfilePageController extends GeneralController implements Initiali
     }
 
     @FXML
-    public void pressFrontPageButton (ActionEvent event) throws IOException {
+    public void pressFrontPageButton(ActionEvent event) throws IOException {
         LoadUI("FrontPage", event);
     }
 
@@ -48,7 +48,7 @@ public class ProfilePageController extends GeneralController implements Initiali
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb){
+    public void initialize(URL url, ResourceBundle rb) {
         List<String> dest = new ArrayList<String>();
         try {
             dest = Destination.listDestNames();
