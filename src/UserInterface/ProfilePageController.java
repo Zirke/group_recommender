@@ -21,12 +21,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class ProfilePageController extends GeneralController implements Initializable {
-    private Scene scene;
     private User loggedInUser;
-
-    public ProfilePageController(Scene scene) {
-        this.scene = scene;
-    }
 
     public void setLoggedInUser(User loggedInUser) {
         this.loggedInUser = loggedInUser;

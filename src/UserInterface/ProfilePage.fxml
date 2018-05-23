@@ -62,6 +62,8 @@
                         </Label>
                     </children>
                 </HBox>
+                <Button layoutX="143.0" layoutY="438.0" mnemonicParsing="false" onAction="#openGroupCreation"
+                        text="Button"/>
             </children>
         </AnchorPane>
         <GridPane layoutX="439.0" layoutY="144.0" prefHeight="257.0" prefWidth="408.0">
