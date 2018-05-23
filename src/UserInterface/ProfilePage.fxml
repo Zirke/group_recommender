@@ -19,10 +19,31 @@
                         <Font name="Arial Bold" size="36.0"/>
                     </font>
                 </Label>
+                <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="100.0" layoutY="96.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <effect>
+                        <ColorAdjust brightness="1.0" hue="-0.02" saturation="1.0"/>
+                    </effect>
+                    <image>
+                        <Image url="@../ImageView/Icons/profile_icon2.png"/>
+                    </image>
+                </ImageView>
                 <VBox alignment="TOP_CENTER" layoutY="466.0" maxWidth="-Infinity" minWidth="-Infinity"
                       prefHeight="450.0" prefWidth="350.0" spacing="25.0" style="-fx-background-color: green;"
                       AnchorPane.bottomAnchor="0.0">
                     <children>
+                        <Button mnemonicParsing="false" onAction="#openGroupCreation" prefHeight="40.0"
+                                style="-fx-background-color: green;" text="Create New Group" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="40.0" style="-fx-background-color: green;"
+                                text="Manage Travel Groups" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Button>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                             <children>
                                 <ImageView fitHeight="53.0" fitWidth="53.0" pickOnBounds="true">
@@ -43,15 +64,6 @@
                         </HBox>
                     </children>
                 </VBox>
-                <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="100.0" layoutY="96.0" pickOnBounds="true"
-                           preserveRatio="true">
-                    <effect>
-                        <ColorAdjust brightness="1.0" hue="-0.02" saturation="1.0"/>
-                    </effect>
-                    <image>
-                        <Image url="@../ImageView/Icons/profile_icon2.png"/>
-                    </image>
-                </ImageView>
                 <HBox alignment="CENTER" layoutY="231.0" prefHeight="100.0" prefWidth="350.0"
                       AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                     <children>
@@ -62,8 +74,6 @@
                         </Label>
                     </children>
                 </HBox>
-                <Button layoutX="143.0" layoutY="438.0" mnemonicParsing="false" onAction="#openGroupCreation"
-                        text="Button"/>
             </children>
         </AnchorPane>
         <GridPane layoutX="439.0" layoutY="144.0" prefHeight="257.0" prefWidth="408.0">
@@ -120,13 +130,13 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
         </GridPane>
-        <TextField fx:id="searchField" layoutX="436.0" layoutY="494.0" prefHeight="27.0" prefWidth="417.0"/>
-        <Text layoutX="436.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              text="SEARCH FIELD FOR DESTINATIONS"/>
         <Label layoutX="436.0" layoutY="45.0" text="Basic Details">
             <font>
                 <Font size="48.0"/>
             </font>
         </Label>
+        <TextField fx:id="searchField" layoutX="436.0" layoutY="494.0" prefHeight="27.0" prefWidth="417.0"/>
+        <Text layoutX="436.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="SEARCH FIELD FOR DESTINATIONS"/>
     </children>
 </AnchorPane>
