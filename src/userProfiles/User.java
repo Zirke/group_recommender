@@ -194,6 +194,5 @@ public class User implements Cloneable {
         return Objects.hash(usernameID);
     }
 
-
 }
 

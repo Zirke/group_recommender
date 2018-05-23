@@ -24,6 +24,14 @@ public class Recommender {
     Map<User, Double> sim; //similarity.
     HashSet<Destination> recommendationForCurrent;
     //Map<Destination, Map<Destination,Double>> sim;  for the similarity between two destinations
+    ArrayList<Destination> destinationList;
+    {
+        try {
+            destinationList = listOfDestination();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public Recommender(User recommendationUser, int k) {
@@ -88,83 +96,42 @@ public class Recommender {
     }
 
     //Creation of destination for a User ArrayList. The destination a User has been to is represented with 1 and otherwise 0.
-    public int userDestinationMapCreation(Destination aDestinationList, User temp, Destination tempDest,
-                                          int tempIndex, HashMap<Destination, Integer> tempUserDestMap) throws CloneNotSupportedException {
-        if(temp.getUsersDestination().size()<= tempIndex){
-            System.out.println( "hh");
+    public void userDestinationMapCreation(Destination a, ArrayList<Destination> tempDest, HashMap<Destination, Integer> tempUserDestMap) throws CloneNotSupportedException {
+        if (tempDest.contains(a)){
+            tempUserDestMap.put((Destination) a.clone(), 1);
         }
-        if(temp.getUsersDestination().isEmpty()){
-            System.out.println("halo");
-        }
-          if (aDestinationList.equals(temp.getUsersDestination().get(tempIndex))) {
-              tempDest = (Destination) aDestinationList.clone();
-              tempUserDestMap.put(tempDest, 1);
-            if (tempIndex < (temp.getUsersDestination().size() - 1)) {
-                tempIndex++;
-            }
-
-          } else {
-              tempDest = (Destination) aDestinationList.clone();
-              tempUserDestMap.put(tempDest, 0);
-          }
-
-
-        return tempIndex;
     }
 
 
     //the method creates a matrix for the arrayList "users". if a user has been to a destination then the Integer is 1 otherwise 0.
     public HashMap<User, HashMap<Destination, Integer>> destinationMatrixCreator(ArrayList<User> users) {
         HashMap<User, HashMap<Destination, Integer>> matrix = new HashMap<>();
-        Iterator iter = users.iterator();
-        System.out.println("ha4");
-        int counter = 0;
+        Iterator iter = users.iterator();;
+
         while (iter.hasNext()) {
             User temp = (User) iter.next();
             HashMap<Destination, Integer> tempUserDestMap = new HashMap<>();
-            Destination tempDest = new Destination();
 
-            int tempIndex = 0;
-
-            try {
-                ArrayList<Destination> destinationList = listOfDestination();
-                for (Destination aDestinationList : destinationList) {
-                    tempIndex = userDestinationMapCreation(aDestinationList, temp, tempDest, tempIndex, tempUserDestMap);
-                    System.out.println(counter);
-
+                for (Destination aDestinationList : temp.getUsersDestination()) {
+                    tempUserDestMap.put(aDestinationList, 1);
                     matrix.put(temp, tempUserDestMap);
                 }
-                counter++;
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (CloneNotSupportedException e) {
-                System.out.println("Clone is not Supported");
-            }
         }
-
         return matrix;
     }
 
 
     public HashMap<Destination, Integer> currentUserDestination(User currentUser) {
         HashMap<Destination, Integer> tempUserDestMap = new HashMap<>();
-        Destination tempDest = new Destination();
-
-        int tempIndex = 0;
         try {
-            ArrayList<Destination> destinationList = listOfDestination();
-            for (Destination aDestinationList : destinationList) {
-                tempIndex = userDestinationMapCreation(aDestinationList, currentUser, tempDest, tempIndex, tempUserDestMap);
+            for (Destination aDestinationList : currentUser.getUsersDestination()) {
+                userDestinationMapCreation( aDestinationList, destinationList, tempUserDestMap);
+                matrix.put(currentUser, tempUserDestMap);
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (CloneNotSupportedException e) {
+        }catch (CloneNotSupportedException e) {
             System.out.println("Clone is not Supported");
         }
         return tempUserDestMap;
-
     }
 
     public Map<User, Double> similarityMatrix(User recommendationUser, ArrayList<User> users) {
@@ -174,27 +141,30 @@ public class Recommender {
         for (User i : keySet) {
             similarity.put(i, cosineSimilarity(destinationData.get(i), currentUserDestination(recommendationUser)));
         }
-        this.setSim(similarity);
+
         return similarity;
     }
 
     //calculates the cosine similarity between two users A and B.
     public double cosineSimilarity(HashMap<Destination, Integer> A, HashMap<Destination, Integer> B) {
         double dotProduct = 0, magnitudeA = 0, magnitudeB = 0;
-        double result = 0;
         HashSet<Destination> keySet = new HashSet<>(A.keySet());
         keySet.addAll(B.keySet());
 
 
         //Dot product, Magnitude for A and Magnitude for B.
         for (Destination i : keySet) {
-            dotProduct += A.get(i) * B.get(i);
-            magnitudeA += Math.pow(A.get(i), 2);
-            magnitudeB += Math.pow(B.get(i), 2);
+            if(A.containsKey(i) && B.containsKey(i)) {
+                dotProduct += A.get(i) * B.get(i);
+            }
+            if(A.containsKey(i)){
+                magnitudeA += Math.pow(A.get(i), 2);
+            }
+            if(B.containsKey(i)){
+                magnitudeB += Math.pow(B.get(i), 2);
+            }
         }
-
-        result = dotProduct / Math.sqrt(magnitudeA * magnitudeB);
-        return result;
+        return dotProduct / Math.sqrt(magnitudeA * magnitudeB);
     }
 
 
@@ -253,9 +223,7 @@ public class Recommender {
     public ArrayList<Destination> recommendationDest(User recommendationUser, ArrayList<User> users) {
 
         ArrayList<Destination> rankedDest = new ArrayList<>();
-        System.out.println("ha");
         HashMap<Destination, Double> similarityDest = destinationSimilarity(recommendationUser, users);
-        System.out.println("ha2");
         Set<Map.Entry<Destination, Double>> mapentries = similarityDest.entrySet();
 
         List<Map.Entry<Destination, Double>> rankDest = new LinkedList<>(mapentries);
@@ -277,40 +245,4 @@ public class Recommender {
 
         return rankedDest;
     }
-
-
-//Mangler noget til grupper her eller måske anden fil til det.
-
-
-    public HashSet<Destination> destinationRecommendation(int k, User recommendationUser, ArrayList<User> trainSet) {
-        HashSet<User> knnUsers = this.recommendationForCurrent(recommendationUser, trainSet);
-        HashSet<Destination> recommendationDest = new HashSet<>();
-        Set<Destination> tempUserDest;
-        for (User i : knnUsers) {
-            tempUserDest = new HashSet<>(i.getUsersDestination());
-            recommendationDest.addAll(tempUserDest);
-        }
-
-        //previosly visited destinations aren't included.
-        for (Destination dest : recommendationUser.getUsersDestination()) {
-            if (recommendationDest.contains(dest)) {
-                recommendationDest.remove(dest);
-            }
-        }
-        setRecommendationForCurrent(recommendationDest);
-        return recommendationDest;
-    }
-
-
-    //Måske prioritere med fairness istedet for.
-    public HashSet<Destination> destinationRecommendationForGroup(int k, ArrayList<User> groupMembers, ArrayList<User> trainSet) {
-        HashSet<Destination> recommendationDest = new HashSet<>();
-        HashSet<Destination> tempUserDest = new HashSet<>();
-        for (User i : groupMembers) {
-            tempUserDest = destinationRecommendation(k, i, trainSet);
-            recommendationDest.addAll(tempUserDest);
-        }
-        return recommendationDest;
-    }
-
 }
