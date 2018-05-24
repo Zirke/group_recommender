@@ -15,9 +15,8 @@ import static java.util.List.*;
 
 public class Recommender {
     private ArrayList<Destination> destinations;
-    private ArrayList<User> users;
+    private ArrayList<User> trainSet;
     private User recommendationUser;
-    private ArrayList<User> groupMembers;
     private int k;
 
     HashMap<User, HashMap<Destination, Integer>> matrix = new HashMap<>();  // matrix for whether the user has been to a given destiantion.
@@ -39,6 +38,12 @@ public class Recommender {
         this.k = k;
     }
 
+    public Recommender( User recommendationUser, ArrayList<User> trainSet, int k) {
+        this.trainSet = trainSet;
+        this.recommendationUser = recommendationUser;
+        this.k = k;
+    }
+
     public ArrayList<Destination> getDestinations() {
         return destinations;
     }
@@ -47,12 +52,12 @@ public class Recommender {
         this.destinations = destinations;
     }
 
-    public ArrayList<User> getUsers() {
-        return users;
+    public ArrayList<User> getTrainSet() {
+        return trainSet;
     }
 
-    public void setUsers(ArrayList<User> users) {
-        this.users = users;
+    public void setTrainSet(ArrayList<User> trainSet) {
+        this.trainSet = trainSet;
     }
 
     public User getRecommendationUser() {
@@ -67,16 +72,6 @@ public class Recommender {
     //Getter for matrix.
     public HashMap<User, HashMap<Destination, Integer>> getMatrix() {
         return matrix;
-    }
-
-    //Getter for group members.
-    public ArrayList<User> getGroupMembers() {
-        return groupMembers;
-    }
-
-    //Setter for Group members.
-    public void setGroupMembers(ArrayList<User> groupMembers) {
-        this.groupMembers = groupMembers;
     }
 
     public Map<User, Double> getSim() {
@@ -104,9 +99,9 @@ public class Recommender {
 
 
     //the method creates a matrix for the arrayList "users". if a user has been to a destination then the Integer is 1 otherwise 0.
-    public HashMap<User, HashMap<Destination, Integer>> destinationMatrixCreator(ArrayList<User> users) {
+    public HashMap<User, HashMap<Destination, Integer>> destinationMatrixCreator() {
         HashMap<User, HashMap<Destination, Integer>> matrix = new HashMap<>();
-        Iterator iter = users.iterator();;
+        Iterator iter = trainSet.iterator();;
 
         while (iter.hasNext()) {
             User temp = (User) iter.next();
@@ -121,12 +116,12 @@ public class Recommender {
     }
 
 
-    public HashMap<Destination, Integer> currentUserDestination(User currentUser) {
+    public HashMap<Destination, Integer> currentUserDestination() {
         HashMap<Destination, Integer> tempUserDestMap = new HashMap<>();
         try {
-            for (Destination aDestinationList : currentUser.getUsersDestination()) {
+            for (Destination aDestinationList : recommendationUser.getUsersDestination()) {
                 userDestinationMapCreation( aDestinationList, destinationList, tempUserDestMap);
-                matrix.put(currentUser, tempUserDestMap);
+                matrix.put(recommendationUser, tempUserDestMap);
             }
         }catch (CloneNotSupportedException e) {
             System.out.println("Clone is not Supported");
@@ -134,12 +129,12 @@ public class Recommender {
         return tempUserDestMap;
     }
 
-    public Map<User, Double> similarityMatrix(User recommendationUser, ArrayList<User> users) {
-        HashMap<User, HashMap<Destination, Integer>> destinationData = destinationMatrixCreator(users);
+    public Map<User, Double> similarityMatrix() {
+        HashMap<User, HashMap<Destination, Integer>> destinationData = destinationMatrixCreator();
         Map<User, Double> similarity = new HashMap<>();
         HashSet<User> keySet = new HashSet<>(destinationData.keySet());
         for (User i : keySet) {
-            similarity.put(i, cosineSimilarity(destinationData.get(i), currentUserDestination(recommendationUser)));
+            similarity.put(i, cosineSimilarity(destinationData.get(i), currentUserDestination()));
         }
 
         return similarity;
@@ -168,10 +163,10 @@ public class Recommender {
     }
 
 
-    public HashSet<User> recommendationForCurrent(User recommendationUser, ArrayList<User> users) {
+    public HashSet<User> recommendationForCurrent() {
         HashSet<User> userSet = new HashSet<>();
         int userAmount = 0;
-        Map<User, Double> similarity = similarityMatrix(recommendationUser, users);
+        Map<User, Double> similarity = similarityMatrix();
         Set<User> similarityKey = similarity.keySet();
         User temp = new User();
         for (User i : similarityKey) {
@@ -198,13 +193,13 @@ public class Recommender {
     }
 
     //Matrix of similarity of destinations based on the User's similarity.
-    public HashMap<Destination, Double> destinationSimilarity(User recommendationUser, ArrayList<User> users) {
+    public HashMap<Destination, Double> destinationSimilarity() {
 
-        HashSet<User> knnUsers = recommendationForCurrent(recommendationUser, users);
+        HashSet<User> knnUsers = recommendationForCurrent();
 
         HashMap<Destination, Double> similarity = new HashMap<>();
 
-        Map<User, Double> sim = similarityMatrix(recommendationUser, users);
+        Map<User, Double> sim = similarityMatrix();
         for (User i : knnUsers) {
             for (Destination x : i.getUsersDestination()) {
                 if (!similarity.keySet().contains(x)) {
@@ -220,10 +215,10 @@ public class Recommender {
     }
 
     //ArrayList of ranked destination with biggest first
-    public ArrayList<Destination> recommendationDest(User recommendationUser, ArrayList<User> users) {
+    public ArrayList<Destination> recommendationDest() {
 
         ArrayList<Destination> rankedDest = new ArrayList<>();
-        HashMap<Destination, Double> similarityDest = destinationSimilarity(recommendationUser, users);
+        HashMap<Destination, Double> similarityDest = destinationSimilarity();
         Set<Map.Entry<Destination, Double>> mapentries = similarityDest.entrySet();
 
         List<Map.Entry<Destination, Double>> rankDest = new LinkedList<>(mapentries);

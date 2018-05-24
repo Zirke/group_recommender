@@ -43,12 +43,12 @@ public class GroupRecommender {
             }*/
             //dårlig apprach
 
-                Recommender test = new Recommender(i,2);
-                ArrayList<Destination> t2 = test.recommendationDest(i,listofdata);
-                System.out.println(test.recommendationDest(i,listofdata).size());
-                allUserRecommend.put(i,test.recommendationDest(i,listofdata));
+                Recommender test = new Recommender(i,listofdata,5);
+                ArrayList<Destination> recommendationDest = test.recommendationDest();
+                System.out.println(recommendationDest.size());
+                allUserRecommend.put(i,recommendationDest);
                 if(allUserRecommend.get(i).size() >= maxElements){
-                    maxElements = new Recommender(i,2).recommendationDest(i,listofdata).size();
+                    maxElements = recommendationDest.size();
                 }
         }
 
