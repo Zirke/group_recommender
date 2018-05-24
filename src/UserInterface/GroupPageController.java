@@ -1,50 +1,26 @@
 package UserInterface;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import userProfiles.User;
+public class GroupPageController {
 
-import java.io.IOException;
-import java.util.ArrayList;
+/*
 
-import static UserInterface.FrontPageController.listOfCreatedUsers;
-
-
-public class GroupPageController extends GeneralController {
-
-    private ObservableList<User> usersForList = FXCollections.observableArrayList();
+    // Goes through all the groups and creates a label with each group ID
     @FXML
-    private ListView<User> listOfUsers = new ListView<User>(usersForList);
-    @FXML
-    private ListView<User> listOfSelectedUsers = new ListView<User>(usersForList);
-
-    @FXML
-    public void showAllUsersInListView() {
-        ArrayList<User> list;
-        {
-            try {
-                list = listOfCreatedUsers();
-                listOfUsers.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-                for (User user : list) {
-                    listOfUsers.getItems().addAll(user);
+    public void showGroupsForLoggedInUser() {
+        try {
+            ArrayList<Group> listOfGroups = Group.listOfCreatedGroups();
+            for (Group group : listOfGroups) {
+                for (User user : group.getUsersInGroup()) {
+                    if (loggedInUser.getUsernameID().equals(user.getUsernameID())) {
+                        Label foo = new Label();
+                        foo.setText(group.getGroupID());
+                        groupVbox.getChildren().add(foo);
+                    }
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
     }
-
-    public void initialize(User user) {
-
-    }
-
-    public void createGroup() {
-
-    }
-
-
+    */
 }

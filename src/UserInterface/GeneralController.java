@@ -12,25 +12,24 @@ import userProfiles.User;
 import java.io.IOException;
 
 public class GeneralController {
-    //Method used to change stages
-    public void LoadUI(String UI, ActionEvent event) {
+    //Method used to switch between stages
+    public void LoadUI(String fileName, ActionEvent event) {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource(UI + ".fxml"));
+            root = FXMLLoader.load(getClass().getResource(fileName + ".fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
         Scene scene = new Scene(root, 1600, 900);
 
         //This line gets the stage information by casting window to a stage.
-        //TODO: review stage
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
-        //stage.setTitle("Test"); //Give better title
+        stage.setTitle("A400b P2");
         stage.show();
     }
-    //Method to change to to logged in users profile page
+
+    //Method to change to logged in users profile page
     public void loadUserDataToProfilePage(String UI, ActionEvent event, User user) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(UI + ".fxml"));
@@ -40,9 +39,9 @@ public class GeneralController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        ProfilePageController controller = loader.getController();
+        ProfilePageController controllerProfilePage = loader.getController();
         //Makes call to method in ProfilePageController to show user data from logged in user in objects
-        controller.initializeLoggedInUserData(user);
+        //controllerProfilePage.initializeLoggedInUserData(user);
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 
@@ -50,27 +49,6 @@ public class GeneralController {
         stage.setScene(scene);
         stage.show();
     }
-    /*
-    public void loadUserDataToGroupPage (String UI, ActionEvent event, User user) {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(UI + ".fxml"));
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        GroupPageController controller = loader.getController();
-        //Makes call to method in ProfilePageController to show user data from logged in user in objects
-        controller.initialize(user);
-
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-        Scene scene = new Scene(root, 1600, 900);
-        stage.setScene(scene);
-        stage.show();
-    }
-    */
 
     //Method to create Alert boxes
     public void showAlertBox(Alert.AlertType alertType, String title, String message) {

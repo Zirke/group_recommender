@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="UserInterface.GroupCreationPageController">
+    <children>
+        <VBox alignment="CENTER_LEFT" layoutX="-25.0" prefHeight="643.0" prefWidth="690.0" spacing="20.0">
+            <children>
+                <Label text="Create New Travel Group">
+                    <font>
+                        <Font name="System Bold" size="30.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="writeGroupNameField" prefHeight="40.0" prefWidth="100.0" promptText="Group Name">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </TextField>
+                <Label text="Add User to Group">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="searchForUserField" prefHeight="40.0" prefWidth="300.0"
+                           promptText="Search for Username">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </TextField>
+                <HBox spacing="20.0">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#addSelectedUserToListView"
+                                style="-fx-background-color: green;" text="Add Selected User" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="15.0"/>
+                            </font>
+                        </Button>
+                        <Button mnemonicParsing="false" style="-fx-background-color: grey;" text="Remove"
+                                textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="15.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
+                <ListView fx:id="addedUsersList" prefHeight="200.0" prefWidth="300.0"/>
+                <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                    <children>
+                        <Button fx:id="createGroupButton" maxHeight="-Infinity" maxWidth="-Infinity"
+                                minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
+                                onAction="#createNewGroupFromUserInput" prefHeight="40.0"
+                                style="-fx-background-color: Green;" text="Create Group" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="cancelButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                minWidth="-Infinity" mnemonicParsing="false" onAction="#closeGroupCreation"
+                                prefHeight="40.0" text="Cancel">
+                            <font>
+                                <Font size="18.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets left="150.0" right="150.0"/>
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>

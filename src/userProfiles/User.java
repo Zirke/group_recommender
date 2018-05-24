@@ -83,6 +83,11 @@ public class User implements Cloneable {
     public String getPassword() {
         return password;
     }
+
+    public String getId() {
+        return usernameID;
+    }
+
     /*
     public User(String id, ArrayList<Destination> usersDestination) {
         this.usernameID = id;
@@ -98,9 +103,36 @@ public class User implements Cloneable {
     }
     */
 
+    public static ArrayList<User> listOfCreatedUsers() throws IOException {
+        ArrayList<User> listOfUsers = new ArrayList<>();
 
-    public String getId() {
-        return usernameID;
+        FileReader fr = new FileReader("src/userData.txt");
+        BufferedReader bfr = new BufferedReader(fr);
+        String line;
+
+        int totalLine = Destination.linesInFile("src/userData.txt"); //Bruger linesInFile metoden fra Destination class
+
+        for (int i = 0; i < totalLine; i++) {
+            line = bfr.readLine();
+            String[] strings = line.split("\\t", 6);
+            User temp = new User();
+
+            temp.setFirstName(strings[0]);
+            temp.setLastName(strings[1]);
+            temp.setGender(strings[2]);
+            temp.setAge(strings[3]);
+            temp.setUsernameID(strings[4]);
+            temp.setPassword(strings[5]);
+
+            listOfUsers.add(temp);
+        }
+        try {
+            bfr.close();
+            fr.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return listOfUsers;
     }
 
     //Reading dataset and add destinations to each user
@@ -121,8 +153,8 @@ public class User implements Cloneable {
             currentLine = reader.readLine();
         }
 
-        for (int i = 0; i < templist.size() - 1; ++i) {
-            if (!templist.get(i).getId().equals(templist.get(i + 1).getId())) {
+        for(int i = 0; i < templist.size()-1; ++i){
+            if (!templist.get(i).getId().equals(templist.get(i+1).getId())){
                 userRecords.add(new User(templist.get(i).getId()));
             }
         }
@@ -130,20 +162,22 @@ public class User implements Cloneable {
         BufferedReader reader2 = Files.newBufferedReader(dataset);
         currentLine = reader2.readLine();
 
-        while (currentLine != null) {
+        while (currentLine != null){
             String[] userDetail = currentLine.split("\t");
             String id = userDetail[0];
             String cityname = userDetail[1];
-            if (id.equals(userRecords.get(j).getId())) {
+            if (id.equals(userRecords.get(j).getId())){
                 userRecords.get(j).getUsersDestination().add(new Destination(cityname));
-            } else if (!id.equals(userRecords.get(j).getId()) && j != userRecords.size() - 1) {
+            }
+            else if(!id.equals(userRecords.get(j).getId()) && j != userRecords.size()-1){
                 ++j;
             }
             currentLine = reader2.readLine();
         }
+
+
         return userRecords;
     }
-
 
     //Method saves a List of userProfiles.User into a file with the path filename.
     public static void usersToFile(String filename, List<User> e) {
@@ -178,6 +212,19 @@ public class User implements Cloneable {
     }
 
     @Override
+    public String toString() {
+        return "User{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age='" + age + '\'' +
+                ", gender='" + gender + '\'' +
+                ", usernameID='" + usernameID + '\'' +
+                ", password='" + password + '\'' +
+                ", usersDestination=" + usersDestination +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
@@ -190,6 +237,7 @@ public class User implements Cloneable {
 
         return Objects.hash(usernameID);
     }
+
 
 
 }
