@@ -3,15 +3,13 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 /*
   Main Application. This class handles navigation and user interface.
 */
 
 public class Main extends Application {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         launch(args);
     }
 
@@ -19,6 +17,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         Scene scene = new Scene(new AnchorPane());
 
+        //Creates an instance of LoginManager to load the application
         LoginManager loginManager = new LoginManager(scene);
         loginManager.showFrontPage();
 

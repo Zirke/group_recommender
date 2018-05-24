@@ -4,28 +4,22 @@ import destination.Destination;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.controlsfx.control.textfield.TextFields;
 import recommender.Recommender;
 import userProfiles.Group;
 import userProfiles.User;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
 
-public class ProfilePageController extends GeneralController implements Initializable {
+public class ProfilePageController extends GeneralController {
     private User loggedInUser;
     private Parent parent;
 
@@ -54,24 +48,9 @@ public class ProfilePageController extends GeneralController implements Initiali
     @FXML
     private Button logoutButton;
     @FXML
-    private TextField searchField;
-    @FXML
     private VBox groupVbox;
 
     public void initialize() {
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        List<String> dest = new ArrayList<String>();
-        try {
-            dest = Destination.listDestNames();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String[] options = dest.toArray(new String[0]);
-
-        TextFields.bindAutoCompletion(searchField, options);
     }
 
     //Gets data from the passed user and sets the correct label text
@@ -96,7 +75,9 @@ public class ProfilePageController extends GeneralController implements Initiali
             }
         } else {
             listOfRecommendedDestinations = Destination.mostPopularDestinations();
-            recLabel.setText("We have no detected check-ins on your Profile and therefore\n" + "no valid data to recommend from.\n\n" + "We have instead given you the most popular destinations");
+            recLabel.setText("We have no detected check-ins on your Profile and therefore\n"
+                    + "no valid data to recommend from.\n\n"
+                    + "We have instead given you the most popular destinations");
         }
         if (listOfRecommendedDestinations.size() > 0) {
             recButton1.setText(listOfRecommendedDestinations.get(0).getDestinationName());
@@ -118,7 +99,7 @@ public class ProfilePageController extends GeneralController implements Initiali
         }
     }
 
-    public void showSelectedRecommendation(ActionEvent event) {
+    public void showClickedRecommendation(ActionEvent event) {
         Button chosenRecBtn = (Button) event.getSource();
         String recID = chosenRecBtn.getText();
         try {

@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -20,10 +19,6 @@ import java.io.PrintWriter;
 
 public class ProfileCreationPageController extends GeneralController {
     @FXML
-    private AnchorPane rootPane;
-
-    //Controls for User Creation
-    @FXML
     private TextField firstNameField;
     @FXML
     private TextField lastNameField;
@@ -31,11 +26,13 @@ public class ProfileCreationPageController extends GeneralController {
     private ChoiceBox genderBox;
     //Creating and initializing values for Gender choice box
     private ObservableList<String> genderChoice = FXCollections.observableArrayList("Male", "Female");
+
     @FXML
     private void initialize() {
         genderBox.setItems(genderChoice);
         genderBox.setValue(""); //the string here have to meaning
     }
+
     @FXML
     private TextField ageField;
     @FXML
@@ -44,10 +41,6 @@ public class ProfileCreationPageController extends GeneralController {
     private PasswordField passwordField;
     @FXML
     private Hyperlink frontPageHPL;
-
-    public void gotoFrontPage(final LoginManager loginManager) {
-        frontPageHPL.setOnAction(event -> loginManager.logout());
-    }
 
     public void createUserFromInput(ActionEvent event) {
         //Checking for input
@@ -108,6 +101,10 @@ public class ProfileCreationPageController extends GeneralController {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("User Agreement");
         stage.showAndWait();
+    }
+
+    void gotoFrontPage(final LoginManager loginManager) {
+        frontPageHPL.setOnAction(event -> loginManager.logout());
     }
 }
 

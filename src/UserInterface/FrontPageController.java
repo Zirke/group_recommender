@@ -13,6 +13,7 @@ import java.io.IOException;
 import static userProfiles.User.listOfCreatedUsers;
 
 public class FrontPageController {
+
     @FXML
     private AnchorPane rootPane;
     @FXML
@@ -23,11 +24,24 @@ public class FrontPageController {
     private Button loginButton;
     @FXML
     private Button userCreationButton;
+    @FXML
+    private Button allDestinationsButton;
 
     public void initialize() {
     }
 
+    /*
+     * This method basically handles the mechanic of switching to other scenes from the Front Page.
+     * the instance of LoginManager is passed from LoginManager in the "showFrontPage" method.
+     */
     void initManager(final LoginManager loginManager) {
+        //Handles action for switching to Profile Creation Page
+        userCreationButton.setOnAction(event -> loginManager.showProfileCreationPage());
+
+        //Handles action for switching to All Destinations Page
+        allDestinationsButton.setOnAction(event -> loginManager.showAllDestinationsPage());
+
+        //Handles the action for switching to Profile Page
         loginButton.setOnAction(event -> {
             User loggedInUser = userLoginCheck();
             if (loggedInUser != null) {
@@ -50,10 +64,6 @@ public class FrontPageController {
             e.printStackTrace();
         }
         return loggedInUser;
-    }
-
-    public void pressCreateNewProfile(final LoginManager loginManager) {
-        userCreationButton.setOnAction(event -> loginManager.userCreation());
     }
 
     public void pressAllDestinations() {

@@ -19,10 +19,6 @@ public class LoginManager {
         showProfilePage(loggedInUser);
     }
 
-    void userCreation() {
-        showProfileCreationPage();
-    }
-
     void logout() {
         showFrontPage();
     }
@@ -50,10 +46,23 @@ public class LoginManager {
         }
     }
 
-    public void showProfileCreationPage() {
+    void showProfileCreationPage() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfileCreationPage.fxml"));
             scene.setRoot(loader.load());
+            ProfileCreationPageController controller = loader.getController();
+            controller.gotoFrontPage(this);
+        } catch (IOException ex) {
+            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    void showAllDestinationsPage() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AllDestinationsPage.fxml"));
+            scene.setRoot(loader.load());
+            AllDestinationsPageController controller = loader.getController();
+            controller.gotoFrontPage(this);
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }

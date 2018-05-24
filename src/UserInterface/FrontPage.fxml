@@ -84,9 +84,8 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Button>
-                <Button fx:id="AllDestinationsButton" maxWidth="250.0" mnemonicParsing="false"
-                        onAction="#pressAllDestinations" style="-fx-background-color: orange;" text="All Destinations"
-                        textFill="WHITE">
+                <Button fx:id="allDestinationsButton" maxWidth="250.0" mnemonicParsing="false"
+                        style="-fx-background-color: orange;" text="All Destinations" textFill="WHITE">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>

@@ -93,9 +93,6 @@
                 </VBox>
             </children>
         </AnchorPane>
-        <Text layoutX="1145.0" layoutY="822.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              text="SEARCH FIELD FOR DESTINATIONS"/>
-        <TextField fx:id="searchField" layoutX="1040.0" layoutY="835.0" prefHeight="27.0" prefWidth="417.0"/>
         <VBox alignment="CENTER" layoutX="389.0" layoutY="37.0" nodeOrientation="LEFT_TO_RIGHT" opacity="0.65"
               prefHeight="740.0" prefWidth="495.0" spacing="30.0" style="-fx-background-color: white;"
               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="0.0">
@@ -112,7 +109,7 @@
                                 <Image url="@../ImageView/Pictures/com.chortorlab.fakeloc.png"/>
                             </image>
                         </ImageView>
-                        <Button fx:id="recButton1" mnemonicParsing="false" onAction="#showSelectedRecommendation"
+                        <Button fx:id="recButton1" mnemonicParsing="false" onAction="#showClickedRecommendation"
                                 prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: red;" text="Button"
                                 textFill="WHITE">
                             <font>
@@ -128,7 +125,7 @@
                                 <Image url="@../ImageView/Pictures/com.chortorlab.fakeloc.png"/>
                             </image>
                         </ImageView>
-                        <Button fx:id="recButton2" mnemonicParsing="false" onAction="#showSelectedRecommendation"
+                        <Button fx:id="recButton2" mnemonicParsing="false" onAction="#showClickedRecommendation"
                                 prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: red;" text="Button"
                                 textFill="WHITE">
                             <font>
@@ -144,7 +141,7 @@
                                 <Image url="@../ImageView/Pictures/com.chortorlab.fakeloc.png"/>
                             </image>
                         </ImageView>
-                        <Button fx:id="recButton3" mnemonicParsing="false" onAction="#showSelectedRecommendation"
+                        <Button fx:id="recButton3" mnemonicParsing="false" onAction="#showClickedRecommendation"
                                 prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: red;" text="Button"
                                 textFill="WHITE">
                             <font>
@@ -160,7 +157,7 @@
                                 <Image url="@../ImageView/Pictures/com.chortorlab.fakeloc.png"/>
                             </image>
                         </ImageView>
-                        <Button fx:id="recButton4" mnemonicParsing="false" onAction="#showSelectedRecommendation"
+                        <Button fx:id="recButton4" mnemonicParsing="false" onAction="#showClickedRecommendation"
                                 prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: red;" text="Button"
                                 textFill="WHITE">
                             <font>
@@ -176,7 +173,7 @@
                                 <Image url="@../ImageView/Pictures/com.chortorlab.fakeloc.png"/>
                             </image>
                         </ImageView>
-                        <Button fx:id="recButton5" mnemonicParsing="false" onAction="#showSelectedRecommendation"
+                        <Button fx:id="recButton5" mnemonicParsing="false" onAction="#showClickedRecommendation"
                                 prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: red;" text="Button"
                                 textFill="WHITE">
                             <font>
@@ -192,7 +189,7 @@
                                 <Image url="@../ImageView/Pictures/com.chortorlab.fakeloc.png"/>
                             </image>
                         </ImageView>
-                        <Button fx:id="recButton6" mnemonicParsing="false" onAction="#showSelectedRecommendation"
+                        <Button fx:id="recButton6" mnemonicParsing="false" onAction="#showClickedRecommendation"
                                 prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: red;" text="Button"
                                 textFill="WHITE">
                             <font>

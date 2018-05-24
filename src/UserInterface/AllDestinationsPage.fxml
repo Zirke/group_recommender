@@ -46,7 +46,8 @@
       </MenuButton>
       <VBox prefHeight="1030.0" prefWidth="250.0" style="-fx-background-color: #303030;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="350.0">
          <children>
-            <Button fx:id="HomeButton" maxWidth="250.0" mnemonicParsing="false" onAction="#pressHomeButton" prefHeight="100.0" style="-fx-background-color: #202020;" text="Go Back" textFill="WHITE">
+            <Button fx:id="HomeButton" maxWidth="250.0" mnemonicParsing="false" prefHeight="100.0"
+                    style="-fx-background-color: #202020;" text="Go Back" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font>
