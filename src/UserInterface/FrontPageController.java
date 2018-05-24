@@ -1,105 +1,50 @@
 package UserInterface;
 
-import destination.Destination;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import userProfiles.User;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
-public class FrontPageController extends GeneralController {
+import static userProfiles.User.listOfCreatedUsers;
+
+public class FrontPageController {
+    //
 
     @FXML
-    private AnchorPane anchorPane;
-
-    @FXML
-    private Hyperlink CreateProfileHyperlink;
-    @FXML
-    private Hyperlink SignInHyperlink;
-    @FXML
-    private MenuButton ProfileMenuButton;
-    @FXML
-    private Button NextSceneButton;
-
-    //Left side Vbox buttons (destinations)
-    @FXML
-    private Button AllDestinationsButton;
-    @FXML
-    private Button button1;
-    @FXML
-    private Button button2;
-    @FXML
-    private Button button3;
-    @FXML
-    private Button button4;
-    @FXML
-    private Button button5;
-    @FXML
-    private Button button6;
-
-    //Sign In Hbox
+    private AnchorPane rootPane;
     @FXML
     private TextField UsernameField;
     @FXML
     private PasswordField PasswordField;
     @FXML
-    private Button LogInButton;
+    private Button loginButton;
 
-    public static ArrayList<User> listOfCreatedUsers() throws IOException {
-        ArrayList<User> listOfUsers = new ArrayList<>();
-
-        FileReader fr = new FileReader("src/userData.txt");
-        BufferedReader bfr = new BufferedReader(fr);
-        String line;
-
-        int totalLine = Destination.linesInFile("src/userData.txt"); //Bruger linesInFile metoden fra Destination class
-
-        for (int i = 0; i < totalLine; i++) {
-            line = bfr.readLine();
-            String[] strings = line.split("\\t", 6);
-            User temp = new User();
-
-            temp.setFirstName(strings[0]);
-            temp.setLastName(strings[1]);
-            temp.setGender(strings[2]);
-            temp.setAge(strings[3]);
-            temp.setUsernameID(strings[4]);
-            temp.setPassword(strings[5]);
-            /*
-            System.out.println("First Name: " + temp.getFirstName() +
-                    "   Last Name:" + temp.getLastName() +
-                    "   Gender:" + temp.getGender() +
-                    "   Age:" + temp.getAge() +
-                    "   Username:" + temp.getUsernameID() +
-                    "   Password:" + temp.getPassword());
-            */
-            listOfUsers.add(temp);
-        }
-        try {
-            bfr.close();
-            fr.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return listOfUsers;
+    public void initialize() {
     }
 
-    //Checks if the entered username and password corresponds to any users and returns the selected
-    public User userLoginCheck(ActionEvent event) {
+    void initManager(final LoginManager loginManager) {
+        loginButton.setOnAction(event -> {
+            User loggedInUser = userLoginCheck();
+            if (loggedInUser != null) {
+                loginManager.setLoggedInUser(loggedInUser);
+                loginManager.authenticated(loggedInUser);
+            }
+        });
+    }
+
+    //Checks if the entered username and password corresponds to any created users and returns the selected
+    private User userLoginCheck() {
         User loggedInUser = null;
         //Loop goes through all users in the ArrayList of Users
         try {
             for (User user : listOfCreatedUsers()) {
                 if (user.getUsernameID().equals(UsernameField.getText()) && user.getPassword().equals(PasswordField.getText())) {
                     loggedInUser = user;
-                    loadUserDataToProfilePage("ProfilePage", event, user);
-                } else {
-                    //showAlertBox(Alert.AlertType.ERROR,"Login Error", "Incorrect Username or Password!");
                 }
             }
         } catch (IOException e) {
@@ -107,6 +52,25 @@ public class FrontPageController extends GeneralController {
         }
         return loggedInUser;
     }
+
+    public void pressCreateNewProfile() {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("ProfileCreationPage.fxml"));
+            rootPane.getChildren().setAll(pane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void pressAllDestinations() {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("AllDestinationsPage.fxml"));
+            rootPane.getChildren().setAll(pane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /*
     // Uses the ArrayList of users to make a HashMap with 'Username' as keyword and 'Password' as value
     private static HashMap<String, String> userHashMap() throws IOException {
@@ -131,16 +95,4 @@ public class FrontPageController extends GeneralController {
         }
     }
     */
-
-    public void pressCreateNewProfile(ActionEvent event) throws IOException {
-        LoadUI("ProfileCreationPage", event);
-    }
-
-    public void pressAllDestinations(ActionEvent event) throws IOException {
-        LoadUI("AllDestinationsPage", event);
-    }
-
-    public void pressShowUsers(ActionEvent event) throws IOException {
-        LoadUI("ShowUsersTest", event);
-    }
 }

@@ -5,14 +5,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.controlsfx.control.textfield.TextFields;
+import userProfiles.Group;
 import userProfiles.User;
 
 import java.io.IOException;
@@ -22,65 +25,127 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class ProfilePageController extends GeneralController implements Initializable {
+    User loggedInUser;
+
+    public void setLoggedInUser(User loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
+
+    public User getLoggedInUser() {
+        return loggedInUser;
+    }
+
     @FXML
-    private Button FrontPageButton, showRecommendationsButton, managetravelGroupsButton;
+    //The main pane for the Profile Page
+    private AnchorPane rootPane;
     @FXML
     private Label usernameLabel, firstnameLabel, lastnameLabel, genderLabel, ageLabel;
     @FXML
+    private Button recButton1;
+    @FXML
+    private Button recButton2;
+    @FXML
+    private Button recButton3;
+    @FXML
+    private Button recButton4;
+    @FXML
+    private Button recButton5;
+    @FXML
+    private Button recButton6;
+
+    @FXML
     private TextField searchField;
+    @FXML
+    private Button createNewGroupButton, createGroupButton;
+    @FXML
+    private VBox groupVbox;
 
-    public void initializeLoggedInUserData (User user) {
-        usernameLabel.setText(user.getUsernameID());
-        firstnameLabel.setText(user.getFirstName());
-        lastnameLabel.setText(user.getLastName());
-        genderLabel.setText(user.getGender());
-        ageLabel.setText(user.getAge());
+    public void initialize() {
     }
 
-    @FXML
-    public void pressFrontPageButton (ActionEvent event) throws IOException {
-        LoadUI("FrontPage", event);
+    //TODO make .this
+    void initializeLoggedInUserData(final LoginManager loginManager, User loggedInUser) {
+        usernameLabel.setText(loggedInUser.getUsernameID());
+        firstnameLabel.setText(loggedInUser.getFirstName());
+        lastnameLabel.setText(loggedInUser.getLastName());
+        genderLabel.setText(loggedInUser.getGender());
+        ageLabel.setText(loggedInUser.getAge());
     }
 
-    @FXML
-    public void pressManageTravelGroups(ActionEvent event) {
-        LoadUI("GroupPage", event);
+    //TODO GET THE REAL RECOMMENDATIONS
+    void initializeLoggedInUserRecommendations(User loggedInUser) {
+        recButton1.setText("Copenhagen");
+        recButton2.setText("Berlin");
+        recButton3.setText("Jacksonville");
+        recButton4.setText("Aguascalientes");
+        recButton5.setText("Austin");
+        recButton6.setText("Copenhagen");
+    }
+
+    public void showSelectedRecommendation(ActionEvent event) {
+        Button chosenRecBtn = (Button) event.getSource();
+        String recID = chosenRecBtn.getText();
+        try {
+            ArrayList<Destination> listOfDestinations = Destination.listOfDestination();
+            for (Destination temp : listOfDestinations) {
+                if (temp.getDestinationName().equals(recID)) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("DestinationInformation.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("DestinationInformation.fxml"));
+                    DestinationInformationController controller = loader.getController();
+                    controller.initializeChosenRecommendation(temp);
+                    //System.out.println(foo.toString());
+
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.initModality(Modality.APPLICATION_MODAL);
+                    stage.setTitle("Recommended Destination");
+                    stage.showAndWait();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb){
+    public void initialize(URL url, ResourceBundle rb) {
         List<String> dest = new ArrayList<String>();
         try {
             dest = Destination.listDestNames();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         String[] options = dest.toArray(new String[0]);
 
         TextFields.bindAutoCompletion(searchField, options);
     }
 
     @FXML
-    public void pressMageTravelGroupsButton(String UI, ActionEvent event, User user) {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(UI + ".fxml"));
-        Parent root = null;
+    public void openGroupCreation() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("GroupCreationPage.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Group Creation");
+        stage.showAndWait();
+    }
+
+    // Goes through all the groups and creates a label with each group ID
+    void showGroupsForLoggedInUser() {
         try {
-            root = loader.load();
+            ArrayList<Group> listOfGroups = Group.listOfCreatedGroups();
+            for (Group group : listOfGroups) {
+                for (User user : group.getUsersInGroup()) {
+                    if (loggedInUser.getUsernameID().equals(user.getUsernameID())) {
+                        Label foo = new Label();
+                        foo.setText(group.getGroupID());
+                        groupVbox.getChildren().add(foo);
+                    }
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        GroupPageController controller = loader.getController();
-        //Makes call to method in ProfilePageController to show user data from logged in user in objects
-        //controller.initialize(user);
-
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        Scene scene = new Scene(root, 1600, 900);
-        stage.setScene(scene);
-        stage.show();
-
     }
 
 }

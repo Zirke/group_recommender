@@ -26,6 +26,7 @@ public class Destination implements Cloneable {
     private ArrayList<Venue> venues = new ArrayList<>();
     private ArrayList<Activity> activities = new ArrayList<>();
 
+
     public String getDestinationName() {
         return destinationName;
     }
@@ -50,7 +51,7 @@ public class Destination implements Cloneable {
         this.longitude = longitude;
     }
 
-    private String getCountryName() {
+    public String getCountryName() {
         return countryName;
     }
 
@@ -58,7 +59,7 @@ public class Destination implements Cloneable {
         this.countryName = countryName;
     }
 
-    private String getCityType() {
+    public String getCityType() {
         return cityType;
     }
 
@@ -204,6 +205,15 @@ public class Destination implements Cloneable {
                 System.out.println("Unable to read file");
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Destination{" +
+                "destinationName='" + destinationName + '\'' +
+                ", countryName='" + countryName + '\'' +
+                ", cityType='" + cityType + '\'' +
+                '}';
     }
 
     @Override
