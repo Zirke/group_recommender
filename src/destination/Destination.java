@@ -16,7 +16,6 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Objects;
 
-
 public class Destination implements Cloneable {
     private String destinationName;
     private double lattitude;
@@ -25,7 +24,6 @@ public class Destination implements Cloneable {
     private String cityType;
     private ArrayList<Venue> venues = new ArrayList<>();
     private ArrayList<Activity> activities = new ArrayList<>();
-
 
     public String getDestinationName() {
         return destinationName;
@@ -103,7 +101,6 @@ public class Destination implements Cloneable {
         BufferedReader bf = new BufferedReader(fr);
         int totalLine = linesInFile("src/destination/cities.txt");
 
-
         for (int i = 0; i < totalLine; i++) {
             line = bf.readLine();
             String[] strings = line.split("\\t", 8);
@@ -132,22 +129,42 @@ public class Destination implements Cloneable {
                 fileDestination.add(temp);
             }
         }
-
         try {
             bf.close();
             fr.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return fileDestination;
+    }
+
+    //OBS! Absolute path
+    public static ArrayList<Destination> mostPopularDestinations() {
+        Path inpath = Paths.get("src\\destination\\mostpopular.txt");
+        ArrayList<Destination> destList = new ArrayList<>();
+        int j = 0;
+
+        try (BufferedReader reader = new BufferedReader(Files.newBufferedReader(inpath))) {
+
+            String currentLine = null;
+
+            while ((currentLine = reader.readLine()) != null && j <= 6) {
+                String[] tempArr = currentLine.split("\t");
+                String first = tempArr[0];
+                ++j;
+                destList.add(new Destination(first));
+            }
+        } catch (IOException e) {
+            System.out.println("Unable to read file");
+        }
+        return destList;
     }
 
     public static List<String> listDestNames() throws IOException {
         ArrayList<Destination> temp = listOfDestination();
         List<String> destNames = new ArrayList<String>();
 
-        for(Destination destination : temp){
+        for (Destination destination : temp) {
             destNames.add(destination.getDestinationName());
         }
         return destNames;
@@ -171,19 +188,18 @@ public class Destination implements Cloneable {
                 "   Country :" + this.getCountryName() + "   City type :" + this.getCityType());
     }
 
-    public String destinationNameToFilePath(){
-        return "src/destination/Activities/Destinations/"+getDestinationName()+".txt";
+    private String destinationNameToFilePath() {
+        return "src/destination/Activities/Destinations/" + getDestinationName() + ".txt";
     }
 
-    public void fillActivities(){
+    public void fillActivities() {
         File filepath = new File(destinationNameToFilePath());
-        if(filepath.exists()){
+        if (filepath.exists()) {
             Path inpath = Paths.get(destinationNameToFilePath());
 
             try (BufferedReader reader = new BufferedReader(Files.newBufferedReader(inpath))) {
                 String currentLine;
-                while((currentLine = reader.readLine())!=null)
-                {
+                while ((currentLine = reader.readLine()) != null) {
                     String[] temp = currentLine.split(":");
                     String type = temp[0];
                     String name = temp[1];
@@ -198,10 +214,11 @@ public class Destination implements Cloneable {
                         case "Sightseeing":
                             activities.add(new Sightseeing(name, location));
                             break;
-                            default: throw new InputMismatchException();
+                        default:
+                            throw new InputMismatchException();
                     }
                 }
-            } catch (IOException e){
+            } catch (IOException e) {
                 System.out.println("Unable to read file");
             }
         }

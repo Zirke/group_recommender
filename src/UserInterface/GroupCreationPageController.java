@@ -28,8 +28,6 @@ public class GroupCreationPageController extends GeneralController implements In
     @FXML
     private ListView addedUsersList;
     @FXML
-    private Label usernameLabel;
-    @FXML
     private Button createGroupButton, cancelButton;
 
     //Makes auto filling search bar for usernames

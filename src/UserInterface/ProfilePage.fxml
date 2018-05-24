@@ -11,14 +11,14 @@
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.ProfilePageController">
     <children>
         <ImageView fitHeight="945.0" fitWidth="1533.0" layoutX="67.0" layoutY="2.0" pickOnBounds="true"
-                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="0.0"
-                   AnchorPane.topAnchor="0.0">
+                   style="-fx-background-color: red;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="350.0"
+                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <image>
                 <Image url="@../ImageView/Pictures/travel-2650303_960_720.jpg"/>
             </image>
         </ImageView>
         <AnchorPane layoutX="33.0" layoutY="47.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0"
-                    prefWidth="350.0" style="-fx-background-color: green;" AnchorPane.bottomAnchor="0.0"
+                    prefWidth="350.0" style="-fx-background-color: darkred;" AnchorPane.bottomAnchor="0.0"
                     AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <HBox alignment="CENTER" prefHeight="366.0" prefWidth="350.0" AnchorPane.leftAnchor="0.0"
@@ -50,17 +50,17 @@
                     </children>
                 </HBox>
                 <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="450.0"
-                      prefWidth="350.0" spacing="25.0" style="-fx-background-color: green;"
+                      prefWidth="350.0" spacing="25.0" style="-fx-background-color: darkred;"
                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
                     <children>
                         <Button fx:id="createGroupButton" mnemonicParsing="false" onAction="#openGroupCreation"
-                                style="-fx-background-color: green;" text="Create New Group" textFill="WHITE">
+                                style="-fx-background-color: darkred;" text="Create New Group" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0"/>
                             </font>
                         </Button>
-                        <Button mnemonicParsing="false" style="-fx-background-color: green;" text="Manage Travel Groups"
-                                textFill="WHITE">
+                        <Button mnemonicParsing="false" style="-fx-background-color: darkred;"
+                                text="Manage Travel Groups" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0"/>
                             </font>
@@ -75,24 +75,30 @@
                                         <ColorAdjust brightness="1.0"/>
                                     </effect>
                                 </ImageView>
-                                <Button mnemonicParsing="false" style="-fx-background-color: green;" text="Edit Profile"
-                                        textFill="WHITE">
+                                <Button mnemonicParsing="false" style="-fx-background-color: darkred;"
+                                        text="Edit Profile" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="18.0"/>
                                     </font>
                                 </Button>
                             </children>
                         </HBox>
+                        <Button fx:id="logoutButton" mnemonicParsing="false" style="-fx-background-color: darkred;"
+                                text="Log out" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Button>
                     </children>
                 </VBox>
             </children>
         </AnchorPane>
-        <Text layoutX="1154.0" layoutY="778.0" strokeType="OUTSIDE" strokeWidth="0.0"
+        <Text layoutX="1145.0" layoutY="822.0" strokeType="OUTSIDE" strokeWidth="0.0"
               text="SEARCH FIELD FOR DESTINATIONS"/>
-        <TextField fx:id="searchField" layoutX="1039.0" layoutY="788.0" prefHeight="27.0" prefWidth="417.0"/>
+        <TextField fx:id="searchField" layoutX="1040.0" layoutY="835.0" prefHeight="27.0" prefWidth="417.0"/>
         <VBox alignment="CENTER" layoutX="389.0" layoutY="37.0" nodeOrientation="LEFT_TO_RIGHT" opacity="0.65"
               prefHeight="740.0" prefWidth="495.0" spacing="30.0" style="-fx-background-color: white;"
-              AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="30.0">
+              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="0.0">
             <children>
                 <Label text="Your Travel Recommendations">
                     <font>
@@ -107,7 +113,7 @@
                             </image>
                         </ImageView>
                         <Button fx:id="recButton1" mnemonicParsing="false" onAction="#showSelectedRecommendation"
-                                prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: green;" text="Button"
+                                prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: red;" text="Button"
                                 textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0"/>
@@ -123,7 +129,7 @@
                             </image>
                         </ImageView>
                         <Button fx:id="recButton2" mnemonicParsing="false" onAction="#showSelectedRecommendation"
-                                prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: green;" text="Button"
+                                prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: red;" text="Button"
                                 textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0"/>
@@ -139,7 +145,7 @@
                             </image>
                         </ImageView>
                         <Button fx:id="recButton3" mnemonicParsing="false" onAction="#showSelectedRecommendation"
-                                prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: green;" text="Button"
+                                prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: red;" text="Button"
                                 textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0"/>
@@ -155,7 +161,7 @@
                             </image>
                         </ImageView>
                         <Button fx:id="recButton4" mnemonicParsing="false" onAction="#showSelectedRecommendation"
-                                prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: green;" text="Button"
+                                prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: red;" text="Button"
                                 textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0"/>
@@ -171,7 +177,7 @@
                             </image>
                         </ImageView>
                         <Button fx:id="recButton5" mnemonicParsing="false" onAction="#showSelectedRecommendation"
-                                prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: green;" text="Button"
+                                prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: red;" text="Button"
                                 textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0"/>
@@ -187,7 +193,7 @@
                             </image>
                         </ImageView>
                         <Button fx:id="recButton6" mnemonicParsing="false" onAction="#showSelectedRecommendation"
-                                prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: green;" text="Button"
+                                prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: red;" text="Button"
                                 textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0"/>
@@ -204,7 +210,7 @@
             </padding>
         </VBox>
         <VBox alignment="CENTER" layoutX="991.0" layoutY="30.0" opacity="0.65" prefHeight="374.0" prefWidth="512.0"
-              style="-fx-background-color: white;">
+              style="-fx-background-color: white;" AnchorPane.topAnchor="0.0">
             <children>
                 <Label text="Basic Details">
                     <font>
@@ -272,5 +278,10 @@
                 <Insets top="20.0"/>
             </opaqueInsets>
         </VBox>
+        <Label fx:id="recLabel" layoutX="990.0" layoutY="403.0" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="18.0"/>
+            </font>
+        </Label>
     </children>
 </AnchorPane>

@@ -14,9 +14,13 @@ public class DestinationInformationController {
     @FXML
     private Button closeButton;
     @FXML
-    private Label destinationName, countryName, cityType;
+    private Label destinationName;
+    @FXML
+    private Label countryName;
+    @FXML
+    private Label cityType;
 
-    void initializeChosenRecommendation(Destination chosenRecommendation) {
+    public void initializeChosenRecommendation(Destination chosenRecommendation) {
         destinationName.setText(chosenRecommendation.getDestinationName());
         countryName.setText(chosenRecommendation.getCountryName());
         cityType.setText(chosenRecommendation.getCityType());

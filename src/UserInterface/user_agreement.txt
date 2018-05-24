@@ -1,0 +1,30 @@
+This application is a university project made by group SW17A400b at Aalborg University, Denmark 2018.
+The purpose of the program is to introduce, the students behind the program, to programming and problem-solving.
+It's therefor not meant as a serious application for finding a vacations destination for the user, therefore we,
+the group behind the program, DO NOT take any responsibility if any data or information about the user is stolen
+or misused or if the potential destination is not desirable for the user. We recommend that the user use a username
+and password which the user does not use on others website or logins.
+
+0 definitions
+"students" "the group" and "we" refers to university group SW17A400b at Aalborg University Denmark
+
+"program" "application" refers to the platform in which the service is provided.  
+
+1. The scope of Our Service
+This program is meant to be a university project and should therefore not be tanking seriously when you are looking
+for a vacation destination.
+
+We do not provide any form of customs service for this application.
+
+This program is only meant to help you find your vacations destination. We do not help with booking of hotels or
+transportation.
+
+2. Privacy Policy
+The Service collects personally identifiable information with your specific knowledge and consent.
+These include user id and passwords.
+
+The program may collect information about the user's internet history.
+
+3. Security Policy
+We do not guarantee any security for your user id or password. As to that, we recommend that the user chose something
+that he/she do not use daily.

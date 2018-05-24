@@ -4,10 +4,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -15,6 +19,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class ProfileCreationPageController extends GeneralController {
+    @FXML
+    private AnchorPane rootPane;
 
     //Controls for User Creation
     @FXML
@@ -36,9 +42,11 @@ public class ProfileCreationPageController extends GeneralController {
     private TextField usernameField;
     @FXML
     private PasswordField passwordField;
+    @FXML
+    private Hyperlink frontPageHPL;
 
-    public void pressGoBackButton(ActionEvent event) throws IOException {
-        LoadUI("FrontPage", event);
+    public void gotoFrontPage(final LoginManager loginManager) {
+        frontPageHPL.setOnAction(event -> loginManager.logout());
     }
 
     public void createUserFromInput(ActionEvent event) {
@@ -77,6 +85,29 @@ public class ProfileCreationPageController extends GeneralController {
                 ioe.printStackTrace();
             }
         }
+    }
+
+    //Opens the User Agreement pop-up window as a new stage
+    @FXML
+    public void pressUserAgreement() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserAgreement.fxml"));
+        Parent root = null;
+        try {
+
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (root != null) {
+            UserAgreementController controller = loader.getController();
+            controller.readUserAgreement();
+        }
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setTitle("User Agreement");
+        stage.showAndWait();
     }
 }
 

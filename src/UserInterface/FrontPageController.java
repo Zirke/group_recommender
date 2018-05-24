@@ -13,8 +13,6 @@ import java.io.IOException;
 import static userProfiles.User.listOfCreatedUsers;
 
 public class FrontPageController {
-    //
-
     @FXML
     private AnchorPane rootPane;
     @FXML
@@ -23,6 +21,8 @@ public class FrontPageController {
     private PasswordField PasswordField;
     @FXML
     private Button loginButton;
+    @FXML
+    private Button userCreationButton;
 
     public void initialize() {
     }
@@ -31,7 +31,6 @@ public class FrontPageController {
         loginButton.setOnAction(event -> {
             User loggedInUser = userLoginCheck();
             if (loggedInUser != null) {
-                loginManager.setLoggedInUser(loggedInUser);
                 loginManager.authenticated(loggedInUser);
             }
         });
@@ -40,10 +39,10 @@ public class FrontPageController {
     //Checks if the entered username and password corresponds to any created users and returns the selected
     private User userLoginCheck() {
         User loggedInUser = null;
-        //Loop goes through all users in the ArrayList of Users
         try {
             for (User user : listOfCreatedUsers()) {
                 if (user.getUsernameID().equals(UsernameField.getText()) && user.getPassword().equals(PasswordField.getText())) {
+                    //If correspondence is found the user is set as the returned user
                     loggedInUser = user;
                 }
             }
@@ -53,13 +52,8 @@ public class FrontPageController {
         return loggedInUser;
     }
 
-    public void pressCreateNewProfile() {
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("ProfileCreationPage.fxml"));
-            rootPane.getChildren().setAll(pane);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void pressCreateNewProfile(final LoginManager loginManager) {
+        userCreationButton.setOnAction(event -> loginManager.userCreation());
     }
 
     public void pressAllDestinations() {

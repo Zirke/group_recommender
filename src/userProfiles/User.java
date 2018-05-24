@@ -83,21 +83,6 @@ public class User implements Cloneable {
     public String getPassword() {
         return password;
     }
-    /*
-    public User(String id, ArrayList<Destination> usersDestination) {
-        this.usernameID = id;
-        this.usersDestination = usersDestination;
-    }
-
-    public ArrayList<Destination> getUsersDestination() {
-        return usersDestination;
-    }
-
-    public void setUsersDestination(ArrayList<Destination> usersDestination) {
-        this.usersDestination = usersDestination;
-    }
-    */
-
 
     public String getId() {
         return usernameID;
