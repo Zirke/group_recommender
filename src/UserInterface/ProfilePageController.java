@@ -15,11 +15,16 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.controlsfx.control.textfield.TextFields;
+import recommender.Recommender;
 import userProfiles.Group;
 import userProfiles.User;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -72,14 +77,60 @@ public class ProfilePageController extends GeneralController implements Initiali
         ageLabel.setText(loggedInUser.getAge());
     }
 
-    //TODO GET THE REAL RECOMMENDATIONS
+    private ArrayList<Destination> mostPopularDestinations() {
+        Path inpath = Paths.get("src\\destination\\mostpopular.txt");
+        ArrayList<Destination> destList = new ArrayList<>();
+        int j = 0;
+
+        try (BufferedReader reader = new BufferedReader(Files.newBufferedReader(inpath))) {
+
+            String currentLine = null;
+
+            while ((currentLine = reader.readLine()) != null && j <= 6) {
+                String[] tempArr = currentLine.split("\t");
+                String first = tempArr[0];
+                int second = Integer.parseInt(tempArr[1]);
+                ++j;
+                destList.add(new Destination(first));
+            }
+        } catch (IOException e) {
+            System.out.println("Unable to read file");
+        }
+        System.out.println(destList.size());
+        return destList;
+    }
+
     void initializeLoggedInUserRecommendations(User loggedInUser) {
-        recButton1.setText("Copenhagen");
-        recButton2.setText("Berlin");
-        recButton3.setText("Jacksonville");
-        recButton4.setText("Aguascalientes");
-        recButton5.setText("Austin");
-        recButton6.setText("Copenhagen");
+        ArrayList<Destination> foo = null;
+        if (!loggedInUser.getUsersDestination().isEmpty()) {
+            try {
+                Recommender hah = new Recommender(loggedInUser, User.listDataset(), 6);
+                foo = hah.recommendationDest();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            foo = mostPopularDestinations();
+        }
+        if (foo.size() > 0) {
+            recButton1.setText(foo.get(0).getDestinationName());
+        }
+        if (foo.size() > 1) {
+            recButton2.setText(foo.get(1).getDestinationName());
+        }
+        if (foo.size() > 2) {
+            recButton3.setText(foo.get(2).getDestinationName());
+        }
+        if (foo.size() > 3) {
+            recButton4.setText(foo.get(3).getDestinationName());
+        }
+        if (foo.size() > 4) {
+            recButton5.setText(foo.get(4).getDestinationName());
+        }
+        if (foo.size() > 5) {
+            recButton6.setText(foo.get(5).getDestinationName());
+        }
     }
 
     public void showSelectedRecommendation(ActionEvent event) {

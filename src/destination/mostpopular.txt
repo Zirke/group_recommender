@@ -1,0 +1,412 @@
+Istanbul	32958
+Kuala Lumpur	11580
+Izmir	10712
+Jakarta	10309
+Tokyo	9097
+Ankara	8759
+Shah Alam	8753
+Mexico City	7645
+Bangkok	7317
+Brooklyn	7127
+Moscow	7097
+Sao Paulo	7078
+New York	6292
+Santiago	5755
+Nonthaburi	5077
+London	4703
+Bandung	4661
+Antalya	4618
+Quezon City	4560
+Yokohama	4544
+Bursa	4454
+Kawasaki	4396
+Los Angeles	4337
+Singapore	4319
+Kocaeli	4011
+Manila	3927
+Johor Baharu	3684
+Osaka	3683
+Samut Prakan	3427
+Chicago	3335
+Chios	3259
+Washington D.C.	3233
+Paris	3223
+San Francisco	3190
+Sakarya	3187
+Yogyakarta	2999
+Seyhan	2903
+Atlanta	2889
+Saint Petersburg	2874
+Pinang	2866
+Surabaja	2797
+Eskisehir	2758
+Denpasar	2690
+Nagoya	2542
+Melaka	2446
+Amsterdam	2421
+Miami	2365
+Kyoto	2323
+Boston	2271
+Porto Alegre	2247
+Mersin	2210
+Barcelona	2165
+Belem	2088
+Philadelphia	2087
+San Jose	2069
+Madrid	2047
+Newark	1996
+Fortaleza	1972
+Trabzon	1972
+Ipoh	1871
+Pathum Thani	1848
+Seoul	1848
+Curitiba	1843
+Seremban	1801
+Tekirdag	1789
+Belo Horizonte	1704
+Brasilia	1681
+Samsun	1681
+San Diego	1662
+Recife	1649
+Valparaiso	1643
+Manisa	1618
+Medan	1585
+Guadalajara	1566
+Buenos Aires	1565
+Kobe	1563
+Denizli	1553
+Hawalli	1512
+Brussels	1485
+Dubai	1463
+Baltimore	1453
+Milan	1446
+Afyon	1425
+Manaus	1422
+Konya	1418
+Lima	1414
+Canakkale	1412
+Rome	1396
+Seattle	1376
+Berlin	1372
+Aydin	1311
+Balikesir	1306
+Bolu	1304
+Edirne	1298
+Fukuoka	1298
+Minneapolis	1285
+Phoenix	1277
+Aintab	1273
+Austin	1264
+Houston	1257
+Toronto	1254
+Kyiv	1253
+Mugla	1246
+Bogota	1240
+Monterrey	1215
+Kuwait	1193
+Dallas	1187
+Charlotte	1139
+Kayseri	1131
+Hong Kong	1128
+Semarang	1114
+Kuantan New Port	1098
+Puebla	1088
+Detroit	1085
+Frankfurt	1072
+Chon Buri	1062
+Macapa	1009
+Natal	1002
+Antwerpen	992
+Milwaukee	986
+Tampa	964
+Alor Setar	955
+Kuching	954
+Sendai	954
+Chiang Mai	953
+San Antonio	952
+Inch`on	923
+Salvador	922
+Utrecht	908
+Indianapolis	903
+Kota Kinabalu	902
+Cuernavaca	886
+Manchester	870
+New Orleans	866
+Sapporo	863
+Queretaro	861
+Florianopolis	858
+Rotterdam	856
+Rio de Janeiro	847
+Oakland	843
+Al-Ahmadi	841
+Nashville	838
+Sydney	824
+St. Louis	822
+Portland	821
+Kota Baharu	818
+Kyrenia	816
+Heredia	812
+Prague	812
+Asuncion	807
+Nicosia	807
+Riga	783
+Ordu	772
+Piraeus	768
+Goiania	764
+Toluca	758
+Kutahya	756
+Sverdlovsk	753
+Gifu	752
+Kuala Terengganu	741
+Cleveland	740
+Merida	739
+Rize	737
+Concepcion	721
+Pittsburgh	717
+Columbus	716
+Budapest	712
+Munich	711
+Venice	697
+Gent	693
+Alajuela	687
+Isparta	680
+Panama	679
+Bruges	678
+Cologne	672
+Joao Pessoa	671
+Phra Nakhon Si Ayutthaya	669
+Santos	668
+Melbourne	659
+Birmingham	654
+Denver	653
+Vienna	651
+Florence	644
+Hiroshima	644
+The Hague	634
+Vancouver	629
+Cincinnati	624
+Kansas City	617
+Montreal	596
+Kazan'	589
+Jeddah	583
+Samut Sakhon	578
+Callao	577
+Minsk	576
+Phuket	576
+Lisbon	574
+Kangar	572
+Stockholm	572
+Raleigh	570
+Haarlem	568
+Hamburg	562
+Giresun	557
+Shanghai	548
+Dublin	544
+Rostov-on-Don	542
+Dusseldorf	541
+Trenton	541
+Nakhon Pathom	537
+Manado	535
+Campo Grande	531
+Honolulu	530
+Veracruz	520
+Shimonoseki	512
+Taipei	506
+Saint Paul	503
+Bologna	502
+Salt Lake City	498
+Helsinki	496
+Antioch	489
+Riyadh	489
+Buffalo	486
+Villahermosa	483
+Ammochostos	470
+Richmond	470
+Mumbai	460
+Valencia	459
+Davao	451
+Arnhem	447
+Edinburgh	445
+Vitoria	443
+Maceio	442
+'s-Hertogenbosch	441
+Copenhagen	441
+Odesa	430
+Sanhurfa	429
+Memphis	428
+Puerto Presidente Stroessner	427
+Beijing	425
+Novosibirsk	420
+Hartford	415
+San Juan	409
+Norfolk	406
+Jacksonville	401
+Perm'	401
+Chester	400
+Khon Kaen	395
+Sao Luis	392
+Providence	389
+Sacramento	388
+Saratov	388
+Leeds	387
+Medellin	387
+Cartago	383
+Cairo	381
+Naha	374
+Palembang	372
+Gor'kiy	371
+Liverpool	371
+Zonguldak	371
+Malatya	370
+Madison	363
+Santo Domingo	361
+Seville	355
+Teresina	355
+Doha	354
+Maastricht	350
+Thessaloniki	349
+Talca	344
+Balikpapan	341
+Pusan	338
+Aguascalientes	334
+Nakhon Ratchasima	333
+Pachuca	333
+Temuco	333
+Warsaw	330
+Harrisburg	328
+Turin	328
+Des Moines	326
+Fawley	326
+Kuybyskev	324
+Ho Chi Minh City	320
+Giza	313
+Glasgow	312
+Dnipropetrovs'k	311
+Krasnodar	311
+Oklahoma City	309
+Stuttgart	309
+Jalapa	307
+Kahramanmaras	307
+Beirut	305
+La Serena	303
+Krasnoyarsk	295
+Pekanbaru	291
+Tel Aviv-Yafo	288
+New Delhi	284
+Antofagasta	283
+Brisbane	282
+Tampico	282
+Rochester	280
+Colombo	279
+Puerto Montt	279
+Voronezh	275
+El Paso	274
+San Luis Potosi	274
+Niteroi	271
+Hasselt	270
+Essen	266
+Morelia	264
+Tanjungkarang-Telukbetung	261
+Caracas	260
+Chang Rai	257
+Cali	254
+Chelyabinsk	254
+Abu Dhabi	252
+Ad Damman	249
+Bangalore	249
+Athens	248
+Kowloon	245
+Lansing	244
+Nairobi	244
+Volgograd	244
+Perth	243
+Auckland	242
+Columbia	241
+Aracaju	234
+Iquique	230
+Sheffield	230
+Tallinn	229
+Oaxaca	227
+Porto	225
+Ottawa	224
+Guayaquil	223
+Tuxtla Gutierrez	223
+Johannesburg	222
+Kharkiv	222
+Bandjermasin	221
+B'abda	219
+Fort-De-France	219
+Udon Thani	214
+Mataram	212
+Bucharest	208
+Calgary	206
+Montevideo	204
+Cape Town	203
+Yaroslavl	201
+Coquimbo	199
+Ceboksary	194
+Amman	191
+Ramla	191
+Baku	186
+Jidd Hafs	186
+Padang	186
+Banda Aceh	184
+Casablanca	183
+Samarinda	183
+San Salvador	182
+Sofia	182
+Tver	182
+Omsk	178
+Vladivostok	178
+Delhi	177
+Hermosillo	174
+Quito	174
+Pontianak	173
+Adelaide	172
+Barranquilla	170
+Tallahassee	169
+Ufa	162
+Manama	160
+Pune	159
+Nueva San Salvador	156
+Ul'yanovsk	156
+Almaty	152
+Campeche	152
+Irkutsk	150
+Donets'k	149
+Izevsk	149
+Sharjah	145
+Tunis	142
+Khabarovsk	141
+L'Ariana	139
+Cordoba	132
+Santarem	132
+Chennai	130
+Boa Vista	129
+Palmas	129
+Al-Muharraq	128
+Colima	126
+Vyatka	125
+Fremantle	123
+Smolensk	122
+Tomsk	122
+Europoort	119
+Kaliningrad	119
+Edmonton	114
+Porto Velho	111
+Ivanovo	109
+Muscat	109
+Accra	93
+Halfway Tree	92
+Yakutsk	87
+Rio Branco	82
+Hyderabad	81
+La Paz	81
+Ar Rifa	79
+Port of Spain	73
+As-Salt	65
+Kingston	65
+San Cristobal	63
+Ajman	61
+Spanish Town	31
+Sitrah	13

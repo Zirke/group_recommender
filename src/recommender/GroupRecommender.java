@@ -37,14 +37,6 @@ public class GroupRecommender {
             e.printStackTrace(); // ændre til noget andet
         }
         for(User i : groupToRecommend.getUsersInGroup()){
-            /*try {
-                Recommender test = new Recommender(i,2);
-                destForGroup.addAll(test.recommendationDest(i,listDataset()));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }*/
-            //dårlig apprach
-
                 Recommender test = new Recommender(i,listofdata,5);
                 ArrayList<Destination> recommendationDest = test.recommendationDest();
                 System.out.println(recommendationDest.size());
