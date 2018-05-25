@@ -89,7 +89,6 @@ public class ProfileCreationPageController extends GeneralController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("UserAgreement.fxml"));
         Parent root = null;
         try {
-
             root = loader.load();
         } catch (IOException e) {
             e.printStackTrace();

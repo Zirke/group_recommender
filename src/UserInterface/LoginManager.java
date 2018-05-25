@@ -48,6 +48,18 @@ public class LoginManager {
         }
     }
 
+    void showManageGroupPage(User loggedInUser) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ManageGroupPage.fxml"));
+            scene.setRoot(loader.load());
+            ManageGroupPageController controller = loader.getController();
+            controller.showGroupsForLoggedInUser(loggedInUser);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     void showProfileCreationPage() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfileCreationPage.fxml"));
@@ -64,6 +76,7 @@ public class LoginManager {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AllDestinationsPage.fxml"));
             scene.setRoot(loader.load());
             AllDestinationsPageController controller = loader.getController();
+            controller.initializeMostPopularDestinations();
             controller.gotoFrontPage(this);
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);

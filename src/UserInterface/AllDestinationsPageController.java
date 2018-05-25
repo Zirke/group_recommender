@@ -1,11 +1,12 @@
 package UserInterface;
 
 import destination.Destination;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
@@ -20,21 +21,21 @@ public class AllDestinationsPageController extends GeneralController implements 
     @FXML
     private TextField searchField;
     @FXML
-    private ImageView Istanbul;
+    private Label mostPopularLabel1;
     @FXML
-    private ImageView KualaLumpur;
+    private Label mostPopularLabel2;
     @FXML
-    private ImageView Izmir;
+    private Label mostPopularLabel3;
     @FXML
-    private ImageView Jakartal;
+    private Label mostPopularLabel4;
     @FXML
-    private ImageView Tokyo;
+    private Label mostPopularLabel5;
     @FXML
-    private ImageView Ankara;
+    private Label mostPopularLabel6;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        List<String> dest = new ArrayList<String>();
+        List<String> dest = new ArrayList<>();
         try {
             dest = Destination.listDestNames();
         } catch (IOException e) {
@@ -57,6 +58,33 @@ public class AllDestinationsPageController extends GeneralController implements 
                     }
                 }
             });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    void initializeMostPopularDestinations() {
+        ArrayList<Destination> listOfMostPopularDestinations = Destination.mostPopularDestinations();
+        mostPopularLabel1.setText(listOfMostPopularDestinations.get(0).getDestinationName());
+        mostPopularLabel2.setText(listOfMostPopularDestinations.get(1).getDestinationName());
+        mostPopularLabel3.setText(listOfMostPopularDestinations.get(2).getDestinationName());
+        mostPopularLabel4.setText(listOfMostPopularDestinations.get(3).getDestinationName());
+        mostPopularLabel5.setText(listOfMostPopularDestinations.get(4).getDestinationName());
+        mostPopularLabel6.setText(listOfMostPopularDestinations.get(5).getDestinationName());
+    }
+
+    //TODO Correct
+    public void showClickedDestination(ActionEvent event) {
+        ProfilePageController controller = new ProfilePageController();
+        Label chosenDestinationLabel = (Label) event.getSource();
+        String labelID = chosenDestinationLabel.getText();
+        try {
+            ArrayList<Destination> listOfDestinations = Destination.listOfDestination();
+            for (Destination temp : listOfDestinations) {
+                if (temp.getDestinationName().equals(labelID)) {
+                    controller.openDestinationInformation(temp);
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

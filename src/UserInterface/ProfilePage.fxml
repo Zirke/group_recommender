@@ -59,8 +59,8 @@
                                 <Font name="System Bold" size="18.0"/>
                             </font>
                         </Button>
-                        <Button mnemonicParsing="false" style="-fx-background-color: darkred;"
-                                text="Manage Travel Groups" textFill="WHITE">
+                        <Button fx:id="manageGroupsButton" mnemonicParsing="false"
+                                style="-fx-background-color: darkred;" text="Manage Travel Groups" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0"/>
                             </font>

@@ -9,12 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import recommender.Recommender;
-import userProfiles.Group;
 import userProfiles.User;
 
 import java.io.IOException;
@@ -47,14 +45,30 @@ public class ProfilePageController extends GeneralController {
     @FXML
     private Button recButton6;
     @FXML
-    private Button logoutButton;
+    private Button manageGroupsButton;
     @FXML
-    private VBox groupVbox;
+    private Button logoutButton;
 
     public ProfilePageController() {
     }
 
     public void initialize() {
+    }
+
+    @FXML
+    public void openGroupCreation() {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("GroupCreationPage.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setTitle("Group Creation");
+        stage.showAndWait();
     }
 
     //Gets data from the passed user and sets the correct label text
@@ -64,6 +78,8 @@ public class ProfilePageController extends GeneralController {
         lastnameLabel.setText(loggedInUser.getLastName());
         genderLabel.setText(loggedInUser.getGender());
         ageLabel.setText(loggedInUser.getAge());
+        //Switches to Manage Group Page
+        manageGroupsButton.setOnAction(event -> loginManager.showManageGroupPage(loggedInUser));
         //Switces to Front Page
         logoutButton.setOnAction(event -> loginManager.logout());
     }
@@ -119,7 +135,7 @@ public class ProfilePageController extends GeneralController {
         }
     }
 
-    public void openDestinationInformation(Destination chosenDest) {
+    void openDestinationInformation(Destination chosenDest) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("DestinationInformation.fxml"));
         try {
             parent = loader.load();
@@ -135,39 +151,5 @@ public class ProfilePageController extends GeneralController {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Recommended Destination");
         stage.showAndWait();
-    }
-
-    @FXML
-    public void openGroupCreation() {
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("GroupCreationPage.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.setTitle("Group Creation");
-        stage.showAndWait();
-    }
-
-    // Goes through all the groups and creates a label with each group ID
-    void showGroupsForLoggedInUser() {
-        try {
-            ArrayList<Group> listOfGroups = Group.listOfCreatedGroups();
-            for (Group group : listOfGroups) {
-                for (User user : group.getUsersInGroup()) {
-                    if (loggedInUser.getUsernameID().equals(user.getUsernameID())) {
-                        Label foo = new Label();
-                        foo.setText(group.getGroupID());
-                        groupVbox.getChildren().add(foo);
-                    }
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
