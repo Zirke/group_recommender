@@ -51,6 +51,9 @@ public class ProfilePageController extends GeneralController {
     @FXML
     private VBox groupVbox;
 
+    public ProfilePageController() {
+    }
+
     public void initialize() {
     }
 
@@ -116,7 +119,7 @@ public class ProfilePageController extends GeneralController {
         }
     }
 
-    private void openDestinationInformation(Destination chosenDest) {
+    public void openDestinationInformation(Destination chosenDest) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("DestinationInformation.fxml"));
         try {
             parent = loader.load();

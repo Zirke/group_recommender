@@ -45,6 +45,23 @@ public class AllDestinationsPageController extends GeneralController implements 
         TextFields.bindAutoCompletion(searchField, options);
     }
 
+    public void showSearchedForDestination() {
+        ProfilePageController controller = new ProfilePageController();
+        try {
+            ArrayList<Destination> listOfDestinations = Destination.listOfDestination();
+            searchField.setOnAction(event -> {
+                for (Destination temp : listOfDestinations) {
+                    String enteredDestination = searchField.getText();
+                    if (temp.getDestinationName().equals(enteredDestination)) {
+                        controller.openDestinationInformation(temp);
+                    }
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     void gotoFrontPage(final LoginManager loginManager) {
         frontPageButton.setOnAction(event -> loginManager.logout());
     }

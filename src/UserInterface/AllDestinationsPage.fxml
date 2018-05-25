@@ -2,11 +2,12 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0"
-            prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="UserInterface.AllDestinationsPageController">
    <children>
        <ImageView fitHeight="300.0" fitWidth="1600.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0"
@@ -19,8 +20,8 @@
              style="-fx-background-color: #505050;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
              <Label alignment="CENTER" contentDisplay="CENTER"
-                    text="Our service offers a variety of destinations from all around the World. Look through them and you might just find the right destination for you!"
-                    textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+                    text="Our service offers a variety of destinations from all around the world. Take a look and you might just find the right destination for you!"
+                    textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
                  <font>
                      <Font name="System Bold" size="18.0"/>
                  </font>
@@ -46,9 +47,11 @@
                </Button>
            </children>
        </VBox>
-       <TextField fx:id="searchField" layoutX="227.0" layoutY="328.0" prefHeight="25.0" prefWidth="302.0"/>
+       <TextField fx:id="searchField" alignment="CENTER" layoutX="238.0" layoutY="330.0"
+                  onAction="#showSearchedForDestination" prefHeight="35.0" prefWidth="302.0"
+                  promptText="Search Destination"/>
        <GridPane hgap="35.0" layoutX="535.0" layoutY="328.0" prefHeight="245.0" prefWidth="463.0" vgap="35.0"
-                 AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="330.0">
+                 AnchorPane.bottomAnchor="105.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="330.0">
            <columnConstraints>
                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES"/>
                <ColumnConstraints hgrow="SOMETIMES"/>
@@ -61,33 +64,34 @@
                                vgrow="SOMETIMES"/>
            </rowConstraints>
            <children>
-               <ImageView fitHeight="215.0" fitWidth="305.0" pickOnBounds="true">
+               <ImageView fx:id="Istanbul" fitHeight="215.0" fitWidth="305.0" pickOnBounds="true">
                    <image>
                        <Image url="@../ImageView/Pictures/istanbul.jpg"/>
                    </image>
                </ImageView>
-               <ImageView fitHeight="215.0" fitWidth="305.0" pickOnBounds="true" GridPane.columnIndex="1">
+               <ImageView fx:id="Izmir" fitHeight="215.0" fitWidth="305.0" pickOnBounds="true" GridPane.columnIndex="1">
                    <image>
                        <Image url="@../ImageView/Pictures/izmir.jpg"/>
                    </image>
                </ImageView>
-               <ImageView fitHeight="215.0" fitWidth="305.0" pickOnBounds="true" GridPane.rowIndex="1">
+               <ImageView fx:id="Jakartal" fitHeight="215.0" fitWidth="305.0" pickOnBounds="true" GridPane.rowIndex="1">
                    <image>
                        <Image url="@../ImageView/Pictures/jakarta.jpg"/>
                    </image>
                </ImageView>
-               <ImageView fitHeight="215.0" fitWidth="305.0" pickOnBounds="true" GridPane.columnIndex="1"
+               <ImageView fx:id="Tokyo" fitHeight="215.0" fitWidth="305.0" pickOnBounds="true" GridPane.columnIndex="1"
                           GridPane.rowIndex="1">
                    <image>
                        <Image url="@../ImageView/Pictures/tokyo.jpg"/>
                    </image>
                </ImageView>
-               <ImageView fitHeight="215.0" fitWidth="305.0" pickOnBounds="true" GridPane.columnIndex="2">
+               <ImageView fx:id="KualaLumpur" fitHeight="215.0" fitWidth="305.0" pickOnBounds="true"
+                          GridPane.columnIndex="2">
                    <image>
                        <Image url="@../ImageView/Pictures/kuala-lumpur.jpg"/>
                    </image>
                </ImageView>
-               <ImageView fitHeight="215.0" fitWidth="305.0" pickOnBounds="true" GridPane.columnIndex="2"
+               <ImageView fx:id="Ankara" fitHeight="215.0" fitWidth="305.0" pickOnBounds="true" GridPane.columnIndex="2"
                           GridPane.rowIndex="1">
                    <image>
                        <Image url="@../ImageView/Pictures/Ankara.jpg"/>
@@ -126,7 +130,7 @@
                    </font>
                </Label>
                <Label alignment="CENTER" opacity="0.48" prefHeight="17.0" prefWidth="305.0"
-                      style="-fx-background-color: black;" text="Tokyo" textFill="WHITE" GridPane.columnIndex="2"
+                      style="-fx-background-color: black;" text="Ankara" textFill="WHITE" GridPane.columnIndex="2"
                       GridPane.rowIndex="1">
                <font>
                    <Font name="System Bold" size="24.0"/>
@@ -134,5 +138,35 @@
                </Label>
          </children>
        </GridPane>
+       <Label layoutX="200.0" layoutY="437.0" prefHeight="108.0" prefWidth="273.0"
+              text="Check out all of our destinations Here!" textAlignment="CENTER" wrapText="true">
+           <font>
+               <Font name="Segoe UI Symbol" size="20.0"/>
+           </font>
+       </Label>
+       <VBox alignment="CENTER" layoutX="239.0" layoutY="580.0" opacity="0.46" prefHeight="215.0" prefWidth="300.0"
+             style="-fx-background-color: black;" AnchorPane.bottomAnchor="105.0">
+           <children>
+               <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="119.0" prefWidth="201.0"
+                      text="These are our most popular destinations" textAlignment="CENTER" textFill="WHITE"
+                      textOverrun="CLIP" wrapText="true">
+                   <font>
+                       <Font name="System Bold" size="18.0"/>
+                   </font>
+               </Label>
+           </children>
+           <padding>
+               <Insets left="50.0" right="50.0"/>
+           </padding>
+       </VBox>
+       <ImageView fitHeight="108.0" fitWidth="97.0" layoutX="311.0" layoutY="365.0" pickOnBounds="true"
+                  preserveRatio="true">
+           <image>
+               <Image url="@../ImageView/Icons/1563372-200.png"/>
+           </image>
+           <effect>
+               <ColorAdjust contrast="-1.0" hue="-0.52" saturation="1.0"/>
+           </effect>
+       </ImageView>
    </children>
 </AnchorPane>
