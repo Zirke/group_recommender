@@ -10,7 +10,7 @@ import userProfiles.User;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static UserInterface.FrontPageController.listOfCreatedUsers;
+import static userProfiles.User.listOfCreatedUsers;
 
 
 public class GroupPageController extends GeneralController {

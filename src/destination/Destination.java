@@ -1,5 +1,6 @@
 package destination;
 
+import CustomExceptions.FileFormatException;
 import destination.Activities.Beach;
 import destination.Activities.Museum;
 import destination.Activities.Sightseeing;
@@ -68,10 +69,6 @@ public class Destination implements Cloneable {
 
     public ArrayList<Venue> getVenues() {
         return venues;
-    }
-
-    public void setVenues(ArrayList<Venue> venues) {
-        this.venues = venues;
     }
 
     public ArrayList<Activity> getActivities() {
@@ -198,7 +195,7 @@ public class Destination implements Cloneable {
                         case "Sightseeing":
                             getActivities().add(new Sightseeing(name, location, typeSpecific));
                             break;
-                            default: throw new InputMismatchException();
+                            default: throw new FileFormatException();
                     }
                 }
             } catch (IOException e){

@@ -12,7 +12,7 @@ class UserTest {
 
     @Test
     void listDatasetTest() throws IOException {
-        ArrayList<User> testList = new ArrayList<>();
+        ArrayList<User> testList;
         testList = User.listDataset();
 
         assertEquals("2",testList.get(0).getUsernameID());
