@@ -31,19 +31,9 @@ public class ProfilePageController extends GeneralController {
     }
 
     @FXML
-    private Label usernameLabel, firstnameLabel, lastnameLabel, genderLabel, ageLabel;
+    private Label usernameLabel, usernameLabel2, firstnameLabel, lastnameLabel, genderLabel, ageLabel;
     @FXML
-    private Button recButton1;
-    @FXML
-    private Button recButton2;
-    @FXML
-    private Button recButton3;
-    @FXML
-    private Button recButton4;
-    @FXML
-    private Button recButton5;
-    @FXML
-    private Button recButton6;
+    private Button recButton1, recButton2, recButton3, recButton4, recButton5, recButton6;
     @FXML
     private Button groupRecommendationsButton;
     @FXML
@@ -74,6 +64,7 @@ public class ProfilePageController extends GeneralController {
     //Gets data from the passed user and sets the correct label text
     void initializeLoggedInUserData(final LoginManager loginManager, User loggedInUser) {
         usernameLabel.setText(loggedInUser.getUsernameID());
+        usernameLabel2.setText(loggedInUser.getUsernameID());
         firstnameLabel.setText(loggedInUser.getFirstName());
         lastnameLabel.setText(loggedInUser.getLastName());
         genderLabel.setText(loggedInUser.getGender());
@@ -86,6 +77,7 @@ public class ProfilePageController extends GeneralController {
 
     void initializeLoggedInUserRecommendations(User loggedInUser) {
         ArrayList<Destination> listOfRecommendedDestinations = null;
+        //Accesses the stored information about the user to recommend from
         if (!loggedInUser.getUsersDestination().isEmpty()) {
             try {
                 Recommender recommender = new Recommender(loggedInUser, User.listDataset(), 6);
@@ -93,6 +85,7 @@ public class ProfilePageController extends GeneralController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            //If a user has no information (cold-start) the most popular destinations will be shown
         } else {
             listOfRecommendedDestinations = Destination.mostPopularDestinations();
             showAlertBox(Alert.AlertType.INFORMATION, "No data found",

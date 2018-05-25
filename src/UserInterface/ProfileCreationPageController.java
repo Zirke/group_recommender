@@ -2,7 +2,6 @@ package UserInterface;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,6 +23,14 @@ public class ProfileCreationPageController extends GeneralController {
     private TextField lastNameField;
     @FXML
     private ChoiceBox genderBox;
+    @FXML
+    private TextField ageField;
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private Hyperlink frontPageHPL;
     //Creating and initializing values for Gender choice box
     private ObservableList<String> genderChoice = FXCollections.observableArrayList("Male", "Female");
 
@@ -33,16 +40,7 @@ public class ProfileCreationPageController extends GeneralController {
         genderBox.setValue(""); //the string here have to meaning
     }
 
-    @FXML
-    private TextField ageField;
-    @FXML
-    private TextField usernameField;
-    @FXML
-    private PasswordField passwordField;
-    @FXML
-    private Hyperlink frontPageHPL;
-
-    public void createUserFromInput(ActionEvent event) {
+    public void createUserFromInput() {
         //Checking for input
         if (firstNameField.getText().isEmpty()) {
             showAlertBox(Alert.AlertType.ERROR, "Input Error!", "You must enter your First Name");
@@ -76,7 +74,8 @@ public class ProfileCreationPageController extends GeneralController {
                 //Confirmation alert box
                 showAlertBox(Alert.AlertType.CONFIRMATION, "Welcome!",
                         "You have successfully created a profile!\n"
-                                + "Press Sign In to go to your Profile");
+                                + "Sign in to go to your Profile Page");
+
             } catch (IOException ioe) {
                 ioe.printStackTrace();
             }

@@ -3,159 +3,98 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.ColorAdjust?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0"
-            prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="UserInterface.GroupRecommendationPageController">
+            prefWidth="1600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.GroupRecommendationPageController">
     <children>
-        <VBox fx:id="shownGroupsBox" alignment="TOP_CENTER" layoutX="372.0" layoutY="338.0" prefHeight="347.0"
-              prefWidth="327.0" spacing="25.0">
-            <padding>
-                <Insets left="25.0"/>
-            </padding>
+        <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="350.0"
+                    style="-fx-background-color: darkred;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                    AnchorPane.topAnchor="0.0">
             <children>
-                <Label text="These are your Traveling Groups" textAlignment="CENTER">
-                    <padding>
-                        <Insets top="10.0"/>
-                    </padding>
-                    <font>
-                        <Font name="System Bold" size="18.0"/>
-                    </font>
-                </Label>
-            </children>
-        </VBox>
-        <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="350.0"
-                    style="-fx-background-color: darkred;">
-            <children>
-                <HBox alignment="CENTER" prefHeight="366.0" prefWidth="350.0" AnchorPane.leftAnchor="0.0"
-                      AnchorPane.rightAnchor="0.0">
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="350.0" AnchorPane.topAnchor="50.0">
                     <children>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="350.0">
-                            <children>
-                                <Label text="Welcome Back" textFill="WHITE">
-                                    <font>
-                                        <Font name="Arial Bold" size="36.0"/>
-                                    </font>
-                                </Label>
-                                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../ImageView/Icons/profile_icon2.png"/>
-                                    </image>
-                                    <effect>
-                                        <ColorAdjust brightness="1.0" hue="-0.02" saturation="1.0"/>
-                                    </effect>
-                                </ImageView>
-                                <Label fx:id="usernameLabel" text="UsernameLoggedIn" textAlignment="CENTER"
-                                       textFill="WHITE">
-                                    <font>
-                                        <Font name="Helonia" size="24.0"/>
-                                    </font>
-                                </Label>
-                            </children>
-                        </VBox>
-                    </children>
-                </HBox>
-                <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="450.0"
-                      prefWidth="350.0" spacing="25.0" style="-fx-background-color: darkred;"
-                      AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
-                    <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                            <children>
-                                <ImageView fitHeight="53.0" fitWidth="53.0" pickOnBounds="true">
-                                    <image>
-                                        <Image url="@../ImageView/Icons/edit_icon.png"/>
-                                    </image>
-                                    <effect>
-                                        <ColorAdjust brightness="1.0"/>
-                                    </effect>
-                                </ImageView>
-                                <Button mnemonicParsing="false" style="-fx-background-color: darkred;"
-                                        text="Edit Profile" textFill="WHITE">
-                                    <font>
-                                        <Font name="System Bold" size="18.0"/>
-                                    </font>
-                                </Button>
-                            </children>
-                        </HBox>
-                        <Button fx:id="logoutButton" mnemonicParsing="false" style="-fx-background-color: darkred;"
-                                text="Log out" textFill="WHITE">
+                        <Label text="Travel Groups" textFill="WHITE">
                             <font>
-                                <Font name="System Bold" size="18.0"/>
+                                <Font name="Arial Bold" size="36.0"/>
                             </font>
-                        </Button>
-                    </children>
-                </VBox>
-            </children>
-        </AnchorPane>
-        <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="350.0"
-                    style="-fx-background-color: darkred;">
-            <children>
-                <HBox alignment="CENTER" prefHeight="366.0" prefWidth="350.0" AnchorPane.leftAnchor="0.0"
-                      AnchorPane.rightAnchor="0.0">
-                    <children>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="350.0">
-                            <children>
-                                <Label text="Travel Groups" textFill="WHITE">
-                                    <font>
-                                        <Font name="Arial Bold" size="36.0"/>
-                                    </font>
-                                </Label>
-                                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../ImageView/Icons/profile_icon2.png"/>
-                                    </image>
-                                    <effect>
-                                        <ColorAdjust brightness="1.0" hue="-0.02" saturation="1.0"/>
-                                    </effect>
-                                </ImageView>
-                                <Label fx:id="usernameLabel" text="UsernameLoggedIn" textAlignment="CENTER"
-                                       textFill="WHITE">
-                                    <font>
-                                        <Font name="Helonia" size="24.0"/>
-                                    </font>
-                                </Label>
-                            </children>
-                        </VBox>
-                    </children>
-                </HBox>
-            </children>
-        </AnchorPane>
-        <VBox alignment="TOP_CENTER" layoutX="504.0" layoutY="436.0" maxWidth="-Infinity" minWidth="-Infinity"
-              prefHeight="450.0" prefWidth="350.0" spacing="25.0" style="-fx-background-color: darkred;"
-              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
-            <children>
-                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                    <children>
-                        <ImageView fitHeight="53.0" fitWidth="53.0" pickOnBounds="true">
+                        </Label>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../ImageView/Icons/edit_icon.png"/>
+                                <Image url="@../ImageView/Icons/profile_icon2.png"/>
                             </image>
                             <effect>
-                                <ColorAdjust brightness="1.0"/>
+                                <ColorAdjust brightness="1.0" hue="-0.02" saturation="1.0"/>
                             </effect>
                         </ImageView>
-                        <Button mnemonicParsing="false" style="-fx-background-color: darkred;" text="Edit Profile"
-                                textFill="WHITE">
+                        <Label fx:id="usernameLabel" text="UsernameLoggedIn" textAlignment="CENTER" textFill="WHITE">
+                            <font>
+                                <Font name="Helonia" size="24.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+                <VBox fx:id="shownGroupsBox" alignment="TOP_CENTER" layoutX="15.0" layoutY="316.0" prefHeight="399.0"
+                      prefWidth="350.0" spacing="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="350.0">
+                    <children>
+                        <Label text="These are your Traveling Groups" textAlignment="CENTER" textFill="WHITE">
+                            <padding>
+                                <Insets top="10.0"/>
+                            </padding>
                             <font>
                                 <Font name="System Bold" size="18.0"/>
                             </font>
-                        </Button>
+                        </Label>
                     </children>
-                </HBox>
-                <Button fx:id="goBackButton" mnemonicParsing="false" style="-fx-background-color: darkred;"
-                        text="Go Back" textFill="WHITE">
+                </VBox>
+                <Button fx:id="goBackButton" layoutX="119.0" layoutY="817.0" mnemonicParsing="false"
+                        style="-fx-background-color: darkred;" text="Go Back" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="18.0"/>
                     </font>
                 </Button>
             </children>
-        </VBox>
-        <ImageView fitHeight="264.0" fitWidth="1250.0" layoutX="350.0" pickOnBounds="true" preserveRatio="true">
+        </AnchorPane>
+        <ImageView fitHeight="250.0" fitWidth="1250.0" layoutX="350.0" pickOnBounds="true" AnchorPane.leftAnchor="350.0"
+                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <image>
                 <Image url="@../ImageView/Pictures/group_label.jpg"/>
             </image>
         </ImageView>
+        <VBox alignment="TOP_CENTER" layoutX="376.0" layoutY="280.0" prefWidth="300.0" spacing="10.0"
+              style="-fx-background-color: lightgrey;">
+            <children>
+                <Label text="Group Information">
+                    <font>
+                        <Font name="System Bold" size="20.0"/>
+                    </font>
+                </Label>
+                <Label text="Group Name">
+                    <font>
+                        <Font name="System Bold" size="16.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="groupIDLabel" text="groupname">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <Label text="Group members">
+                    <font>
+                        <Font name="System Bold" size="16.0"/>
+                    </font>
+                </Label>
+                <VBox fx:id="groupMemberBox" alignment="TOP_CENTER"/>
+            </children>
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+            <padding>
+                <Insets top="25.0"/>
+            </padding>
+        </VBox>
     </children>
 </AnchorPane>
