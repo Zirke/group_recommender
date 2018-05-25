@@ -1,8 +1,8 @@
 package UserInterface;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -25,23 +25,26 @@ public class FrontPageController {
     @FXML
     private Button userCreationButton;
     @FXML
+    private Hyperlink userCreationHPL;
+    @FXML
     private Button allDestinationsButton;
 
     public void initialize() {
     }
 
     /*
-     * This method basically handles the mechanic of switching to other scenes from the Front Page.
+     * This method handles the mechanic of switching to other scenes from the Front Page.
      * the instance of LoginManager is passed from LoginManager in the "showFrontPage" method.
      */
     void initManager(final LoginManager loginManager) {
         //Handles action for switching to Profile Creation Page
         userCreationButton.setOnAction(event -> loginManager.showProfileCreationPage());
+        userCreationHPL.setOnAction(event -> loginManager.showProfileCreationPage());
 
         //Handles action for switching to All Destinations Page
         allDestinationsButton.setOnAction(event -> loginManager.showAllDestinationsPage());
 
-        //Handles the action for switching to Profile Page
+        //Handles the action for switching to Profile Page. Requires LoginCheck
         loginButton.setOnAction(event -> {
             User loggedInUser = userLoginCheck();
             if (loggedInUser != null) {
@@ -64,15 +67,6 @@ public class FrontPageController {
             e.printStackTrace();
         }
         return loggedInUser;
-    }
-
-    public void pressAllDestinations() {
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("AllDestinationsPage.fxml"));
-            rootPane.getChildren().setAll(pane);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     /*

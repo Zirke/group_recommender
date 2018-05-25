@@ -58,7 +58,8 @@ public class ProfileCreationPageController extends GeneralController {
             showAlertBox(Alert.AlertType.ERROR, "Input Error!", "You must enter a Password");
         } else {
             //Writing input from input fields to textfile "userData.txt"
-            try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("src/userData.txt", true)))) {
+            try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(
+                    "src/userData.txt", true)))) {
                 out.print(firstNameField.getText() + "\t");
                 out.print(lastNameField.getText() + "\t");
                 out.print(genderBox.getValue() + "\t");
@@ -73,7 +74,9 @@ public class ProfileCreationPageController extends GeneralController {
                 out.print(passwordField.getText() + "\n");
 
                 //Confirmation alert box
-                showAlertBox(Alert.AlertType.CONFIRMATION, "Welcome!", "You have successfully created a profile!\n" + "Press Sign In to go to your Profile");
+                showAlertBox(Alert.AlertType.CONFIRMATION, "Welcome!",
+                        "You have successfully created a profile!\n"
+                                + "Press Sign In to go to your Profile");
             } catch (IOException ioe) {
                 ioe.printStackTrace();
             }

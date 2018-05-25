@@ -275,10 +275,5 @@
                 <Insets top="20.0"/>
             </opaqueInsets>
         </VBox>
-        <Label fx:id="recLabel" layoutX="990.0" layoutY="403.0" textFill="WHITE">
-            <font>
-                <Font name="System Bold" size="18.0"/>
-            </font>
-        </Label>
     </children>
 </AnchorPane>

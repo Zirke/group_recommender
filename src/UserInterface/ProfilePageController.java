@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -32,7 +33,7 @@ public class ProfilePageController extends GeneralController {
     }
 
     @FXML
-    private Label usernameLabel, firstnameLabel, lastnameLabel, genderLabel, ageLabel, recLabel;
+    private Label usernameLabel, firstnameLabel, lastnameLabel, genderLabel, ageLabel;
     @FXML
     private Button recButton1;
     @FXML
@@ -75,7 +76,8 @@ public class ProfilePageController extends GeneralController {
             }
         } else {
             listOfRecommendedDestinations = Destination.mostPopularDestinations();
-            recLabel.setText("We have no detected check-ins on your Profile and therefore\n"
+            showAlertBox(Alert.AlertType.INFORMATION, "No data found",
+                    "We have no detected check-ins on your Profile and therefore\n"
                     + "no valid data to recommend from.\n\n"
                     + "We have instead given you the most popular destinations");
         }

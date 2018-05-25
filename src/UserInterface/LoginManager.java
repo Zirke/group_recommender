@@ -1,6 +1,7 @@
 package UserInterface;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import userProfiles.User;
 
@@ -10,6 +11,7 @@ import java.util.logging.Logger;
 
 public class LoginManager {
     private Scene scene;
+    private Parent parent;
 
     public LoginManager(Scene scene) {
         this.scene = scene;
@@ -67,6 +69,5 @@ public class LoginManager {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 }
 

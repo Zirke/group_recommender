@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane fx:id="rootPane" maxHeight="900.0" maxWidth="1600.0" minHeight="900.0" minWidth="1600.0" prefHeight="900.0"
-            prefWidth="1600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.121"
+            prefWidth="1600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.FrontPageController">
     <children>
       <ImageView fitHeight="503.0" fitWidth="1025.0" layoutX="208.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="208.0" AnchorPane.topAnchor="309.0">
@@ -65,7 +65,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-             <Hyperlink text="Create New Profile" textFill="WHITE">
+             <Hyperlink fx:id="userCreationHPL" text="Create New Profile" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
@@ -75,17 +75,17 @@
             <Insets bottom="50.0" left="50.0" right="50.0" top="20.0" />
          </padding>
       </VBox>
-        <VBox layoutX="-3.0" layoutY="300.0" minWidth="200.0" style="-fx-background-color: orange;"
+        <VBox layoutX="-3.0" layoutY="300.0" minWidth="200.0" opacity="0.66" style="-fx-background-color: blue;"
               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="300.0">
             <children>
                 <Button fx:id="userCreationButton" maxWidth="250.0" mnemonicParsing="false" prefHeight="100.0"
-                        style="-fx-background-color: darkorange;" text="Register Here!" textFill="WHITE">
+                        style="-fx-background-color: blue;" text="Register Here!" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Button>
                 <Button fx:id="allDestinationsButton" maxWidth="250.0" mnemonicParsing="false"
-                        style="-fx-background-color: orange;" text="All Destinations" textFill="WHITE">
+                        style="-fx-background-color: blue;" text="All Destinations" textFill="WHITE">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>

@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
@@ -18,6 +19,18 @@ public class AllDestinationsPageController extends GeneralController implements 
     private Button frontPageButton;
     @FXML
     private TextField searchField;
+    @FXML
+    private ImageView Istanbul;
+    @FXML
+    private ImageView KualaLumpur;
+    @FXML
+    private ImageView Izmir;
+    @FXML
+    private ImageView Jakartal;
+    @FXML
+    private ImageView Tokyo;
+    @FXML
+    private ImageView Ankara;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
