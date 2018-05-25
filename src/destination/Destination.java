@@ -22,6 +22,7 @@ public class Destination implements Cloneable {
     private double longitude;
     private String countryName;
     private String cityType;
+    private String checkins;
     private ArrayList<Venue> venues = new ArrayList<>();
     private ArrayList<Activity> activities = new ArrayList<>();
 
@@ -65,6 +66,14 @@ public class Destination implements Cloneable {
         this.cityType = cityType;
     }
 
+    public String getCheckins() {
+        return checkins;
+    }
+
+    public void setCheckins(String checkins) {
+        this.checkins = checkins;
+    }
+
     public ArrayList<Venue> getVenues() {
         return venues;
     }
@@ -84,6 +93,12 @@ public class Destination implements Cloneable {
     //contructor with destination name as argument.
     public Destination(String destinationName) {
         this.destinationName = destinationName;
+    }
+
+    //contructor with destination name and check in count as argument.
+    public Destination(String destinationName, String checkins) {
+        this.destinationName = destinationName;
+        this.checkins = checkins;
     }
 
     //contructor without initialization.
@@ -138,7 +153,7 @@ public class Destination implements Cloneable {
         return fileDestination;
     }
 
-    //OBS! Absolute path
+    //TODO OBS! Absolute path
     public static ArrayList<Destination> mostPopularDestinations() {
         Path inpath = Paths.get("src\\destination\\mostpopular.txt");
         ArrayList<Destination> destList = new ArrayList<>();
@@ -150,9 +165,10 @@ public class Destination implements Cloneable {
 
             while ((currentLine = reader.readLine()) != null && j <= 6) {
                 String[] tempArr = currentLine.split("\t");
-                String first = tempArr[0];
+                String name = tempArr[0];
+                String checkin = tempArr[1];
                 ++j;
-                destList.add(new Destination(first));
+                destList.add(new Destination(name, checkin));
             }
         } catch (IOException e) {
             System.out.println("Unable to read file");

@@ -1,30 +1,28 @@
-This application is a university project made by group SW17A400b at Aalborg University, Denmark 2018.
-The purpose of the program is to introduce, the students behind the program, to programming and problem-solving.
-It's therefor not meant as a serious application for finding a vacations destination for the user, therefore we,
-the group behind the program, DO NOT take any responsibility if any data or information about the user is stolen
-or misused or if the potential destination is not desirable for the user. We recommend that the user use a username
-and password which the user does not use on others website or logins.
+This program is created by group sw2a400b from Aalborg University, Denmark. Because this is a university project,
+it is created for the sole purpose of programming and problem solving, which are the key elements of the project of
+the second semester. The program is therefore not created for any form of business and is only to be used in a school
+project oriented matter.
 
-0 definitions
-"students" "the group" and "we" refers to university group SW17A400b at Aalborg University Denmark
+The program is therefore created to achieve a greater knowledge regarding problem solving with a software solution and
+in general object oriented programming, which has been prioritized.
 
-"program" "application" refers to the platform in which the service is provided.  
-
-1. The scope of Our Service
-This program is meant to be a university project and should therefore not be tanking seriously when you are looking
-for a vacation destination.
-
-We do not provide any form of customs service for this application.
-
-This program is only meant to help you find your vacations destination. We do not help with booking of hotels or
-transportation.
+1. The Scope of Our Service
+The recommendations offered from the program should be seen as ideas for a suitable travel destination and does
+therefore not provide a satisfaction guarantee. The program does not offer anything else than ideas of a possible
+travel destination, and any other travel planning should be done elsewhere.
 
 2. Privacy Policy
-The Service collects personally identifiable information with your specific knowledge and consent.
-These include user id and passwords.
-
-The program may collect information about the user's internet history.
+			- Information Collection and Use - 
+When creating a profile there is to be asked for certain personal information as full name, age, destinations of
+interest and userlogin information. This information will be stored under the thereafter created profile.
+The data will be used to both identify the user and the destinations of interest will be used to find the most optimal
+destination for the recommendation of travel destination. The user provided data is not to be transferred to anything
+else besides within the program, but we, group sw2a400b, do not take responsibility of misuse of the data.
 
 3. Security Policy
-We do not guarantee any security for your user id or password. As to that, we recommend that the user chose something
-that he/she do not use daily.
+			- Userlogin Security -
+We, group sw2a400b, do not guarantee any type of security regarding the userlogins, but recommend the user to choose
+a password, which they do not use on other services for login.
+
+
+- Last updated 25./5-2018 -

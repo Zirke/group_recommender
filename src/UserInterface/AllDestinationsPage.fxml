@@ -7,16 +7,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0"
-            prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="UserInterface.AllDestinationsPageController">
+            prefWidth="1600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.AllDestinationsPageController">
    <children>
        <ImageView fitHeight="300.0" fitWidth="1600.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0"
                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
            <image>
-               <Image url="@../ImageView/Pictures/group_label.jpg"/>
+               <Image url="@../ImageView/Pictures/beach-dawn-dusk-138600.jpg"/>
            </image>
        </ImageView>
-       <VBox alignment="CENTER" layoutX="1417.0" opacity="0.61" prefHeight="300.0" prefWidth="475.0"
+       <VBox alignment="CENTER" layoutX="1417.0" opacity="0.67" prefHeight="300.0" prefWidth="475.0"
              style="-fx-background-color: #505050;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
              <Label alignment="CENTER" contentDisplay="CENTER"
@@ -47,10 +47,14 @@
                </Button>
            </children>
        </VBox>
-       <TextField fx:id="searchField" alignment="CENTER" layoutX="238.0" layoutY="330.0"
-                  onAction="#showSearchedForDestination" prefHeight="35.0" prefWidth="302.0"
-                  promptText="Search Destination"/>
-       <GridPane hgap="35.0" layoutX="535.0" layoutY="328.0" prefHeight="245.0" prefWidth="463.0" vgap="35.0"
+       <TextField fx:id="searchField" alignment="CENTER" layoutX="240.0" layoutY="330.0"
+                  onAction="#showSearchedForDestination" prefHeight="35.0" prefWidth="300.0"
+                  promptText="Search Destination">
+           <font>
+               <Font size="16.0"/>
+           </font>
+       </TextField>
+       <GridPane hgap="35.0" layoutX="535.0" layoutY="328.0" prefHeight="245.0" prefWidth="463.0"
                  AnchorPane.bottomAnchor="105.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="330.0">
            <columnConstraints>
                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES"/>
@@ -60,7 +64,11 @@
            <rowConstraints>
                <RowConstraints maxHeight="215.0" minHeight="215.0" prefHeight="215.0" valignment="TOP"
                                vgrow="SOMETIMES"/>
+               <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" valignment="TOP"
+                               vgrow="SOMETIMES"/>
                <RowConstraints maxHeight="215.0" minHeight="215.0" prefHeight="215.0" valignment="TOP"
+                               vgrow="SOMETIMES"/>
+               <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" valignment="TOP"
                                vgrow="SOMETIMES"/>
            </rowConstraints>
            <children>
@@ -79,19 +87,19 @@
                        <Image url="@../ImageView/Pictures/izmir.jpg"/>
                    </image>
                </ImageView>
-               <ImageView fitHeight="215.0" fitWidth="305.0" pickOnBounds="true" GridPane.rowIndex="1">
+               <ImageView fitHeight="215.0" fitWidth="305.0" pickOnBounds="true" GridPane.rowIndex="2">
                    <image>
                        <Image url="@../ImageView/Pictures/jakarta.jpg"/>
                    </image>
                </ImageView>
                <ImageView fitHeight="215.0" fitWidth="305.0" pickOnBounds="true" GridPane.columnIndex="1"
-                          GridPane.rowIndex="1">
+                          GridPane.rowIndex="2">
                    <image>
                        <Image url="@../ImageView/Pictures/tokyo.jpg"/>
                    </image>
                </ImageView>
                <ImageView fitHeight="215.0" fitWidth="305.0" pickOnBounds="true" GridPane.columnIndex="2"
-                          GridPane.rowIndex="1">
+                          GridPane.rowIndex="2">
                    <image>
                        <Image url="@../ImageView/Pictures/Ankara.jpg"/>
                    </image>
@@ -114,7 +122,7 @@
                <Label fx:id="mostPopularLabel5" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity"
                       onMouseClicked="#showClickedDestination" opacity="0.48" prefHeight="50.0" prefWidth="305.0"
                       style="-fx-background-color: black;" text="mostpopular5" textFill="WHITE" GridPane.columnIndex="1"
-                      GridPane.rowIndex="1">
+                      GridPane.rowIndex="2">
                    <font>
                        <Font name="System Bold" size="24.0"/>
                    </font>
@@ -129,7 +137,7 @@
                </Label>
                <Label fx:id="mostPopularLabel4" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity"
                       onMouseClicked="#showClickedDestination" opacity="0.48" prefHeight="50.0" prefWidth="305.0"
-                      style="-fx-background-color: black;" text="mostpopular4" textFill="WHITE" GridPane.rowIndex="1">
+                      style="-fx-background-color: black;" text="mostpopular4" textFill="WHITE" GridPane.rowIndex="2">
                    <font>
                        <Font name="System Bold" size="24.0"/>
                    </font>
@@ -137,34 +145,65 @@
                <Label fx:id="mostPopularLabel6" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity"
                       onMouseClicked="#showClickedDestination" opacity="0.48" prefHeight="50.0" prefWidth="305.0"
                       style="-fx-background-color: black;" text="mostpopular6" textFill="WHITE" GridPane.columnIndex="2"
-                      GridPane.rowIndex="1">
+                      GridPane.rowIndex="2">
                <font>
                    <Font name="System Bold" size="24.0"/>
                </font>
                </Label>
-         </children>
+               <Label fx:id="checkinLabel1" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity"
+                      prefHeight="30.0" prefWidth="305.0" style="-fx-background-color: lightgrey;" text="checkincount"
+                      textAlignment="CENTER" textFill="#797979" textOverrun="CLIP" GridPane.rowIndex="1">
+                   <font>
+                       <Font name="System Bold" size="16.0"/>
+                   </font>
+               </Label>
+               <Label fx:id="checkinLabel2" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity"
+                      prefHeight="30.0" prefWidth="305.0" style="-fx-background-color: lightgrey;" text="checkincount"
+                      textAlignment="CENTER" textFill="#797979" textOverrun="CLIP" GridPane.columnIndex="1"
+                      GridPane.rowIndex="1">
+                   <font>
+                       <Font name="System Bold" size="16.0"/>
+                   </font>
+               </Label>
+               <Label fx:id="checkinLabel3" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity"
+                      prefHeight="30.0" prefWidth="305.0" style="-fx-background-color: lightgrey;" text="checkincount"
+                      textAlignment="CENTER" textFill="#797979" textOverrun="CLIP" GridPane.columnIndex="2"
+                      GridPane.rowIndex="1">
+                   <font>
+                       <Font name="System Bold" size="16.0"/>
+                   </font>
+               </Label>
+               <Label fx:id="checkinLabel4" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity"
+                      prefHeight="30.0" prefWidth="305.0" style="-fx-background-color: lightgrey;" text="checkincount"
+                      textAlignment="CENTER" textFill="#797979" textOverrun="CLIP" GridPane.rowIndex="3">
+                   <font>
+                       <Font name="System Bold" size="16.0"/>
+                   </font>
+               </Label>
+               <Label fx:id="checkinLabel5" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity"
+                      prefHeight="30.0" prefWidth="305.0" style="-fx-background-color: lightgrey;" text="checkincount"
+                      textAlignment="CENTER" textFill="#797979" textOverrun="CLIP" GridPane.columnIndex="1"
+                      GridPane.rowIndex="3">
+                   <font>
+                       <Font name="System Bold" size="16.0"/>
+                   </font>
+               </Label>
+               <Label fx:id="checkinLabel6" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity"
+                      prefHeight="30.0" prefWidth="305.0" style="-fx-background-color: lightgrey;" text="checkincount"
+                      textAlignment="CENTER" textFill="#797979" textOverrun="CLIP" GridPane.columnIndex="2"
+                      GridPane.rowIndex="3">
+                   <font>
+                       <Font name="System Bold" size="16.0"/>
+                   </font>
+               </Label>
+           </children>
        </GridPane>
-       <Label layoutX="200.0" layoutY="437.0" prefHeight="108.0" prefWidth="273.0"
-              text="Check out all of our destinations Here!" textAlignment="CENTER" wrapText="true">
+       <Label layoutX="253.0" layoutY="440.0" prefHeight="108.0" prefWidth="273.0"
+              text="Browse through our 415 destinations here!" textAlignment="CENTER" wrapText="true">
            <font>
                <Font name="Segoe UI Symbol" size="20.0"/>
            </font>
        </Label>
-       <VBox alignment="CENTER" layoutX="239.0" layoutY="580.0" opacity="0.46" prefHeight="215.0" prefWidth="300.0"
-             style="-fx-background-color: black;" AnchorPane.bottomAnchor="105.0">
-           <children>
-               <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="119.0" prefWidth="201.0"
-                      text="These are our most popular destinations" textAlignment="CENTER" textFill="WHITE"
-                      textOverrun="CLIP" wrapText="true">
-                   <font>
-                       <Font name="System Bold" size="18.0"/>
-                   </font>
-               </Label>
-           </children>
-           <padding>
-               <Insets left="50.0" right="50.0"/>
-           </padding>
-       </VBox>
        <ImageView fitHeight="108.0" fitWidth="97.0" layoutX="311.0" layoutY="365.0" pickOnBounds="true"
                   preserveRatio="true">
            <image>
@@ -174,5 +213,11 @@
                <ColorAdjust contrast="-1.0" hue="-0.52" saturation="1.0"/>
            </effect>
        </ImageView>
+       <Label layoutX="276.0" layoutY="645.0" prefHeight="108.0" prefWidth="227.0"
+              text="These are our most popular destinations" textAlignment="CENTER" wrapText="true">
+           <font>
+               <Font name="Segoe UI Symbol" size="20.0"/>
+           </font>
+       </Label>
    </children>
 </AnchorPane>

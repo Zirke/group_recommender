@@ -45,7 +45,7 @@ public class ProfilePageController extends GeneralController {
     @FXML
     private Button recButton6;
     @FXML
-    private Button manageGroupsButton;
+    private Button groupRecommendationsButton;
     @FXML
     private Button logoutButton;
 
@@ -79,7 +79,7 @@ public class ProfilePageController extends GeneralController {
         genderLabel.setText(loggedInUser.getGender());
         ageLabel.setText(loggedInUser.getAge());
         //Switches to Manage Group Page
-        manageGroupsButton.setOnAction(event -> loginManager.showManageGroupPage(loggedInUser));
+        groupRecommendationsButton.setOnAction(event -> loginManager.showGroupRecommendationPage(loggedInUser));
         //Switces to Front Page
         logoutButton.setOnAction(event -> loginManager.logout());
     }

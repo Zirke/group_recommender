@@ -21,17 +21,9 @@ public class AllDestinationsPageController extends GeneralController implements 
     @FXML
     private TextField searchField;
     @FXML
-    private Label mostPopularLabel1;
+    private Label mostPopularLabel1, mostPopularLabel2, mostPopularLabel3, mostPopularLabel4, mostPopularLabel5, mostPopularLabel6;
     @FXML
-    private Label mostPopularLabel2;
-    @FXML
-    private Label mostPopularLabel3;
-    @FXML
-    private Label mostPopularLabel4;
-    @FXML
-    private Label mostPopularLabel5;
-    @FXML
-    private Label mostPopularLabel6;
+    private Label checkinLabel1, checkinLabel2, checkinLabel3, checkinLabel4, checkinLabel5, checkinLabel6;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -71,6 +63,13 @@ public class AllDestinationsPageController extends GeneralController implements 
         mostPopularLabel4.setText(listOfMostPopularDestinations.get(3).getDestinationName());
         mostPopularLabel5.setText(listOfMostPopularDestinations.get(4).getDestinationName());
         mostPopularLabel6.setText(listOfMostPopularDestinations.get(5).getDestinationName());
+
+        checkinLabel1.setText("Check-ins " + listOfMostPopularDestinations.get(0).getCheckins());
+        checkinLabel2.setText("Check-ins " + listOfMostPopularDestinations.get(1).getCheckins());
+        checkinLabel3.setText("Check-ins " + listOfMostPopularDestinations.get(2).getCheckins());
+        checkinLabel4.setText("Check-ins " + listOfMostPopularDestinations.get(3).getCheckins());
+        checkinLabel5.setText("Check-ins " + listOfMostPopularDestinations.get(4).getCheckins());
+        checkinLabel6.setText("Check-ins " + listOfMostPopularDestinations.get(5).getCheckins());
     }
 
     //TODO Correct

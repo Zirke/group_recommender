@@ -48,11 +48,12 @@ public class LoginManager {
         }
     }
 
-    void showManageGroupPage(User loggedInUser) {
+    void showGroupRecommendationPage(User loggedInUser) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ManageGroupPage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("GroupRecommendationPage.fxml"));
             scene.setRoot(loader.load());
-            ManageGroupPageController controller = loader.getController();
+            GroupRecommendationPageController controller = loader.getController();
+            controller.initializeData(this, loggedInUser);
             controller.showGroupsForLoggedInUser(loggedInUser);
         } catch (IOException e) {
             e.printStackTrace();
