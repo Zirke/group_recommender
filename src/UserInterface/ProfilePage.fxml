@@ -70,8 +70,8 @@
                                         <ColorAdjust brightness="1.0"/>
                                     </effect>
                                 </ImageView>
-                                <Button mnemonicParsing="false" style="-fx-background-color: darkred;"
-                                        text="Edit Profile" textFill="WHITE">
+                                <Button mnemonicParsing="false" onAction="#clickEditProfile"
+                                        style="-fx-background-color: darkred;" text="Edit Profile" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="18.0"/>
                                     </font>

@@ -19,6 +19,9 @@ public class User implements Cloneable {
     private String password;
     private ArrayList<Destination> usersDestination = new ArrayList<>(); //User's destination in an ordered list (the order of listOfDestinations)
 
+    public User() {
+    }
+
     public User(String usernameID, ArrayList<Destination> usersDestination) {
         this.usernameID = usernameID;
         this.usersDestination = usersDestination;
@@ -162,23 +165,6 @@ public class User implements Cloneable {
         return ret;
     }
 
-    public User() {
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        return Objects.equals(usernameID, user.usernameID);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(usernameID);
-    }
-
     public static ArrayList<User> listOfCreatedUsers() throws IOException {
         ArrayList<User> listOfUsers = new ArrayList<>();
 
@@ -209,6 +195,30 @@ public class User implements Cloneable {
             e.printStackTrace();
         }
         return listOfUsers;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return Objects.equals(usernameID, user.usernameID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(usernameID);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age='" + age + '\'' +
+                ", gender='" + gender + '\'' +
+                ", usernameID='" + usernameID + '\'' +
+                '}';
     }
 }
 

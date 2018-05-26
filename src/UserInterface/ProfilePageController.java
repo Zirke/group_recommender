@@ -39,6 +39,7 @@ public class ProfilePageController extends GeneralController {
     @FXML
     private Button logoutButton;
 
+    //Has to be public
     public ProfilePageController() {
     }
 
@@ -59,6 +60,11 @@ public class ProfilePageController extends GeneralController {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("Group Creation");
         stage.showAndWait();
+    }
+
+    @FXML
+    public void clickEditProfile() {
+        openEditProfilePage(this.loggedInUser);
     }
 
     //Gets data from the passed user and sets the correct label text
@@ -150,6 +156,25 @@ public class ProfilePageController extends GeneralController {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("Recommended Destination");
+        stage.showAndWait();
+    }
+
+    private void openEditProfilePage(User loggedInUser) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("EditProfilePage.fxml"));
+        try {
+            parent = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (parent != null) {
+            EditProfilePageController controller = loader.getController();
+            controller.initializeUserData(loggedInUser);
+        }
+        Stage stage = new Stage();
+        stage.setScene(new Scene(parent));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setTitle("Edit Profile");
         stage.showAndWait();
     }
 }

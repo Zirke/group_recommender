@@ -5,7 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import userProfiles.User;
 
 import java.io.IOException;
@@ -14,8 +13,6 @@ import static userProfiles.User.listOfCreatedUsers;
 
 public class FrontPageController {
 
-    @FXML
-    private AnchorPane rootPane;
     @FXML
     private TextField UsernameField;
     @FXML
@@ -31,7 +28,6 @@ public class FrontPageController {
 
     public void initialize() {
     }
-
     /*
      * This method handles the mechanic of switching to other scenes from the Front Page.
      * the instance of LoginManager is passed from LoginManager in the "showFrontPage" method.
@@ -48,6 +44,7 @@ public class FrontPageController {
         loginButton.setOnAction(event -> {
             User loggedInUser = userLoginCheck();
             if (loggedInUser != null) {
+                loginManager.setLoggedInUser(loggedInUser);
                 loginManager.authenticated(loggedInUser);
             }
         });

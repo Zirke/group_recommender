@@ -25,6 +25,7 @@ public class AllDestinationsPageController extends GeneralController implements 
     @FXML
     private Label checkinLabel1, checkinLabel2, checkinLabel3, checkinLabel4, checkinLabel5, checkinLabel6;
 
+    //Makes the search bar for Destinations automatic completing
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         List<String> dest = new ArrayList<>();

@@ -1,7 +1,6 @@
 package UserInterface;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import userProfiles.User;
 
@@ -10,11 +9,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class LoginManager {
+    private User loggedInUser;
     private Scene scene;
-    private Parent parent;
 
     public LoginManager(Scene scene) {
         this.scene = scene;
+    }
+
+    public User getLoggedInUser() {
+        return loggedInUser;
+    }
+
+    public void setLoggedInUser(User loggedInUser) {
+        this.loggedInUser = loggedInUser;
     }
 
     void authenticated(User loggedInUser) {
@@ -41,6 +48,7 @@ public class LoginManager {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilePage.fxml"));
             scene.setRoot(loader.load());
             ProfilePageController controller = loader.getController();
+            controller.setLoggedInUser(loggedInUser);
             controller.initializeLoggedInUserData(this, loggedInUser);
             controller.initializeLoggedInUserRecommendations(loggedInUser);
         } catch (IOException ex) {
