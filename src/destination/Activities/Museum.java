@@ -14,6 +14,7 @@ public class Museum implements Activity {
         this.openingHours = openingHours;
     }
 
+    @Override
     public String getTypeSpecific() {
         return openingHours;
     }

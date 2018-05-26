@@ -14,6 +14,7 @@ public class Sightseeing implements Activity {
         this.sightseeingType = sightseeingType;
     }
 
+    @Override
     public String getTypeSpecific() {
         return sightseeingType;
     }

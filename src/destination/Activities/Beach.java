@@ -14,6 +14,7 @@ public class Beach implements Activity {
         this.avgTemp = avgTemp;
     }
 
+    @Override
     public Integer getTypeSpecific() {
         return avgTemp;
     }
