@@ -1,7 +1,7 @@
 package UserInterface;
 
 import destination.Destination;
-import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -58,11 +58,17 @@ public class AllDestinationsPageController extends GeneralController implements 
     void initializeMostPopularDestinations() {
         ArrayList<Destination> listOfMostPopularDestinations = Destination.mostPopularDestinations();
         mostPopularLabel1.setText(listOfMostPopularDestinations.get(0).getDestinationName());
+        mostPopularLabel1.setOnMouseClicked(this::showClickedDestination);
         mostPopularLabel2.setText(listOfMostPopularDestinations.get(1).getDestinationName());
+        mostPopularLabel2.setOnMouseClicked(this::showClickedDestination);
         mostPopularLabel3.setText(listOfMostPopularDestinations.get(2).getDestinationName());
+        mostPopularLabel3.setOnMouseClicked(this::showClickedDestination);
         mostPopularLabel4.setText(listOfMostPopularDestinations.get(3).getDestinationName());
+        mostPopularLabel4.setOnMouseClicked(this::showClickedDestination);
         mostPopularLabel5.setText(listOfMostPopularDestinations.get(4).getDestinationName());
+        mostPopularLabel5.setOnMouseClicked(this::showClickedDestination);
         mostPopularLabel6.setText(listOfMostPopularDestinations.get(5).getDestinationName());
+        mostPopularLabel6.setOnMouseClicked(this::showClickedDestination);
 
         checkinLabel1.setText("Check-ins " + listOfMostPopularDestinations.get(0).getCheckins());
         checkinLabel2.setText("Check-ins " + listOfMostPopularDestinations.get(1).getCheckins());
@@ -72,8 +78,7 @@ public class AllDestinationsPageController extends GeneralController implements 
         checkinLabel6.setText("Check-ins " + listOfMostPopularDestinations.get(5).getCheckins());
     }
 
-    //TODO Correct
-    public void showClickedDestination(ActionEvent event) {
+    public void showClickedDestination(Event event) {
         ProfilePageController controller = new ProfilePageController();
         Label chosenDestinationLabel = (Label) event.getSource();
         String labelID = chosenDestinationLabel.getText();

@@ -19,7 +19,7 @@ public class UserAgreementController {
     private Button iUnderstandButton;
 
     @FXML
-    public void readUserAgreement() {
+    void readUserAgreement() {
         Path inpath = Paths.get("src/UserInterface/user_agreement.txt");
         try (BufferedReader reader = new BufferedReader(Files.newBufferedReader(inpath))) {
             ArrayList<String> lines = new ArrayList<>();

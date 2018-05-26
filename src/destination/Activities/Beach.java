@@ -4,8 +4,8 @@ import destination.Activity;
 
 public class Beach implements Activity {
 
-    String name;
-    String location;
+    private String name;
+    private String location;
 
     public Beach(String name, String location) {
         this.name = name;

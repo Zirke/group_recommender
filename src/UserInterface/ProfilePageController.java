@@ -80,7 +80,7 @@ public class ProfilePageController extends GeneralController {
         //Accesses the stored information about the user to recommend from
         if (!loggedInUser.getUsersDestination().isEmpty()) {
             try {
-                Recommender recommender = new Recommender(loggedInUser, User.listDataset(), 6);
+                Recommender recommender = new Recommender(loggedInUser, User.listDataset(), 8);
                 listOfRecommendedDestinations = recommender.recommendationDest();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -142,6 +142,7 @@ public class ProfilePageController extends GeneralController {
         Stage stage = new Stage();
         stage.setScene(new Scene(parent));
         stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("Recommended Destination");
         stage.showAndWait();
     }

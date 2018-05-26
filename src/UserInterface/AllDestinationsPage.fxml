@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0"
-            prefWidth="1600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.121"
+            prefWidth="1600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.AllDestinationsPageController">
    <children>
        <ImageView fitHeight="300.0" fitWidth="1600.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0"
@@ -105,47 +105,43 @@
                    </image>
                </ImageView>
                <Label fx:id="mostPopularLabel2" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity"
-                      onMouseClicked="#showClickedDestination" opacity="0.48" prefHeight="50.0" prefWidth="305.0"
-                      style="-fx-background-color: black;" text="mostpopular2" textFill="WHITE"
-                      GridPane.columnIndex="1">
+                      opacity="0.48" prefHeight="50.0" prefWidth="305.0" style="-fx-background-color: black;"
+                      text="mostpopular2" textFill="WHITE" GridPane.columnIndex="1">
                    <font>
                        <Font name="System Bold" size="24.0"/>
                    </font>
                </Label>
                <Label fx:id="mostPopularLabel1" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity"
-                      onMouseClicked="#showClickedDestination" opacity="0.48" prefHeight="50.0" prefWidth="305.0"
-                      style="-fx-background-color: black;" text="mostpopular1" textFill="WHITE">
+                      opacity="0.48" prefHeight="50.0" prefWidth="305.0" style="-fx-background-color: black;"
+                      text="mostpopular1" textFill="WHITE">
                    <font>
                        <Font name="System Bold" size="24.0"/>
                    </font>
                </Label>
                <Label fx:id="mostPopularLabel5" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity"
-                      onMouseClicked="#showClickedDestination" opacity="0.48" prefHeight="50.0" prefWidth="305.0"
-                      style="-fx-background-color: black;" text="mostpopular5" textFill="WHITE" GridPane.columnIndex="1"
-                      GridPane.rowIndex="2">
+                      opacity="0.48" prefHeight="50.0" prefWidth="305.0" style="-fx-background-color: black;"
+                      text="mostpopular5" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                    <font>
                        <Font name="System Bold" size="24.0"/>
                    </font>
                </Label>
                <Label fx:id="mostPopularLabel3" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity"
-                      onMouseClicked="#showClickedDestination" opacity="0.48" prefHeight="50.0" prefWidth="305.0"
-                      style="-fx-background-color: black;" text="mostpopular3" textFill="WHITE"
-                      GridPane.columnIndex="2">
+                      opacity="0.48" prefHeight="50.0" prefWidth="305.0" style="-fx-background-color: black;"
+                      text="mostpopular3" textFill="WHITE" GridPane.columnIndex="2">
                <font>
                    <Font name="System Bold" size="24.0"/>
                </font>
                </Label>
                <Label fx:id="mostPopularLabel4" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity"
-                      onMouseClicked="#showClickedDestination" opacity="0.48" prefHeight="50.0" prefWidth="305.0"
-                      style="-fx-background-color: black;" text="mostpopular4" textFill="WHITE" GridPane.rowIndex="2">
+                      opacity="0.48" prefHeight="50.0" prefWidth="305.0" style="-fx-background-color: black;"
+                      text="mostpopular4" textFill="WHITE" GridPane.rowIndex="2">
                    <font>
                        <Font name="System Bold" size="24.0"/>
                    </font>
                </Label>
                <Label fx:id="mostPopularLabel6" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity"
-                      onMouseClicked="#showClickedDestination" opacity="0.48" prefHeight="50.0" prefWidth="305.0"
-                      style="-fx-background-color: black;" text="mostpopular6" textFill="WHITE" GridPane.columnIndex="2"
-                      GridPane.rowIndex="2">
+                      opacity="0.48" prefHeight="50.0" prefWidth="305.0" style="-fx-background-color: black;"
+                      text="mostpopular6" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <font>
                    <Font name="System Bold" size="24.0"/>
                </font>
