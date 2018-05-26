@@ -40,7 +40,8 @@
                 <VBox fx:id="shownGroupsBox" alignment="TOP_CENTER" layoutX="15.0" layoutY="316.0" prefHeight="399.0"
                       prefWidth="350.0" spacing="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="350.0">
                     <children>
-                        <Label text="These are your Traveling Groups" textAlignment="CENTER" textFill="WHITE">
+                        <Label text="These are your Traveling Groups" textAlignment="CENTER" textFill="WHITE"
+                               underline="true">
                             <padding>
                                 <Insets top="10.0"/>
                             </padding>
@@ -109,8 +110,20 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
-                <Button mnemonicParsing="false" text="Button"/>
-                <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1"/>
+                <Button fx:id="recButton1" mnemonicParsing="false" text="Button"/>
+                <Button fx:id="recButton2" mnemonicParsing="false" text="Button" GridPane.columnIndex="1"/>
+                <Button fx:id="recButton3" mnemonicParsing="false" text="Button" GridPane.rowIndex="1"/>
+                <Button fx:id="recButton4" mnemonicParsing="false" text="Button" GridPane.columnIndex="1"
+                        GridPane.rowIndex="1"/>
+                <Button fx:id="recButton5" mnemonicParsing="false" text="Button" GridPane.rowIndex="2"/>
+                <Button fx:id="recButton6" mnemonicParsing="false" text="Button" GridPane.columnIndex="1"
+                        GridPane.rowIndex="2"/>
+                <Button fx:id="recButton7" mnemonicParsing="false" text="Button" GridPane.rowIndex="3"/>
+                <Button fx:id="recButton8" mnemonicParsing="false" text="Button" GridPane.columnIndex="1"
+                        GridPane.rowIndex="3"/>
+                <Button fx:id="recButton9" mnemonicParsing="false" text="Button" GridPane.rowIndex="4"/>
+                <Button fx:id="recButton10" mnemonicParsing="false" text="Button" GridPane.columnIndex="1"
+                        GridPane.rowIndex="4"/>
             </children>
         </GridPane>
     </children>

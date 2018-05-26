@@ -23,6 +23,8 @@ public class GroupRecommendationPageController {
     private Button goBackButton;
     @FXML
     private VBox groupMemberBox;
+    @FXML
+    private Button recButton1, recButton2, recButton3, recButton4, recButton5, recButton6, recButton7, recButton8, recButton9, recButton10;
 
     void initializeData(final LoginManager loginManager, User loggedInUser) {
         usernameLabel.setText(loggedInUser.getUsernameID());
@@ -72,6 +74,7 @@ public class GroupRecommendationPageController {
                         Label userInGroup = new Label();
                         userInGroup.setText(user.getUsernameID());
                         groupMemberBox.getChildren().add(userInGroup);
+                        showRecommendationsForSelectedGroup(temp);
                     }
                 }
             }
@@ -80,12 +83,40 @@ public class GroupRecommendationPageController {
         }
     }
 
-    public void showRecommendationsForSelectedGroup(Group selectedGroup) {
-        ArrayList<Destination> listOfGroupRecommendations = new ArrayList<>();
-
+    private void showRecommendationsForSelectedGroup(Group selectedGroup) {
         GroupRecommender groupRecommender = new GroupRecommender(selectedGroup);
-        listOfGroupRecommendations = groupRecommender.groupRecommendationDest();
-
+        ArrayList<Destination> listOfGroupRecommendations = groupRecommender.groupRecommendationDest();
+  
+        if (listOfGroupRecommendations.size() > 0) {
+            recButton1.setText(listOfGroupRecommendations.get(0).getDestinationName());
+        }
+        if (listOfGroupRecommendations.size() > 1) {
+            recButton2.setText(listOfGroupRecommendations.get(1).getDestinationName());
+        }
+        if (listOfGroupRecommendations.size() > 2) {
+            recButton3.setText(listOfGroupRecommendations.get(2).getDestinationName());
+        }
+        if (listOfGroupRecommendations.size() > 3) {
+            recButton4.setText(listOfGroupRecommendations.get(3).getDestinationName());
+        }
+        if (listOfGroupRecommendations.size() > 4) {
+            recButton5.setText(listOfGroupRecommendations.get(4).getDestinationName());
+        }
+        if (listOfGroupRecommendations.size() > 5) {
+            recButton6.setText(listOfGroupRecommendations.get(5).getDestinationName());
+        }
+        if (listOfGroupRecommendations.size() > 6) {
+            recButton7.setText(listOfGroupRecommendations.get(6).getDestinationName());
+        }
+        if (listOfGroupRecommendations.size() > 7) {
+            recButton8.setText(listOfGroupRecommendations.get(7).getDestinationName());
+        }
+        if (listOfGroupRecommendations.size() > 8) {
+            recButton9.setText(listOfGroupRecommendations.get(8).getDestinationName());
+        }
+        if (listOfGroupRecommendations.size() > 9) {
+            recButton10.setText(listOfGroupRecommendations.get(9).getDestinationName());
+        }
     }
 
 }
