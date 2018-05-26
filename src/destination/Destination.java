@@ -23,9 +23,24 @@ public class Destination implements Cloneable {
     private double longitude;
     private String countryName;
     private String cityType;
-    private String checkins;
+    private int checkins;
     private ArrayList<Venue> venues = new ArrayList<>();
     private ArrayList<Activity> activities = new ArrayList<>();
+
+    //contructor with destination name as argument.
+    public Destination(String destinationName) {
+        this.destinationName = destinationName;
+    }
+
+    //constructor with destination name and checkins
+    public Destination(String destinationName, int checkins) {
+        this.destinationName = destinationName;
+        this.checkins = checkins;
+    }
+
+    //contructor without initialization.
+    private Destination() {
+    }
 
     public String getDestinationName() {
         return destinationName;
@@ -67,11 +82,11 @@ public class Destination implements Cloneable {
         this.cityType = cityType;
     }
 
-    public String getCheckins() {
+    public int getCheckins() {
         return checkins;
     }
 
-    public void setCheckins(String checkins) {
+    public void setCheckins(int checkins) {
         this.checkins = checkins;
     }
 
@@ -85,21 +100,6 @@ public class Destination implements Cloneable {
 
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
-    }
-
-    //contructor with destination name as argument.
-    public Destination(String destinationName) {
-        this.destinationName = destinationName;
-    }
-
-    //constructor with destination name and checkins
-    public Destination(String destinationName, String checkins) {
-        this.destinationName = destinationName;
-        this.checkins = checkins;
-    }
-
-    //contructor without initialization.
-    private Destination() {
     }
 
     public static ArrayList<Destination> listOfDestination() throws IOException {
@@ -187,7 +187,7 @@ public class Destination implements Cloneable {
 
     //TODO OBS! Absolute path
     public static ArrayList<Destination> mostPopularDestinations() {
-        Path inpath = Paths.get("C:\\Java-programmer\\GitHub\\group_recommender\\src\\destination\\mostpopular.txt");
+        Path inpath = Paths.get("src/destination/mostpopular.txt");
         ArrayList<Destination> destList = new ArrayList<>();
         int j = 0;
 
@@ -198,7 +198,7 @@ public class Destination implements Cloneable {
             while ((currentLine = reader.readLine()) != null && j <= 6) {
                 String[] tempArr = currentLine.split("\t");
                 String first = tempArr[0];
-                String second = tempArr[1];
+                int second = Integer.parseInt(tempArr[1]);
                 ++j;
                 destList.add(new Destination(first, second));
             }
