@@ -78,7 +78,7 @@ public class AllDestinationsPageController extends GeneralController implements 
         checkinLabel6.setText("Check-ins " + listOfMostPopularDestinations.get(5).getCheckins());
     }
 
-    public void showClickedDestination(Event event) {
+    private void showClickedDestination(Event event) {
         ProfilePageController controller = new ProfilePageController();
         Label chosenDestinationLabel = (Label) event.getSource();
         String labelID = chosenDestinationLabel.getText();
