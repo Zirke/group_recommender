@@ -5,7 +5,6 @@ import destination.Destination;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -22,8 +21,6 @@ public class DestinationInformationController {
     @FXML
     private Label cityType;
     @FXML
-    private TextArea venueArea;
-    @FXML
     private VBox activityType, activityName;
 
     void initializeChosenRecommendation(Destination chosenRecommendation) {
@@ -38,11 +35,11 @@ public class DestinationInformationController {
             Label type = new Label();
             Label name = new Label();
 
-            type.setText(activity.getType());
+            type.setText((String) activity.getType());
             type.setFont(new Font(16));
             activityType.getChildren().add(type);
 
-            name.setText(activity.getName());
+            name.setText((String) activity.getName());
             name.setFont(new Font(16));
             activityName.getChildren().add(name);
 

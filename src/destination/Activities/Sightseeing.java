@@ -6,10 +6,17 @@ public class Sightseeing implements Activity {
 
     String name;
     String location;
+    String sightseeingType;
 
-    public Sightseeing(String name, String location) {
+    public Sightseeing(String name, String location, String sightseeingType) {
         this.name = name;
         this.location = location;
+        this.sightseeingType = sightseeingType;
+    }
+
+    @Override
+    public String getTypeSpecific() {
+        return sightseeingType;
     }
 
     @Override

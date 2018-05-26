@@ -1,5 +1,6 @@
 package destination;
 
+import CustomExceptions.FileFormatException;
 import destination.Activities.Beach;
 import destination.Activities.Museum;
 import destination.Activities.Sightseeing;
@@ -12,9 +13,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Objects;
+
 
 public class Destination implements Cloneable {
     private String destinationName;
@@ -78,10 +79,6 @@ public class Destination implements Cloneable {
         return venues;
     }
 
-    public void setVenues(ArrayList<Venue> venues) {
-        this.venues = venues;
-    }
-
     public ArrayList<Activity> getActivities() {
         return activities;
     }
@@ -95,7 +92,7 @@ public class Destination implements Cloneable {
         this.destinationName = destinationName;
     }
 
-    //contructor with destination name and check in count as argument.
+    //constructor with destination name and checkins
     public Destination(String destinationName, String checkins) {
         this.destinationName = destinationName;
         this.checkins = checkins;
@@ -115,6 +112,7 @@ public class Destination implements Cloneable {
         fr = new FileReader("src/destination/cities.txt");
         BufferedReader bf = new BufferedReader(fr);
         int totalLine = linesInFile("src/destination/cities.txt");
+
 
         for (int i = 0; i < totalLine; i++) {
             line = bf.readLine();
@@ -144,36 +142,15 @@ public class Destination implements Cloneable {
                 fileDestination.add(temp);
             }
         }
+
         try {
             bf.close();
             fr.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         return fileDestination;
-    }
-
-    //TODO OBS! Absolute path
-    public static ArrayList<Destination> mostPopularDestinations() {
-        Path inpath = Paths.get("src\\destination\\mostpopular.txt");
-        ArrayList<Destination> destList = new ArrayList<>();
-        int j = 0;
-
-        try (BufferedReader reader = new BufferedReader(Files.newBufferedReader(inpath))) {
-
-            String currentLine = null;
-
-            while ((currentLine = reader.readLine()) != null && j <= 6) {
-                String[] tempArr = currentLine.split("\t");
-                String name = tempArr[0];
-                String checkin = tempArr[1];
-                ++j;
-                destList.add(new Destination(name, checkin));
-            }
-        } catch (IOException e) {
-            System.out.println("Unable to read file");
-        }
-        return destList;
     }
 
     public static List<String> listDestNames() throws IOException {
@@ -208,6 +185,29 @@ public class Destination implements Cloneable {
         return "src/destination/Activities/Destinations/" + getDestinationName() + ".txt";
     }
 
+    //TODO OBS! Absolute path
+    public static ArrayList<Destination> mostPopularDestinations() {
+        Path inpath = Paths.get("C:\\Java-programmer\\GitHub\\group_recommender\\src\\destination\\mostpopular.txt");
+        ArrayList<Destination> destList = new ArrayList<>();
+        int j = 0;
+
+        try (BufferedReader reader = new BufferedReader(Files.newBufferedReader(inpath))) {
+
+            String currentLine = null;
+
+            while ((currentLine = reader.readLine()) != null && j <= 6) {
+                String[] tempArr = currentLine.split("\t");
+                String first = tempArr[0];
+                String second = tempArr[1];
+                ++j;
+                destList.add(new Destination(first, second));
+            }
+        } catch (IOException e) {
+            System.out.println("Unable to read file");
+        }
+        return destList;
+    }
+
     public void fillActivities() {
         File filepath = new File(destinationNameToFilePath());
         if (filepath.exists()) {
@@ -220,33 +220,25 @@ public class Destination implements Cloneable {
                     String type = temp[0];
                     String name = temp[1];
                     String location = temp[2];
+                    String typeSpecific = temp[3];
                     switch (type) {
                         case "Beach":
-                            activities.add(new Beach(name, location));
+                            getActivities().add(new Beach(name, location, Integer.parseInt(typeSpecific)));
                             break;
                         case "Museum":
-                            activities.add(new Museum(name, location));
+                            getActivities().add(new Museum(name, location, typeSpecific));
                             break;
                         case "Sightseeing":
-                            activities.add(new Sightseeing(name, location));
+                            getActivities().add(new Sightseeing(name, location, typeSpecific));
                             break;
                         default:
-                            throw new InputMismatchException();
+                            throw new FileFormatException();
                     }
                 }
             } catch (IOException e) {
                 System.out.println("Unable to read file");
             }
         }
-    }
-
-    @Override
-    public String toString() {
-        return "Destination{" +
-                "destinationName='" + destinationName + '\'' +
-                ", countryName='" + countryName + '\'' +
-                ", cityType='" + cityType + '\'' +
-                '}';
     }
 
     @Override
