@@ -1,9 +1,9 @@
-Beach:Pirlanta Beach:Ciftlikkoy Mah. Pirlanta Plaji | Cesme Merkez, Izmir, Turkey
-Beach:Ekmekzsiz Plaji:Sigacik Mah. Teos Mevki Seferihisar Merkez, Seferihisar, Izmir, Turkey
-Beach:Escape Beach Club:Yavuz Cikartma Plaji | Kyrenia North Cyprus, Izmir, Turkey
-Museum:Agora Open Air Museum:Namazgah Mah, Tarık Sarı Sk. No:29, 35240 Konak/İzmir, Turkey
-Museum:Izmir Archaeological Museum:Konak Mahallesi, Halil Rıfat Paşa Cad. Bahri Baba Parkı No:4, 35260 Konak/İzmir, Turkey
-Museum:Key Museum:Çapak Mah., Özgörkey Cad. No:5, 35860 Torbalı/İzmir, Turkey
-Sightseeing:Asansör:Turgut Reis Mahallesi, Şht. Nihatbey Cd. 76/A, 03500 Konak/İzmir, Turkey
-Sightseeing:Izmir Clock Tower:Konak Mahallesi, Izmir Clock Tower, Atatürk Caddesi, 35360 Konak/İzmir, Turkey
-Sightseeing:Kemeralti Market:Konak Mh. 35250 Konak, Izmir, Turkey
+Beach:Pirlanta Beach:Ciftlikkoy Mah. Pirlanta Plaji | Cesme Merkez, Izmir, Turkey:23
+Beach:Ekmekzsiz Plaji:Sigacik Mah. Teos Mevki Seferihisar Merkez, Seferihisar, Izmir, Turkey:21
+Beach:Escape Beach Club:Yavuz Cikartma Plaji | Kyrenia North Cyprus, Izmir, Turkey:22
+Museum:Agora Open Air Museum:Namazgah Mah, Tarık Sarı Sk. No:29, 35240 Konak/İzmir, Turkey:0900-1430
+Museum:Izmir Archaeological Museum:Konak Mahallesi, Halil Rıfat Paşa Cad. Bahri Baba Parkı No:4, 35260 Konak/İzmir, Turkey:0930-1400
+Museum:Key Museum:Çapak Mah., Özgörkey Cad. No:5, 35860 Torbalı/İzmir, Turkey:1000-1600
+Sightseeing:Asansör:Turgut Reis Mahallesi, Şht. Nihatbey Cd. 76/A, 03500 Konak/İzmir, Turkey:Historical Landmark
+Sightseeing:Izmir Clock Tower:Konak Mahallesi, Izmir Clock Tower, Atatürk Caddesi, 35360 Konak/İzmir, Turkey:Historical Landmark
+Sightseeing:Kemeralti Market:Konak Mh. 35250 Konak, Izmir, Turkey:Historical Landmark

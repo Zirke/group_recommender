@@ -4,9 +4,9 @@ import destination.Activity;
 
 public class Beach implements Activity {
 
-    String name;
-    String location;
-    int avgTemp;
+    private String name;
+    private String location;
+    private int avgTemp;
 
     public Beach(String name, String location, int avgTemp) {
         this.name = name;

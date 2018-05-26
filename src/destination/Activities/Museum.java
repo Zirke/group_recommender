@@ -4,9 +4,9 @@ import destination.Activity;
 
 public class Museum implements Activity {
 
-    String name;
-    String location;
-    String openingHours;
+    private String name;
+    private String location;
+    private String openingHours;
 
     public Museum(String name, String location, String openingHours) {
         this.name = name;

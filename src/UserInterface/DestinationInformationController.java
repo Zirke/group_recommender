@@ -21,7 +21,7 @@ public class DestinationInformationController {
     @FXML
     private Label cityType;
     @FXML
-    private VBox activityType, activityName;
+    private VBox activityType, activityName, typespecific, activityAdress;
 
     void initializeChosenRecommendation(Destination chosenRecommendation) {
         chosenRecommendation.fillActivities();
@@ -34,17 +34,24 @@ public class DestinationInformationController {
         for (Activity activity : activities) {
             Label type = new Label();
             Label name = new Label();
+            Label specific = new Label();
+            Label adress = new Label();
 
             type.setText((String) activity.getType());
-            type.setFont(new Font(16));
+            type.setFont(new Font(14));
             activityType.getChildren().add(type);
 
             name.setText((String) activity.getName());
-            name.setFont(new Font(16));
+            name.setFont(new Font(14));
             activityName.getChildren().add(name);
 
-            //venueArea.setEditable(false);
-            //venueArea.appendText(activity.getType() + "\t\t" + activity.getName() + "\n");
+            specific.setText(activity.getTypeSpecific().toString());
+            specific.setFont(new Font(14));
+            typespecific.getChildren().add(specific);
+
+            adress.setText(activity.getLocation().toString());
+            adress.setFont(new Font(14));
+            activityAdress.getChildren().add(adress);
         }
     }
 

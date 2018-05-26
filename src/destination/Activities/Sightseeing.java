@@ -4,9 +4,9 @@ import destination.Activity;
 
 public class Sightseeing implements Activity {
 
-    String name;
-    String location;
-    String sightseeingType;
+    private String name;
+    private String location;
+    private String sightseeingType;
 
     public Sightseeing(String name, String location, String sightseeingType) {
         this.name = name;

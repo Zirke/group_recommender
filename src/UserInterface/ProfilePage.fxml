@@ -99,13 +99,13 @@
                 </Label>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../ImageView/Pictures/com.chortorlab.fakeloc.png"/>
                             </image>
                         </ImageView>
                         <Button fx:id="recButton1" mnemonicParsing="false" onAction="#showClickedRecommendation"
-                                prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: #707070;" text="Button"
+                                prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #707070;" text="Button"
                                 textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0"/>
@@ -115,13 +115,13 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../ImageView/Pictures/com.chortorlab.fakeloc.png"/>
                             </image>
                         </ImageView>
                         <Button fx:id="recButton2" mnemonicParsing="false" onAction="#showClickedRecommendation"
-                                prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: #707070;" text="Button"
+                                prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #707070;" text="Button"
                                 textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0"/>
@@ -131,13 +131,13 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../ImageView/Pictures/com.chortorlab.fakeloc.png"/>
                             </image>
                         </ImageView>
                         <Button fx:id="recButton3" mnemonicParsing="false" onAction="#showClickedRecommendation"
-                                prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: #707070;" text="Button"
+                                prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #707070;" text="Button"
                                 textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0"/>
@@ -147,13 +147,13 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../ImageView/Pictures/com.chortorlab.fakeloc.png"/>
                             </image>
                         </ImageView>
                         <Button fx:id="recButton4" mnemonicParsing="false" onAction="#showClickedRecommendation"
-                                prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: #707070;" text="Button"
+                                prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #707070;" text="Button"
                                 textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0"/>
@@ -163,13 +163,13 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../ImageView/Pictures/com.chortorlab.fakeloc.png"/>
                             </image>
                         </ImageView>
                         <Button fx:id="recButton5" mnemonicParsing="false" onAction="#showClickedRecommendation"
-                                prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: #707070;" text="Button"
+                                prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #707070;" text="Button"
                                 textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0"/>
@@ -179,13 +179,45 @@
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../ImageView/Pictures/com.chortorlab.fakeloc.png"/>
                             </image>
                         </ImageView>
                         <Button fx:id="recButton6" mnemonicParsing="false" onAction="#showClickedRecommendation"
-                                prefHeight="55.0" prefWidth="300.0" style="-fx-background-color: #707070;" text="Button"
+                                prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #707070;" text="Button"
+                                textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+                    <children>
+                        <ImageView fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../ImageView/Pictures/com.chortorlab.fakeloc.png"/>
+                            </image>
+                        </ImageView>
+                        <Button fx:id="recButton7" mnemonicParsing="false" onAction="#showClickedRecommendation"
+                                prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #707070;" text="Button"
+                                textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="18.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+                    <children>
+                        <ImageView fitHeight="150.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../ImageView/Pictures/com.chortorlab.fakeloc.png"/>
+                            </image>
+                        </ImageView>
+                        <Button fx:id="recButton8" mnemonicParsing="false" onAction="#showClickedRecommendation"
+                                prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: #707070;" text="Button"
                                 textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="18.0"/>

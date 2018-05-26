@@ -6,47 +6,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
-            prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.121"
+            prefWidth="1200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.DestinationInformationController">
     <children>
-        <VBox alignment="TOP_CENTER" layoutX="480.0" layoutY="27.0" maxHeight="-Infinity" maxWidth="-Infinity"
-              prefHeight="519.0" prefWidth="500.0" spacing="20.0">
-            <children>
-                <Label text="Activities">
-                    <font>
-                        <Font name="System Bold" size="20.0"/>
-                    </font>
-                </Label>
-                <HBox alignment="TOP_CENTER" prefHeight="100.0" spacing="30.0">
-                    <children>
-                        <VBox fx:id="activityType" maxWidth="-Infinity" prefHeight="200.0" spacing="10.0"/>
-                        <VBox fx:id="activityName" maxWidth="-Infinity" prefHeight="200.0" spacing="10.0"/>
-                    </children>
-                </HBox>
-            </children>
-            <padding>
-                <Insets top="15.0"/>
-            </padding>
-        </VBox>
-        <Button fx:id="closeButton" layoutX="912.0" layoutY="556.0" mnemonicParsing="false"
-                onAction="#closeDestinationInformation" prefHeight="30.0" prefWidth="74.0"
-                style="-fx-background-color: lightgrey;" text="Close" textFill="WHITE">
-            <font>
-                <Font name="System Bold" size="14.0"/>
-            </font>
-        </Button>
-        <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="64.0" layoutY="317.0" pickOnBounds="true"
-                   preserveRatio="true">
-            <image>
-                <Image url="@../ImageView/Pictures/no-image.jpg"/>
-            </image>
-        </ImageView>
-        <GridPane layoutX="14.0" layoutY="14.0" prefHeight="278.0" prefWidth="506.0">
+        <GridPane layoutX="8.0" layoutY="14.0" maxWidth="-Infinity" prefHeight="206.0" prefWidth="831.0">
             <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="269.0" minWidth="0.0"
-                                   prefWidth="95.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="489.0" minWidth="10.0" prefWidth="207.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="477.0" minWidth="142.0" prefWidth="235.0"/>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="272.0" minWidth="0.0"
+                                   prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="625.0" minWidth="10.0" prefWidth="232.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="793.0" minWidth="142.0" prefWidth="480.0"/>
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints vgrow="SOMETIMES"/>
@@ -103,5 +71,38 @@
                 </Label>
             </children>
         </GridPane>
+        <VBox alignment="TOP_CENTER" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="309.0"
+              prefWidth="1200.0" spacing="20.0">
+            <children>
+                <Label text="Activities">
+                    <font>
+                        <Font name="System Bold" size="20.0"/>
+                    </font>
+                </Label>
+                <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="1200.0" spacing="30.0">
+                    <children>
+                        <VBox fx:id="activityType" spacing="10.0"/>
+                        <VBox fx:id="activityName" spacing="10.0"/>
+                        <VBox fx:id="typespecific" spacing="10.0"/>
+                        <VBox fx:id="activityAdress" spacing="10.0"/>
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets top="15.0"/>
+            </padding>
+        </VBox>
+        <Button fx:id="closeButton" layoutX="1112.0" layoutY="556.0" mnemonicParsing="false"
+                onAction="#closeDestinationInformation" prefHeight="30.0" prefWidth="74.0"
+                style="-fx-background-color: lightgrey;" text="Close" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="14.0"/>
+            </font>
+        </Button>
+        <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="943.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../ImageView/Pictures/no-image.jpg"/>
+            </image>
+        </ImageView>
     </children>
 </AnchorPane>

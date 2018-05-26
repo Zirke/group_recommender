@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
 public class Destination implements Cloneable {
     private String destinationName;
     private double lattitude;
@@ -195,7 +194,7 @@ public class Destination implements Cloneable {
 
             String currentLine = null;
 
-            while ((currentLine = reader.readLine()) != null && j <= 6) {
+            while ((currentLine = reader.readLine()) != null && j <= 7) {
                 String[] tempArr = currentLine.split("\t");
                 String first = tempArr[0];
                 int second = Integer.parseInt(tempArr[1]);

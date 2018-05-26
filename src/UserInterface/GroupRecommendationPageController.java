@@ -1,10 +1,12 @@
 package UserInterface;
 
+import destination.Destination;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import recommender.GroupRecommender;
 import userProfiles.Group;
 import userProfiles.User;
 
@@ -37,7 +39,7 @@ public class GroupRecommendationPageController {
                         Button foo = new Button();
                         foo.setText(group.getGroupID());
                         //CSS styling created buttons
-                        foo.setStyle("-fx-background-color: #8B0000; -fx-font-size: 20; -fx-text-fill: #FFFFFF; -fx-font-weight: bold");
+                        foo.setStyle("-fx-background-color: #8B0000; -fx-font-size: 18; -fx-text-fill: #FFFFFF; -fx-font-weight: bold");
                         //Adds event handler to each of the generated "group buttons"
                         foo.setOnAction(event -> {
                                     //removes the added members from vbox if some are already added
@@ -78,5 +80,12 @@ public class GroupRecommendationPageController {
         }
     }
 
+    public void showRecommendationsForSelectedGroup(Group selectedGroup) {
+        ArrayList<Destination> listOfGroupRecommendations = new ArrayList<>();
+
+        GroupRecommender groupRecommender = new GroupRecommender(selectedGroup);
+        listOfGroupRecommendations = groupRecommender.groupRecommendationDest();
+
+    }
 
 }

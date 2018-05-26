@@ -33,7 +33,7 @@ public class ProfilePageController extends GeneralController {
     @FXML
     private Label usernameLabel, usernameLabel2, firstnameLabel, lastnameLabel, genderLabel, ageLabel;
     @FXML
-    private Button recButton1, recButton2, recButton3, recButton4, recButton5, recButton6;
+    private Button recButton1, recButton2, recButton3, recButton4, recButton5, recButton6, recButton7, recButton8;
     @FXML
     private Button groupRecommendationsButton;
     @FXML
@@ -110,6 +110,12 @@ public class ProfilePageController extends GeneralController {
         }
         if (listOfRecommendedDestinations.size() > 5) {
             recButton6.setText(listOfRecommendedDestinations.get(5).getDestinationName());
+        }
+        if (listOfRecommendedDestinations.size() > 6) {
+            recButton7.setText(listOfRecommendedDestinations.get(6).getDestinationName());
+        }
+        if (listOfRecommendedDestinations.size() > 7) {
+            recButton8.setText(listOfRecommendedDestinations.get(7).getDestinationName());
         }
     }
 
