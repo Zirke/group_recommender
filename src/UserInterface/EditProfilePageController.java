@@ -22,14 +22,13 @@ import java.util.ResourceBundle;
 
 import static userProfiles.User.listOfCreatedUsers;
 
-
 public class EditProfilePageController extends GeneralController implements Initializable {
     @FXML
     private TextField destinationField, firstNameField, lastNameField, ageField, usernameField;
     @FXML
     private PasswordField passwordField;
     @FXML
-    private Button closeButton, saveDetailsButton, addDestinationsButton, removeDestinationsButton;
+    private Button closeButton, saveDetailsButton, addDestinationsButton;
     @FXML
     private ListView selectedDestinations;
 
@@ -58,7 +57,7 @@ public class EditProfilePageController extends GeneralController implements Init
     }
 
     public void addSelectedDestinationToListView() {
-        selectedDestinations.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE); //Makes it possible to select more users at once
+        selectedDestinations.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         if (!destinationField.getText().isEmpty()) {
             selectedDestinations.getItems().addAll(destinationField.getText());
         } else {
@@ -74,7 +73,6 @@ public class EditProfilePageController extends GeneralController implements Init
         }
     }
     private void addSelectedDestinationsToUser(User loggedInUser) throws IOException {
-
         HashSet<Destination> listOfVisitedDestinations = new HashSet<>();
         listOfVisitedDestinations.addAll(loggedInUser.getUsersDestination());
         loggedInUser.getUsersDestination().clear();
@@ -108,9 +106,6 @@ public class EditProfilePageController extends GeneralController implements Init
                         user.getUsersDestination().addAll(listOfVisitedDestinations);
                     }
                 }
-                //Adding the list of entered destinations to the logged in User
-//                loggedInUser.getUsersDestination().addAll(listOfVisitedDestinations);
-
                 overwriteUserData(listOfUsers);
             }
         });
