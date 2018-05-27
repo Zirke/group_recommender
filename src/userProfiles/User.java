@@ -172,11 +172,10 @@ public class User implements Cloneable {
         BufferedReader bfr = new BufferedReader(fr);
         String line;
 
-        int totalLine = Destination.linesInFile("src/userData.txt"); //Bruger linesInFile metoden fra Destination class
+        //int totalLine = Destination.linesInFile("src/userData.txt"); //Bruger linesInFile metoden fra Destination class
 
-        for (int i = 0; i < totalLine; i++) {
-            line = bfr.readLine();
-            String[] strings = line.split("\\t");
+        while((line = bfr.readLine()) != null){
+            String[] strings = line.split("\t");
             User temp = new User();
             ArrayList<Destination> tempDestList = new ArrayList<>();
 
@@ -187,9 +186,9 @@ public class User implements Cloneable {
             temp.setUsernameID(strings[4]);
             temp.setPassword(strings[5]);
 
-            for (String destinationID : strings) {
+            for (int i = 6; i < strings.length; ++i) {
                 for (Destination dest : Destination.listOfDestination()) {
-                    if (destinationID.equals(dest.getDestinationName())) {
+                    if (strings[i].equals(dest.getDestinationName())) {
                         tempDestList.add(dest);
                     }
                 }

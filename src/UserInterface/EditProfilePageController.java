@@ -9,11 +9,11 @@ import javafx.stage.Stage;
 import org.controlsfx.control.textfield.TextFields;
 import userProfiles.User;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -42,7 +42,7 @@ public class EditProfilePageController extends GeneralController implements Init
         TextFields.bindAutoCompletion(destinationField, options);
     }
 
-    void initializeUserData(User loggedInUser) {
+    void initializeUserData(User loggedInUser) throws IOException {
         firstNameField.setText(loggedInUser.getFirstName());
         lastNameField.setText(loggedInUser.getLastName());
         ageField.setText(loggedInUser.getAge());
@@ -61,7 +61,10 @@ public class EditProfilePageController extends GeneralController implements Init
         }
     }
 
-    public void addSelectedDestinationsToUser(User loggedInUser) {
+    public void addSelectedDestinationsToUser(User loggedInUser) throws IOException {
+
+        ArrayList<User> listOfUsers = User.listOfCreatedUsers();
+
         addDestinationsButton.setOnAction(event -> {
             if (destinationField.getText().isEmpty()) {
                 showAlertBox(Alert.AlertType.ERROR, "Input Error!", "You have not chosen any destinations to add");
@@ -73,30 +76,35 @@ public class EditProfilePageController extends GeneralController implements Init
                     try {
                         for (Destination foo : Destination.listOfDestination()) {
                             if (object.toString().equals(foo.getDestinationName())) {
-                                listOfSelectedDestinations.add(foo);
+                                loggedInUser.getUsersDestination().add(foo);
                             }
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    for(User user : listOfUsers){
+                        if(user.getUsernameID().equals(loggedInUser.getUsernameID())){
+                            user.getUsersDestination().addAll(loggedInUser.getUsersDestination());
+                        }
+                    }
                 }
                 //Adding the list of entered destinations to the logged in User
-                loggedInUser.getUsersDestination().addAll(listOfSelectedDestinations);
+//                loggedInUser.getUsersDestination().addAll(listOfSelectedDestinations);
 
-                overwriteUserData();
+                overwriteUserData(listOfUsers);
             }
         });
     }
 
-    private void overwriteUserData() {
-        try {
-            ArrayList<User> usersInSystem = User.listOfCreatedUsers();
-            try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("src/userData.txt", false)))) {
-                for (User user : usersInSystem) {
+    private void overwriteUserData(ArrayList<User> userList) {
+
+            Path inpath = Paths.get("src/userData.txt");
+            try (BufferedWriter writer = Files.newBufferedWriter(inpath)) {
+                for (User user : userList) {
                     //ArrayList<Destination> foo = user.getUsersDestination();
-                    out.write(user.getFirstName() + "\t" + user.getLastName() + "\t" + user.getGender() + "\t" + user.getAge() + "\t" + user.getUsernameID() + "\t" + user.getPassword());
+                    writer.write(user.getFirstName() + "\t" + user.getLastName() + "\t" + user.getGender() + "\t" + user.getAge() + "\t" + user.getUsernameID() + "\t" + user.getPassword() + "\t");
                     if (!user.getUsersDestination().isEmpty()) {
-                        out.write(user.getUsersDestination().get(0).getDestinationName());
+                        writer.write(user.getUsersDestination().get(0).getDestinationName());
                     }
                     /*
                     for (Destination dest : foo) {
@@ -105,14 +113,12 @@ public class EditProfilePageController extends GeneralController implements Init
                     */
                     //out.write(user.getUsersDestination().get(0).getDestinationName() + "\t");
 
-                    out.write("\n");
+                    writer.newLine();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
 

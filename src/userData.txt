@@ -1,12 +1,12 @@
-Simon	Kærgaard	Male	21	Simon123	password123
-Hans	Kristiansen	Male	41	flotfyr14	julemanden
-Christoffer	Hansen	Male	21	Cryptbreaker	idontknow
-Hillary	Clinton	Female	88	usernamewastaken	pokemongo
-Faggot	King	Male	69	elfagot	boi
-Testperson	test	Male	77	test	test
-Hans	Hansen	Male	44	hans123	hans123
-Grethe	Andersen	Female	45	gretheandersen	andersen
-Peter	Lundin	Male	99	killer	killer
-christ	fhan	Male	21	ch	234
-Elon	Musk	Male	46	Reeve	spacex
-Hanne	Jespersen	Female	32	blomst	hj555
+Simon	Kærgaard	Male	21	Simon123	password123	
+Hans	Kristiansen	Male	41	flotfyr14	julemanden	
+Christoffer	Hansen	Male	21	Cryptbreaker	idontknow	
+Hillary	Clinton	Female	88	usernamewastaken	pokemongo	
+Faggot	King	Male	69	elfagot	boi	
+Testperson	test	Male	77	test	test	Amsterdam
+Hans	Hansen	Male	44	hans123	hans123	
+Grethe	Andersen	Female	45	gretheandersen	andersen	
+Peter	Lundin	Male	99	killer	killer	
+christ	fhan	Male	21	ch	234	
+Elon	Musk	Male	46	Reeve	spacex	
+Hanne	Jespersen	Female	32	blomst	hj555	

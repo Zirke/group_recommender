@@ -63,7 +63,7 @@ public class ProfilePageController extends GeneralController {
     }
 
     @FXML
-    public void clickEditProfile() {
+    public void clickEditProfile() throws IOException {
         openEditProfilePage(this.loggedInUser);
     }
 
@@ -159,7 +159,7 @@ public class ProfilePageController extends GeneralController {
         stage.showAndWait();
     }
 
-    private void openEditProfilePage(User loggedInUser) {
+    private void openEditProfilePage(User loggedInUser) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("EditProfilePage.fxml"));
         try {
             parent = loader.load();
