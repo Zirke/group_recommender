@@ -9,7 +9,8 @@ import javafx.stage.Stage;
 import org.controlsfx.control.textfield.TextFields;
 import userProfiles.User;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -104,7 +105,6 @@ public class EditProfilePageController extends GeneralController implements Init
     }
 
     private void overwriteUserData(ArrayList<User> userList) {
-
             Path inpath = Paths.get("src/userData.txt");
             try (BufferedWriter writer = Files.newBufferedWriter(inpath)) {
                 for (User user : userList) {

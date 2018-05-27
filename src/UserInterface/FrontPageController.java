@@ -48,6 +48,13 @@ public class FrontPageController {
                 loginManager.authenticated(loggedInUser);
             }
         });
+        PasswordField.setOnAction(event -> {
+            User loggedInUser = userLoginCheck();
+            if (loggedInUser != null) {
+                loginManager.setLoggedInUser(loggedInUser);
+                loginManager.authenticated(loggedInUser);
+            }
+        });
     }
 
     //Checks if the entered username and password corresponds to any created users and returns the selected

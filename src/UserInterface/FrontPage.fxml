@@ -7,12 +7,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane fx:id="rootPane" maxHeight="900.0" maxWidth="1600.0" minHeight="900.0" minWidth="1600.0" prefHeight="900.0"
-            prefWidth="1600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8"
+            prefWidth="1600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.121"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.FrontPageController">
     <children>
-      <ImageView fitHeight="503.0" fitWidth="1025.0" layoutX="208.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="208.0" AnchorPane.topAnchor="309.0">
+        <ImageView fitHeight="565.0" fitWidth="1102.0" layoutX="208.0" layoutY="309.0" pickOnBounds="true"
+                   preserveRatio="true" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="208.0"
+                   AnchorPane.topAnchor="309.0">
          <image>
-            <Image url="@../ImageView/Pictures/world_map2.jpg" />
+             <Image url="@../ImageView/Pictures/map-307534.png"/>
          </image>
       </ImageView>
       <Label layoutX="240.0" layoutY="945.0" text="Let us help you find your next Travel Destination! " textFill="#1980ff" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="225.0">
