@@ -79,11 +79,14 @@ public class GroupCreationPageController extends GeneralController implements In
             }
         }
     }
-    //TODO not finished
+
     public void removeSelectedUserFromListView() {
-        ObservableList selectedUsersToRemove = addedUsersList.getSelectionModel().getSelectedItems();
-        //addedUsersList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        //selectedUsersFromListView.removeAll(selectedUsersToRemove);
+        if (addedUsersList.getSelectionModel().getSelectedItems() != null) {
+            addedUsersList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+            addedUsersList.getItems().removeAll(addedUsersList.getSelectionModel().getSelectedItems());
+        } else {
+            showAlertBox(Alert.AlertType.ERROR, "Error!", "You have not selected any users to remove");
+        }
     }
 
     public void closeGroupCreation() {

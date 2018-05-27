@@ -9,11 +9,16 @@
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="UserInterface.GroupCreationPageController">
     <children>
-        <VBox alignment="CENTER_LEFT" layoutX="-25.0" prefHeight="643.0" prefWidth="690.0" spacing="20.0">
+        <VBox alignment="CENTER_LEFT" layoutX="-25.0" prefHeight="643.0" prefWidth="690.0" spacing="15.0">
            <children>
                <Label text="Create New Travel Group">
                    <font>
                        <Font name="System Bold" size="30.0"/>
+                   </font>
+               </Label>
+               <Label text="Write Group Name">
+                   <font>
+                       <Font size="18.0"/>
                    </font>
                </Label>
                <TextField fx:id="writeGroupNameField" prefHeight="40.0" prefWidth="100.0" promptText="Group Name">
@@ -34,14 +39,14 @@
                </TextField>
                <HBox spacing="20.0">
                    <children>
-                       <Button mnemonicParsing="false" onAction="#addSelectedUserToListView"
+                       <Button mnemonicParsing="false" onAction="#addSelectedUserToListView" prefHeight="30.0"
                                style="-fx-background-color: green;" text="Add Selected User" textFill="WHITE">
                            <font>
                                <Font name="System Bold" size="15.0"/>
                            </font>
                        </Button>
-                       <Button mnemonicParsing="false" style="-fx-background-color: grey;" text="Remove"
-                               textFill="WHITE">
+                       <Button mnemonicParsing="false" onAction="#removeSelectedUserFromListView" prefHeight="30.0"
+                               style="-fx-background-color: grey;" text="Remove" textFill="WHITE">
                            <font>
                                <Font name="System Bold" size="15.0"/>
                            </font>
@@ -53,17 +58,17 @@
                    <children>
                        <Button fx:id="createGroupButton" maxHeight="-Infinity" maxWidth="-Infinity"
                                minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-                               onAction="#createNewGroupFromUserInput" prefHeight="40.0"
+                               onAction="#createNewGroupFromUserInput" prefHeight="30.0"
                                style="-fx-background-color: Green;" text="Create Group" textFill="WHITE">
                            <font>
-                               <Font name="System Bold" size="18.0"/>
+                               <Font name="System Bold" size="15.0"/>
                            </font>
                        </Button>
                        <Button fx:id="cancelButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
                                minWidth="-Infinity" mnemonicParsing="false" onAction="#closeGroupCreation"
-                               prefHeight="40.0" text="Cancel">
+                               prefHeight="30.0" style="-fx-background-color: grey;" text="Cancel" textFill="WHITE">
                            <font>
-                               <Font size="18.0"/>
+                               <Font name="System Bold" size="15.0"/>
                            </font>
                        </Button>
                    </children>

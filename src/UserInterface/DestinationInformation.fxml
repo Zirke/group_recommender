@@ -94,12 +94,13 @@
         </VBox>
         <Button fx:id="closeButton" layoutX="1112.0" layoutY="556.0" mnemonicParsing="false"
                 onAction="#closeDestinationInformation" prefHeight="30.0" prefWidth="74.0"
-                style="-fx-background-color: lightgrey;" text="Close" textFill="WHITE">
+                style="-fx-background-color: grey;" text="Close" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="14.0"/>
             </font>
         </Button>
-        <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="943.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="943.0" layoutY="-24.0" pickOnBounds="true"
+                   preserveRatio="true">
             <image>
                 <Image url="@../ImageView/Pictures/no-image.jpg"/>
             </image>
