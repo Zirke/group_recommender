@@ -22,7 +22,7 @@ public class ProfilePageController extends GeneralController {
     private User loggedInUser;
     private Parent parent;
 
-    public void setLoggedInUser(User loggedInUser) {
+    void setLoggedInUser(User loggedInUser) {
         this.loggedInUser = loggedInUser;
     }
 
@@ -35,15 +35,7 @@ public class ProfilePageController extends GeneralController {
     @FXML
     private Button recButton1, recButton2, recButton3, recButton4, recButton5, recButton6, recButton7, recButton8;
     @FXML
-    private Button groupRecommendationsButton;
-    @FXML
-    private Button logoutButton;
-    @FXML
-    private Button editProfileButton;
-
-    //Has to be public
-    public ProfilePageController() {
-    }
+    private Button logoutButton, groupRecommendationsButton, editProfileButton;
 
     public void initialize() {
     }

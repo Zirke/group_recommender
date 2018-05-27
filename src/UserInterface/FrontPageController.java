@@ -18,19 +18,15 @@ public class FrontPageController {
     @FXML
     private PasswordField PasswordField;
     @FXML
-    private Button loginButton;
-    @FXML
-    private Button userCreationButton;
-    @FXML
     private Hyperlink userCreationHPL;
     @FXML
-    private Button allDestinationsButton;
+    private Button loginButton, userCreationButton, allDestinationsButton;
 
     public void initialize() {
     }
     /*
-     * This method handles the mechanic of switching to other scenes from the Front Page.
-     * the instance of LoginManager is passed from LoginManager in the "showFrontPage" method.
+     * This method contains the event handlers to switch to other scenes from the Front Page.
+     * Each event handler contains a method from the LoginManager class.
      */
     void initManager(final LoginManager loginManager) {
         //Handles action for switching to Profile Creation Page
@@ -40,8 +36,19 @@ public class FrontPageController {
         //Handles action for switching to All Destinations Page
         allDestinationsButton.setOnAction(event -> loginManager.showAllDestinationsPage());
 
-        //Handles the action for switching to Profile Page. Requires LoginCheck
+        /*
+         ' Handles the action for switching to Profile Page.
+         * This requires a returned user from the userLoginCheck method.
+         * The loggedInUser gets passed through to the LoginManager.
+         */
         loginButton.setOnAction(event -> {
+            User loggedInUser = userLoginCheck();
+            if (loggedInUser != null) {
+                loginManager.setLoggedInUser(loggedInUser);
+                loginManager.authenticated(loggedInUser);
+            }
+        });
+        UsernameField.setOnAction(event -> {
             User loggedInUser = userLoginCheck();
             if (loggedInUser != null) {
                 loginManager.setLoggedInUser(loggedInUser);
@@ -57,7 +64,7 @@ public class FrontPageController {
         });
     }
 
-    //Checks if the entered username and password corresponds to any created users and returns the selected
+    //Checks if the entered username and password corresponds to any created users. Of so returns the selected
     private User userLoginCheck() {
         User loggedInUser = null;
         try {
@@ -72,29 +79,4 @@ public class FrontPageController {
         }
         return loggedInUser;
     }
-
-    /*
-    // Uses the ArrayList of users to make a HashMap with 'Username' as keyword and 'Password' as value
-    private static HashMap<String, String> userHashMap() throws IOException {
-        ArrayList<User> inputList = listOfCreatedUsers();
-        HashMap<String, String> mapOfUsers = new HashMap<>();
-        for (User userFromList : inputList) {
-            mapOfUsers.put(userFromList.getUsernameID(), userFromList.getPassword());
-        }
-        return mapOfUsers;
-    }
-
-    @FXML
-    public void userLogin(ActionEvent event) throws IOException {
-        HashMap<String, String> HashSetUsers = userHashMap();
-        Set<String> Usernames = HashSetUsers.keySet();
-        for (String i : Usernames) {
-            if (i.equals(UsernameField.getText()) && HashSetUsers.get(i).equals(PasswordField.getText())) {
-                LoadUI("ProfilePage", event);
-            } else {
-                //showAlertBox(Alert.AlertType.ERROR,"Login Error", "Incorrect Username or Password!");
-            }
-        }
-    }
-    */
 }

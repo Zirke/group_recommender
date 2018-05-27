@@ -39,6 +39,7 @@ public class AllDestinationsPageController extends GeneralController implements 
         TextFields.bindAutoCompletion(searchField, options);
     }
 
+    //Reads the searched for destination from searchField and shows the destination information
     public void showSearchedForDestination() {
         ProfilePageController controller = new ProfilePageController();
         try {
@@ -56,6 +57,7 @@ public class AllDestinationsPageController extends GeneralController implements 
         }
     }
 
+    //Loads in the information from the top 6 most popular destinations in data set
     void initializeMostPopularDestinations() {
         ArrayList<Destination> listOfMostPopularDestinations = Destination.mostPopularDestinations();
         mostPopularLabel1.setText(listOfMostPopularDestinations.get(0).getDestinationName());

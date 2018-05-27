@@ -18,21 +18,15 @@ import java.io.PrintWriter;
 
 public class ProfileCreationPageController extends GeneralController {
     @FXML
-    private TextField firstNameField;
-    @FXML
-    private TextField lastNameField;
+    private TextField firstNameField, lastNameField, ageField, usernameField;
     @FXML
     private ChoiceBox genderBox;
-    @FXML
-    private TextField ageField;
-    @FXML
-    private TextField usernameField;
     @FXML
     private PasswordField passwordField;
     @FXML
     private Hyperlink frontPageHPL;
     //Creating and initializing values for Gender choice box
-    private ObservableList<String> genderChoice = FXCollections.observableArrayList("Male", "Female");
+    private ObservableList<String> genderChoice = FXCollections.observableArrayList("Male", "Female", "Neutral");
 
     @FXML
     private void initialize() {
@@ -40,8 +34,9 @@ public class ProfileCreationPageController extends GeneralController {
         genderBox.setValue(""); //the string here have to meaning
     }
 
+    //Getting values from all the controllers and writing the data to text file userData.txt
     public void createUserFromInput() {
-        //Checking for input
+        //If one of the controllers are empty, an alert box is shown to ensure correct profile creation
         if (firstNameField.getText().isEmpty()) {
             showAlertBox(Alert.AlertType.ERROR, "Input Error!", "You must enter your First Name");
         } else if (lastNameField.getText().isEmpty()) {
@@ -55,7 +50,6 @@ public class ProfileCreationPageController extends GeneralController {
         } else if (passwordField.getText().isEmpty()) {
             showAlertBox(Alert.AlertType.ERROR, "Input Error!", "You must enter a Password");
         } else {
-            //Writing input from input fields to textfile "userData.txt"
             try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(
                     "src/userData.txt", true)))) {
                 out.print(firstNameField.getText() + "\t");
@@ -72,7 +66,7 @@ public class ProfileCreationPageController extends GeneralController {
                 out.print(passwordField.getText() + "\t");
                 out.print("\n");
 
-                //Confirmation alert box
+                //Confirmation alert box when a profile is successfully created
                 showAlertBox(Alert.AlertType.CONFIRMATION, "Welcome!",
                         "You have successfully created a profile!\n"
                                 + "Sign in to go to your Profile Page");
@@ -83,7 +77,7 @@ public class ProfileCreationPageController extends GeneralController {
         }
     }
 
-    //Opens the User Agreement pop-up window as a new stage
+    //Opens the User Agreement text file in a pop-up window (a new stage)
     @FXML
     public void pressUserAgreement() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("UserAgreement.fxml"));

@@ -8,6 +8,10 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/*
+ * This class contains methods to apply the FXMLLoader ty the majority of this applications scenes.
+ */
+
 public class LoginManager {
     private User loggedInUser;
     private Scene scene;
@@ -43,7 +47,7 @@ public class LoginManager {
         }
     }
 
-    private void showProfilePage(User loggedInUser) {
+    public void showProfilePage(User loggedInUser) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilePage.fxml"));
             scene.setRoot(loader.load());
