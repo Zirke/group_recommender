@@ -253,4 +253,10 @@ public class Destination implements Cloneable {
 
         return Objects.hash(getDestinationName());
     }
+
+    @Override
+    public String toString() {
+        return destinationName;
+
+    }
 }

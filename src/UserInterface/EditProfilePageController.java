@@ -81,25 +81,30 @@ public class EditProfilePageController extends GeneralController implements Init
                     }
                 }
                 //Adding the list of entered destinations to the logged in User
-                loggedInUser.setUsersDestination(listOfSelectedDestinations);
+                loggedInUser.getUsersDestination().addAll(listOfSelectedDestinations);
 
                 overwriteUserData();
             }
         });
     }
 
-    public void overwriteUserData() {
+    private void overwriteUserData() {
         try {
             ArrayList<User> usersInSystem = User.listOfCreatedUsers();
             try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("src/userData.txt", false)))) {
                 for (User user : usersInSystem) {
+                    //ArrayList<Destination> foo = user.getUsersDestination();
                     out.write(user.getFirstName() + "\t" + user.getLastName() + "\t" + user.getGender() + "\t" + user.getAge() + "\t" + user.getUsernameID() + "\t" + user.getPassword());
                     if (!user.getUsersDestination().isEmpty()) {
-                        for (Destination dest : user.getUsersDestination()) {
-                            out.write(dest.getDestinationName() + "\t");
-                        }
-                        //out.write(user.getUsersDestination().get(0).getDestinationName() + "\t");
+                        out.write(user.getUsersDestination().get(0).getDestinationName());
                     }
+                    /*
+                    for (Destination dest : foo) {
+                        out.write(dest.getDestinationName() + "\t");
+                    }
+                    */
+                    //out.write(user.getUsersDestination().get(0).getDestinationName() + "\t");
+
                     out.write("\n");
                 }
             } catch (IOException e) {
