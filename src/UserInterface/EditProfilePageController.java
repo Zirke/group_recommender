@@ -15,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -64,20 +65,24 @@ public class EditProfilePageController extends GeneralController implements Init
     public void addSelectedDestinationsToUser(User loggedInUser) throws IOException {
 
         ArrayList<User> listOfUsers = User.listOfCreatedUsers();
+        HashSet<Destination> listOfVisitedDestinations = new HashSet<>();
+        for(Destination dest : loggedInUser.getUsersDestination()){
+            listOfVisitedDestinations.add(dest);
+        }
+        loggedInUser.getUsersDestination().clear();
 
         addDestinationsButton.setOnAction(event -> {
             if (destinationField.getText().isEmpty()) {
                 showAlertBox(Alert.AlertType.ERROR, "Input Error!", "You have not chosen any destinations to add");
             } else {
                 ObservableList selectedDestinationsFromListView = selectedDestinations.getItems();
-                ArrayList<Destination> listOfSelectedDestinations = new ArrayList<>();
 
                 for (Object object : selectedDestinationsFromListView) {
                     try {
                         for (Destination foo : Destination.listOfDestination()) {
-                            if (object.toString().equals(foo.getDestinationName())) {
-                                loggedInUser.getUsersDestination().add(foo);
-                            }
+                                if (object.toString().equals(foo.getDestinationName())) {
+                                    listOfVisitedDestinations.add(foo);
+                                }
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -85,11 +90,13 @@ public class EditProfilePageController extends GeneralController implements Init
                 }
                 for(User user : listOfUsers){
                     if(user.getUsernameID().equals(loggedInUser.getUsernameID())){
-                        user.getUsersDestination().addAll(loggedInUser.getUsersDestination());
+                        loggedInUser.getUsersDestination().addAll(listOfVisitedDestinations);
+                        user.getUsersDestination().clear();
+                        user.getUsersDestination().addAll(listOfVisitedDestinations);
                     }
                 }
                 //Adding the list of entered destinations to the logged in User
-//                loggedInUser.getUsersDestination().addAll(listOfSelectedDestinations);
+//                loggedInUser.getUsersDestination().addAll(listOfVisitedDestinations);
 
                 overwriteUserData(listOfUsers);
             }
@@ -104,17 +111,10 @@ public class EditProfilePageController extends GeneralController implements Init
                     //ArrayList<Destination> foo = user.getUsersDestination();
                     writer.write(user.getFirstName() + "\t" + user.getLastName() + "\t" + user.getGender() + "\t" + user.getAge() + "\t" + user.getUsernameID() + "\t" + user.getPassword() + "\t");
                     if (!user.getUsersDestination().isEmpty()) {
-                        for(Destination dest : user.getUsersDestination()){
-                        writer.write(dest.getDestinationName() + "\t");
+                        for (Destination dest : user.getUsersDestination()) {
+                            writer.write(dest.getDestinationName() + "\t");
                         }
                     }
-                    /*
-                    for (Destination dest : foo) {
-                        out.write(dest.getDestinationName() + "\t");
-                    }
-                    */
-                    //out.write(user.getUsersDestination().get(0).getDestinationName() + "\t");
-
                     writer.newLine();
                 }
             } catch (IOException e) {

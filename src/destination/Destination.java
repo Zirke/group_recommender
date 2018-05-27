@@ -240,6 +240,12 @@ public class Destination implements Cloneable {
         }
     }
 
+
+    @Override
+    public String toString() {
+        return destinationName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -253,10 +259,5 @@ public class Destination implements Cloneable {
 
         return Objects.hash(getDestinationName());
     }
-
-    @Override
-    public String toString() {
-        return destinationName;
-
-    }
 }
+

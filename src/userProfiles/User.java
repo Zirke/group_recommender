@@ -189,11 +189,10 @@ public class User implements Cloneable {
             for (int i = 6; i < strings.length; ++i) {
                 for (Destination dest : Destination.listOfDestination()) {
                     if (strings[i].equals(dest.getDestinationName())) {
-                        tempDestList.add(dest);
+                        temp.getUsersDestination().add(dest);
                     }
                 }
             }
-            temp.setUsersDestination(tempDestList);
             listOfUsers.add(temp);
         }
         try {
