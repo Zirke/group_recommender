@@ -82,10 +82,10 @@ public class EditProfilePageController extends GeneralController implements Init
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    for(User user : listOfUsers){
-                        if(user.getUsernameID().equals(loggedInUser.getUsernameID())){
-                            user.getUsersDestination().addAll(loggedInUser.getUsersDestination());
-                        }
+                }
+                for(User user : listOfUsers){
+                    if(user.getUsernameID().equals(loggedInUser.getUsernameID())){
+                        user.getUsersDestination().addAll(loggedInUser.getUsersDestination());
                     }
                 }
                 //Adding the list of entered destinations to the logged in User
@@ -104,7 +104,9 @@ public class EditProfilePageController extends GeneralController implements Init
                     //ArrayList<Destination> foo = user.getUsersDestination();
                     writer.write(user.getFirstName() + "\t" + user.getLastName() + "\t" + user.getGender() + "\t" + user.getAge() + "\t" + user.getUsernameID() + "\t" + user.getPassword() + "\t");
                     if (!user.getUsersDestination().isEmpty()) {
-                        writer.write(user.getUsersDestination().get(0).getDestinationName());
+                        for(Destination dest : user.getUsersDestination()){
+                        writer.write(dest.getDestinationName() + "\t");
+                        }
                     }
                     /*
                     for (Destination dest : foo) {
