@@ -38,6 +38,8 @@ public class ProfilePageController extends GeneralController {
     private Button groupRecommendationsButton;
     @FXML
     private Button logoutButton;
+    @FXML
+    private Button editProfileButton;
 
     //Has to be public
     public ProfilePageController() {
@@ -62,11 +64,6 @@ public class ProfilePageController extends GeneralController {
         stage.showAndWait();
     }
 
-    @FXML
-    public void clickEditProfile() throws IOException {
-        openEditProfilePage(this.loggedInUser);
-    }
-
     //Gets data from the passed user and sets the correct label text
     void initializeLoggedInUserData(final LoginManager loginManager, User loggedInUser) {
         usernameLabel.setText(loggedInUser.getUsernameID());
@@ -79,6 +76,14 @@ public class ProfilePageController extends GeneralController {
         groupRecommendationsButton.setOnAction(event -> loginManager.showGroupRecommendationPage(loggedInUser));
         //Switces to Front Page
         logoutButton.setOnAction(event -> loginManager.logout());
+
+        editProfileButton.setOnAction(event -> {
+            try {
+                openEditProfilePage(loggedInUser);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     void initializeLoggedInUserRecommendations(User loggedInUser) {

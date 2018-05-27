@@ -178,7 +178,6 @@ public class User implements Cloneable {
             String[] strings = line.split("\t");
             User temp = new User();
             ArrayList<Destination> tempDestList = new ArrayList<>();
-
             temp.setFirstName(strings[0]);
             temp.setLastName(strings[1]);
             temp.setGender(strings[2]);

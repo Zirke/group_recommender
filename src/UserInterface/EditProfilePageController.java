@@ -20,6 +20,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static userProfiles.User.listOfCreatedUsers;
+
 
 public class EditProfilePageController extends GeneralController implements Initializable {
     @FXML
@@ -52,6 +54,7 @@ public class EditProfilePageController extends GeneralController implements Init
         passwordField.setText(loggedInUser.getPassword());
 
         addSelectedDestinationsToUser(loggedInUser);
+        editProfileData(loggedInUser);
     }
 
     public void addSelectedDestinationToListView() {
@@ -65,14 +68,19 @@ public class EditProfilePageController extends GeneralController implements Init
 
     public void addSelectedDestinationsToUser(User loggedInUser) throws IOException {
 
-        ArrayList<User> listOfUsers = User.listOfCreatedUsers();
         HashSet<Destination> listOfVisitedDestinations = new HashSet<>();
-        for(Destination dest : loggedInUser.getUsersDestination()){
+        for (Destination dest : loggedInUser.getUsersDestination()) {
             listOfVisitedDestinations.add(dest);
         }
         loggedInUser.getUsersDestination().clear();
 
         addDestinationsButton.setOnAction(event -> {
+            ArrayList<User> listOfUsers = null;
+            try {
+                listOfUsers = listOfCreatedUsers();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (destinationField.getText().isEmpty()) {
                 showAlertBox(Alert.AlertType.ERROR, "Input Error!", "You have not chosen any destinations to add");
             } else {
@@ -81,16 +89,16 @@ public class EditProfilePageController extends GeneralController implements Init
                 for (Object object : selectedDestinationsFromListView) {
                     try {
                         for (Destination foo : Destination.listOfDestination()) {
-                                if (object.toString().equals(foo.getDestinationName())) {
-                                    listOfVisitedDestinations.add(foo);
-                                }
+                            if (object.toString().equals(foo.getDestinationName())) {
+                                listOfVisitedDestinations.add(foo);
+                            }
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
-                for(User user : listOfUsers){
-                    if(user.getUsernameID().equals(loggedInUser.getUsernameID())){
+                for (User user : listOfUsers) {
+                    if (user.getUsernameID().equals(loggedInUser.getUsernameID())) {
                         loggedInUser.getUsersDestination().addAll(listOfVisitedDestinations);
                         user.getUsersDestination().clear();
                         user.getUsersDestination().addAll(listOfVisitedDestinations);
@@ -105,22 +113,66 @@ public class EditProfilePageController extends GeneralController implements Init
     }
 
     private void overwriteUserData(ArrayList<User> userList) {
-            Path inpath = Paths.get("src/userData.txt");
-            try (BufferedWriter writer = Files.newBufferedWriter(inpath)) {
-                for (User user : userList) {
-                    //ArrayList<Destination> foo = user.getUsersDestination();
-                    writer.write(user.getFirstName() + "\t" + user.getLastName() + "\t" + user.getGender() + "\t" + user.getAge() + "\t" + user.getUsernameID() + "\t" + user.getPassword() + "\t");
-                    if (!user.getUsersDestination().isEmpty()) {
-                        for (Destination dest : user.getUsersDestination()) {
-                            writer.write(dest.getDestinationName() + "\t");
-                        }
+        Path outpath = Paths.get("src/userData.txt");
+        try (BufferedWriter writer = Files.newBufferedWriter(outpath)) {
+            for (User user : userList) {
+                //ArrayList<Destination> foo = user.getUsersDestination();
+                writer.write(user.getFirstName() + "\t" + user.getLastName() + "\t" + user.getGender() + "\t" + user.getAge() + "\t" + user.getUsernameID() + "\t" + user.getPassword() + "\t");
+                if (!user.getUsersDestination().isEmpty()) {
+                    for (Destination dest : user.getUsersDestination()) {
+                        writer.write(dest.getDestinationName() + "\t");
                     }
-                    writer.newLine();
                 }
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void editProfileData(User loggedInUser) {
+
+        Path outpath = Paths.get("src/userData.txt");
+
+        saveDetailsButton.setOnAction(event -> {
+            ArrayList<User> listOfUsers = null;
+            try {
+                listOfUsers = listOfCreatedUsers();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
+            try (BufferedWriter writer = Files.newBufferedWriter(outpath)) {
+                for (User user : listOfUsers) {
+                    if (!user.getUsernameID().equals(loggedInUser.getUsernameID())) {
+                        writer.write(user.getFirstName() + "\t" + user.getLastName() + "\t" + user.getGender() + "\t" + user.getAge() + "\t" + user.getUsernameID() + "\t" + user.getPassword() + "\t");
+                        if (!user.getUsersDestination().isEmpty()) {
+                            for (Destination dest : user.getUsersDestination()) {
+                                writer.write(dest.getDestinationName() + "\t");
+                            }
+                        }
+                        writer.newLine();
+                    } else {
+                        writer.write(firstNameField.getText() + "\t" + lastNameField.getText() + "\t" + loggedInUser.getGender() + "\t" + ageField.getText() + "\t" + usernameField.getText() + "\t" + passwordField.getText() + "\t");
+                        loggedInUser.setFirstName(firstNameField.getText()); loggedInUser.setLastName(lastNameField.getText()); loggedInUser.setAge(ageField.getText());
+                        loggedInUser.setUsernameID(usernameField.getText()); loggedInUser.setPassword(passwordField.getText());
+                        HashSet<Destination> hashSet = new HashSet<>();
+                        hashSet.addAll(user.getUsersDestination());
+                        hashSet.addAll(loggedInUser.getUsersDestination());
+                        loggedInUser.getUsersDestination().clear();
+                        loggedInUser.getUsersDestination().addAll(hashSet);
+                        if (!loggedInUser.getUsersDestination().isEmpty()) {
+                            for (Destination dest : loggedInUser.getUsersDestination()) {
+                                writer.write(dest.getDestinationName() + "\t");
+                            }
+                        }
+                        writer.newLine();
+                    }
+                }
+            } catch (IOException e) {
+                System.out.println("Unable to read file");
+            }
+        });
     }
 
 
