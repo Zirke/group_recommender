@@ -176,8 +176,9 @@ public class User implements Cloneable {
 
         for (int i = 0; i < totalLine; i++) {
             line = bfr.readLine();
-            String[] strings = line.split("\\t", 6);
+            String[] strings = line.split("\\t");
             User temp = new User();
+            ArrayList<Destination> tempDestList = new ArrayList<>();
 
             temp.setFirstName(strings[0]);
             temp.setLastName(strings[1]);
@@ -186,6 +187,14 @@ public class User implements Cloneable {
             temp.setUsernameID(strings[4]);
             temp.setPassword(strings[5]);
 
+            for (String destinationID : strings) {
+                for (Destination dest : Destination.listOfDestination()) {
+                    if (destinationID.equals(dest.getDestinationName())) {
+                        tempDestList.add(dest);
+                    }
+                }
+            }
+            temp.setUsersDestination(tempDestList);
             listOfUsers.add(temp);
         }
         try {

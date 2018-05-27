@@ -69,7 +69,8 @@ public class ProfileCreationPageController extends GeneralController {
                     }
                 });
                 out.print(usernameField.getText() + "\t");
-                out.print(passwordField.getText() + "\n");
+                out.print(passwordField.getText() + "\t");
+                out.print("\n");
 
                 //Confirmation alert box
                 showAlertBox(Alert.AlertType.CONFIRMATION, "Welcome!",

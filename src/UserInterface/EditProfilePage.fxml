@@ -4,11 +4,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="UserInterface.EditProfilePageController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.EditProfilePageController">
     <children>
         <VBox alignment="TOP_CENTER" layoutX="447.0" layoutY="31.0" maxHeight="-Infinity" maxWidth="-Infinity"
-              prefHeight="286.0" prefWidth="300.0" spacing="25.0" AnchorPane.rightAnchor="50.0"
+              prefHeight="286.0" prefWidth="300.0" spacing="15.0" AnchorPane.rightAnchor="50.0"
               AnchorPane.topAnchor="50.0">
             <children>
                 <Label text="Add check-in to Profile">
@@ -17,10 +17,11 @@
                     </font>
                 </Label>
                 <TextField fx:id="destinationField" promptText="Search Destination"/>
-                <ListView prefHeight="105.0" prefWidth="264.0"/>
+                <Button mnemonicParsing="false" onAction="#addSelectedDestinationToListView" text="Select"/>
+                <ListView fx:id="selectedDestinations" prefHeight="105.0" prefWidth="264.0"/>
                 <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
                     <children>
-                        <Button mnemonicParsing="false" text="Add to Profile"/>
+                        <Button fx:id="addDestinationsButton" mnemonicParsing="false" text="Add to Profile"/>
                         <Button mnemonicParsing="false" text="Remove"/>
                     </children>
                 </HBox>
@@ -80,6 +81,7 @@
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
             </padding>
         </VBox>
-        <Button fx:id="closeButton" layoutX="734.0" layoutY="561.0" mnemonicParsing="false" text="Close"/>
+        <Button fx:id="closeButton" layoutX="734.0" layoutY="561.0" mnemonicParsing="false" onAction="#closeEditProfile"
+                text="Close"/>
     </children>
 </AnchorPane>
