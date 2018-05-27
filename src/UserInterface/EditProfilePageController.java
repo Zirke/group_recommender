@@ -29,7 +29,7 @@ public class EditProfilePageController extends GeneralController implements Init
     @FXML
     private PasswordField passwordField;
     @FXML
-    private Button closeButton, saveDetailsButton, addDestinationsButton;
+    private Button closeButton, saveDetailsButton, addDestinationsButton, removeDestinationsButton;
     @FXML
     private ListView selectedDestinations;
 
@@ -62,16 +62,21 @@ public class EditProfilePageController extends GeneralController implements Init
         if (!destinationField.getText().isEmpty()) {
             selectedDestinations.getItems().addAll(destinationField.getText());
         } else {
-            showAlertBox(Alert.AlertType.ERROR, "Error!", "You have not selected any User to add");
+            showAlertBox(Alert.AlertType.ERROR, "Error!", "You have not selected any destination to add");
         }
     }
 
-    public void addSelectedDestinationsToUser(User loggedInUser) throws IOException {
+    public void removeSelectedDestinationFromListView() {
+        if (selectedDestinations.getSelectionModel().getSelectedItems() != null) {
+            selectedDestinations.getItems().removeAll(selectedDestinations.getSelectionModel().getSelectedItems());
+        } else {
+            showAlertBox(Alert.AlertType.ERROR, "Error!", "You have not selected any destination to remove");
+        }
+    }
+    private void addSelectedDestinationsToUser(User loggedInUser) throws IOException {
 
         HashSet<Destination> listOfVisitedDestinations = new HashSet<>();
-        for (Destination dest : loggedInUser.getUsersDestination()) {
-            listOfVisitedDestinations.add(dest);
-        }
+        listOfVisitedDestinations.addAll(loggedInUser.getUsersDestination());
         loggedInUser.getUsersDestination().clear();
 
         addDestinationsButton.setOnAction(event -> {
@@ -85,7 +90,6 @@ public class EditProfilePageController extends GeneralController implements Init
                 showAlertBox(Alert.AlertType.ERROR, "Input Error!", "You have not chosen any destinations to add");
             } else {
                 ObservableList selectedDestinationsFromListView = selectedDestinations.getItems();
-
                 for (Object object : selectedDestinationsFromListView) {
                     try {
                         for (Destination foo : Destination.listOfDestination()) {
@@ -154,8 +158,11 @@ public class EditProfilePageController extends GeneralController implements Init
                         writer.newLine();
                     } else {
                         writer.write(firstNameField.getText() + "\t" + lastNameField.getText() + "\t" + loggedInUser.getGender() + "\t" + ageField.getText() + "\t" + usernameField.getText() + "\t" + passwordField.getText() + "\t");
-                        loggedInUser.setFirstName(firstNameField.getText()); loggedInUser.setLastName(lastNameField.getText()); loggedInUser.setAge(ageField.getText());
-                        loggedInUser.setUsernameID(usernameField.getText()); loggedInUser.setPassword(passwordField.getText());
+                        loggedInUser.setFirstName(firstNameField.getText());
+                        loggedInUser.setLastName(lastNameField.getText());
+                        loggedInUser.setAge(ageField.getText());
+                        loggedInUser.setUsernameID(usernameField.getText());
+                        loggedInUser.setPassword(passwordField.getText());
                         HashSet<Destination> hashSet = new HashSet<>();
                         hashSet.addAll(user.getUsersDestination());
                         hashSet.addAll(loggedInUser.getUsersDestination());
