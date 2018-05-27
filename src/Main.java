@@ -15,13 +15,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Scene scene = new Scene(new AnchorPane());
+        Scene primaryScene = new Scene(new AnchorPane());
 
-        //Creates an instance of LoginManager to load the application
-        LoginManager loginManager = new LoginManager(scene);
+        //Creates an instance of LoginManager which gets the scene instance to access
+        LoginManager loginManager = new LoginManager(primaryScene);
         loginManager.showFrontPage();
 
-        primaryStage.setScene(scene);
+        primaryStage.setScene(primaryScene);
         primaryStage.setTitle("A400b P2");
         primaryStage.show();
     }

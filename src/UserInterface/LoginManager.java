@@ -13,19 +13,10 @@ import java.util.logging.Logger;
  */
 
 public class LoginManager {
-    private User loggedInUser;
     private Scene scene;
 
     public LoginManager(Scene scene) {
         this.scene = scene;
-    }
-
-    public User getLoggedInUser() {
-        return loggedInUser;
-    }
-
-    public void setLoggedInUser(User loggedInUser) {
-        this.loggedInUser = loggedInUser;
     }
 
     void authenticated(User loggedInUser) {

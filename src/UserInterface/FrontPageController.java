@@ -43,21 +43,18 @@ public class FrontPageController {
         loginButton.setOnAction(event -> {
             User loggedInUser = userLoginCheck();
             if (loggedInUser != null) {
-                loginManager.setLoggedInUser(loggedInUser);
                 loginManager.authenticated(loggedInUser);
             }
         });
         UsernameField.setOnAction(event -> {
             User loggedInUser = userLoginCheck();
             if (loggedInUser != null) {
-                loginManager.setLoggedInUser(loggedInUser);
                 loginManager.authenticated(loggedInUser);
             }
         });
         PasswordField.setOnAction(event -> {
             User loggedInUser = userLoginCheck();
             if (loggedInUser != null) {
-                loginManager.setLoggedInUser(loggedInUser);
                 loginManager.authenticated(loggedInUser);
             }
         });
