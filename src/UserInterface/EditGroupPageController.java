@@ -29,7 +29,7 @@ public class EditGroupPageController extends GeneralController implements Initia
     }
 
     public void setSelectedGroup(String selectedGroup) {
-        this.selectedGroup = selectedGroup;
+        this.selectedGroup = getSelectedGroup();
     }
 
     @FXML
@@ -37,7 +37,8 @@ public class EditGroupPageController extends GeneralController implements Initia
     @FXML
     private TextField searchForUserField;
     @FXML
-    private Button selectUserButton, addUsersToGroupButton, closeButton;
+    private Button closeButton, addUsersToGroupButton;
+
 
     //Makes auto filling search bar for usernames
     @Override
@@ -63,7 +64,7 @@ public class EditGroupPageController extends GeneralController implements Initia
         stage.close();
     }
 
-    public void addSelectedDestinationToListView() {
+    public void addSelectedUserToListView() {
         selectedUsersList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE); //Makes it possible to select more users at once
         if (!searchForUserField.getText().isEmpty()) {
             selectedUsersList.getItems().addAll(searchForUserField.getText());
@@ -72,12 +73,42 @@ public class EditGroupPageController extends GeneralController implements Initia
         }
     }
 
-    public void removeSelectedDestinationFromListView() {
+    public void removeSelectedUserFromListView() {
         selectedUsersList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         if (!selectedUsersList.getItems().isEmpty()) {
             selectedUsersList.getItems().removeAll(selectedUsersList.getSelectionModel().getSelectedItems());
         } else {
             showAlertBox(Alert.AlertType.ERROR, "Error!", "You have not selected any destination to remove");
+        }
+    }
+
+    private void addUsersToGroup(String selectedGroup) {
+
+        Path outpath = Paths.get("src/groupData.txt");
+
+        try {
+            ArrayList<Group> listOfGroups;
+            listOfGroups = Group.listOfCreatedGroups();
+            BufferedWriter writer = Files.newBufferedWriter(outpath);
+            HashSet<User> noDuplicates = new HashSet<>();
+
+            for (Group g : listOfGroups) {
+                if (g.getGroupID().equals(this.selectedGroup)) {
+                    writer.write(this.selectedGroup + ",");
+                    noDuplicates.addAll(g.getUsersInGroup());
+                    noDuplicates.addAll(selectedUsersList.getItems());
+                    for (User u : noDuplicates) {
+                        writer.write(u.getUsernameID() + ",");
+                    }
+                } else {
+                    writer.write(g.getGroupID() + ",");
+                    for (User u : g.getUsersInGroup()) {
+                        writer.write(u.getUsernameID() + ",");
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -108,39 +139,4 @@ public class EditGroupPageController extends GeneralController implements Initia
             }
         }
     } */
-    @FXML
-    public void addGroupMemeber() {
-
-        Path outpath = Paths.get("src/groupData.txt");
-
-        addUsersToGroupButton.setOnAction(event ->{
-
-                try {
-                    ArrayList<Group> listOfGroups;
-                    listOfGroups = Group.listOfCreatedGroups();
-                    BufferedWriter writer = Files.newBufferedWriter(outpath);
-                    HashSet<User> noDuplicates = new HashSet<>();
-
-                    for (Group g : listOfGroups) {
-                        if (g.getGroupID().equals(this.selectedGroup)) {
-                            writer.write(this.selectedGroup + ",");
-                            noDuplicates.addAll(g.getUsersInGroup());
-                            noDuplicates.addAll(selectedUsersList.getItems());
-                            for (User u : noDuplicates) {
-                                writer.write(u.getUsernameID() + ",");
-                            }
-                        } else {
-                            writer.write(g.getGroupID() + ",");
-                            for (User u : g.getUsersInGroup()) {
-                                writer.write(u.getUsernameID() + ",");
-                            }
-                        }
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-        });
-    }
-
 }

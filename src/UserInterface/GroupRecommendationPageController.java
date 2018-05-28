@@ -22,16 +22,27 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class GroupRecommendationPageController {
+    private String chosenGroup;
+
+    public String getChosenGroup() {
+        return chosenGroup;
+    }
+
+    public void setChosenGroup(String chosenGroup) {
+        this.chosenGroup = chosenGroup;
+    }
+
     @FXML
     private Label usernameLabel, groupIDLabel;
     @FXML
     private VBox shownGroupsBox, groupMemberBox;
     @FXML
-    private Button editGroupButton, goBackButton, recButton1, recButton2, recButton3, recButton4, recButton5, recButton6, recButton7, recButton8, recButton9, recButton10;
+    private Button openEditGroupButton, goBackButton, recButton1, recButton2, recButton3, recButton4, recButton5, recButton6, recButton7, recButton8, recButton9, recButton10;
 
     void initializeData(final LoginManager loginManager, User loggedInUser) {
         usernameLabel.setText(loggedInUser.getUsernameID());
         goBackButton.setOnAction(event -> loginManager.showProfilePage(loggedInUser));
+        openEditGroupButton.setOnAction(this::openEditGroupPage);
     }
 
     //For each group the "loggedInUser" is a part of a button with the group's ID is created in the left side menu
@@ -67,13 +78,8 @@ public class GroupRecommendationPageController {
     private void showSelectedGroupInformation(ActionEvent event) {
         Button chosenGroupButton = (Button) event.getSource();
         String groupID = chosenGroupButton.getText();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("EditGroupPage.fxml"));
-        try {
-            EditGroupPageController controller = loader.load();
-            controller.setSelectedGroup(groupID);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        openEditGroupButton.setText(groupID);
+        setChosenGroup(groupID);
         try {
             ArrayList<Group> listOfCreatedGroups = Group.listOfCreatedGroups();
             for (Group temp : listOfCreatedGroups) {
@@ -143,8 +149,13 @@ public class GroupRecommendationPageController {
     }
 
     @FXML
-    private void openEditGroupPage() {
+    private void openEditGroupPage(Event event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("EditGroupPage.fxml"));
+        Button openEditGroupButton = (Button) event.getSource();
+        String ButtonID = openEditGroupButton.getText();
+        EditGroupPageController controller = loader.getController();
+        controller.setSelectedGroup(ButtonID);
+
         Parent root = null;
         try {
             root = loader.load();
@@ -152,20 +163,18 @@ public class GroupRecommendationPageController {
             e.printStackTrace();
         }
         if (root != null) {
-            EditGroupPageController controller = loader.getController();
-
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.showAndWait();
         }
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.showAndWait();
     }
 
     private void showClickedDestination(Event event) {
         ProfilePageController controller = new ProfilePageController();
-        Button chosenDestinationLabel = (Button) event.getSource();
-        String ButtonID = chosenDestinationLabel.getText();
+        Button chosenDestinationButton = (Button) event.getSource();
+        String ButtonID = chosenDestinationButton.getText();
         try {
             ArrayList<Destination> listOfDestinations = Destination.listOfDestination();
             for (Destination temp : listOfDestinations) {

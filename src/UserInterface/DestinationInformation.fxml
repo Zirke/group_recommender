@@ -6,8 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
-            prefWidth="1200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.DestinationInformationController">
+            prefWidth="1200.0" style="-fx-background-color: white; -fx-border-color: black;"
+            xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="UserInterface.DestinationInformationController">
     <children>
         <GridPane layoutX="8.0" layoutY="14.0" maxWidth="-Infinity" prefHeight="206.0" prefWidth="831.0">
             <columnConstraints>
