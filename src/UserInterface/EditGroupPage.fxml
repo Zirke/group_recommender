@@ -5,7 +5,7 @@
 <?import javafx.scene.text.*?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="794.0" style="-fx-background-color: white; -fx-border-color: black;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.EditGroupPageController">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="60.0" layoutY="154.0" prefHeight="304.0" prefWidth="300.0" spacing="20.0" AnchorPane.topAnchor="154.0">
+      <VBox alignment="TOP_CENTER" layoutX="60.0" layoutY="190.0" prefHeight="304.0" prefWidth="300.0" spacing="20.0" AnchorPane.topAnchor="190.0">
          <children>
             <Label text="Add Users to Group">
                <font>
@@ -47,7 +47,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox alignment="TOP_CENTER" layoutX="457.0" layoutY="154.0" prefHeight="280.0" prefWidth="277.0" spacing="20.0" AnchorPane.topAnchor="154.0">
+      <VBox alignment="TOP_CENTER" layoutX="457.0" layoutY="190.0" prefHeight="280.0" prefWidth="277.0" spacing="20.0" AnchorPane.topAnchor="190.0">
          <children>
             <Label prefHeight="23.0" prefWidth="216.0" text="Remove User from Group">
                <font>
@@ -74,6 +74,11 @@
                   <Font size="14.0" />
                </font>
             </TextField>
+            <Button mnemonicParsing="false" style="-fx-background-color: green;" text="Save" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
          </children>
       </VBox>
    </children>
