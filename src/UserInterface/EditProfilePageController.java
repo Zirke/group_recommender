@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
 
 import static userProfiles.User.listOfCreatedUsers;
 
+
 public class EditProfilePageController extends GeneralController implements Initializable {
     @FXML
     private TextField destinationField, firstNameField, lastNameField, ageField, usernameField;
@@ -45,7 +46,7 @@ public class EditProfilePageController extends GeneralController implements Init
         TextFields.bindAutoCompletion(destinationField, options);
     }
 
-    void initializeUserData(User loggedInUser) throws IOException {
+    void initializeUserData(User loggedInUser) {
         firstNameField.setText(loggedInUser.getFirstName());
         lastNameField.setText(loggedInUser.getLastName());
         ageField.setText(loggedInUser.getAge());
@@ -57,7 +58,7 @@ public class EditProfilePageController extends GeneralController implements Init
     }
 
     public void addSelectedDestinationToListView() {
-        selectedDestinations.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        selectedDestinations.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE); //Makes it possible to select more users at once
         if (!destinationField.getText().isEmpty()) {
             selectedDestinations.getItems().addAll(destinationField.getText());
         } else {
@@ -66,16 +67,17 @@ public class EditProfilePageController extends GeneralController implements Init
     }
 
     public void removeSelectedDestinationFromListView() {
-        if (selectedDestinations.getSelectionModel().getSelectedItems() != null) {
+        selectedDestinations.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        if (!selectedDestinations.getItems().isEmpty()) {
             selectedDestinations.getItems().removeAll(selectedDestinations.getSelectionModel().getSelectedItems());
         } else {
             showAlertBox(Alert.AlertType.ERROR, "Error!", "You have not selected any destination to remove");
         }
     }
-    private void addSelectedDestinationsToUser(User loggedInUser) throws IOException {
+    private void addSelectedDestinationsToUser(User loggedInUser) {
+
         HashSet<Destination> listOfVisitedDestinations = new HashSet<>();
         listOfVisitedDestinations.addAll(loggedInUser.getUsersDestination());
-        loggedInUser.getUsersDestination().clear();
 
         addDestinationsButton.setOnAction(event -> {
             ArrayList<User> listOfUsers = null;
@@ -84,8 +86,10 @@ public class EditProfilePageController extends GeneralController implements Init
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            if (destinationField.getText().isEmpty()) {
+            if (destinationField.getText().isEmpty() && selectedDestinations.getItems().isEmpty()) {
                 showAlertBox(Alert.AlertType.ERROR, "Input Error!", "You have not chosen any destinations to add");
+            } else if(!destinationField.getText().isEmpty() && selectedDestinations.getItems().isEmpty()){
+                showAlertBox(Alert.AlertType.ERROR, "Input Error!", "You must first click \"Select\" before adding destinations to your profile");
             } else {
                 ObservableList selectedDestinationsFromListView = selectedDestinations.getItems();
                 for (Object object : selectedDestinationsFromListView) {
@@ -106,6 +110,9 @@ public class EditProfilePageController extends GeneralController implements Init
                         user.getUsersDestination().addAll(listOfVisitedDestinations);
                     }
                 }
+                //Adding the list of entered destinations to the logged in User
+//                loggedInUser.getUsersDestination().addAll(listOfVisitedDestinations);
+
                 overwriteUserData(listOfUsers);
             }
         });
@@ -127,7 +134,6 @@ public class EditProfilePageController extends GeneralController implements Init
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     private void editProfileData(User loggedInUser) {
