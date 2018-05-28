@@ -160,6 +160,7 @@ public class GroupRecommendationPageController {
         String ButtonID = openEditGroupButton.getText();
         EditGroupPageController controller = loader.getController();
         controller.setSelectedGroup(ButtonID);
+        controller.fillUsersToRemoveList(ButtonID);
 
         if (root != null) {
             Stage stage = new Stage();

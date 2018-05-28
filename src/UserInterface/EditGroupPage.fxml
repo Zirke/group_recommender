@@ -55,7 +55,8 @@
                </font>
             </Label>
              <ListView fx:id="selectedUsersToRemoveList" prefHeight="176.0" prefWidth="277.0"/>
-            <Button mnemonicParsing="false" style="-fx-background-color: green;" text="Remove from Group" textFill="WHITE">
+             <Button mnemonicParsing="false" onAction="#removeUserFromGroup" style="-fx-background-color: green;"
+                     text="Remove from Group" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

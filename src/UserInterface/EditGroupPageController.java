@@ -57,7 +57,6 @@ public class EditGroupPageController extends GeneralController implements Initia
         String[] options = users.toArray(new String[0]);
         TextFields.bindAutoCompletion(searchForUserField, options);
 
-        fillUsersToRemoveList();
     }
 
     @FXML
@@ -84,7 +83,7 @@ public class EditGroupPageController extends GeneralController implements Initia
         }
     }
 
-    private void fillUsersToRemoveList() {
+    public void fillUsersToRemoveList(String selectedGroup) {
         ArrayList<Group> listOfGroups = new ArrayList<>();
         try {
             listOfGroups = Group.listOfCreatedGroups();
@@ -93,8 +92,9 @@ public class EditGroupPageController extends GeneralController implements Initia
         }
 
         for (Group g : listOfGroups) {
-            if (g.getGroupID().equals(this.selectedGroup)) {
-                selectedUsersToRemoveList.getItems().addAll(g.getUsersInGroup());
+            if (g.getGroupID().equals(selectedGroup)) {
+                for (User u : g.getUsersInGroup())
+                    selectedUsersToRemoveList.getItems().add(u.getUsernameID());
             }
         }
     }
@@ -137,6 +137,10 @@ public class EditGroupPageController extends GeneralController implements Initia
                     }
                     writer.newLine();
                 }
+            }
+            selectedUsersToRemoveList.getItems().clear();
+            for (User u : noDuplicates) {
+                selectedUsersToRemoveList.getItems().add(u.getUsernameID());
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -189,6 +193,7 @@ public class EditGroupPageController extends GeneralController implements Initia
                         for(User u : listOfCreatedUsers()){
                             if (o.toString().equals(u.getUsernameID()) && g.getUsersInGroup().contains(u)) {
                                 g.getUsersInGroup().remove(u);
+                                selectedUsersToRemoveList.getItems().remove(u.getUsernameID());
                             }
                         }
                     }
