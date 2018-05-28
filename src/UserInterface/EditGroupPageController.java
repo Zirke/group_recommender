@@ -110,8 +110,8 @@ public class EditGroupPageController extends GeneralController implements Initia
                     for (User u : noDuplicates) {
                         writer.write(u.getUsernameID() + ",");
                     }
-                    //g.getUsersInGroup().clear();
-                    //g.getUsersInGroup().addAll(noDuplicates);
+                    g.getUsersInGroup().clear();
+                    g.getUsersInGroup().addAll(noDuplicates);
                     writer.newLine();
                 } else {
                     writer.write(g.getGroupID() + ",");
