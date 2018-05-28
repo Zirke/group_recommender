@@ -21,7 +21,7 @@ public class GroupRecommender {
     }
 
 
-    public ArrayList<Destination> groupRecommendationDest(){
+    public ArrayList<Destination> groupRecommendationDest() {
         ArrayList<Destination> destForGroup = new ArrayList<>();
         HashMap<User, ArrayList<Destination>> allUserRecommend = new HashMap<>();
         //groupMembers.addAll();
@@ -52,8 +52,8 @@ public class GroupRecommender {
 
         }*/
 
-        for(User i : groupToRecommend.getUsersInGroup()){
-            if(!i.getUsersDestination().isEmpty()) {
+        for (User i : groupToRecommend.getUsersInGroup()) {
+            if (!i.getUsersDestination().isEmpty()) {
                 Recommender test = new Recommender(i, listofdata, 8);
                 ArrayList<Destination> recommendationDest = test.recommendationDest();
                 allUserRecommend.put(i, recommendationDest);
@@ -64,10 +64,12 @@ public class GroupRecommender {
         }
 
         //Fejl i tildang til brugers destination.
-        while(pos <= maxElements) {
+        while (pos <= maxElements) {
             for (int i = 0; i < allUserRecommend.keySet().size(); i++) {
-                if (allUserRecommend.get(groupToRecommend.getUsersInGroup().get(i)).size() > pos) {
-                    destForGroup.add(allUserRecommend.get(groupToRecommend.getUsersInGroup().get(i)).get(pos));
+                if (!groupToRecommend.getUsersInGroup().get(i).getUsersDestination().isEmpty()) {
+                    if (allUserRecommend.get(groupToRecommend.getUsersInGroup().get(i)).size() > pos) {
+                        destForGroup.add(allUserRecommend.get(groupToRecommend.getUsersInGroup().get(i)).get(pos));
+                    }
                 }
             }
             pos++;

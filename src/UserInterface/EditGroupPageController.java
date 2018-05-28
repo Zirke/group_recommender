@@ -86,25 +86,39 @@ public class EditGroupPageController extends GeneralController implements Initia
     private void addUsersToGroup() {
 
         Path outpath = Paths.get("src/groupData.txt");
+        ArrayList<Group> listOfGroups = new ArrayList<>();
         try {
-            ArrayList<Group> listOfGroups;
             listOfGroups = Group.listOfCreatedGroups();
-            BufferedWriter writer = Files.newBufferedWriter(outpath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try(BufferedWriter writer = Files.newBufferedWriter(outpath)) {
+
             HashSet<User> noDuplicates = new HashSet<>();
 
             for (Group g : listOfGroups) {
                 if (g.getGroupID().equals(this.selectedGroup)) {
                     writer.write(this.selectedGroup + ",");
                     noDuplicates.addAll(g.getUsersInGroup());
-                    noDuplicates.addAll(selectedUsersList.getItems());
+                    for(Object o : selectedUsersList.getItems()){
+                        for(User u : listOfCreatedUsers()){
+                            if(o.toString().equals(u.getUsernameID())){
+                                noDuplicates.add(u);
+                            }
+                        }
+                    }
                     for (User u : noDuplicates) {
                         writer.write(u.getUsernameID() + ",");
                     }
+                    //g.getUsersInGroup().clear();
+                    //g.getUsersInGroup().addAll(noDuplicates);
+                    writer.newLine();
                 } else {
                     writer.write(g.getGroupID() + ",");
                     for (User u : g.getUsersInGroup()) {
                         writer.write(u.getUsernameID() + ",");
                     }
+                    writer.newLine();
                 }
             }
         } catch (IOException e) {
