@@ -32,6 +32,13 @@ public class ProfileCreationPageController extends GeneralController {
     private void initialize() {
         genderBox.setItems(genderChoice);
         genderBox.setValue(""); //the string here have to meaning
+
+        //Ensure that input from age-field is only numbers and not characters
+        ageField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                ageField.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
     }
 
     //Getting values from all the controllers and writing the data to text file userData.txt
@@ -56,12 +63,6 @@ public class ProfileCreationPageController extends GeneralController {
                 out.print(lastNameField.getText() + "\t");
                 out.print(genderBox.getValue() + "\t");
                 out.print(ageField.getText() + "\t");
-                //Ensure that input from age-field is only numbers and not characters
-                ageField.textProperty().addListener((observable, oldValue, newValue) -> {
-                    if (!newValue.matches("\\d*")) {
-                        ageField.setText(newValue.replaceAll("[^\\d]", ""));
-                    }
-                });
                 out.print(usernameField.getText() + "\t");
                 out.print(passwordField.getText() + "\t");
                 out.print("\n");

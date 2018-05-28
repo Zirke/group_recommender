@@ -5,9 +5,7 @@ import userProfiles.Group;
 import userProfiles.User;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
+import java.util.*;
 
 import static userProfiles.User.listDataset;
 
@@ -30,16 +28,21 @@ public class GroupRecommender {
         Random rand = new Random();
         ArrayList<User> listofdata = null;
         try {
-
             listofdata = listDataset();
-            System.out.println(listofdata.size());
         } catch (IOException e) {
             e.printStackTrace(); // ændre til noget andet
         }
         for(User i : groupToRecommend.getUsersInGroup()){
-                Recommender test = new Recommender(i,listofdata,5);
+            /*try {
+                Recommender test = new Recommender(i,2);
+                destForGroup.addAll(test.recommendationDest(i,listDataset()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }*/
+            //dårlig apprach
+
+            Recommender test = new Recommender(i, listofdata, 8);
                 ArrayList<Destination> recommendationDest = test.recommendationDest();
-                System.out.println(recommendationDest.size());
                 allUserRecommend.put(i,recommendationDest);
                 if(allUserRecommend.get(i).size() >= maxElements){
                     maxElements = recommendationDest.size();
@@ -55,6 +58,22 @@ public class GroupRecommender {
             }
             pos++;
         }
+        HashSet<Destination> noDubDest = new HashSet<>();
+        Iterator<Destination> iter = destForGroup.iterator();
+
+        while (iter.hasNext()) {
+            Destination temp = iter.next();
+            if (!noDubDest.add(temp)) {
+                iter.remove();
+            }
+        }
+
+
+        /*for(Destination i : destForGroup){
+            if(!noDubDest.add(i)){
+                destForGroup.remove(i);
+            }
+        }*/
         return destForGroup;
     }
 }

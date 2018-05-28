@@ -8,7 +8,7 @@ import java.util.*;
 
 import static destination.Destination.listOfDestination;
 
-/* In this class, recommendation for a single user will be made, and possible for a group.
+/* In this class, recommendation for a single user will be made.
  * The class is constructed with (an arraylist of every destinations), an arraylist of every User in the training set,
  * and a User, which the recommendation will made to*/
 
@@ -18,12 +18,7 @@ public class Recommender {
     private User recommendationUser;
     private int k;
 
-    HashMap<User, HashMap<Destination, Integer>> matrix = new HashMap<>();  // matrix for whether the user has been to a given destiantion.
-    Map<User, Double> sim; //similarity.
-    HashSet<Destination> recommendationForCurrent;
-    //Map<Destination, Map<Destination,Double>> sim;  for the similarity between two destinations
     ArrayList<Destination> destinationList;
-
     {
         try {
             destinationList = listOfDestination();
@@ -69,27 +64,6 @@ public class Recommender {
         this.recommendationUser = recommendationUser;
     }
 
-    //Getter for matrix.
-    public HashMap<User, HashMap<Destination, Integer>> getMatrix() {
-        return matrix;
-    }
-
-    public Map<User, Double> getSim() {
-        return sim;
-    }
-
-    public void setSim(Map<User, Double> sim) {
-        this.sim = sim;
-    }
-
-    public HashSet<Destination> getRecommendationForCurrent() {
-        return recommendationForCurrent;
-    }
-
-    public void setRecommendationForCurrent(HashSet<Destination> recommendationForCurrent) {
-        this.recommendationForCurrent = recommendationForCurrent;
-    }
-
     //Creation of destination for a User ArrayList. The destination a User has been to is represented with 1 and otherwise 0.
     public void userDestinationMapCreation(Destination a, ArrayList<Destination> tempDest, HashMap<Destination, Integer> tempUserDestMap) throws CloneNotSupportedException {
         if (tempDest.contains(a)) {
@@ -110,8 +84,9 @@ public class Recommender {
 
             for (Destination aDestinationList : temp.getUsersDestination()) {
                 tempUserDestMap.put(aDestinationList, 1);
-                    matrix.put(temp, tempUserDestMap);
-                }
+
+            }
+            matrix.put(temp, tempUserDestMap);
         }
         return matrix;
     }
@@ -119,6 +94,7 @@ public class Recommender {
 
     public HashMap<Destination, Integer> currentUserDestination() {
         HashMap<Destination, Integer> tempUserDestMap = new HashMap<>();
+        HashMap<User, HashMap<Destination, Integer>> matrix = new HashMap<>();
         try {
             for (Destination aDestinationList : recommendationUser.getUsersDestination()) {
                 userDestinationMapCreation(aDestinationList, destinationList, tempUserDestMap);
@@ -238,6 +214,28 @@ public class Recommender {
         for (Map.Entry<Destination, Double> entry : rankDest) {
             rankedDest.add(entry.getKey());
         }
+
+        //The for loop ensures that no duplicate destinations and destinations, where the user has been to is not included.
+        HashSet<Destination> noDubDest = new HashSet<>();
+        Iterator<Destination> iter = rankedDest.iterator();
+        while (iter.hasNext()) {
+            Destination temp = iter.next();
+            if (!noDubDest.add(temp)) {
+                iter.remove();
+            }
+            if (recommendationUser.getUsersDestination().contains(temp)) {
+                iter.remove();
+            }
+        }
+
+        /*for(Destination i : rankedDest){
+            if(!noDubDest.add(i)){
+                rankedDest.remove(i);
+            }
+            if(recommendationUser.getUsersDestination().contains(i)){
+                rankedDest.remove(i);
+            }
+        }*/
 
         return rankedDest;
     }

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0"
-            prefWidth="1600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8"
+            prefWidth="1600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.121"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.GroupRecommendationPageController">
     <children>
         <ImageView fitHeight="250.0" fitWidth="1353.0" layoutX="203.0" pickOnBounds="true" AnchorPane.rightAnchor="0.0"
@@ -90,7 +90,7 @@
                         <Font name="System Bold" size="16.0"/>
                     </font>
                 </Label>
-                <VBox fx:id="groupMemberBox" alignment="TOP_CENTER"/>
+                <VBox fx:id="groupMemberBox" alignment="CENTER_LEFT"/>
             </children>
             <opaqueInsets>
                 <Insets/>
