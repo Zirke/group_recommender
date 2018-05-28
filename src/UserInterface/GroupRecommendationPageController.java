@@ -151,17 +151,16 @@ public class GroupRecommendationPageController {
     @FXML
     private void openEditGroupPage(Event event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("EditGroupPage.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+        }
         Button openEditGroupButton = (Button) event.getSource();
         String ButtonID = openEditGroupButton.getText();
         EditGroupPageController controller = loader.getController();
         controller.setSelectedGroup(ButtonID);
 
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         if (root != null) {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));

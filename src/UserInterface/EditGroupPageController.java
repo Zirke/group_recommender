@@ -29,7 +29,7 @@ public class EditGroupPageController extends GeneralController implements Initia
     }
 
     public void setSelectedGroup(String selectedGroup) {
-        this.selectedGroup = getSelectedGroup();
+        this.selectedGroup = selectedGroup;
     }
 
     @FXML
