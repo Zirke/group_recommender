@@ -24,8 +24,7 @@ public class GroupRecommender {
     public ArrayList<Destination> groupRecommendationDest(){
         ArrayList<Destination> destForGroup = new ArrayList<>();
         HashMap<User, ArrayList<Destination>> allUserRecommend = new HashMap<>();
-        ArrayList<User> groupMembers = new ArrayList<>();
-        groupMembers.addAll(groupToRecommend.getUsersInGroup());
+        //groupMembers.addAll();
 
         int pos = 0, maxElements = 0;
         Random rand = new Random();
@@ -36,8 +35,8 @@ public class GroupRecommender {
             e.printStackTrace(); // ændre til noget andet
         }
 
-        Iterator<User> iter = groupMembers.iterator();
 
+        /*Iterator<User> iter = groupToRecommend.getUsersInGroup().iterator();
         while (iter.hasNext()) {
             User temp = iter.next();
             if (!temp.getUsersDestination().isEmpty()) {
@@ -51,9 +50,9 @@ public class GroupRecommender {
                 groupMembers.remove(temp);
             }
 
-        }
+        }*/
 
-        /*for(User i : groupMembers){
+        for(User i : groupToRecommend.getUsersInGroup()){
             if(!i.getUsersDestination().isEmpty()) {
                 Recommender test = new Recommender(i, listofdata, 8);
                 ArrayList<Destination> recommendationDest = test.recommendationDest();
@@ -61,16 +60,14 @@ public class GroupRecommender {
                 if (allUserRecommend.get(i).size() >= maxElements) {
                     maxElements = recommendationDest.size();
                 }
-            }else{
-                groupMembers.remove(i);
             }
-        }*/
+        }
 
         //Fejl i tildang til brugers destination.
         while(pos <= maxElements) {
-            for (int i = 0; i < groupMembers.size(); i++) {
-                if (allUserRecommend.get(groupMembers.get(i)).size() > pos) {
-                    destForGroup.add(allUserRecommend.get(groupMembers.get(i)).get(pos));
+            for (int i = 0; i < allUserRecommend.keySet().size(); i++) {
+                if (allUserRecommend.get(groupToRecommend.getUsersInGroup().get(i)).size() > pos) {
+                    destForGroup.add(allUserRecommend.get(groupToRecommend.getUsersInGroup().get(i)).get(pos));
                 }
             }
             pos++;
