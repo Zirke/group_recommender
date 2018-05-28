@@ -3,7 +3,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="794.0" style="-fx-background-color: white; -fx-border-color: black;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.EditGroupPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0"
+            prefWidth="794.0" style="-fx-background-color: white; -fx-border-color: black;"
+            xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="UserInterface.EditGroupPageController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="50.0" layoutY="61.0" prefHeight="304.0" prefWidth="300.0" spacing="20.0" AnchorPane.topAnchor="60.0">
          <children>
@@ -51,7 +54,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <ListView prefHeight="176.0" prefWidth="277.0" />
+             <ListView fx:id="selectedUsersToRemoveList" prefHeight="176.0" prefWidth="277.0"/>
             <Button mnemonicParsing="false" style="-fx-background-color: green;" text="Remove from Group" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />

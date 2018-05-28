@@ -33,7 +33,7 @@ public class EditGroupPageController extends GeneralController implements Initia
     }
 
     @FXML
-    private ListView selectedUsersList;
+    private ListView selectedUsersList, selectedUsersToRemoveList;
     @FXML
     private TextField searchForUserField;
     @FXML
@@ -56,6 +56,8 @@ public class EditGroupPageController extends GeneralController implements Initia
         }
         String[] options = users.toArray(new String[0]);
         TextFields.bindAutoCompletion(searchForUserField, options);
+
+        fillUsersToRemoveList();
     }
 
     @FXML
@@ -79,6 +81,21 @@ public class EditGroupPageController extends GeneralController implements Initia
             selectedUsersList.getItems().removeAll(selectedUsersList.getSelectionModel().getSelectedItems());
         } else {
             showAlertBox(Alert.AlertType.ERROR, "Error!", "You have not selected any destination to remove");
+        }
+    }
+
+    private void fillUsersToRemoveList() {
+        ArrayList<Group> listOfGroups = new ArrayList<>();
+        try {
+            listOfGroups = Group.listOfCreatedGroups();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (Group g : listOfGroups) {
+            if (g.getGroupID().equals(this.selectedGroup)) {
+                selectedUsersToRemoveList.getItems().addAll(g.getUsersInGroup());
+            }
         }
     }
 
@@ -156,7 +173,6 @@ public class EditGroupPageController extends GeneralController implements Initia
 
     @FXML
     private void removeUserFromGroup(){
-
         Path outpath = Paths.get("src/groupData.txt");
         ArrayList<Group> listOfGroups = new ArrayList<>();
         try {
@@ -166,24 +182,19 @@ public class EditGroupPageController extends GeneralController implements Initia
         }
         try(BufferedWriter writer = Files.newBufferedWriter(outpath)) {
 
-            HashSet<User> noDuplicates = new HashSet<>();
-
             for (Group g : listOfGroups) {
                 if (g.getGroupID().equals(this.selectedGroup)) {
                     writer.write(this.selectedGroup + ",");
-                    noDuplicates.addAll(g.getUsersInGroup());
-                    for(Object o : selectedUsersList.getItems()){
+                    for (Object o : selectedUsersToRemoveList.getSelectionModel().getSelectedItems()) {
                         for(User u : listOfCreatedUsers()){
-                            if(o.toString().equals(u.getUsernameID())){
-                                noDuplicates.remove(u);
+                            if (o.toString().equals(u.getUsernameID()) && g.getUsersInGroup().contains(u)) {
+                                g.getUsersInGroup().remove(u);
                             }
                         }
                     }
-                    for (User u : noDuplicates) {
+                    for (User u : g.getUsersInGroup()) {
                         writer.write(u.getUsernameID() + ",");
                     }
-                    g.getUsersInGroup().clear();
-                    g.getUsersInGroup().addAll(noDuplicates);
                     writer.newLine();
                 } else {
                     writer.write(g.getGroupID() + ",");
