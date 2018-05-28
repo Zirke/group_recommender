@@ -53,6 +53,13 @@ public class EditProfilePageController extends GeneralController implements Init
         usernameField.setText(loggedInUser.getUsernameID());
         passwordField.setText(loggedInUser.getPassword());
 
+        //Ensure that input from ageField is only numbers and not characters
+        ageField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                ageField.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+
         addSelectedDestinationsToUser(loggedInUser);
         editProfileData(loggedInUser);
     }
