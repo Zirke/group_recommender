@@ -3,8 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.ColorAdjust?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0"
@@ -65,7 +64,7 @@
                 </Button>
             </children>
         </AnchorPane>
-        <VBox alignment="CENTER_LEFT" layoutX="572.0" layoutY="335.0" prefWidth="300.0" spacing="10.0">
+        <VBox alignment="CENTER_LEFT" layoutX="448.0" layoutY="266.0" prefWidth="300.0" spacing="10.0">
             <children>
                 <HBox alignment="CENTER" prefWidth="200.0">
                     <children>
@@ -100,14 +99,14 @@
                 <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
             </padding>
         </VBox>
-        <VBox alignment="CENTER" layoutX="872.0" layoutY="359.0" prefHeight="399.0" prefWidth="404.0">
+        <VBox alignment="CENTER" layoutX="748.0" layoutY="290.0" prefHeight="442.0" prefWidth="404.0" spacing="35.0">
             <children>
                 <Label text="Travel Recommendations">
                     <font>
                         <Font name="System Bold" size="20.0"/>
                     </font>
                 </Label>
-                <GridPane prefHeight="537.0" prefWidth="478.0">
+                <GridPane prefHeight="375.0" prefWidth="404.0">
                     <columnConstraints>
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES"/>
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES"/>
@@ -193,7 +192,7 @@
                 </GridPane>
             </children>
         </VBox>
-        <VBox alignment="CENTER" layoutX="1445.0" layoutY="25.0" opacity="0.6" prefHeight="250.0" prefWidth="330.0"
+        <VBox alignment="CENTER" layoutX="1445.0" layoutY="25.0" opacity="0.6" prefHeight="250.0" prefWidth="383.0"
               style="-fx-background-color: grey;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <Label text="Browse through your Travel Groups and take a look at your next Travel Destination"
@@ -206,6 +205,25 @@
             <padding>
                 <Insets left="20.0" right="20.0"/>
             </padding>
+        </VBox>
+        <VBox layoutX="1259.0" layoutY="266.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+            <children>
+                <ImageView fitHeight="200.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../ImageView/Pictures/people-2539897_1920.jpg"/>
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="200.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../ImageView/Pictures/greece-3384386_1920.jpg"/>
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="200.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../ImageView/Pictures/sour-3025269_1920.jpg"/>
+                    </image>
+                </ImageView>
+            </children>
         </VBox>
     </children>
 </AnchorPane>

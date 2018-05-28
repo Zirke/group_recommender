@@ -51,19 +51,6 @@ public class LoginManager {
         }
     }
 
-    void showGroupRecommendationPage(User loggedInUser) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("GroupRecommendationPage.fxml"));
-            scene.setRoot(loader.load());
-            GroupRecommendationPageController controller = loader.getController();
-            controller.initializeData(this, loggedInUser);
-            controller.showGroupsForLoggedInUser(loggedInUser);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
     void showProfileCreationPage() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfileCreationPage.fxml"));
@@ -84,6 +71,18 @@ public class LoginManager {
             controller.gotoFrontPage(this);
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    void showGroupRecommendationPage(User loggedInUser) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("GroupRecommendationPage.fxml"));
+            scene.setRoot(loader.load());
+            GroupRecommendationPageController controller = loader.getController();
+            controller.initializeData(this, loggedInUser);
+            controller.showGroupsForLoggedInUser(loggedInUser);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
