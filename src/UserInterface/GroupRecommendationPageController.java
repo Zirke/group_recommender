@@ -2,11 +2,18 @@ package UserInterface;
 
 import destination.Destination;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import recommender.GroupRecommender;
 import userProfiles.Group;
 import userProfiles.User;
@@ -20,7 +27,7 @@ public class GroupRecommendationPageController {
     @FXML
     private VBox shownGroupsBox, groupMemberBox;
     @FXML
-    private Button goBackButton, recButton1, recButton2, recButton3, recButton4, recButton5, recButton6, recButton7, recButton8, recButton9, recButton10;
+    private Button editGroupButton, goBackButton, recButton1, recButton2, recButton3, recButton4, recButton5, recButton6, recButton7, recButton8, recButton9, recButton10;
 
     void initializeData(final LoginManager loginManager, User loggedInUser) {
         usernameLabel.setText(loggedInUser.getUsernameID());
@@ -78,7 +85,6 @@ public class GroupRecommendationPageController {
             e.printStackTrace();
         }
     }
-
     /*
      *Creates an instance of GroupRecommender for the selected group and finds up to 10 recommendations.
      *Each recommendation gets shown on the predefined buttons on the page.
@@ -89,33 +95,79 @@ public class GroupRecommendationPageController {
 
         if (listOfGroupRecommendations.size() > 0) {
             recButton1.setText(listOfGroupRecommendations.get(0).getDestinationName());
+            recButton1.setOnAction(this::showClickedDestination);
         }
         if (listOfGroupRecommendations.size() > 1) {
             recButton2.setText(listOfGroupRecommendations.get(1).getDestinationName());
+            recButton2.setOnAction(this::showClickedDestination);
         }
         if (listOfGroupRecommendations.size() > 2) {
             recButton3.setText(listOfGroupRecommendations.get(2).getDestinationName());
+            recButton3.setOnAction(this::showClickedDestination);
         }
         if (listOfGroupRecommendations.size() > 3) {
             recButton4.setText(listOfGroupRecommendations.get(3).getDestinationName());
+            recButton4.setOnAction(this::showClickedDestination);
         }
         if (listOfGroupRecommendations.size() > 4) {
             recButton5.setText(listOfGroupRecommendations.get(4).getDestinationName());
+            recButton5.setOnAction(this::showClickedDestination);
         }
         if (listOfGroupRecommendations.size() > 5) {
             recButton6.setText(listOfGroupRecommendations.get(5).getDestinationName());
+            recButton6.setOnAction(this::showClickedDestination);
         }
         if (listOfGroupRecommendations.size() > 6) {
             recButton7.setText(listOfGroupRecommendations.get(6).getDestinationName());
+            recButton7.setOnAction(this::showClickedDestination);
         }
         if (listOfGroupRecommendations.size() > 7) {
             recButton8.setText(listOfGroupRecommendations.get(7).getDestinationName());
+            recButton8.setOnAction(this::showClickedDestination);
         }
         if (listOfGroupRecommendations.size() > 8) {
             recButton9.setText(listOfGroupRecommendations.get(8).getDestinationName());
+            recButton9.setOnAction(this::showClickedDestination);
         }
         if (listOfGroupRecommendations.size() > 9) {
             recButton10.setText(listOfGroupRecommendations.get(9).getDestinationName());
+            recButton10.setOnAction(this::showClickedDestination);
+        }
+    }
+
+    @FXML
+    private void openEditGroupPage() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("EditGroupPage.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (root != null) {
+            EditGroupPageController controller = loader.getController();
+
+        }
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.showAndWait();
+    }
+
+    private void showClickedDestination(Event event) {
+        ProfilePageController controller = new ProfilePageController();
+        Button chosenDestinationLabel = (Button) event.getSource();
+        String ButtonID = chosenDestinationLabel.getText();
+        try {
+            ArrayList<Destination> listOfDestinations = Destination.listOfDestination();
+            for (Destination temp : listOfDestinations) {
+                if (temp.getDestinationName().equals(ButtonID)) {
+                    controller.openDestinationInformation(temp);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

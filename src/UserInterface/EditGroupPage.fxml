@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0"
+            prefWidth="400.0" style="-fx-background-color: white; -fx-border-color: black;"
+            xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="UserInterface.EditGroupPageController">
+    <children>
+        <VBox alignment="TOP_CENTER" layoutX="50.0" layoutY="82.0" prefHeight="262.0" prefWidth="300.0" spacing="20.0">
+            <children>
+                <Label text="Add Users to Group">
+                    <font>
+                        <Font name="System Bold" size="18.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="searchForUserField" alignment="CENTER" prefHeight="40.0" prefWidth="300.0"
+                           promptText="Search for User"/>
+                <HBox alignment="CENTER" spacing="20.0">
+                    <children>
+                        <Button mnemonicParsing="false" style="-fx-background-color: green;" text="Select"
+                                textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                        </Button>
+                        <Button mnemonicParsing="false" style="-fx-background-color: grey;" text="Remove"
+                                textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
+                <ListView fx:id="selectedUsersList" prefHeight="76.0" prefWidth="300.0"/>
+                <HBox alignment="CENTER" spacing="20.0">
+                    <children>
+                        <Button mnemonicParsing="false" style="-fx-background-color: green;" text="Add To Group"
+                                textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                        </Button>
+                        <Button fx:id="closeButton" mnemonicParsing="false" onAction="#pressCloseButton"
+                                style="-fx-background-color: grey;" text="Close" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="14.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

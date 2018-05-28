@@ -55,6 +55,7 @@ public class DestinationInformationController {
         }
     }
 
+
     public void closeDestinationInformation() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();

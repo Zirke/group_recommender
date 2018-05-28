@@ -70,11 +70,7 @@ public class ProfilePageController extends GeneralController {
         logoutButton.setOnAction(event -> loginManager.logout());
 
         editProfileButton.setOnAction(event -> {
-            try {
-                openEditProfilePage(loggedInUser);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            openEditProfilePage(loggedInUser);
         });
     }
 
@@ -156,7 +152,7 @@ public class ProfilePageController extends GeneralController {
         stage.showAndWait();
     }
 
-    private void openEditProfilePage(User loggedInUser) throws IOException {
+    private void openEditProfilePage(User loggedInUser) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("EditProfilePage.fxml"));
         try {
             parent = loader.load();
