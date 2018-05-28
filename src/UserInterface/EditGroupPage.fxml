@@ -3,19 +3,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0"
-            prefWidth="794.0" style="-fx-background-color: white; -fx-border-color: black;"
-            xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="UserInterface.EditGroupPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="794.0" style="-fx-background-color: white; -fx-border-color: black;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.EditGroupPageController">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="50.0" layoutY="61.0" prefHeight="304.0" prefWidth="300.0" spacing="20.0" AnchorPane.topAnchor="60.0">
+      <VBox alignment="TOP_CENTER" layoutX="60.0" layoutY="154.0" prefHeight="304.0" prefWidth="300.0" spacing="20.0" AnchorPane.topAnchor="154.0">
          <children>
             <Label text="Add Users to Group">
                <font>
                    <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-             <TextField fx:id="searchForUserField" alignment="CENTER" prefHeight="40.0" prefWidth="300.0" promptText="Search for User" />
+             <TextField fx:id="searchForUserField" alignment="CENTER" prefHeight="35.0" prefWidth="300.0" promptText="Search for User">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
             <HBox alignment="CENTER" spacing="20.0">
                <children>
                    <Button mnemonicParsing="false" onAction="#addSelectedUserToListView" style="-fx-background-color: green;" text="Select" textFill="WHITE">
@@ -47,20 +47,33 @@
             </HBox>
          </children>
       </VBox>
-      <VBox alignment="TOP_CENTER" layoutX="447.0" layoutY="58.0" prefHeight="280.0" prefWidth="277.0" spacing="20.0" AnchorPane.topAnchor="60.0">
+      <VBox alignment="TOP_CENTER" layoutX="457.0" layoutY="154.0" prefHeight="280.0" prefWidth="277.0" spacing="20.0" AnchorPane.topAnchor="154.0">
          <children>
             <Label prefHeight="23.0" prefWidth="216.0" text="Remove User from Group">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-             <ListView fx:id="selectedUsersToRemoveList" prefHeight="176.0" prefWidth="277.0"/>
-             <Button mnemonicParsing="false" onAction="#removeUserFromGroup" style="-fx-background-color: green;"
-                     text="Remove from Group" textFill="WHITE">
+            <ListView prefHeight="176.0" prefWidth="277.0" />
+            <Button mnemonicParsing="false" style="-fx-background-color: green;" text="Remove from Group" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="60.0" layoutY="44.0" prefHeight="91.0" prefWidth="300.0" spacing="20.0">
+         <children>
+            <Label text="Edit Group Name">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField prefHeight="35.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
          </children>
       </VBox>
    </children>
