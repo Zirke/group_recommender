@@ -67,6 +67,13 @@ public class GroupRecommendationPageController {
     private void showSelectedGroupInformation(ActionEvent event) {
         Button chosenGroupButton = (Button) event.getSource();
         String groupID = chosenGroupButton.getText();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("EditGroupPage.fxml"));
+        try {
+            EditGroupPageController controller = loader.load();
+            controller.setSelectedGroup(groupID);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         try {
             ArrayList<Group> listOfCreatedGroups = Group.listOfCreatedGroups();
             for (Group temp : listOfCreatedGroups) {
