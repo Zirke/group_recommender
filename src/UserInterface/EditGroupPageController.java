@@ -82,10 +82,10 @@ public class EditGroupPageController extends GeneralController implements Initia
         }
     }
 
-    private void addUsersToGroup(String selectedGroup) {
+    @FXML
+    private void addUsersToGroup() {
 
         Path outpath = Paths.get("src/groupData.txt");
-
         try {
             ArrayList<Group> listOfGroups;
             listOfGroups = Group.listOfCreatedGroups();
