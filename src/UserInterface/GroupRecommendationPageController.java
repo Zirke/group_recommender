@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import recommender.GroupRecommender;
 import userProfiles.Group;
 import userProfiles.User;
@@ -67,6 +68,7 @@ public class GroupRecommendationPageController {
                     for (User user : temp.getUsersInGroup()) {
                         Label userInGroup = new Label();
                         userInGroup.setText(user.getUsernameID());
+                        userInGroup.setFont(new Font(16));
                         groupMemberBox.getChildren().add(userInGroup);
                         showRecommendationsForSelectedGroup(temp);
                     }
