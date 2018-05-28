@@ -95,7 +95,7 @@ public class GroupRecommendationPageController {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Input/output exception for showSelectedGroupInformation");;
         }
     }
     /*
