@@ -35,7 +35,7 @@ public class EditGroupPageController extends GeneralController implements Initia
     @FXML
     private ListView selectedUsersList, selectedUsersToRemoveList;
     @FXML
-    private TextField searchForUserField;
+    private TextField searchForUserField, groupNameField;
     @FXML
     private Button closeButton, addUsersToGroupButton;
 
@@ -56,6 +56,7 @@ public class EditGroupPageController extends GeneralController implements Initia
         }
         String[] options = users.toArray(new String[0]);
         TextFields.bindAutoCompletion(searchForUserField, options);
+
 
     }
 
@@ -81,6 +82,10 @@ public class EditGroupPageController extends GeneralController implements Initia
         } else {
             showAlertBox(Alert.AlertType.ERROR, "Error!", "You have not selected any destination to remove");
         }
+    }
+
+    public void setGroupNameFieldText(String groupname) {
+        groupNameField.setText(groupname);
     }
 
     public void fillUsersToRemoveList(String selectedGroup) {
@@ -147,33 +152,39 @@ public class EditGroupPageController extends GeneralController implements Initia
         }
     }
 
-    /*
+    @FXML
     public void editGroupName() {
-        String groupID = chosenGroupButton.getText();
-        ArrayList<Group> listOfGroups;
+        ArrayList<Group> listOfGroups = null;
+        try {
+            listOfGroups = Group.listOfCreatedGroups();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Path outpath = Paths.get("src/groupData.txt");
-        {
-            try {
-                listOfGroups = Group.listOfCreatedGroups();
-                BufferedWriter writer = Files.newBufferedWriter(outpath);
+
+        try (BufferedWriter writer = Files.newBufferedWriter(outpath)) {
+
                 for (Group g : listOfGroups) {
-                    if (g.getGroupID().equals(groupID)) {
-                        writer.write(NewGroupNameTextField.getText() + ",");
+                    if (g.getGroupID().equals(this.selectedGroup)) {
+                        writer.write(groupNameField.getText() + ",");
+                        setSelectedGroup(groupNameField.getText());
                         for (User u : g.getUsersInGroup()) {
                             writer.write(u.getUsernameID() + ",");
                         }
+                        writer.newLine();
                     } else {
                         writer.write(g.getGroupID() + ",");
                         for (User u : g.getUsersInGroup()) {
                             writer.write(u.getUsernameID() + ",");
                         }
+                        writer.newLine();
                     }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-    }*/
+
+    }
 
     @FXML
     private void removeUserFromGroup(){

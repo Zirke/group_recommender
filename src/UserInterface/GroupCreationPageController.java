@@ -15,12 +15,19 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import static userProfiles.User.listOfCreatedUsers;
 
 public class GroupCreationPageController extends GeneralController implements Initializable {
+    private User loggedInUser;
+
+    void setLoggedInUser(User loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
+
     @FXML
     private TextField writeGroupNameField;
     @FXML
@@ -64,9 +71,15 @@ public class GroupCreationPageController extends GeneralController implements In
         } else {
             try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("src/groupData.txt", true)))) {
                 ObservableList selectedUsersFromListView = addedUsersList.getItems();
+                HashSet<String> noDuplicates = new HashSet<>();
+                for (Object o : addedUsersList.getItems()) {
+                    noDuplicates.add(o.toString());
+                }
+                noDuplicates.add(this.loggedInUser.getUsernameID());
+                //selectedUsersFromListView.add(this.loggedInUser.getUsernameID());
                 out.print(writeGroupNameField.getText() + ",");
-                for (Object item : selectedUsersFromListView) {
-                    out.print(item + ",");
+                for (String s : noDuplicates) {
+                    out.print(s + ",");
                 }
                 out.print("\n");
 

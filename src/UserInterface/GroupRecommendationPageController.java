@@ -161,6 +161,7 @@ public class GroupRecommendationPageController {
         EditGroupPageController controller = loader.getController();
         controller.setSelectedGroup(ButtonID);
         controller.fillUsersToRemoveList(ButtonID);
+        controller.setGroupNameFieldText(ButtonID);
 
         if (root != null) {
             Stage stage = new Stage();

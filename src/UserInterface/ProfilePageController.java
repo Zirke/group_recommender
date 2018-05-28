@@ -42,14 +42,18 @@ public class ProfilePageController extends GeneralController {
 
     @FXML
     public void openGroupCreation() {
-        Parent root = null;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("GroupCreationPage.fxml"));
         try {
-            root = FXMLLoader.load(getClass().getResource("GroupCreationPage.fxml"));
+            parent = loader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        if (parent != null) {
+            GroupCreationPageController controller = loader.getController();
+            controller.setLoggedInUser(this.loggedInUser);
+        }
         Stage stage = new Stage();
-        stage.setScene(new Scene(root));
+        stage.setScene(new Scene(parent));
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("Group Creation");
