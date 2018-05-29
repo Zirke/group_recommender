@@ -20,41 +20,22 @@ public class GroupRecommender {
         return groupToRecommend;
     }
 
-
+    //returns recommendations for a group.
     public ArrayList<Destination> groupRecommendationDest() {
         ArrayList<Destination> destForGroup = new ArrayList<>();
         HashMap<User, ArrayList<Destination>> allUserRecommend = new HashMap<>();
-        //groupMembers.addAll();
 
         int pos = 0, maxElements = 0;
-        Random rand = new Random();
         ArrayList<User> listofdata = null;
         try {
             listofdata = listDataset();
         } catch (IOException e) {
-            e.printStackTrace(); // ændre til noget andet
+            System.out.println("Input/Output exception for groupRecommendationDest method");
         }
-
-
-        /*Iterator<User> iter = groupToRecommend.getUsersInGroup().iterator();
-        while (iter.hasNext()) {
-            User temp = iter.next();
-            if (!temp.getUsersDestination().isEmpty()) {
-                Recommender test = new Recommender(temp, listofdata, 8);
-                ArrayList<Destination> recommendationDest = test.recommendationDest();
-                allUserRecommend.put(temp, recommendationDest);
-                if (allUserRecommend.get(temp).size() >= maxElements) {
-                    maxElements = recommendationDest.size();
-                }
-            } else {
-                groupMembers.remove(temp);
-            }
-
-        }*/
 
         for (User i : groupToRecommend.getUsersInGroup()) {
             if (!i.getUsersDestination().isEmpty()) {
-                Recommender test = new Recommender(i, listofdata, 8);
+                Recommender test = new Recommender(i, listofdata, 8); //k has been chosen to 8, see report for more info
                 ArrayList<Destination> recommendationDest = test.recommendationDest();
                 allUserRecommend.put(i, recommendationDest);
                 if (allUserRecommend.get(i).size() >= maxElements) {
@@ -63,7 +44,7 @@ public class GroupRecommender {
             }
         }
 
-        //Fejl i tildang til brugers destination.
+
         while (pos <= maxElements) {
             for (int i = 0; i < allUserRecommend.keySet().size(); i++) {
                 if (!groupToRecommend.getUsersInGroup().get(i).getUsersDestination().isEmpty()) {
@@ -75,16 +56,15 @@ public class GroupRecommender {
             pos++;
         }
 
+        //duplicate destinations are removed.
         HashSet<Destination> noDubDest = new HashSet<>();
         Iterator<Destination> iter2 = destForGroup.iterator();
-
         while (iter2.hasNext()) {
             Destination temp = iter2.next();
             if (!noDubDest.add(temp)) {
                 iter2.remove();
             }
         }
-
 
         return destForGroup;
     }

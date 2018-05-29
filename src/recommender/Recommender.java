@@ -9,7 +9,7 @@ import java.util.*;
 import static destination.Destination.listOfDestination;
 
 /* In this class, recommendation for a single user will be made.
- * The class is constructed with (an arraylist of every destinations), an arraylist of every User in the training set,
+ * The class is constructed with (an Arraylist of every destinations), an Arraylist of every User in the training set,
  * and a User, which the recommendation will made to*/
 
 public class Recommender {
@@ -72,11 +72,10 @@ public class Recommender {
     }
 
 
-    //the method creates a matrix for the arrayList "users". if a user has been to a destination then the Integer is 1 otherwise 0.
+    //the method creates a matrix for the arrayList "users". if a user has been to a destination then the Integer is 1.
     public HashMap<User, HashMap<Destination, Integer>> destinationMatrixCreator() {
         HashMap<User, HashMap<Destination, Integer>> matrix = new HashMap<>();
         Iterator iter = trainSet.iterator();
-        ;
 
         while (iter.hasNext()) {
             User temp = (User) iter.next();
@@ -91,7 +90,7 @@ public class Recommender {
         return matrix;
     }
 
-
+    //returns the destination Matrix for recommendationUser.
     public HashMap<Destination, Integer> currentUserDestination() {
         HashMap<Destination, Integer> tempUserDestMap = new HashMap<>();
         HashMap<User, HashMap<Destination, Integer>> matrix = new HashMap<>();
@@ -106,6 +105,7 @@ public class Recommender {
         return tempUserDestMap;
     }
 
+    //returns a HashMap with the train set users as key and the corresponding similarity as value
     public Map<User, Double> similarityMatrix() {
         HashMap<User, HashMap<Destination, Integer>> destinationData = destinationMatrixCreator();
         Map<User, Double> similarity = new HashMap<>();
@@ -139,7 +139,7 @@ public class Recommender {
         return dotProduct / Math.sqrt(magnitudeA * magnitudeB);
     }
 
-
+    //Returns the k nearest users in the train set in a HashSet.
     public HashSet<User> recommendationForCurrent() {
         HashSet<User> userSet = new HashSet<>();
         int userAmount = 0;
@@ -171,9 +171,7 @@ public class Recommender {
 
     //Matrix of similarity of destinations based on the User's similarity.
     public HashMap<Destination, Double> destinationSimilarity() {
-
         HashSet<User> knnUsers = recommendationForCurrent();
-
         HashMap<Destination, Double> similarity = new HashMap<>();
 
         Map<User, Double> sim = similarityMatrix();
@@ -193,14 +191,11 @@ public class Recommender {
 
     //ArrayList of ranked destination with biggest first
     public ArrayList<Destination> recommendationDest() {
-
         ArrayList<Destination> rankedDest = new ArrayList<>();
         HashMap<Destination, Double> similarityDest = destinationSimilarity();
         Set<Map.Entry<Destination, Double>> mapentries = similarityDest.entrySet();
 
         List<Map.Entry<Destination, Double>> rankDest = new LinkedList<>(mapentries);
-
-
         // sorting the List
         rankDest.sort(new Comparator<Map.Entry<Destination, Double>>() {
 
@@ -227,15 +222,6 @@ public class Recommender {
                 iter.remove();
             }
         }
-
-        /*for(Destination i : rankedDest){
-            if(!noDubDest.add(i)){
-                rankedDest.remove(i);
-            }
-            if(recommendationUser.getUsersDestination().contains(i)){
-                rankedDest.remove(i);
-            }
-        }*/
 
         return rankedDest;
     }

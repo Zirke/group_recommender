@@ -8,12 +8,10 @@ import userProfiles.Group;
 import userProfiles.User;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static userProfiles.User.listDataset;
 
 class RecommenderTest {
@@ -23,6 +21,7 @@ class RecommenderTest {
     private HashMap<User, HashMap<Destination, Integer>> matrix = new HashMap<>();
     private Recommender testRecommend = new Recommender(testRecommendUser, 1);
 
+    //method is called before destinationMatrixCreator method.
     private void BeforeEachMatrixCreator(){
         usersDestination.add(new Destination("Cuiaba"));
         usersDestination.add(new Destination("Coquimbo"));
@@ -40,6 +39,7 @@ class RecommenderTest {
         usersDestination.add(new Destination("Asuncion"));
         testUser.add(new User("52433",usersDestination));
     }
+
     private User recommendationUserTest(){
         usersDestination = new ArrayList<>();
         usersDestination.add(new Destination("Callao"));
@@ -49,6 +49,7 @@ class RecommenderTest {
         return temp;
     }
 
+    //test for destinationMatrixCreator.
     @Test
     void destinationMatrixCreator01(){
         BeforeEachMatrixCreator();
@@ -58,14 +59,12 @@ class RecommenderTest {
         User tempUser = new User("50756");
         assertEquals(matrix.get(tempUser).get(temp).intValue(),1);
         temp = new Destination("Santiago");
-/*        assertEquals(matrix.get(tempUser).get(temp).intValue(),0);
-        tempUser = new User("12345");
-        temp = new Destination("Cuiaba");
-        assertEquals(matrix.get(tempUser).get(temp).intValue(),0);*/
         temp = new Destination("Callao");
         assertEquals(matrix.get(tempUser).get(temp).intValue(),1);
 
     }
+
+    //test for destinationMatrixCreator.
     @Test
     void destinationMatrixCreator02(){
         BeforeEachMatrixCreator();
@@ -85,8 +84,26 @@ class RecommenderTest {
 
     }
 
+    @Test
+    void currentUserDestination01(){
+        testRecommendUser = recommendationUserTest();
+        Recommender testRecommend = new Recommender(testRecommendUser, testUser, 1);
+        HashMap<Destination, Integer> currentUserDestination = testRecommend.currentUserDestination();
+        assertEquals(currentUserDestination.get(new Destination("Callao")).intValue(), 1);
+        assertEquals(currentUserDestination.get(new Destination("Manaus")).intValue(), 1);
+        assertEquals(currentUserDestination.get(new Destination("Asuncion")).intValue(), 1);
+    }
 
-    //måske deltaet skal ændres.
+    @Test
+    void currentUserDestination02() {
+        BeforeEachMatrixCreator();
+        User temp = recommendationUserTest();
+        testRecommend.setRecommendationUser(temp);
+        HashMap<Destination, Integer> userDest = testRecommend.currentUserDestination();
+        assertEquals(userDest.get(new Destination("Callao")).intValue(), 1);
+    }
+
+
     @Test
     void cosineSimilarity01(){
         BeforeEachMatrixCreator();
@@ -96,14 +113,7 @@ class RecommenderTest {
         assertEquals(0.28869, testRecommend.cosineSimilarity(matrix.get(new User("50756")), matrix.get(new User("12345"))), 0.01);
     }
 
-    @Test
-    void currentUserDest01() {
-        BeforeEachMatrixCreator();
-        User temp = recommendationUserTest();
-        testRecommend.setRecommendationUser(temp);
-        HashMap<Destination, Integer> userDest = testRecommend.currentUserDestination();
-        assertEquals(userDest.get(new Destination("Callao")).intValue(), 1);
-    }
+
 
     @Test
     void similarityMatrix01(){
@@ -115,6 +125,21 @@ class RecommenderTest {
         assertEquals(similarity.get(new User("12345")).doubleValue(),1.0);
     }
 
+    @Test
+    void recommendationForCurrent01(){
+        BeforeEachMatrixCreator();
+        usersDestination = new ArrayList<>();
+        usersDestination.add(new Destination("Cuiaba"));
+        usersDestination.add(new Destination("Coquimbo"));
+        usersDestination.add(new Destination("Rio Branco"));
+        usersDestination.add(new Destination("Callao"));
+        User test = new User("144",usersDestination);
+        Recommender testRecommend = new Recommender(test,testUser,1);
+        HashSet<User> kNNUser = testRecommend.recommendationForCurrent();
+        assertEquals(kNNUser.size(), 1);
+        assertTrue(kNNUser.contains(new User("50756")));
+
+    }
 
     @Test
     void recommendationDest01() {
@@ -138,110 +163,31 @@ class RecommenderTest {
         testRecommend.setRecommendationUser(temp);
         ArrayList<Destination> destRecommend = testRecommend.recommendationDest();
 
-        assertEquals(destRecommend.get(0).getDestinationName(), "Asuncion");
-        assertEquals(destRecommend.get(1).getDestinationName(), "Callao");
+        assertTrue(destRecommend.isEmpty());
     }
 
-
     @Test
-    void groupTest() {
+    void recommendationDest02() {
         ArrayList<Destination> destTemp = new ArrayList<>();
         destTemp.addAll(Arrays.asList(new Destination("Asuncion"),
                 new Destination("Callao"), new Destination("Manaus")));
         User temp = new User("124555", destTemp);
 
         destTemp = new ArrayList<>();
-        destTemp.addAll(Arrays.asList(new Destination("Manaus")));
+        destTemp.addAll(Arrays.asList(new Destination("Manaus"), new Destination("London")));
         User test01 = new User("124565", destTemp);
         ArrayList<Destination> destTemp01 = new ArrayList<>();
         destTemp01.addAll(Arrays.asList(new Destination("Callao"), new Destination("Asuncion")));
         User test02 = new User("124575", destTemp01);
-
-        ArrayList<User> trainTest = new ArrayList<>();
-        trainTest.addAll(Arrays.asList(test01, test02));
-        Group group = new Group();
-        group.setUsersInGroup(trainTest);
-        GroupRecommender recom = new GroupRecommender(group);
-        if (!recom.groupRecommendationDest().isEmpty()) {
-            for (Destination a : recom.groupRecommendationDest()) {
-                System.out.println(a.getDestinationName());
-            }
-        }
-    }
-
-    @Test
-    void hah() {
-        ArrayList<Destination> destTemp = new ArrayList<>();
-        destTemp.addAll(Arrays.asList(new Destination("Asuncion"),
-                new Destination("Callao"), new Destination("Manaus")));
-        User temp = new User("k", destTemp);
-
-        destTemp = new ArrayList<>();
-        destTemp.addAll(Arrays.asList(new Destination("Manaus")));
-        User test01 = new User("1", destTemp);
-        ArrayList<Destination> destTemp01 = new ArrayList<>();
-        destTemp01.addAll(Arrays.asList(new Destination("Callao"), new Destination("Asuncion")));
-        User test02 = new User("h", destTemp01);
+        Recommender testRecommend = new Recommender(temp, 2);
         ArrayList<User> trainTest = new ArrayList<>();
         trainTest.addAll(Arrays.asList(test01, test02));
 
+        testRecommend.setTrainSet(trainTest);
 
-        try {
-            ArrayList<User> re = listDataset();
-            Recommender testRecommend = new Recommender(temp, re, 2);
-            System.out.println("hh");
+        testRecommend.setRecommendationUser(temp);
+        ArrayList<Destination> destRecommend = testRecommend.recommendationDest();
 
-            //testRecommend.setRecommendationUser(temp);
-            ArrayList<Destination> destRecommend = testRecommend.recommendationDest();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    void groupTest01() {
-        ArrayList<Destination> destTemp = new ArrayList<>();
-        destTemp.addAll(Arrays.asList(new Destination("Asuncion"),
-                new Destination("Callao"), new Destination("Manaus")));
-        User temp = new User("124555", destTemp);
-
-        destTemp = new ArrayList<>();
-        destTemp.addAll(Arrays.asList(new Destination("Manaus")));
-        User test01 = new User("124565", destTemp);
-        ArrayList<Destination> destTemp01 = new ArrayList<>();
-        destTemp01.addAll(Arrays.asList(new Destination("Callao"), new Destination("Asuncion")));
-        User test02 = new User("124575", destTemp01);
-
-        ArrayList<User> trainTest = new ArrayList<>();
-        trainTest.addAll(Arrays.asList(test01, test02, temp));
-        Group group = new Group();
-        group.setUsersInGroup(trainTest);
-        GroupRecommender recom = new GroupRecommender(group);
-        if (!recom.groupRecommendationDest().isEmpty()) {
-            for (Destination a : recom.groupRecommendationDest()) {
-                System.out.println(a.getDestinationName());
-            }
-        }
-    }
-
-    @Test
-    void groupTest02() {
-        ArrayList<User> dataSet = new ArrayList<>();
-        try {
-            dataSet = listDataset();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        User testUser = dataSet.get(0);
-        System.out.println("User's original:");
-        for (Destination i : testUser.getUsersDestination()) {
-            System.out.println(i.getDestinationName());
-        }
-        dataSet.remove(testUser);
-        System.out.println("\n\n User's recommendation:");
-        Recommender test = new Recommender(testUser, dataSet, 2);
-        for (Destination i : test.recommendationDest()) {
-            System.out.println(i.getDestinationName());
-        }
+        assertEquals(new Destination("London"), destRecommend.get(0));
     }
 }
