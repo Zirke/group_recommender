@@ -1,7 +1,7 @@
 HyggeGruppe,test,blomst,
 hejsa123group,Cryptbreaker,flotfyr14,usernamewastaken,
 Morsø HK,Simon123,Cryptbreaker,flotfyr14,
-Testgroup44,Cryptbreaker,elfagot,flotfyr14,Cryptbreaker,usernamewastaken,elfagot,gretheandersen,
+Testgroup44,Cryptbreaker,flotfyr14,Cryptbreaker,usernamewastaken,gretheandersen,
 Bingo Klubben,Cryptbreaker,gretheandersen,hans123,flotfyr14,
 Studiegruppe A400b,blomst,gretheandersen,hans123,Reeve,Simon123,test,
 Hifi Klubben,flotfyr14,test,
