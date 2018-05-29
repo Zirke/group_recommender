@@ -1,7 +1,6 @@
 package UserInterface;
 
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -64,20 +63,21 @@ public class GroupCreationPageController extends GeneralController implements In
         }
     }
 
+    //Takes input from text field and ListView to write into groupData.txt
     public void createNewGroupFromUserInput() {
         Stage stage;
         if (writeGroupNameField.getText().isEmpty()) {
             showAlertBox(Alert.AlertType.ERROR, "Input Error!", "You must give your Travel Group a nameID");
         } else {
             try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("src/groupData.txt", true)))) {
-                ObservableList selectedUsersFromListView = addedUsersList.getItems();
+                //HashSet ensures no duplicates of Users.
                 HashSet<String> noDuplicates = new HashSet<>();
                 for (Object o : addedUsersList.getItems()) {
                     noDuplicates.add(o.toString());
                 }
                 noDuplicates.add(this.loggedInUser.getUsernameID());
-                //selectedUsersFromListView.add(this.loggedInUser.getUsernameID());
                 out.print(writeGroupNameField.getText() + ",");
+                //Writes the content of noDuplicates into groupData.txt
                 for (String s : noDuplicates) {
                     out.print(s + ",");
                 }

@@ -6,60 +6,52 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0"
-            prefWidth="1600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.GroupRecommendationPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserInterface.GroupRecommendationPageController">
     <children>
-        <ImageView fitHeight="250.0" fitWidth="1353.0" layoutX="203.0" pickOnBounds="true" AnchorPane.rightAnchor="0.0"
-                   AnchorPane.topAnchor="0.0">
+        <ImageView fitHeight="250.0" fitWidth="1353.0" layoutX="203.0" pickOnBounds="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <image>
-                <Image url="@../ImageView/Pictures/group_label.jpg"/>
+                <Image url="@../ImageView/Pictures/group_label.jpg" />
             </image>
         </ImageView>
-        <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="350.0"
-                    style="-fx-background-color: darkred;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                    AnchorPane.topAnchor="0.0">
+        <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="350.0" style="-fx-background-color: darkred;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="350.0" AnchorPane.topAnchor="50.0">
                     <children>
                         <Label text="Travel Groups" textFill="WHITE">
                             <font>
-                                <Font name="Arial Bold" size="36.0"/>
+                                <Font name="Arial Bold" size="36.0" />
                             </font>
                         </Label>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../ImageView/Icons/profile_icon2.png"/>
+                                <Image url="@../ImageView/Icons/profile_icon2.png" />
                             </image>
                             <effect>
-                                <ColorAdjust brightness="1.0" hue="-0.02" saturation="1.0"/>
+                                <ColorAdjust brightness="1.0" hue="-0.02" saturation="1.0" />
                             </effect>
                         </ImageView>
                         <Label fx:id="usernameLabel" text="UsernameLoggedIn" textAlignment="CENTER" textFill="WHITE">
                             <font>
-                                <Font name="Helonia" size="24.0"/>
+                                <Font name="Helonia" size="24.0" />
                             </font>
                         </Label>
                     </children>
                 </VBox>
-                <VBox fx:id="shownGroupsBox" alignment="TOP_CENTER" layoutX="15.0" layoutY="316.0" prefHeight="399.0"
-                      prefWidth="350.0" spacing="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="350.0">
+                <VBox fx:id="shownGroupsBox" alignment="TOP_CENTER" layoutX="15.0" layoutY="316.0" prefHeight="399.0" prefWidth="350.0" spacing="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="350.0">
                     <children>
-                        <Label text="These are your Traveling Groups" textAlignment="CENTER" textFill="WHITE"
-                               underline="true">
+                        <Label text="These are your Traveling Groups" textAlignment="CENTER" textFill="WHITE" underline="true">
                             <padding>
-                                <Insets top="10.0"/>
+                                <Insets top="10.0" />
                             </padding>
                             <font>
-                                <Font name="System Bold" size="18.0"/>
+                                <Font name="System Bold" size="18.0" />
                             </font>
                         </Label>
                     </children>
                 </VBox>
-                <Button fx:id="goBackButton" layoutX="119.0" layoutY="817.0" mnemonicParsing="false"
-                        style="-fx-background-color: darkred;" text="Go Back" textFill="WHITE">
+                <Button fx:id="goBackButton" layoutX="119.0" layoutY="817.0" mnemonicParsing="false" style="-fx-background-color: darkred;" text="Go Back" textFill="WHITE">
                     <font>
-                        <Font name="System Bold" size="18.0"/>
+                        <Font name="System Bold" size="18.0" />
                     </font>
                 </Button>
             </children>
@@ -70,162 +62,153 @@
                     <children>
                         <Label text="Group Information">
                             <font>
-                                <Font name="System Bold" size="20.0"/>
+                                <Font name="System Bold" size="20.0" />
                             </font>
                         </Label>
                     </children>
                 </HBox>
                 <Label text="Group Name">
                     <font>
-                        <Font name="System Bold" size="16.0"/>
+                        <Font name="System Bold" size="16.0" />
                     </font>
                 </Label>
                 <Label fx:id="groupIDLabel">
                     <font>
-                        <Font size="16.0"/>
+                        <Font size="16.0" />
                     </font>
                 </Label>
                 <Label text="Group members">
                     <font>
-                        <Font name="System Bold" size="16.0"/>
+                        <Font name="System Bold" size="16.0" />
                     </font>
                 </Label>
-                <VBox fx:id="groupMemberBox" alignment="CENTER_LEFT"/>
+                <VBox fx:id="groupMemberBox" alignment="CENTER_LEFT" />
             </children>
             <opaqueInsets>
-                <Insets/>
+                <Insets />
             </opaqueInsets>
             <padding>
-                <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+                <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
             </padding>
         </VBox>
         <VBox alignment="CENTER" layoutX="748.0" layoutY="290.0" prefHeight="442.0" prefWidth="404.0" spacing="35.0">
             <children>
                 <Label text="Travel Recommendations">
                     <font>
-                        <Font name="System Bold" size="20.0"/>
+                        <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
                 <GridPane prefHeight="375.0" prefWidth="404.0">
                     <columnConstraints>
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES"/>
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES"/>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Button fx:id="recButton1" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0"
-                                style="-fx-background-color: #999999;" text="Empty" textFill="WHITE">
+                        <Button fx:id="recButton1" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: #999999;" text="Empty" textFill="WHITE">
                             <font>
-                                <Font name="System Bold" size="18.0"/>
+                                <Font name="System Bold" size="18.0" />
                             </font>
                         </Button>
-                        <Button fx:id="recButton2" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0"
-                                style="-fx-background-color: #999999;" text="Empty" textFill="WHITE"
-                                GridPane.columnIndex="1">
+                        <Button fx:id="recButton2" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: #999999;" text="Empty" textFill="WHITE" GridPane.columnIndex="1">
                             <font>
-                                <Font name="System Bold" size="18.0"/>
+                                <Font name="System Bold" size="18.0" />
                             </font>
                         </Button>
-                        <Button fx:id="recButton3" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0"
-                                style="-fx-background-color: #999999;" text="Empty" textFill="WHITE"
-                                GridPane.rowIndex="1">
+                        <Button fx:id="recButton3" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: #999999;" text="Empty" textFill="WHITE" GridPane.rowIndex="1">
                             <font>
-                                <Font name="System Bold" size="18.0"/>
+                                <Font name="System Bold" size="18.0" />
                             </font>
                         </Button>
-                        <Button fx:id="recButton4" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0"
-                                style="-fx-background-color: #999999;" text="Empty" textFill="WHITE"
-                                GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Button fx:id="recButton4" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: #999999;" text="Empty" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <font>
-                                <Font name="System Bold" size="18.0"/>
+                                <Font name="System Bold" size="18.0" />
                             </font>
                         </Button>
-                        <Button fx:id="recButton5" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0"
-                                style="-fx-background-color: #999999;" text="Empty" textFill="WHITE"
-                                GridPane.rowIndex="2">
+                        <Button fx:id="recButton5" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: #999999;" text="Empty" textFill="WHITE" GridPane.rowIndex="2">
                             <font>
-                                <Font name="System Bold" size="18.0"/>
+                                <Font name="System Bold" size="18.0" />
                             </font>
                         </Button>
-                        <Button fx:id="recButton6" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0"
-                                style="-fx-background-color: #999999;" text="Empty" textFill="WHITE"
-                                GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Button fx:id="recButton6" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: #999999;" text="Empty" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                             <font>
-                                <Font name="System Bold" size="18.0"/>
+                                <Font name="System Bold" size="18.0" />
                             </font>
                         </Button>
-                        <Button fx:id="recButton7" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0"
-                                style="-fx-background-color: #999999;" text="Empty" textFill="WHITE"
-                                GridPane.rowIndex="3">
+                        <Button fx:id="recButton7" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: #999999;" text="Empty" textFill="WHITE" GridPane.rowIndex="3">
                             <font>
-                                <Font name="System Bold" size="18.0"/>
+                                <Font name="System Bold" size="18.0" />
                             </font>
                         </Button>
-                        <Button fx:id="recButton8" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0"
-                                style="-fx-background-color: #999999;" text="Empty" textFill="WHITE"
-                                GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Button fx:id="recButton8" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: #999999;" text="Empty" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
                             <font>
-                                <Font name="System Bold" size="18.0"/>
+                                <Font name="System Bold" size="18.0" />
                             </font>
                         </Button>
-                        <Button fx:id="recButton9" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0"
-                                style="-fx-background-color: #999999;" text="Empty" textFill="WHITE"
-                                GridPane.rowIndex="4">
+                        <Button fx:id="recButton9" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: #999999;" text="Empty" textFill="WHITE" GridPane.rowIndex="4">
                             <font>
-                                <Font name="System Bold" size="18.0"/>
+                                <Font name="System Bold" size="18.0" />
                             </font>
                         </Button>
-                        <Button fx:id="recButton10" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0"
-                                style="-fx-background-color: #999999;" text="Empty" textFill="WHITE"
-                                GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Button fx:id="recButton10" mnemonicParsing="false" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: #999999;" text="Empty" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
                             <font>
-                                <Font name="System Bold" size="18.0"/>
+                                <Font name="System Bold" size="18.0" />
                             </font>
                         </Button>
                     </children>
                 </GridPane>
             </children>
         </VBox>
-        <VBox alignment="CENTER" layoutX="1445.0" layoutY="25.0" opacity="0.6" prefHeight="250.0" prefWidth="383.0"
-              style="-fx-background-color: grey;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox alignment="CENTER" layoutX="1445.0" layoutY="25.0" opacity="0.6" prefHeight="250.0" prefWidth="383.0" style="-fx-background-color: grey;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label text="Browse through your Travel Groups and take a look at your next Travel Destination"
-                       textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                <Label text="Browse through your Travel Groups and take a look at your next Travel Destination" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                     <font>
-                        <Font name="System Bold" size="18.0"/>
+                        <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
             </children>
             <padding>
-                <Insets left="20.0" right="20.0"/>
+                <Insets left="20.0" right="20.0" />
             </padding>
         </VBox>
         <VBox layoutX="1259.0" layoutY="266.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
             <children>
                 <ImageView fitHeight="200.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../ImageView/Pictures/people-2539897_1920.jpg"/>
+                        <Image url="@../ImageView/Pictures/people-2539897_1920.jpg" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="200.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../ImageView/Pictures/greece-3384386_1920.jpg"/>
+                        <Image url="@../ImageView/Pictures/greece-3384386_1920.jpg" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="200.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../ImageView/Pictures/sour-3025269_1920.jpg"/>
+                        <Image url="@../ImageView/Pictures/sour-3025269_1920.jpg" />
                     </image>
                 </ImageView>
             </children>
         </VBox>
-        <Button fx:id="openEditGroupButton" layoutX="396.0" layoutY="830.0" mnemonicParsing="false"
-                onAction="#openEditGroupPage" text="Edit Group"/>
+      <HBox alignment="CENTER_LEFT" layoutX="361.0" layoutY="831.0" prefHeight="55.0" prefWidth="200.0" spacing="20.0" AnchorPane.leftAnchor="375.0">
+         <children>
+            <Label text="Edit">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+              <Button fx:id="openEditGroupButton" mnemonicParsing="false" onAction="#openEditGroupPage" style="-fx-background-color: white;">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
     </children>
 </AnchorPane>

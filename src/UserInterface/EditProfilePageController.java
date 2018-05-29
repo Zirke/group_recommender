@@ -22,7 +22,6 @@ import java.util.ResourceBundle;
 
 import static userProfiles.User.listOfCreatedUsers;
 
-
 public class EditProfilePageController extends GeneralController implements Initializable {
     @FXML
     private TextField destinationField, firstNameField, lastNameField, ageField, usernameField;
@@ -46,6 +45,7 @@ public class EditProfilePageController extends GeneralController implements Init
         TextFields.bindAutoCompletion(destinationField, options);
     }
 
+    //Gets the instance of loggedInUser to access to display information
     void initializeUserData(User loggedInUser) {
         firstNameField.setText(loggedInUser.getFirstName());
         lastNameField.setText(loggedInUser.getLastName());
@@ -53,7 +53,7 @@ public class EditProfilePageController extends GeneralController implements Init
         usernameField.setText(loggedInUser.getUsernameID());
         passwordField.setText(loggedInUser.getPassword());
 
-        //Ensure that input from ageField is only numbers and not characters
+        //Ensures that input from ageField is only numbers and not characters
         ageField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 ageField.setText(newValue.replaceAll("[^\\d]", ""));
@@ -64,6 +64,7 @@ public class EditProfilePageController extends GeneralController implements Init
         editProfileData(loggedInUser);
     }
 
+    //Takes input from TextField destinationField and adds values to ListView selectedDestinations
     public void addSelectedDestinationToListView() {
         selectedDestinations.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE); //Makes it possible to select more users at once
         if (!destinationField.getText().isEmpty()) {
@@ -81,8 +82,9 @@ public class EditProfilePageController extends GeneralController implements Init
             showAlertBox(Alert.AlertType.ERROR, "Error!", "You have not selected any destination to remove");
         }
     }
-    private void addSelectedDestinationsToUser(User loggedInUser) {
 
+    //This method takes input from ListView selectedDestination to over write the new data into userData.txt
+    private void addSelectedDestinationsToUser(User loggedInUser) {
         HashSet<Destination> listOfVisitedDestinations = new HashSet<>();
         listOfVisitedDestinations.addAll(loggedInUser.getUsersDestination());
 
@@ -117,19 +119,17 @@ public class EditProfilePageController extends GeneralController implements Init
                         user.getUsersDestination().addAll(listOfVisitedDestinations);
                     }
                 }
-                //Adding the list of entered destinations to the logged in User
-//                loggedInUser.getUsersDestination().addAll(listOfVisitedDestinations);
-
+                //Call to overwriteUserData with the newly created ArrayList of Strings
                 overwriteUserData(listOfUsers);
             }
         });
     }
 
+    //Uses the Strings of the input ArrayList userList to overwrite the userData.txt file
     private void overwriteUserData(ArrayList<User> userList) {
         Path outpath = Paths.get("src/userData.txt");
         try (BufferedWriter writer = Files.newBufferedWriter(outpath)) {
             for (User user : userList) {
-                //ArrayList<Destination> foo = user.getUsersDestination();
                 writer.write(user.getFirstName() + "\t" + user.getLastName() + "\t" + user.getGender() + "\t" + user.getAge() + "\t" + user.getUsernameID() + "\t" + user.getPassword() + "\t");
                 if (!user.getUsersDestination().isEmpty()) {
                     for (Destination dest : user.getUsersDestination()) {
@@ -143,8 +143,8 @@ public class EditProfilePageController extends GeneralController implements Init
         }
     }
 
+    //This method is used to edit the data stored in the given instance of loggedInUser.
     private void editProfileData(User loggedInUser) {
-
         Path outpath = Paths.get("src/userData.txt");
 
         saveDetailsButton.setOnAction(event -> {
@@ -157,7 +157,8 @@ public class EditProfilePageController extends GeneralController implements Init
             try (BufferedWriter writer = Files.newBufferedWriter(outpath)) {
                 for (User user : listOfUsers) {
                     if (!user.getUsernameID().equals(loggedInUser.getUsernameID())) {
-                        writer.write(user.getFirstName() + "\t" + user.getLastName() + "\t" + user.getGender() + "\t" + user.getAge() + "\t" + user.getUsernameID() + "\t" + user.getPassword() + "\t");
+                        writer.write(user.getFirstName() + "\t" + user.getLastName() + "\t" + user.getGender()
+                                + "\t" + user.getAge() + "\t" + user.getUsernameID() + "\t" + user.getPassword() + "\t");
                         if (!user.getUsersDestination().isEmpty()) {
                             for (Destination dest : user.getUsersDestination()) {
                                 writer.write(dest.getDestinationName() + "\t");
@@ -165,7 +166,10 @@ public class EditProfilePageController extends GeneralController implements Init
                         }
                         writer.newLine();
                     } else {
-                        writer.write(firstNameField.getText() + "\t" + lastNameField.getText() + "\t" + loggedInUser.getGender() + "\t" + ageField.getText() + "\t" + usernameField.getText() + "\t" + passwordField.getText() + "\t");
+                        //Gets input from all the nodes and overwrites the old line in text file
+                        writer.write(firstNameField.getText() + "\t" + lastNameField.getText() + "\t"
+                                + loggedInUser.getGender() + "\t" + ageField.getText() + "\t"
+                                + usernameField.getText() + "\t" + passwordField.getText() + "\t");
                         loggedInUser.setFirstName(firstNameField.getText());
                         loggedInUser.setLastName(lastNameField.getText());
                         loggedInUser.setAge(ageField.getText());
@@ -189,7 +193,6 @@ public class EditProfilePageController extends GeneralController implements Init
             }
         });
     }
-
 
     public void closeEditProfile() {
         Stage stage = (Stage) closeButton.getScene().getWindow();

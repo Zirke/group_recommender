@@ -144,6 +144,7 @@ public class GroupRecommendationPageController {
         }
     }
 
+    //Opens the EditGroupPage as a pop-up window in a new Stage
     @FXML
     private void openEditGroupPage(Event event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("EditGroupPage.fxml"));
@@ -151,6 +152,7 @@ public class GroupRecommendationPageController {
         try {
             root = loader.load();
         } catch (IOException e) {
+            e.printStackTrace();
         }
         Button openEditGroupButton = (Button) event.getSource();
         String ButtonID = openEditGroupButton.getText();
@@ -168,6 +170,7 @@ public class GroupRecommendationPageController {
         }
     }
 
+    //Gets the text value of the clicked button to show Destination Information from
     private void showClickedDestination(Event event) {
         ProfilePageController controller = new ProfilePageController();
         Button chosenDestinationButton = (Button) event.getSource();

@@ -18,6 +18,7 @@ public class UserAgreementController {
     @FXML
     private Button iUnderstandButton;
 
+    //Reads the user_agreement text file and displays the content in the TextArea
     @FXML
     void readUserAgreement() {
         Path inpath = Paths.get("src/UserInterface/user_agreement.txt");

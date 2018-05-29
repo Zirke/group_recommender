@@ -23,6 +23,7 @@ public class DestinationInformationController {
     @FXML
     private VBox activityType, activityName, typespecific, activityAdress;
 
+    //This method is used to display a Destinations information. It takes an instance of Destination to access.
     void initializeChosenRecommendation(Destination chosenRecommendation) {
         chosenRecommendation.fillActivities();
         ArrayList<Activity> activities = chosenRecommendation.getActivities();
@@ -54,7 +55,6 @@ public class DestinationInformationController {
             activityAdress.getChildren().add(adress);
         }
     }
-
 
     public void closeDestinationInformation() {
         Stage stage = (Stage) closeButton.getScene().getWindow();

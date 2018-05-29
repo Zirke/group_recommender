@@ -33,6 +33,7 @@ public class ProfilePageController extends GeneralController {
     @FXML
     private Button logoutButton, groupRecommendationsButton, editProfileButton;
 
+    //Opens the Group Creation Page as a pop-up window in a new Stage
     @FXML
     public void openGroupCreation() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GroupCreationPage.fxml"));
@@ -53,7 +54,7 @@ public class ProfilePageController extends GeneralController {
         stage.showAndWait();
     }
 
-    //Gets data from the passed user and sets the correct label text
+    //Gets data from the passed user and sets the correct label text shown on the Scene
     void initializeLoggedInUserData(final LoginManager loginManager, User loggedInUser) {
         usernameLabel.setText(loggedInUser.getUsernameID());
         usernameLabel2.setText(loggedInUser.getUsernameID());
@@ -71,6 +72,8 @@ public class ProfilePageController extends GeneralController {
         });
     }
 
+    //Creates an instance of the Recommender class to get an ArrayList of recommended Destinations.
+    //These Destination's String name are then put on the text of the shown recommedation Buttons
     void initializeLoggedInUserRecommendations(User loggedInUser) {
         ArrayList<Destination> listOfRecommendedDestinations = null;
         //Accesses the stored information about the user to recommend from
@@ -115,6 +118,7 @@ public class ProfilePageController extends GeneralController {
         }
     }
 
+    //Reads the text of the clicked button and shows the corresponding destination information
     public void showClickedRecommendation(ActionEvent event) {
         Button chosenRecBtn = (Button) event.getSource();
         String recID = chosenRecBtn.getText();
@@ -130,6 +134,7 @@ public class ProfilePageController extends GeneralController {
         }
     }
 
+    //Opens the Destination Information Page in a pop-up window in a new Stage
     void openDestinationInformation(Destination chosenDest) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("DestinationInformation.fxml"));
         try {
@@ -149,6 +154,7 @@ public class ProfilePageController extends GeneralController {
         stage.showAndWait();
     }
 
+    //Pop-up window
     private void openEditProfilePage(User loggedInUser) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("EditProfilePage.fxml"));
         try {
