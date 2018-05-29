@@ -26,10 +26,6 @@ public class ProfilePageController extends GeneralController {
         this.loggedInUser = loggedInUser;
     }
 
-    public User getLoggedInUser() {
-        return loggedInUser;
-    }
-
     @FXML
     private Label usernameLabel, usernameLabel2, firstnameLabel, lastnameLabel, genderLabel, ageLabel;
     @FXML

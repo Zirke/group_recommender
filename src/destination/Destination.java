@@ -23,7 +23,6 @@ public class Destination implements Cloneable {
     private String countryName;
     private String cityType;
     private int checkins;
-    private ArrayList<Venue> venues = new ArrayList<>();
     private ArrayList<Activity> activities = new ArrayList<>();
 
     //contructor with destination name as argument.
@@ -85,14 +84,6 @@ public class Destination implements Cloneable {
         return checkins;
     }
 
-    public void setCheckins(int checkins) {
-        this.checkins = checkins;
-    }
-
-    public ArrayList<Venue> getVenues() {
-        return venues;
-    }
-
     public ArrayList<Activity> getActivities() {
         return activities;
     }
@@ -107,7 +98,6 @@ public class Destination implements Cloneable {
         FileReader fr;
         String line;
 
-        //kan kun gøre det med abosulte path og ikke den relative
         fr = new FileReader("src/destination/cities.txt");
         BufferedReader bf = new BufferedReader(fr);
         int totalLine = linesInFile("src/destination/cities.txt");
@@ -183,8 +173,7 @@ public class Destination implements Cloneable {
     private String destinationNameToFilePath() {
         return "src/destination/Activities/Destinations/" + getDestinationName() + ".txt";
     }
-
-    //TODO OBS! Absolute path
+    
     public static ArrayList<Destination> mostPopularDestinations() {
         Path inpath = Paths.get("src/destination/mostpopular.txt");
         ArrayList<Destination> destList = new ArrayList<>();

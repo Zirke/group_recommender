@@ -24,10 +24,6 @@ import java.util.ArrayList;
 public class GroupRecommendationPageController {
     private String chosenGroup;
 
-    public String getChosenGroup() {
-        return chosenGroup;
-    }
-
     public void setChosenGroup(String chosenGroup) {
         this.chosenGroup = chosenGroup;
     }
