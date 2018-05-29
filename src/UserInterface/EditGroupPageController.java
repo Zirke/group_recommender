@@ -66,6 +66,7 @@ public class EditGroupPageController extends GeneralController implements Initia
         stage.close();
     }
 
+    //Method for adding user in TextField to ListView
     public void addSelectedUserToListView() {
         selectedUsersList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE); //Makes it possible to select more users at once
         if (!searchForUserField.getText().isEmpty()) {
@@ -75,6 +76,7 @@ public class EditGroupPageController extends GeneralController implements Initia
         }
     }
 
+    //Method to remove selected user(s) in ListView
     public void removeSelectedUserFromListView() {
         selectedUsersList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         if (!selectedUsersList.getItems().isEmpty()) {
@@ -84,11 +86,13 @@ public class EditGroupPageController extends GeneralController implements Initia
         }
     }
 
-    public void setGroupNameFieldText(String groupname) {
+    //Setter for groupNameField
+    void setGroupNameFieldText(String groupname) {
         groupNameField.setText(groupname);
     }
 
-    public void fillUsersToRemoveList(String selectedGroup) {
+    //Method to fill ListView of user(s) possible to remove
+    void fillUsersToRemoveList(String selectedGroup) {
         ArrayList<Group> listOfGroups = new ArrayList<>();
         try {
             listOfGroups = Group.listOfCreatedGroups();
@@ -104,7 +108,8 @@ public class EditGroupPageController extends GeneralController implements Initia
         }
     }
 
-    @FXML
+
+    @FXML //Method to add users to a group
     private void addUsersToGroup() {
 
         Path outpath = Paths.get("src/groupData.txt");
@@ -152,7 +157,7 @@ public class EditGroupPageController extends GeneralController implements Initia
         }
     }
 
-    @FXML
+    @FXML //Method to edit a groups name
     public void editGroupName() {
         ArrayList<Group> listOfGroups = null;
         try {
@@ -186,7 +191,7 @@ public class EditGroupPageController extends GeneralController implements Initia
 
     }
 
-    @FXML
+    @FXML //Method to remove users from a group
     private void removeUserFromGroup(){
         Path outpath = Paths.get("src/groupData.txt");
         ArrayList<Group> listOfGroups = new ArrayList<>();

@@ -37,9 +37,6 @@ public class ProfilePageController extends GeneralController {
     @FXML
     private Button logoutButton, groupRecommendationsButton, editProfileButton;
 
-    public void initialize() {
-    }
-
     @FXML
     public void openGroupCreation() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GroupCreationPage.fxml"));
