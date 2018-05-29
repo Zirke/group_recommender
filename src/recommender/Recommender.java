@@ -18,7 +18,7 @@ public class Recommender {
     private User recommendationUser;
     private int k;
 
-    ArrayList<Destination> destinationList;
+    private ArrayList<Destination> destinationList;
     {
         try {
             destinationList = listOfDestination();
@@ -27,39 +27,45 @@ public class Recommender {
         }
     }
 
-
+    //Constructor with  recommendationUser, and k.
     public Recommender(User recommendationUser, int k) {
         this.recommendationUser = recommendationUser;
         this.k = k;
     }
 
+    //Constructor with  recommendationUser, trainSet, and k.
     public Recommender(User recommendationUser, ArrayList<User> trainSet, int k) {
         this.trainSet = trainSet;
         this.recommendationUser = recommendationUser;
         this.k = k;
     }
 
+    //Getter for "destinations".
     public ArrayList<Destination> getDestinations() {
         return destinations;
     }
 
+    //Setter for "destinations".
     public void setDestinations(ArrayList<Destination> destinations) {
         this.destinations = destinations;
     }
 
+    //Getter for "trainSet".
     public ArrayList<User> getTrainSet() {
         return trainSet;
     }
 
+    //Setter for "trainSet".
     public void setTrainSet(ArrayList<User> trainSet) {
         this.trainSet = trainSet;
     }
 
+    //Getter for "recommendationUser".
     public User getRecommendationUser() {
         return recommendationUser;
     }
 
-    //Setter for recommenderdationUser.
+    //Setter for "recommenderdationUser".
     public void setRecommendationUser(User recommendationUser) {
         this.recommendationUser = recommendationUser;
     }
@@ -90,7 +96,7 @@ public class Recommender {
         return matrix;
     }
 
-    //returns the destination Matrix for recommendationUser.
+    //returns the destination Matrix for "recommendationUser".
     public HashMap<Destination, Integer> currentUserDestination() {
         HashMap<Destination, Integer> tempUserDestMap = new HashMap<>();
         HashMap<User, HashMap<Destination, Integer>> matrix = new HashMap<>();
@@ -169,7 +175,7 @@ public class Recommender {
         return userSet;
     }
 
-    //Matrix of similarity of destinations based on the User's similarity.
+    //returns HashMap of similarity of destinations based on the user's similarity.
     public HashMap<Destination, Double> destinationSimilarity() {
         HashSet<User> knnUsers = recommendationForCurrent();
         HashMap<Destination, Double> similarity = new HashMap<>();
@@ -189,14 +195,15 @@ public class Recommender {
         return similarity;
     }
 
-    //ArrayList of ranked destination with biggest first
+    //ArrayList of ranked destination with highest first
     public ArrayList<Destination> recommendationDest() {
         ArrayList<Destination> rankedDest = new ArrayList<>();
         HashMap<Destination, Double> similarityDest = destinationSimilarity();
         Set<Map.Entry<Destination, Double>> mapentries = similarityDest.entrySet();
 
         List<Map.Entry<Destination, Double>> rankDest = new LinkedList<>(mapentries);
-        // sorting the List
+
+        //sorting the List, with the highest similarity being first.
         rankDest.sort(new Comparator<Map.Entry<Destination, Double>>() {
 
             @Override
@@ -210,7 +217,7 @@ public class Recommender {
             rankedDest.add(entry.getKey());
         }
 
-        //The for loop ensures that no duplicate destinations and destinations, where the user has been to is not included.
+        //The for loop ensures that no duplicate destinations and destinations, where the user has visited isn't included.
         HashSet<Destination> noDubDest = new HashSet<>();
         Iterator<Destination> iter = rankedDest.iterator();
         while (iter.hasNext()) {

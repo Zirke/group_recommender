@@ -6,13 +6,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import static userProfiles.User.listDataset;
 
-//This class contains method for evaluating the recommender system.
+//This class contains methods for evaluating a recommender system.
 
 public class RecommenderEval {
 
+    //Constructor for "RecommenderEval".
     public RecommenderEval() {
     }
 
+    //returns the best k or the highest precision for "accuracyUser".
     public double accuracyOrBestK(User accuracyUser, int limit, String accOrBestK){
         ArrayList<User> dataSet = new ArrayList<>();
         try {
@@ -20,7 +22,7 @@ public class RecommenderEval {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        double prediction = 0;
+        double precision = 0;
         int kBest = 0;
 
         dataSet.remove(accuracyUser);
@@ -54,8 +56,9 @@ public class RecommenderEval {
 
             }
 
-            if((tp / (fp + tp) * 100) > prediction){
-                prediction = (tp / (fp + tp) * 100);
+            //Calculation of precision and assignment of best k.
+            if((tp / (fp + tp) * 100) > precision){
+                precision = (tp / (fp + tp) * 100);
                 kBest = k;
             }
 
@@ -68,9 +71,10 @@ public class RecommenderEval {
         if(accOrBestK.equals("k")){
             return kBest;
         }else
-            return prediction;
+            return precision;
     }
 
+    //returns average precision for kNN.
     public double averagePrecision(){
         ArrayList<User> dataSet = new ArrayList<>();
         ArrayList<User> moreThan5 = new ArrayList<>();
@@ -82,13 +86,14 @@ public class RecommenderEval {
             System.out.println("Data set unreadable");
         }
 
-        //in order to find a user with 5 destinations or more.
+        //in order to find users with 5 destinations or more and add to "moreThan5".
         for (User i : dataSet) {
             if (i.getUsersDestination().size() >= 5) {
                 moreThan5.add(i);
             }
         }
 
+        //Calculation of accumulated precision.
         for(int i = 0; i < moreThan5.size(); i++){
             averagePrediction += new RecommenderEval().accuracyOrBestK(moreThan5.get(i),
                     dataSet.size(), "accuracy");

@@ -12,13 +12,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static userProfiles.User.listDataset;
 
 public class GroupRecommenderTest {
 
+
+    //Test for "groupRecommendationDest()"
     @Test
-    void destinationMatrixCreator01(){
+    void groupRecommendationDest01(){
         ArrayList<User> groupMember = new ArrayList<>();
         ArrayList<Destination> allDest = new ArrayList<>();
         ArrayList<Destination> testUserRecommend = null;
@@ -37,8 +38,5 @@ public class GroupRecommenderTest {
             System.out.println("test failed");;
         }
         assertEquals(testUserRecommend.get(0), new GroupRecommender(testGroup).groupRecommendationDest().get(0));
-
-
-
     }
 }
